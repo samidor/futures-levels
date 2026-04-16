@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futures Key Levels</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --bg2: #16213e;
+            --bg3: #0f3460;
+            --text: #e0e0e0;
+            --text2: #a0a0b0;
+            --accent: #e94560;
+            --border: #2d3436;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 48px 20px 32px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            color: var(--text2);
+            font-size: 1.05em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--bg2), var(--bg3));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.15s, border-color 0.15s;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .card.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .card-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .status {
+            font-size: 0.82em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .status.live {
+            background: rgba(0, 184, 148, 0.15);
+            color: #00b894;
+        }
+
+        .status.offline {
+            background: rgba(225, 112, 85, 0.15);
+            color: #e17055;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--text2);
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Futures Key Levels</h1>
+            <div class="subtitle">Options-based support & resistance levels for major futures contracts</div>
+        </div>
+
+        <div class="grid">
+            
+        <a href="es_levels_report.html" class="card">
+            <div class="card-icon">&#128200;</div>
+            <div class="card-title">ES (S&P 500 E-mini)</div>
+            <span class="status live">Updated 2026-04-16 10:01</span>
+        </a>
+        
+        <a href="nq_levels_report.html" class="card">
+            <div class="card-icon">&#128201;</div>
+            <div class="card-title">NQ (Nasdaq 100 E-mini)</div>
+            <span class="status live">Updated 2026-04-16 10:41</span>
+        </a>
+        
+        <a href="cl_levels_report.html" class="card">
+            <div class="card-icon">&#9981;</div>
+            <div class="card-title">CL (Crude Oil)</div>
+            <span class="status live">Updated 2026-04-16 10:39</span>
+        </a>
+        
+        <a href="gc_levels_report.html" class="card">
+            <div class="card-icon">&#129351;</div>
+            <div class="card-title">GC (Gold)</div>
+            <span class="status live">Updated 2026-04-16 10:40</span>
+        </a>
+        
+        </div>
+
+        <div class="footer">
+            Last published: 2026-04-16 10:42<br>
+            Data sources: CBOE, Barchart, ChartExchange
+        </div>
+    </div>
+</body>
+</html>

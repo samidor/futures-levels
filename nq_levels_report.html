@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NQ Key Levels - 2026-04-16 10:41</title>
+    <style>
+:root {
+    --bg: #1a1a2e;
+    --bg2: #16213e;
+    --bg3: #0f3460;
+    --text: #e0e0e0;
+    --text2: #a0a0b0;
+    --accent: #e94560;
+    --green: #00b894;
+    --red: #e17055;
+    --blue: #74b9ff;
+    --yellow: #fdcb6e;
+    --orange: #e17055;
+    --border: #2d3436;
+    --card: #16213e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.header .subtitle {
+    color: var(--text2);
+    font-size: 0.95em;
+}
+
+.header .prices {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.price-box {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 12px 20px;
+    min-width: 180px;
+}
+
+.price-box .label {
+    font-size: 0.8em;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-box .value {
+    font-size: 1.4em;
+    font-weight: 700;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.price-box .change {
+    font-size: 0.9em;
+    font-family: 'Consolas', monospace;
+}
+
+.up { color: var(--green); }
+.down { color: var(--red); }
+
+.section {
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.section-header {
+    padding: 16px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.section-header:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.section-header h2 {
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.section-header .badge {
+    background: var(--bg3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: var(--text2);
+}
+
+.section-header .arrow {
+    transition: transform 0.2s;
+    font-size: 1.2em;
+    color: var(--text2);
+}
+
+.section.collapsed .section-body { display: none; }
+.section.collapsed .arrow { transform: rotate(-90deg); }
+
+.section-body {
+    padding: 0 24px 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+thead th {
+    text-align: right;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+    color: var(--text2);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+thead th:first-child { text-align: left; }
+thead th:last-child { text-align: left; }
+
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    text-align: right;
+    white-space: nowrap;
+}
+
+tbody td:first-child { text-align: left; }
+tbody td:last-child { text-align: left; }
+
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+.side-ask { color: #4caf50; font-weight: 600; }
+.side-bid { color: #ef5350; font-weight: 600; }
+
+.level-resist { color: var(--red); font-weight: 600; }
+.level-support { color: var(--green); font-weight: 600; }
+.level-pivot { color: var(--blue); font-weight: 600; }
+.level-near { color: var(--yellow); font-weight: 600; }
+
+.type-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.type-resist { background: rgba(225,112,85,0.2); color: var(--red); }
+.type-support { background: rgba(0,184,148,0.2); color: var(--green); }
+.type-pivot { background: rgba(116,185,255,0.2); color: var(--blue); }
+
+.strength {
+    color: var(--yellow);
+    letter-spacing: 1px;
+}
+
+.top5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.top5-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--accent);
+}
+
+.top5-card.support { border-left-color: var(--green); }
+.top5-card.resist { border-left-color: var(--red); }
+
+.top5-card .level {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+}
+
+.top5-card .oi {
+    font-size: 0.85em;
+    color: var(--text2);
+    margin-top: 2px;
+}
+
+.top5-card .source {
+    font-size: 0.8em;
+    color: var(--text2);
+    margin-top: 4px;
+}
+
+.sd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+}
+
+.sd-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.sd-card .sd-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+}
+
+.sd-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+    padding: 2px 0;
+}
+
+.sd-row .support { color: var(--green); }
+.sd-row .resist { color: var(--red); }
+.sd-row .move { color: var(--text2); font-size: 0.85em; }
+
+.mp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.mp-card {
+    background: rgba(253,203,110,0.08);
+    border-radius: 8px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--yellow);
+}
+
+.mp-card .mp-label {
+    font-size: 0.8em;
+    color: var(--text2);
+    text-transform: uppercase;
+}
+
+.mp-card .mp-value {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+    color: var(--yellow);
+}
+
+.mp-card .mp-source {
+    font-size: 0.8em;
+    color: var(--text2);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text2);
+    font-size: 0.85em;
+}
+
+.footer a { color: var(--blue); text-decoration: none; }
+
+.note {
+    background: rgba(116,185,255,0.08);
+    border-left: 3px solid var(--blue);
+    padding: 10px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 0.9em;
+    color: var(--text2);
+}
+
+@media print {
+    body { background: white; color: #333; padding: 10px; }
+    .section { border: 1px solid #ddd; }
+    .header { background: #f5f5f5; }
+    .price-box { background: #eee; }
+    .section-header .arrow { display: none; }
+    .section.collapsed .section-body { display: block; }
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .header { padding: 16px; }
+    .header .prices { gap: 12px; }
+    .price-box { min-width: 140px; padding: 8px 14px; }
+    .section-body { padding: 0 12px 16px; }
+    table { font-size: 0.8em; }
+    thead th, tbody td { padding: 5px 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>NQ Futures Key Levels</h1>
+    <div class="subtitle">2026-04-16 10:41 &bull; NQM26 &bull; 0DTE + Weekly</div>
+    <div class="prices">
+        <div class="price-box">
+            <div class="label">NQ Last</div>
+            <div class="value">26,424.50</div>
+            <div class="change up">+59.00</div>
+        </div>
+        <div class="price-box">
+            <div class="label">NQ Prev Close</div>
+            <div class="value">26,365.50</div>
+        </div>
+        <div class="price-box">
+            <div class="label">QQQ</div>
+            <div class="value">$638.36</div>
+        </div>
+        <div class="price-box">
+            <div class="label">NDX</div>
+            <div class="value">26,204.58</div>
+        </div>
+        <div class="price-box">
+            <div class="label">Premium</div>
+            <div class="value">160.92</div>
+        </div>
+        <div class="price-box">
+            <div class="label">NDX/QQQ Ratio</div>
+            <div class="value">41.0498</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Top 5 Key Levels (Weekly)</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="top5"><div class="top5-card support">
+            <div class="level">26,022.25</div>
+            <div class="oi">OI: 48,339 &mdash; SUPPORT</div>
+            <div class="source">QQQ 630C [Weekly], QQQ 630P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">25,611.75</div>
+            <div class="oi">OI: 42,973 &mdash; SUPPORT</div>
+            <div class="source">QQQ 620C [Weekly], QQQ 620P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">25,406.50</div>
+            <div class="oi">OI: 35,895 &mdash; SUPPORT</div>
+            <div class="source">QQQ 615C [Weekly], QQQ 615P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">25,201.25</div>
+            <div class="oi">OI: 33,410 &mdash; SUPPORT</div>
+            <div class="source">QQQ 610C [Weekly], QQQ 610P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">25,817.00</div>
+            <div class="oi">OI: 30,030 &mdash; SUPPORT</div>
+            <div class="source">QQQ 625C [Weekly], QQQ 625P [Weekly]</div>
+        </div></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Primary Levels &mdash; Weekly (2026-04-17)</h2>
+        <span class="badge">16 levels</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <table>
+        <thead><tr>
+            <th>Level</th><th>Call OI</th><th>Put OI</th>
+            <th>Type</th><th>Strength</th><th>Source</th>
+        </tr></thead>
+        <tbody><tr>
+            <td class="level-resist">27,664.25</td>
+            <td>25,537</td>
+            <td>0</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 670C [Weekly]</td>
+        </tr><tr>
+            <td class="level-resist">27,459.00</td>
+            <td>17,521</td>
+            <td>0</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 665C [Weekly]</td>
+        </tr><tr>
+            <td class="level-resist">27,253.75</td>
+            <td>13,106</td>
+            <td>125</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 660C [Weekly], QQQ 660P [Weekly]</td>
+        </tr><tr>
+            <td class="level-resist">26,843.25</td>
+            <td>18,525</td>
+            <td>237</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 650C [Weekly], QQQ 650P [Weekly]</td>
+        </tr><tr>
+            <td class="level-resist">26,638.00</td>
+            <td>25,070</td>
+            <td>228</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 645C [Weekly], QQQ 645P [Weekly]</td>
+        </tr><tr>
+            <td class="level-resist">26,432.75</td>
+            <td>20,039</td>
+            <td>3,412</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 640C [Weekly], QQQ 640P [Weekly]</td>
+        </tr><tr>
+            <td class="level-support">26,227.50</td>
+            <td>20,155</td>
+            <td>5,109</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 635C [Weekly], QQQ 635P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">26,022.25</td>
+            <td>28,935</td>
+            <td>19,404</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 630C [Weekly], QQQ 630P [Weekly]</td>
+        </tr><tr>
+            <td class="level-support">25,940.25</td>
+            <td>16,515</td>
+            <td>3,491</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 628C [Weekly], QQQ 628P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">25,817.00</td>
+            <td>14,054</td>
+            <td>15,976</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 625C [Weekly], QQQ 625P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">25,611.75</td>
+            <td>28,014</td>
+            <td>14,959</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 620C [Weekly], QQQ 620P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">25,406.50</td>
+            <td>23,739</td>
+            <td>12,156</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 615C [Weekly], QQQ 615P [Weekly]</td>
+        </tr><tr>
+            <td class="level-support">25,283.50</td>
+            <td>8,851</td>
+            <td>2,837</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 612C [Weekly], QQQ 612P [Weekly]</td>
+        </tr><tr>
+            <td class="level-support">25,242.50</td>
+            <td>17,618</td>
+            <td>4,072</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 611C [Weekly], QQQ 611P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">25,201.25</td>
+            <td>17,413</td>
+            <td>15,997</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 610C [Weekly], QQQ 610P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">25,119.25</td>
+            <td>8,688</td>
+            <td>4,657</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 608C [Weekly], QQQ 608P [Weekly]</td>
+        </tr></tbody>
+    </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>0DTE Intraday Levels (2026-04-16)</h2>
+        <span class="badge">25 levels</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <table>
+        <thead><tr>
+            <th>Level</th><th>Call OI</th><th>Put OI</th>
+            <th>Type</th><th>Strength</th><th>Source</th>
+        </tr></thead>
+        <tbody><tr>
+            <td class="level-resist">26,843.25</td>
+            <td>7,033</td>
+            <td>73</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 650C [0DTE], QQQ 650P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">26,638.00</td>
+            <td>8,543</td>
+            <td>91</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 645C [0DTE], QQQ 645P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">26,515.00</td>
+            <td>4,306</td>
+            <td>43</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 642C [0DTE], QQQ 642P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">26,473.75</td>
+            <td>8,530</td>
+            <td>68</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 641C [0DTE], QQQ 641P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">26,432.75</td>
+            <td>9,292</td>
+            <td>647</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 640C [0DTE], QQQ 640P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">26,350.75</td>
+            <td>5,839</td>
+            <td>923</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 638C [0DTE], QQQ 638P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,309.75</td>
+            <td>5,995</td>
+            <td>4,482</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 637C [0DTE], QQQ 637P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">26,268.50</td>
+            <td>3,152</td>
+            <td>9,031</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 636C [0DTE], QQQ 636P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,227.50</td>
+            <td>7,321</td>
+            <td>7,735</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 635C [0DTE], QQQ 635P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,186.50</td>
+            <td>2,778</td>
+            <td>4,355</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 634C [0DTE], QQQ 634P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,145.50</td>
+            <td>3,077</td>
+            <td>5,153</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 633C [0DTE], QQQ 633P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">26,104.50</td>
+            <td>2,097</td>
+            <td>4,594</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 632C [0DTE], QQQ 632P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,063.25</td>
+            <td>3,042</td>
+            <td>3,689</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 631C [0DTE], QQQ 631P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">26,022.25</td>
+            <td>5,661</td>
+            <td>9,091</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 630C [0DTE], QQQ 630P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,981.25</td>
+            <td>2,095</td>
+            <td>4,801</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 629C [0DTE], QQQ 629P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,940.25</td>
+            <td>2,382</td>
+            <td>41,737</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 628C [0DTE], QQQ 628P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,899.25</td>
+            <td>1,927</td>
+            <td>5,572</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 627C [0DTE], QQQ 627P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,858.00</td>
+            <td>4,332</td>
+            <td>22,094</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">****</td>
+            <td>QQQ 626C [0DTE], QQQ 626P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,817.00</td>
+            <td>985</td>
+            <td>8,819</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>QQQ 625C [0DTE], QQQ 625P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">25,735.00</td>
+            <td>1,733</td>
+            <td>2,900</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 623C [0DTE], QQQ 623P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,611.75</td>
+            <td>2,084</td>
+            <td>8,709</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 620C [0DTE], QQQ 620P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,488.75</td>
+            <td>467</td>
+            <td>4,275</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 617C [0DTE], QQQ 617P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,447.75</td>
+            <td>378</td>
+            <td>10,468</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>QQQ 616C [0DTE], QQQ 616P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,406.50</td>
+            <td>1,321</td>
+            <td>3,538</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 615C [0DTE], QQQ 615P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">25,201.25</td>
+            <td>541</td>
+            <td>3,748</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>QQQ 610C [0DTE], QQQ 610P [0DTE]</td>
+        </tr></tbody>
+    </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Standard Deviation Levels</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="sd-grid"><div class="sd-card">
+            <div class="sd-label">Barchart SD (QQQ Cheat Sheet)</div><div class="sd-row">
+                <span>1 SD</span>
+                <span class="support">25,842.53</span>
+                <span>&mdash;</span>
+                <span class="resist">26,809.66</span>
+            </div><div class="sd-row">
+                <span>2 SD</span>
+                <span class="support">25,642.20</span>
+                <span>&mdash;</span>
+                <span class="resist">27,009.98</span>
+            </div><div class="sd-row">
+                <span>3 SD</span>
+                <span class="support">25,488.26</span>
+                <span>&mdash;</span>
+                <span class="resist">27,163.92</span>
+            </div></div><div class="sd-card">
+            <div class="sd-label">IV-Based SD (VXN=22.25, Settlement=26,365.50)</div><div class="sd-row">
+                <span>1 SD</span>
+                <span class="support">26,058.44</span>
+                <span>&mdash;</span>
+                <span class="resist">26,672.56</span>
+                <span class="move">(307.06 pts)</span>
+            </div><div class="sd-row">
+                <span>2 SD</span>
+                <span class="support">25,751.39</span>
+                <span>&mdash;</span>
+                <span class="resist">26,979.61</span>
+                <span class="move">(614.11 pts)</span>
+            </div></div></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Max Pain Levels</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="mp-grid"><div class="mp-card">
+                <div class="mp-label">QQQ 0DTE Max Pain</div>
+                <div class="mp-value">26,063.37</div>
+                <div class="mp-source">QQQ $631.00</div>
+            </div><div class="mp-card">
+                <div class="mp-label">NDX 0DTE Max Pain</div>
+                <div class="mp-value">26,100.92</div>
+                <div class="mp-source">NDX 25,940.00</div>
+            </div></div>
+    </div>
+</div>
+
+<div class="section collapsed">
+    <div class="section-header">
+        <h2>Recent Dark Pool Prints</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Apr 14, 2026</p>
+    </div>
+</div>
+
+<div class="footer">
+    Data sources: CBOE (options/OI), Barchart (NQ/SD/VXN), ChartExchange (dark pool)<br>
+    Options OI is delayed ~15 min. NQ price may have 10-min delay.
+</div>
+
+<script>
+document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('collapsed');
+    });
+});
+</script>
+</body>
+</html>

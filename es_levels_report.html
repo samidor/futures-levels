@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES Key Levels - 2026-04-16 10:01</title>
+    <style>
+:root {
+    --bg: #1a1a2e;
+    --bg2: #16213e;
+    --bg3: #0f3460;
+    --text: #e0e0e0;
+    --text2: #a0a0b0;
+    --accent: #e94560;
+    --green: #00b894;
+    --red: #e17055;
+    --blue: #74b9ff;
+    --yellow: #fdcb6e;
+    --orange: #e17055;
+    --border: #2d3436;
+    --card: #16213e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.header .subtitle {
+    color: var(--text2);
+    font-size: 0.95em;
+}
+
+.header .prices {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.price-box {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 12px 20px;
+    min-width: 180px;
+}
+
+.price-box .label {
+    font-size: 0.8em;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-box .value {
+    font-size: 1.4em;
+    font-weight: 700;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.price-box .change {
+    font-size: 0.9em;
+    font-family: 'Consolas', monospace;
+}
+
+.up { color: var(--green); }
+.down { color: var(--red); }
+
+.section {
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.section-header {
+    padding: 16px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.section-header:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.section-header h2 {
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.section-header .badge {
+    background: var(--bg3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: var(--text2);
+}
+
+.section-header .arrow {
+    transition: transform 0.2s;
+    font-size: 1.2em;
+    color: var(--text2);
+}
+
+.section.collapsed .section-body { display: none; }
+.section.collapsed .arrow { transform: rotate(-90deg); }
+
+.section-body {
+    padding: 0 24px 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+thead th {
+    text-align: right;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+    color: var(--text2);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+thead th:first-child { text-align: left; }
+thead th:last-child { text-align: left; }
+
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    text-align: right;
+    white-space: nowrap;
+}
+
+tbody td:first-child { text-align: left; }
+tbody td:last-child { text-align: left; }
+
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+.side-ask { color: #4caf50; font-weight: 600; }
+.side-bid { color: #ef5350; font-weight: 600; }
+
+.level-resist { color: var(--red); font-weight: 600; }
+.level-support { color: var(--green); font-weight: 600; }
+.level-pivot { color: var(--blue); font-weight: 600; }
+.level-near { color: var(--yellow); font-weight: 600; }
+
+.type-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.type-resist { background: rgba(225,112,85,0.2); color: var(--red); }
+.type-support { background: rgba(0,184,148,0.2); color: var(--green); }
+.type-pivot { background: rgba(116,185,255,0.2); color: var(--blue); }
+
+.strength {
+    color: var(--yellow);
+    letter-spacing: 1px;
+}
+
+.top5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.top5-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--accent);
+}
+
+.top5-card.support { border-left-color: var(--green); }
+.top5-card.resist { border-left-color: var(--red); }
+
+.top5-card .level {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+}
+
+.top5-card .oi {
+    font-size: 0.85em;
+    color: var(--text2);
+    margin-top: 2px;
+}
+
+.top5-card .source {
+    font-size: 0.8em;
+    color: var(--text2);
+    margin-top: 4px;
+}
+
+.sd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+}
+
+.sd-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.sd-card .sd-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+}
+
+.sd-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+    padding: 2px 0;
+}
+
+.sd-row .support { color: var(--green); }
+.sd-row .resist { color: var(--red); }
+.sd-row .move { color: var(--text2); font-size: 0.85em; }
+
+.mp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.mp-card {
+    background: rgba(253,203,110,0.08);
+    border-radius: 8px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--yellow);
+}
+
+.mp-card .mp-label {
+    font-size: 0.8em;
+    color: var(--text2);
+    text-transform: uppercase;
+}
+
+.mp-card .mp-value {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+    color: var(--yellow);
+}
+
+.mp-card .mp-source {
+    font-size: 0.8em;
+    color: var(--text2);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text2);
+    font-size: 0.85em;
+}
+
+.footer a { color: var(--blue); text-decoration: none; }
+
+.note {
+    background: rgba(116,185,255,0.08);
+    border-left: 3px solid var(--blue);
+    padding: 10px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 0.9em;
+    color: var(--text2);
+}
+
+@media print {
+    body { background: white; color: #333; padding: 10px; }
+    .section { border: 1px solid #ddd; }
+    .header { background: #f5f5f5; }
+    .price-box { background: #eee; }
+    .section-header .arrow { display: none; }
+    .section.collapsed .section-body { display: block; }
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .header { padding: 16px; }
+    .header .prices { gap: 12px; }
+    .price-box { min-width: 140px; padding: 8px 14px; }
+    .section-body { padding: 0 12px 16px; }
+    table { font-size: 0.8em; }
+    thead th, tbody td { padding: 5px 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ES Futures Key Levels</h1>
+    <div class="subtitle">2026-04-16 10:01 &bull; ESM26 &bull; 0DTE + Weekly</div>
+    <div class="prices">
+        <div class="price-box">
+            <div class="label">ES Last</div>
+            <div class="value">7,073.25</div>
+            <div class="change up">+12.75</div>
+        </div>
+        <div class="price-box">
+            <div class="label">ES Prev Close</div>
+            <div class="value">7,060.50</div>
+        </div>
+        <div class="price-box">
+            <div class="label">SPY</div>
+            <div class="value">$699.94</div>
+        </div>
+        <div class="price-box">
+            <div class="label">SPX</div>
+            <div class="value">7,022.95</div>
+        </div>
+        <div class="price-box">
+            <div class="label">Premium</div>
+            <div class="value">37.55</div>
+        </div>
+        <div class="price-box">
+            <div class="label">SPX/SPY Ratio</div>
+            <div class="value">10.0336</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Top 5 Key Levels (Weekly)</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="top5"><div class="top5-card support">
+            <div class="level">7,037.50</div>
+            <div class="oi">OI: 209,602 &mdash; SUPPORT</div>
+            <div class="source">SPX 7000C [Weekly], SPX 7000P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">6,710.00</div>
+            <div class="oi">OI: 138,005 &mdash; SUPPORT</div>
+            <div class="source">SPY 665C [Weekly], SPY 665P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">6,760.00</div>
+            <div class="oi">OI: 81,767 &mdash; SUPPORT</div>
+            <div class="source">SPY 670C [Weekly], SPY 670P [Weekly]</div>
+        </div><div class="top5-card support">
+            <div class="level">6,837.50</div>
+            <div class="oi">OI: 57,233 &mdash; SUPPORT</div>
+            <div class="source">SPX 6800C [Weekly], SPX 6800P [Weekly]</div>
+        </div><div class="top5-card resist">
+            <div class="level">7,061.00</div>
+            <div class="oi">OI: 50,017 &mdash; RESISTANCE</div>
+            <div class="source">SPY 700C [Weekly], SPY 700P [Weekly]</div>
+        </div></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Primary Levels &mdash; Weekly (2026-04-17)</h2>
+        <span class="badge">14 levels</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <table>
+        <thead><tr>
+            <th>Level</th><th>Call OI</th><th>Put OI</th>
+            <th>Type</th><th>Strength</th><th>Source</th>
+        </tr></thead>
+        <tbody><tr>
+            <td class="level-resist">7,061.00</td>
+            <td>49,152</td>
+            <td>865</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPY 700C [Weekly], SPY 700P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">7,037.50</td>
+            <td>111,771</td>
+            <td>97,831</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">****</td>
+            <td>SPX 7000C [Weekly], SPX 7000P [Weekly], SPX 7000C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-pivot">6,987.50</td>
+            <td>17,051</td>
+            <td>18,829</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6950C [Weekly], SPX 6950P [Weekly], SPX 6950C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-pivot">6,960.75</td>
+            <td>23,725</td>
+            <td>17,860</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 690C [Weekly], SPY 690P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">6,937.50</td>
+            <td>22,946</td>
+            <td>13,207</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6900C [Weekly], SPX 6900P [Weekly], SPX 6900C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-pivot">6,910.50</td>
+            <td>21,470</td>
+            <td>15,979</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 685C [Weekly], SPY 685P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">6,887.50</td>
+            <td>22,280</td>
+            <td>20,016</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6850C [Weekly], SPX 6850P [Weekly], SPX 6850C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-pivot">6,860.50</td>
+            <td>20,768</td>
+            <td>21,431</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 680C [Weekly], SPY 680P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">6,837.50</td>
+            <td>28,971</td>
+            <td>28,262</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6800C [Weekly], SPX 6800P [Weekly], SPX 6800C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-pivot">6,810.25</td>
+            <td>16,520</td>
+            <td>31,966</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 675C [Weekly], SPY 675P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">6,787.50</td>
+            <td>14,375</td>
+            <td>20,812</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6750C [Weekly], SPX 6750P [Weekly], SPX 6750C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-support">6,760.00</td>
+            <td>22,047</td>
+            <td>59,720</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>SPY 670C [Weekly], SPY 670P [Weekly]</td>
+        </tr><tr>
+            <td class="level-pivot">6,737.50</td>
+            <td>18,163</td>
+            <td>21,781</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6700C [Weekly], SPX 6700P [Weekly], SPX 6700C [Weekly] +1</td>
+        </tr><tr>
+            <td class="level-support">6,710.00</td>
+            <td>6,133</td>
+            <td>131,872</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">****</td>
+            <td>SPY 665C [Weekly], SPY 665P [Weekly]</td>
+        </tr></tbody>
+    </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>0DTE Intraday Levels (2026-04-16)</h2>
+        <span class="badge">49 levels</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <table>
+        <thead><tr>
+            <th>Level</th><th>Call OI</th><th>Put OI</th>
+            <th>Type</th><th>Strength</th><th>Source</th>
+        </tr></thead>
+        <tbody><tr>
+            <td class="level-resist">7,247.50</td>
+            <td>7,101</td>
+            <td>0</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7210C [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,237.50</td>
+            <td>14,694</td>
+            <td>6</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">****</td>
+            <td>SPX 7200C [0DTE], SPX 7200P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,152.50</td>
+            <td>7,173</td>
+            <td>1</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7115C [0DTE], SPX 7115P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,137.50</td>
+            <td>14,265</td>
+            <td>9</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">****</td>
+            <td>SPX 7100C [0DTE], SPX 7100P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,127.50</td>
+            <td>6,280</td>
+            <td>12</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7090C [0DTE], SPX 7090P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,117.50</td>
+            <td>5,944</td>
+            <td>18</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7080C [0DTE], SPX 7080P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,111.25</td>
+            <td>4,082</td>
+            <td>15</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPY 705C [0DTE], SPY 705P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,107.50</td>
+            <td>7,200</td>
+            <td>21</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7070C [0DTE], SPX 7070P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,097.50</td>
+            <td>4,686</td>
+            <td>111</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 7060C [0DTE], SPX 7060P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,091.25</td>
+            <td>5,165</td>
+            <td>8</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPY 703C [0DTE], SPY 703P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,087.50</td>
+            <td>4,368</td>
+            <td>201</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 7050C [0DTE], SPX 7050P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,072.50</td>
+            <td>5,862</td>
+            <td>169</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7035C [0DTE], SPX 7035P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,067.50</td>
+            <td>6,940</td>
+            <td>423</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7030C [0DTE], SPX 7030P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,062.50</td>
+            <td>3,333</td>
+            <td>735</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 7025C [0DTE], SPX 7025P [0DTE]</td>
+        </tr><tr>
+            <td class="level-resist">7,061.00</td>
+            <td>8,350</td>
+            <td>85</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
+            <td class="strength">***</td>
+            <td>SPY 700C [0DTE], SPY 700P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">7,057.50</td>
+            <td>2,384</td>
+            <td>1,335</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 7020C [0DTE], SPX 7020P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">7,052.50</td>
+            <td>1,237</td>
+            <td>5,613</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7015C [0DTE], SPX 7015P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">7,047.50</td>
+            <td>2,260</td>
+            <td>5,558</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 7010C [0DTE], SPX 7010P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">7,037.50</td>
+            <td>5,145</td>
+            <td>3,685</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">***</td>
+            <td>SPX 7000C [0DTE], SPX 7000P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">7,012.50</td>
+            <td>1,073</td>
+            <td>4,557</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6975C [0DTE], SPX 6975P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">7,011.00</td>
+            <td>6,865</td>
+            <td>517</td>
+            <td><span class="type-tag type-support">Call Support</span></td>
+            <td class="strength">**</td>
+            <td>SPY 695C [0DTE], SPY 695P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">7,001.00</td>
+            <td>3,262</td>
+            <td>1,827</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 694C [0DTE], SPY 694P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,997.50</td>
+            <td>2,099</td>
+            <td>2,587</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6960C [0DTE], SPX 6960P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,990.75</td>
+            <td>2,532</td>
+            <td>2,288</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 693C [0DTE], SPY 693P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,987.50</td>
+            <td>3,227</td>
+            <td>2,751</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6950C [0DTE], SPX 6950P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,980.75</td>
+            <td>3,029</td>
+            <td>3,325</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>SPY 692C [0DTE], SPY 692P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,970.75</td>
+            <td>1,582</td>
+            <td>2,393</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 691C [0DTE], SPY 691P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,960.75</td>
+            <td>2,166</td>
+            <td>4,395</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPY 690C [0DTE], SPY 690P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,950.75</td>
+            <td>2,040</td>
+            <td>2,354</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 689C [0DTE], SPY 689P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,937.50</td>
+            <td>2,923</td>
+            <td>4,614</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6900C [0DTE], SPX 6900P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,912.50</td>
+            <td>3,755</td>
+            <td>3,351</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6875C [0DTE], SPX 6875P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,910.50</td>
+            <td>2,448</td>
+            <td>2,232</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 685C [0DTE], SPY 685P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,902.50</td>
+            <td>198</td>
+            <td>4,778</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6865C [0DTE], SPX 6865P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,900.50</td>
+            <td>1,706</td>
+            <td>4,440</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPY 684C [0DTE], SPY 684P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,890.50</td>
+            <td>2,599</td>
+            <td>1,557</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 683C [0DTE], SPY 683P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,887.50</td>
+            <td>1,594</td>
+            <td>2,925</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6850C [0DTE], SPX 6850P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,880.50</td>
+            <td>2,186</td>
+            <td>1,899</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 682C [0DTE], SPY 682P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,860.50</td>
+            <td>1,956</td>
+            <td>9,266</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">****</td>
+            <td>SPY 680C [0DTE], SPY 680P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,837.50</td>
+            <td>1,900</td>
+            <td>6,059</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6800C [0DTE], SPX 6800P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,817.50</td>
+            <td>313</td>
+            <td>4,585</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6780C [0DTE], SPX 6780P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,812.50</td>
+            <td>539</td>
+            <td>3,524</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6775C [0DTE], SPX 6775P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,810.25</td>
+            <td>1,308</td>
+            <td>2,560</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 675C [0DTE], SPY 675P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,802.50</td>
+            <td>46</td>
+            <td>4,418</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6765C [0DTE], SPX 6765P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,787.50</td>
+            <td>414</td>
+            <td>8,181</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>SPX 6750C [0DTE], SPX 6750P [0DTE]</td>
+        </tr><tr>
+            <td class="level-pivot">6,760.00</td>
+            <td>1,381</td>
+            <td>2,400</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">*</td>
+            <td>SPY 670C [0DTE], SPY 670P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,737.50</td>
+            <td>427</td>
+            <td>5,645</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPX 6700C [0DTE], SPX 6700P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,717.50</td>
+            <td>79</td>
+            <td>4,373</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6680C [0DTE], SPX 6680P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,712.50</td>
+            <td>183</td>
+            <td>4,573</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>SPX 6675C [0DTE], SPX 6675P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">6,710.00</td>
+            <td>626</td>
+            <td>6,884</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>SPY 665C [0DTE], SPY 665P [0DTE]</td>
+        </tr></tbody>
+    </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Standard Deviation Levels</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="sd-grid"><div class="sd-card">
+            <div class="sd-label">Barchart SD (SPY Cheat Sheet)</div><div class="sd-row">
+                <span>1 SD</span>
+                <span class="support">6,969.90</span>
+                <span>&mdash;</span>
+                <span class="resist">7,151.10</span>
+            </div><div class="sd-row">
+                <span>2 SD</span>
+                <span class="support">6,932.37</span>
+                <span>&mdash;</span>
+                <span class="resist">7,188.63</span>
+            </div><div class="sd-row">
+                <span>3 SD</span>
+                <span class="support">6,903.57</span>
+                <span>&mdash;</span>
+                <span class="resist">7,217.43</span>
+            </div></div><div class="sd-card">
+            <div class="sd-label">IV-Based SD (VIX=17.99, Settlement=7,060.50)</div><div class="sd-row">
+                <span>1 SD</span>
+                <span class="support">6,994.02</span>
+                <span>&mdash;</span>
+                <span class="resist">7,126.98</span>
+                <span class="move">(66.48 pts)</span>
+            </div><div class="sd-row">
+                <span>2 SD</span>
+                <span class="support">6,927.53</span>
+                <span>&mdash;</span>
+                <span class="resist">7,193.47</span>
+                <span class="move">(132.97 pts)</span>
+            </div></div></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2>Max Pain Levels</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="mp-grid"><div class="mp-card">
+                <div class="mp-label">SPY 0DTE Max Pain</div>
+                <div class="mp-value">6,910.60</div>
+                <div class="mp-source">SPY $685.00</div>
+            </div><div class="mp-card">
+                <div class="mp-label">SPX 0DTE Max Pain</div>
+                <div class="mp-value">6,997.55</div>
+                <div class="mp-source">SPX 6,960.00</div>
+            </div></div>
+    </div>
+</div>
+
+<div class="section collapsed">
+    <div class="section-header">
+        <h2>Recent Dark Pool Prints</h2>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Apr 14, 2026</p>
+    </div>
+</div>
+
+<div class="footer">
+    Data sources: CBOE (options/OI), Barchart (ES/SD/VIX), ChartExchange (dark pool)<br>
+    Options OI is delayed ~15 min. ES price may have 10-min delay.
+</div>
+
+<script>
+document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('collapsed');
+    });
+});
+</script>
+</body>
+</html>

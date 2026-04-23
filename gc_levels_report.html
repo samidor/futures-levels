@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GC Key Levels - 2026-04-22 11:32</title>
+    <title>GC Key Levels - 2026-04-23 09:32</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -324,8 +324,73 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     table { font-size: 0.8em; }
     thead th, tbody td { padding: 5px 6px; }
 }
+
+/* GEX Section */
+.gex-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.gex-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+.gex-card .gex-label {
+    font-size: 0.8em;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.gex-card .gex-value {
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+    margin-top: 2px;
+}
+.gex-positive { color: var(--green); }
+.gex-negative { color: var(--red); }
+.gex-flip-val { color: var(--yellow); font-weight: 700; }
+.gex-regime-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-top: 4px;
+}
+.gex-regime-pos { background: rgba(0,184,148,0.15); color: var(--green); }
+.gex-regime-neg { background: rgba(225,112,85,0.15); color: var(--red); }
+.gex-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+.gex-bar-container {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.gex-bar { height: 100%; border-radius: 3px; }
+.gex-bar-call { background: var(--green); }
+.gex-bar-put  { background: var(--red); }
+.gex-bar-label { font-size: 0.75em; color: var(--text2); min-width: 32px; }
+.gex-flip-row {
+    background: rgba(253,203,110,0.08) !important;
+}
+.gex-flip-row td { color: var(--yellow) !important; }
+.gex-bar-cell {
+    width: 80px;
+    padding: 4px 8px 4px 0 !important;
+    vertical-align: middle;
+}
 </style>
     <!-- Google tag (gtag.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMJ343XKJV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -338,32 +403,32 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>GC Futures Key Levels</h1>
-    <div class="subtitle">2026-04-22 11:32 &bull; GCM26 &bull; 0DTE + Weekly</div>
+    <div class="subtitle">2026-04-23 09:32 &bull; GCM26 &bull; 0DTE + Weekly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">GC Last</div>
-            <div class="value">4,780.00</div>
-            <div class="change up">+60.40</div>
+            <div class="value">4,725.40</div>
+            <div class="change down">-27.60</div>
         </div>
         <div class="price-box">
             <div class="label">GC Prev Close</div>
-            <div class="value">4,719.60</div>
+            <div class="value">4,753.00</div>
         </div>
         <div class="price-box">
             <div class="label">GLD</div>
-            <div class="value">$429.57</div>
+            <div class="value">$435.26</div>
         </div>
         <div class="price-box">
             <div class="label">GDX</div>
-            <div class="value">92.99</div>
+            <div class="value">94.48</div>
         </div>
         <div class="price-box">
             <div class="label">GC/GLD Ratio</div>
-            <div class="value">10.9868</div>
+            <div class="value">10.9199</div>
         </div>
         <div class="price-box">
             <div class="label">GC/GDX Ratio</div>
-            <div class="value">50.7538</div>
+            <div class="value">50.3069</div>
         </div>
     </div>
 </div>
@@ -375,25 +440,25 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     </div>
     <div class="section-body">
         <div class="top5"><div class="top5-card support">
-            <div class="level">4,567.80</div>
-            <div class="oi">OI: 9,406 &mdash; SUPPORT</div>
+            <div class="level">4,527.60</div>
+            <div class="oi">OI: 9,845 &mdash; SUPPORT</div>
             <div class="source">GDX 90C [Weekly], GDX 90P [Weekly]</div>
         </div><div class="top5-card resist">
-            <div class="level">4,834.20</div>
-            <div class="oi">OI: 8,205 &mdash; RESISTANCE</div>
+            <div class="level">4,804.80</div>
+            <div class="oi">OI: 8,567 &mdash; RESISTANCE</div>
             <div class="source">GLD 440C [Weekly], GLD 440P [Weekly]</div>
-        </div><div class="top5-card resist">
-            <div class="level">4,724.30</div>
-            <div class="oi">OI: 7,646 &mdash; RESISTANCE</div>
+        </div><div class="top5-card support">
+            <div class="level">4,695.60</div>
+            <div class="oi">OI: 6,892 &mdash; SUPPORT</div>
             <div class="source">GLD 430C [Weekly], GLD 430P [Weekly]</div>
         </div><div class="top5-card resist">
-            <div class="level">4,821.60</div>
-            <div class="oi">OI: 6,032 &mdash; RESISTANCE</div>
+            <div class="level">4,826.60</div>
+            <div class="oi">OI: 6,854 &mdash; RESISTANCE</div>
+            <div class="source">GLD 442C [Weekly], GLD 442P [Weekly]</div>
+        </div><div class="top5-card resist">
+            <div class="level">4,779.20</div>
+            <div class="oi">OI: 6,755 &mdash; RESISTANCE</div>
             <div class="source">GDX 95C [Weekly], GDX 95P [Weekly]</div>
-        </div><div class="top5-card support">
-            <div class="level">4,669.40</div>
-            <div class="oi">OI: 5,654 &mdash; SUPPORT</div>
-            <div class="source">GLD 425C [Weekly], GLD 425P [Weekly]</div>
         </div></div>
     </div>
 </div>
@@ -411,86 +476,86 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <th>Type</th><th>Strength</th><th>Source</th>
         </tr></thead>
         <tbody><tr>
-            <td class="level-resist">4,944.10</td>
-            <td>3,640</td>
-            <td>380</td>
+            <td class="level-resist">4,914.00</td>
+            <td>5,769</td>
+            <td>360</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
-            <td class="strength">*</td>
+            <td class="strength">**</td>
             <td>GLD 450C [Weekly], GLD 450P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,911.10</td>
-            <td>5,157</td>
-            <td>138</td>
+            <td class="level-resist">4,881.20</td>
+            <td>5,089</td>
+            <td>238</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 447C [Weekly], GLD 447P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,889.10</td>
-            <td>3,935</td>
-            <td>362</td>
+            <td class="level-resist">4,859.40</td>
+            <td>4,036</td>
+            <td>361</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 445C [Weekly], GLD 445P [Weekly]</td>
         </tr><tr>
-            <td class="level-pivot">4,856.20</td>
-            <td>3,161</td>
-            <td>2,273</td>
+            <td class="level-pivot">4,826.60</td>
+            <td>4,457</td>
+            <td>2,397</td>
             <td><span class="type-tag type-pivot">Pivot</span></td>
-            <td class="strength">*</td>
+            <td class="strength">**</td>
             <td>GLD 442C [Weekly], GLD 442P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,845.20</td>
-            <td>4,170</td>
-            <td>173</td>
+            <td class="level-resist">4,815.70</td>
+            <td>4,130</td>
+            <td>184</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 441C [Weekly], GLD 441P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,834.20</td>
-            <td>6,190</td>
-            <td>2,015</td>
+            <td class="level-resist">4,804.80</td>
+            <td>6,316</td>
+            <td>2,251</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
-            <td class="strength">**</td>
+            <td class="strength">***</td>
             <td>GLD 440C [Weekly], GLD 440P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,821.60</td>
-            <td>240</td>
-            <td>5,792</td>
+            <td class="level-resist">4,779.20</td>
+            <td>472</td>
+            <td>6,283</td>
             <td><span class="type-tag type-resist">Put Resistance</span></td>
-            <td class="strength">*</td>
+            <td class="strength">**</td>
             <td>GDX 95C [Weekly], GDX 95P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,724.30</td>
-            <td>604</td>
-            <td>7,042</td>
-            <td><span class="type-tag type-resist">Put Resistance</span></td>
+            <td class="level-support">4,695.60</td>
+            <td>717</td>
+            <td>6,175</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">**</td>
             <td>GLD 430C [Weekly], GLD 430P [Weekly]</td>
         </tr><tr>
-            <td class="level-resist">4,720.10</td>
-            <td>465</td>
-            <td>3,403</td>
-            <td><span class="type-tag type-resist">Put Resistance</span></td>
+            <td class="level-support">4,678.50</td>
+            <td>470</td>
+            <td>3,208</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">*</td>
             <td>GDX 93C [Weekly], GDX 93P [Weekly]</td>
         </tr><tr>
-            <td class="level-support">4,691.40</td>
-            <td>50</td>
-            <td>4,245</td>
+            <td class="level-support">4,662.80</td>
+            <td>61</td>
+            <td>4,166</td>
             <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 427C [Weekly], GLD 427P [Weekly]</td>
         </tr><tr>
-            <td class="level-support">4,669.40</td>
-            <td>625</td>
-            <td>5,029</td>
+            <td class="level-support">4,630.00</td>
+            <td>13</td>
+            <td>4,375</td>
             <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">*</td>
-            <td>GLD 425C [Weekly], GLD 425P [Weekly], GDX 92C [Weekly] +1</td>
+            <td>GLD 424C [Weekly], GLD 424P [Weekly]</td>
         </tr><tr>
-            <td class="level-support">4,567.80</td>
-            <td>232</td>
-            <td>9,174</td>
+            <td class="level-support">4,527.60</td>
+            <td>241</td>
+            <td>9,604</td>
             <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">***</td>
             <td>GDX 90C [Weekly], GDX 90P [Weekly]</td>
@@ -501,8 +566,8 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="section">
     <div class="section-header">
-        <h2>0DTE Intraday Levels (2026-04-22)</h2>
-        <span class="badge">10 levels</span>
+        <h2>0DTE Intraday Levels (2026-04-24)</h2>
+        <span class="badge">12 levels</span>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
@@ -512,75 +577,89 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <th>Type</th><th>Strength</th><th>Source</th>
         </tr></thead>
         <tbody><tr>
-            <td class="level-resist">4,944.10</td>
-            <td>1,126</td>
-            <td>221</td>
+            <td class="level-resist">4,914.00</td>
+            <td>5,769</td>
+            <td>360</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">**</td>
             <td>GLD 450C [0DTE], GLD 450P [0DTE]</td>
         </tr><tr>
-            <td class="level-resist">4,933.10</td>
-            <td>767</td>
-            <td>4</td>
-            <td><span class="type-tag type-resist">Call Wall</span></td>
-            <td class="strength">*</td>
-            <td>GLD 449C [0DTE], GLD 449P [0DTE]</td>
-        </tr><tr>
-            <td class="level-resist">4,922.10</td>
-            <td>1,953</td>
-            <td>52</td>
-            <td><span class="type-tag type-resist">Call Wall</span></td>
-            <td class="strength">***</td>
-            <td>GLD 448C [0DTE], GLD 448P [0DTE]</td>
-        </tr><tr>
-            <td class="level-resist">4,911.10</td>
-            <td>716</td>
-            <td>123</td>
+            <td class="level-resist">4,881.20</td>
+            <td>5,089</td>
+            <td>238</td>
             <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 447C [0DTE], GLD 447P [0DTE]</td>
         </tr><tr>
-            <td class="level-pivot">4,889.10</td>
-            <td>515</td>
-            <td>586</td>
-            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="level-resist">4,859.40</td>
+            <td>4,036</td>
+            <td>361</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 445C [0DTE], GLD 445P [0DTE]</td>
         </tr><tr>
-            <td class="level-resist">4,856.20</td>
-            <td>440</td>
-            <td>1,244</td>
-            <td><span class="type-tag type-resist">Put Resistance</span></td>
-            <td class="strength">***</td>
+            <td class="level-pivot">4,826.60</td>
+            <td>4,457</td>
+            <td>2,397</td>
+            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="strength">**</td>
             <td>GLD 442C [0DTE], GLD 442P [0DTE]</td>
         </tr><tr>
-            <td class="level-resist">4,845.20</td>
-            <td>205</td>
-            <td>719</td>
-            <td><span class="type-tag type-resist">Put Resistance</span></td>
+            <td class="level-resist">4,815.70</td>
+            <td>4,130</td>
+            <td>184</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">*</td>
             <td>GLD 441C [0DTE], GLD 441P [0DTE]</td>
         </tr><tr>
-            <td class="level-pivot">4,834.20</td>
-            <td>1,205</td>
-            <td>617</td>
-            <td><span class="type-tag type-pivot">Pivot</span></td>
+            <td class="level-resist">4,804.80</td>
+            <td>6,316</td>
+            <td>2,251</td>
+            <td><span class="type-tag type-resist">Call Wall</span></td>
             <td class="strength">***</td>
             <td>GLD 440C [0DTE], GLD 440P [0DTE]</td>
         </tr><tr>
-            <td class="level-resist">4,812.20</td>
-            <td>285</td>
-            <td>738</td>
+            <td class="level-resist">4,779.20</td>
+            <td>472</td>
+            <td>6,283</td>
             <td><span class="type-tag type-resist">Put Resistance</span></td>
-            <td class="strength">*</td>
-            <td>GLD 438C [0DTE], GLD 438P [0DTE]</td>
+            <td class="strength">**</td>
+            <td>GDX 95C [0DTE], GDX 95P [0DTE]</td>
         </tr><tr>
-            <td class="level-resist">4,801.20</td>
-            <td>201</td>
-            <td>762</td>
-            <td><span class="type-tag type-resist">Put Resistance</span></td>
+            <td class="level-support">4,695.60</td>
+            <td>717</td>
+            <td>6,175</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">**</td>
+            <td>GLD 430C [0DTE], GLD 430P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">4,678.50</td>
+            <td>470</td>
+            <td>3,208</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
             <td class="strength">*</td>
-            <td>GLD 437C [0DTE], GLD 437P [0DTE]</td>
+            <td>GDX 93C [0DTE], GDX 93P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">4,662.80</td>
+            <td>61</td>
+            <td>4,166</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>GLD 427C [0DTE], GLD 427P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">4,630.00</td>
+            <td>13</td>
+            <td>4,375</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">*</td>
+            <td>GLD 424C [0DTE], GLD 424P [0DTE]</td>
+        </tr><tr>
+            <td class="level-support">4,527.60</td>
+            <td>241</td>
+            <td>9,604</td>
+            <td><span class="type-tag type-support">Put Wall</span></td>
+            <td class="strength">***</td>
+            <td>GDX 90C [0DTE], GDX 90P [0DTE]</td>
         </tr></tbody>
     </table>
     </div>
@@ -595,33 +674,180 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
         <div class="sd-grid"><div class="sd-card">
             <div class="sd-label">Barchart SD (GLD Cheat Sheet)</div><div class="sd-row">
                 <span>1 SD</span>
-                <span class="support">4,652.80</span>
+                <span class="support">4,683.77</span>
                 <span>&mdash;</span>
-                <span class="resist">4,786.40</span>
+                <span class="resist">4,822.23</span>
             </div><div class="sd-row">
                 <span>2 SD</span>
-                <span class="support">4,625.11</span>
+                <span class="support">4,655.05</span>
                 <span>&mdash;</span>
-                <span class="resist">4,814.09</span>
+                <span class="resist">4,850.95</span>
             </div><div class="sd-row">
                 <span>3 SD</span>
-                <span class="support">4,603.91</span>
+                <span class="support">4,633.10</span>
                 <span>&mdash;</span>
-                <span class="resist">4,835.29</span>
+                <span class="resist">4,872.90</span>
             </div></div><div class="sd-card">
-            <div class="sd-label">IV-Based SD (GVZ=29.31, Settlement=4,719.60)</div><div class="sd-row">
+            <div class="sd-label">IV-Based SD (GVZ=27.09, Settlement=4,753.00)</div><div class="sd-row">
                 <span>1 SD</span>
-                <span class="support">4,647.19</span>
+                <span class="support">4,685.60</span>
                 <span>&mdash;</span>
-                <span class="resist">4,792.01</span>
-                <span class="move">(72.41 pts)</span>
+                <span class="resist">4,820.40</span>
+                <span class="move">(67.40 pts)</span>
             </div><div class="sd-row">
                 <span>2 SD</span>
-                <span class="support">4,574.79</span>
+                <span class="support">4,618.21</span>
                 <span>&mdash;</span>
-                <span class="resist">4,864.41</span>
-                <span class="move">(144.81 pts)</span>
+                <span class="resist">4,887.79</span>
+                <span class="move">(134.79 pts)</span>
             </div></div></div>
+    </div>
+</div>
+
+<div class="section collapsed">
+    <div class="section-header">
+        <h2>Gamma Exposure (GEX)</h2>
+        <span class="badge gex-regime-pos" style="background:none;padding:0">Stabilizing</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="section-body">
+        <div class="gex-summary">
+        <div class="gex-card">
+            <div class="gex-label">GLD Total GEX</div>
+            <div class="gex-value gex-positive">+$261.92M</div>
+            <span class="gex-regime-badge gex-regime-pos">Stabilizing</span>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GLD Call GEX</div>
+            <div class="gex-value gex-positive">+$631.49M</div>
+            <div class="gex-bar-row">
+                <span class="gex-bar-label" style="color:var(--green)">Calls</span>
+                <div class="gex-bar-container"><div class="gex-bar gex-bar-call" style="width:100%"></div></div>
+            </div>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GLD Put GEX</div>
+            <div class="gex-value gex-negative">+$369.57M</div>
+            <div class="gex-bar-row">
+                <span class="gex-bar-label" style="color:var(--red)">Puts</span>
+                <div class="gex-bar-container"><div class="gex-bar gex-bar-put" style="width:58%"></div></div>
+            </div>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GLD 0DTE GEX</div>
+            <div class="gex-value">+$13.28M</div>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GEX Flip Level</div>
+            <div class="gex-value gex-flip-val">N/A</div>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GDX Total GEX</div>
+            <div class="gex-value gex-positive">+$2.58M</div>
+        </div></div><div style="margin:16px 0 20px;">
+<canvas id="gexChart_GLD" height="90"></canvas>
+<script>
+(function(){
+  var spotLinePlugin = {
+    id: 'spotLine_gexChart_GLD',
+    afterDraw: function(chart) {
+      var ctx = chart.ctx, ca = chart.chartArea, x = chart.scales.x.getPixelForValue(1);
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(x, ca.top); ctx.lineTo(x, ca.bottom);
+      ctx.lineWidth = 1.5; ctx.strokeStyle = '#fdcb6e';
+      ctx.setLineDash([4,3]); ctx.stroke();
+      ctx.fillStyle = '#fdcb6e'; ctx.font = '11px Segoe UI,sans-serif';
+      ctx.textAlign = 'left'; ctx.setLineDash([]);
+      ctx.fillText('Spot 435.26', x + 5, ca.top + 14);
+      ctx.restore();
+    }
+  };
+  function fmt(v) {
+    if (v == null) return '';
+    var a = Math.abs(v);
+    if (a >= 1e9) return (v/1e9).toFixed(2)+'B';
+    if (a >= 1e6) return (v/1e6).toFixed(0)+'M';
+    return v.toFixed(0);
+  }
+  new Chart(document.getElementById('gexChart_GLD'), {
+    type: 'bar',
+    plugins: [spotLinePlugin],
+    data: {
+      labels: ["90","95"],
+      datasets: [
+        { label: '+ Gamma', data: [0.7720208349786298,null], backgroundColor: '#00cec9', borderWidth: 0,
+           yAxisID: 'yL', order: 2, barPercentage: 0.85, categoryPercentage: 0.9 },
+        { label: '\u2212 Gamma', data: [null,-13.531049821899266], backgroundColor: '#e17055', borderWidth: 0,
+           yAxisID: 'yL', order: 2, barPercentage: 0.85, categoryPercentage: 0.9 },
+        { label: 'ABS GEX (AG)', data: [0.7720208349786298,13.531049821899266], type: 'line',
+           backgroundColor: 'rgba(108,92,231,0.4)', borderColor: 'rgba(162,155,254,0.9)',
+           borderWidth: 1.5, pointRadius: 0, tension: 0.35, fill: true,
+           yAxisID: 'yR', order: 1 }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'top', align: 'start',
+          labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 28, boxHeight: 10, padding: 16 } },
+        tooltip: {
+          backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+          borderColor: '#2d3436', borderWidth: 1,
+          callbacks: {
+            title: function(ctx) { return 'Strike ' + ctx[0].label; },
+            label: function(ctx) { return ctx.raw == null ? null : ctx.dataset.label + ': ' + fmt(ctx.raw); }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: '#a0a0b0', font: { size: 10, family: 'Consolas,monospace' },
+                    maxRotation: 45, autoSkip: true, maxTicksLimit: 20 },
+          title: { display: true, text: 'STRIKE', color: '#a0a0b0', font: { size: 10, weight: '600' } }
+        },
+        yL: {
+          position: 'left', grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: '#a0a0b0', font: { size: 10 }, callback: fmt },
+          title: { display: true, text: 'NET GEX ($)', color: '#a0a0b0', font: { size: 10, weight: '600' } }
+        },
+        yR: {
+          position: 'right', grid: { drawOnChartArea: false },
+          ticks: { color: 'rgba(162,155,254,0.7)', font: { size: 10 }, callback: fmt },
+          title: { display: true, text: 'ABS GEX ($)', color: 'rgba(162,155,254,0.7)', font: { size: 10, weight: '600' } }
+        }
+      }
+    }
+  });
+})();
+</script>
+</div><p class="note">VIX/VXN used as IV fallback for 173 options with missing IV.</p><table>
+        <thead><tr>
+            <th style="text-align:left"></th>
+            <th>NET GEX</th><th>CALL GEX</th><th>PUT GEX</th>
+            <th>CALL OI</th><th>PUT OI</th><th>TOTAL OI</th><th>STRIKE</th>
+        </tr></thead>
+        <tbody><tr class="">
+            <td style="width:80px;padding-right:8px"><div style="width:100%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$14</span></td>
+            <td><span>$0</span></td>
+            <td><span class="gex-negative">-$14</span></td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td style="font-family:Consolas;font-size:0.85em">95.00</td>
+        </tr><tr class="">
+            <td style="width:80px;padding-right:8px"><div style="width:5%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$1</span></td>
+            <td><span class="gex-positive">+$1</span></td>
+            <td><span>$0</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td style="font-family:Consolas;font-size:0.85em">90.00</td>
+        </tr></tbody>
+    </table>
     </div>
 </div>
 
@@ -633,99 +859,23 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     <div class="section-body">
         <div class="mp-grid"><div class="mp-card">
                 <div class="mp-label">GLD 0DTE Max Pain</div>
-                <div class="mp-value">4,845.18</div>
-                <div class="mp-source">GLD $441.00</div>
+                <div class="mp-value">4,750.16</div>
+                <div class="mp-source">GLD $435.00</div>
+            </div><div class="mp-card">
+                <div class="mp-label">GDX 0DTE Max Pain</div>
+                <div class="mp-value">4,930.08</div>
+                <div class="mp-source">GDX $98.00</div>
             </div></div>
     </div>
 </div>
 
-<div class="section ">
+<div class="section collapsed">
     <div class="section-header">
         <h2>Recent Dark Pool Prints</h2>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
-        <table>
-            <thead><tr><th>GC Level</th><th>GLD Price</th><th>Time</th><th>Size</th><th>Premium</th><th>Side</th></tr></thead>
-            <tbody><tr>
-                <td>4,827.92</td>
-                <td>$439.43</td>
-                <td>09:48:13.580 AM EDT – 09:44:23.397 AM EDT</td>
-                <td>105,000</td>
-                <td>46.14M</td>
-                <td class="side-bid">Bid</td>
-            </tr><tr>
-                <td>4,825.77</td>
-                <td>$439.23</td>
-                <td>10:06:30.904 AM EDT</td>
-                <td>15,000</td>
-                <td>6.59M</td>
-                <td class="side-ask">Ask</td>
-            </tr><tr>
-                <td>4,817.49</td>
-                <td>$438.48</td>
-                <td>09:30:00.368 AM EDT</td>
-                <td>69,784</td>
-                <td>30.60M</td>
-                <td class="side-bid">Bid</td>
-            </tr><tr>
-                <td>4,803.65</td>
-                <td>$437.22</td>
-                <td>10:39:59.448 AM EDT</td>
-                <td>9,686</td>
-                <td>4.23M</td>
-                <td class="side-ask">Ask</td>
-            </tr><tr>
-                <td>4,801.45</td>
-                <td>$437.02</td>
-                <td>10:40:18.286 AM EDT – 10:40:18.287 AM EDT</td>
-                <td>20,935</td>
-                <td>9.15M</td>
-                <td class="side-bid">Bid</td>
-            </tr><tr>
-                <td>4,767.06</td>
-                <td>$433.89</td>
-                <td>05:12:05.022 PM EDT</td>
-                <td>15,771</td>
-                <td>6.84M</td>
-                <td class="">Mid</td>
-            </tr><tr>
-                <td>4,751.93</td>
-                <td>$432.51</td>
-                <td>03:33:11.834 PM EDT</td>
-                <td>14,400</td>
-                <td>6.23M</td>
-                <td class="side-bid">Bid</td>
-            </tr><tr>
-                <td>4,751.93</td>
-                <td>$432.51</td>
-                <td>03:39:18.119 PM EDT</td>
-                <td>9,600</td>
-                <td>4.15M</td>
-                <td class="side-ask">Ask</td>
-            </tr><tr>
-                <td>4,719.60</td>
-                <td>$429.57</td>
-                <td>04:00:00.203 PM EDT</td>
-                <td>330,514</td>
-                <td>141.98M</td>
-                <td class="">Mid</td>
-            </tr><tr>
-                <td>4,719.60</td>
-                <td>$429.57</td>
-                <td>04:27:48.833 PM EDT – 06:08:53.628 PM EDT</td>
-                <td>31,923</td>
-                <td>13.71M</td>
-                <td class="side-bid">Bid</td>
-            </tr><tr>
-                <td>4,717.73</td>
-                <td>$429.40</td>
-                <td>04:01:22.473 PM EDT</td>
-                <td>24,400</td>
-                <td>10.48M</td>
-                <td class="side-bid">Bid</td>
-            </tr></tbody>
-        </table>
+        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Apr 21, 2026</p>
     </div>
 </div>
 

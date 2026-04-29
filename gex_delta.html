@@ -87,14 +87,15 @@
     <div class="header">
         <h1>GEX — Gamma Exposure</h1>
         <div class="subtitle">Net GEX by strike &amp; 15-min change since last snapshot</div>
-        <div class="subtitle">Current: <b>2026-04-28 19:49</b> &nbsp;|&nbsp; Previous: <b>2026-04-28 19:34</b></div>
+        <div class="subtitle">Current: <b>2026-04-29 13:34</b> &nbsp;|&nbsp; Previous: <b>2026-04-28 19:49</b></div>
     </div>
 
     <div class="tabs">
-            <button class="tab-btn" data-inst="ES" onclick="switchTab('ES')">ES</button>
-            <button class="tab-btn" data-inst="NQ" onclick="switchTab('NQ')">NQ</button>
-            <button class="tab-btn" data-inst="CL" onclick="switchTab('CL')">CL</button>
-            <button class="tab-btn" data-inst="GC" onclick="switchTab('GC')">GC</button>
+            <button class="tab-btn" data-inst="SPY" onclick="switchTab('SPY')">SPY</button>
+            <button class="tab-btn" data-inst="SPX" onclick="switchTab('SPX')">SPX</button>
+            <button class="tab-btn" data-inst="QQQ" onclick="switchTab('QQQ')">QQQ</button>
+            <button class="tab-btn" data-inst="USO" onclick="switchTab('USO')">USO</button>
+            <button class="tab-btn" data-inst="GLD" onclick="switchTab('GLD')">GLD</button>
     </div>
 
     <div class="legend">
@@ -103,16 +104,18 @@
         <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div> Net GEX positive</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Net GEX negative</div>
         <div class="legend-item"><div class="legend-line"></div> ATM spot price</div>
+        <div class="legend-item"><div class="legend-line" style="border-color:#e17055"></div> Max Pain</div>
     </div>
 
-        <div class="chart-wrap" id="wrap-ES" style="display:block"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1456px"><canvas id="chart-ES-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1456px"><canvas id="chart-ES-net"></canvas></div></div>
-        <div class="chart-wrap" id="wrap-NQ" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1328px"><canvas id="chart-NQ-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1328px"><canvas id="chart-NQ-net"></canvas></div></div>
-        <div class="chart-wrap" id="wrap-CL" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:400px"><canvas id="chart-CL-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:400px"><canvas id="chart-CL-net"></canvas></div></div>
-        <div class="chart-wrap" id="wrap-GC" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:880px"><canvas id="chart-GC-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:880px"><canvas id="chart-GC-net"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-SPY" style="display:block"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1456px"><canvas id="chart-SPY-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1456px"><canvas id="chart-SPY-net"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-SPX" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:2832px"><canvas id="chart-SPX-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:2832px"><canvas id="chart-SPX-net"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1360px"><canvas id="chart-QQQ-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1360px"><canvas id="chart-QQQ-net"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-USO" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:400px"><canvas id="chart-USO-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:400px"><canvas id="chart-USO-net"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-GLD" style="display:none"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:880px"><canvas id="chart-GLD-delta"></canvas></div><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:880px"><canvas id="chart-GLD-net"></canvas></div></div>
 
     <div class="footer">
         Data source: CBOE (options OI + gamma) &nbsp;|&nbsp; Prices: Yahoo Finance (~15 min delayed for futures)<br>
-        Generated: 2026-04-28 19:49
+        Generated: 2026-04-29 13:34
     </div>
 </div>
 
@@ -127,13 +130,13 @@
     // Initialise charts after DOM ready
     window.addEventListener('DOMContentLoaded', () => {
         
-    new Chart(document.getElementById("chart-ES-delta"), {
+    new Chart(document.getElementById("chart-SPY-delta"), {
         type: 'bar',
         data: {
-            labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690"],
+            labels: ["SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691"],
             datasets: [{
-                data: [-0.135, -0.123, -0.727, -0.235, -0.454, -0.417, -0.581, -2.202, -0.725, -2.362, -1.03, -1.023, -2.773, -1.369, -1.478, -2.149, -7.016, -2.856, 2.93, 14.384, 8.914, -22.746, -22.162, -3.746, -2.229, -1.581, -0.934, -0.675, -0.433, -0.951, -0.293, -0.064, -3.115, -1.636, -0.095, -0.232, -0.23, -2.679, -0.248, -0.265, -0.079, -0.109, -1.258],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [5.076, 5.267, 4.768, 81.132, 7.027, 14.91, 13.658, 19.507, 99.831, 15.336, 41.87, 20.291, 20.007, 123.156, 33.877, 86.15, 51.654, 44.473, 176.81, 31.678, -23.153, -408.393, -51.806, -205.225, -27.609, 15.977, -3.28, -28.835, -29.97, -21.775, -19.479, -10.76, -5.664, -170.389, -51.389, -14.032, -8.551, -10.844, -78.135, -13.281, -9.524, -3.806, -7.753],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -163,33 +166,36 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_ES_delta',
+        id: 'spotLine_chart_SPY_delta',
         afterDraw(chart) {
-            const idx = 21;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(21, '#fdcb6e');
+            drawLine(-1, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-ES-net"), {
+    new Chart(document.getElementById("chart-SPY-net"), {
         type: 'bar',
         data: {
-            labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690"],
+            labels: ["SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691"],
             datasets: [{
-                data: [4.049, 3.949, 76.168, 5.396, 9.598, 10.116, 15.476, 93.186, 11.269, 35.201, 16.384, 16.357, 107.11, 15.372, 21.519, 39.736, 26.235, 109.518, 17.332, -41.123, -133.878, -105.81, -146.719, -21.57, 18.257, -2.109, -24.192, -4.523, -15.185, -18.897, -7.001, -1.041, -164.987, -53.884, -4.032, -9.314, -9.018, -79.012, -11.89, -9.688, -2.818, -6.543, -70.665],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [5.076, 5.267, 4.768, 81.132, 7.027, 14.91, 13.658, 19.507, 99.831, 15.336, 41.87, 20.291, 20.007, 123.156, 33.877, 86.15, 51.654, 44.473, 176.81, 31.678, -23.153, -408.393, -51.806, -205.225, -27.609, 15.977, -3.28, -28.835, -29.97, -21.775, -19.479, -10.76, -5.664, -170.389, -51.389, -14.032, -8.551, -10.844, -78.135, -13.281, -9.524, -3.806, -7.753],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -219,33 +225,36 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_ES_net',
+        id: 'spotLine_chart_SPY_net',
         afterDraw(chart) {
-            const idx = 21;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(21, '#fdcb6e');
+            drawLine(38, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-NQ-delta"), {
+    new Chart(document.getElementById("chart-SPX-delta"), {
         type: 'bar',
         data: {
-            labels: ["QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640", "QQQ 639"],
+            labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925"],
             datasets: [{
-                data: [-0.079, -0.09, -1.254, -0.26, -0.469, -0.584, -1.191, -1.055, -0.367, -0.387, -0.426, -0.407, -1.223, -0.129, 1.015, 1.897, 3.803, 8.055, 2.77, -9.398, -7.292, -2.625, -1.339, -0.072, -0.046, 0.012, -0.008, 0.084, 0.013, -0.019, -0.011, -0.147, -0.054, 0.002, -0.062, -0.012, -0.053, -0.284, -0.039],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [38.65, 1.096, 4.195, 1.144, 3.29, 23.692, 5.261, 2.587, 9.517, 2.285, 72.569, 1.975, 7.264, 1.69, 8.913, 25.703, 8.827, 3.216, 8.99, 8.438, 53.148, 8.442, 8.374, 5.929, 12.455, 38.336, 13.4, 4.795, 14.623, 18.469, 122.378, 11.427, 13.334, 11.778, 23.5, 29.556, 12.253, 7.181, 11.081, 3.354, 51.137, 2.983, 8.678, -2.861, 8.516, 7.808, -1.793, -1.546, -1.875, -3.354, 25.672, -8.36, 4.613, -4.169, -7.293, 4.895, -5.06, -6.08, -9.729, -15.937, 4.808, -3.936, -1.334, -4.364, -4.431, 0.382, -5.172, -1.197, 1.873, -2.006, -7.481, -2.326, -5.108, -4.711, -6.389, 0.356, -2.793, -0.845, -2.865, -0.754, -3.2, -1.134, -1.44, -0.967, -2.51, -2.947],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -275,33 +284,36 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_NQ_delta',
+        id: 'spotLine_chart_SPX_delta',
         afterDraw(chart) {
-            const idx = 19;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(42, '#fdcb6e');
+            drawLine(-1, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-NQ-net"), {
+    new Chart(document.getElementById("chart-SPX-net"), {
         type: 'bar',
         data: {
-            labels: ["QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640", "QQQ 639"],
+            labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925"],
             datasets: [{
-                data: [0.346, 1.251, 101.455, 7.091, 10.0, 12.801, 11.899, 69.396, 11.422, 9.917, 8.151, 10.866, 70.84, -3.009, 5.532, 1.315, -8.379, 39.636, -33.139, -74.499, -37.19, -18.113, 12.017, -14.492, -8.114, -2.966, -5.006, 11.147, -3.867, -2.476, -5.195, -13.115, 16.402, -4.353, -5.034, -1.825, -3.677, -12.855, -3.668],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [38.65, 1.096, 4.195, 1.144, 3.29, 23.692, 5.261, 2.587, 9.517, 2.285, 72.569, 1.975, 7.264, 1.69, 8.913, 25.703, 8.827, 3.216, 8.99, 8.438, 53.148, 8.442, 8.374, 5.929, 12.455, 38.336, 13.4, 4.795, 14.623, 18.469, 122.378, 11.427, 13.334, 11.778, 23.5, 29.556, 12.253, 7.181, 11.081, 3.354, 51.137, 2.983, 8.678, -2.861, 8.516, 7.808, -1.793, -1.546, -1.875, -3.354, 25.672, -8.36, 4.613, -4.169, -7.293, 4.895, -5.06, -6.08, -9.729, -15.937, 4.808, -3.936, -1.334, -4.364, -4.431, 0.382, -5.172, -1.197, 1.873, -2.006, -7.481, -2.326, -5.108, -4.711, -6.389, 0.356, -2.793, -0.845, -2.865, -0.754, -3.2, -1.134, -1.44, -0.967, -2.51, -2.947],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -331,32 +343,153 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_NQ_net',
+        id: 'spotLine_chart_SPX_net',
         afterDraw(chart) {
-            const idx = 19;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(42, '#fdcb6e');
+            drawLine(85, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-CL-delta"), {
+    new Chart(document.getElementById("chart-QQQ-delta"), {
         type: 'bar',
         data: {
-            labels: ["USO 143", "USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137", "USO 136"],
+            labels: ["QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640"],
             datasets: [{
-                data: [0.002, 0.002, 0.001, 0.044, 0.004, 0.013, 0.001, 0.004],
+                data: [1.1, 2.469, 2.043, 3.212, 116.52, 9.777, 10.306, 17.007, 14.851, 78.221, 16.74, 12.529, 14.046, 13.144, 86.636, 0.954, 13.072, 9.748, 4.228, 84.783, -25.884, -142.381, -19.241, 5.51, 33.653, -10.335, -12.88, -5.585, -8.062, -4.501, -9.192, -7.305, -6.52, -13.48, -0.574, -7.74, -11.193, -2.813, -11.848, -16.779],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                borderColor: 'transparent',
+                barThickness: 14,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(2) + 'M'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: { color: '#a0a0b0', callback: v => v + 'M' },
+                    title: { display: true, text: "Change in GEX (Millions)", color: '#a0a0b0' }
+                },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.04)' },
+                    ticks: { color: '#e0e0e0', font: { size: 11 } }
+                }
+            }
+        },
+        plugins: [{
+        id: 'spotLine_chart_QQQ_delta',
+        afterDraw(chart) {
+            const {ctx, scales} = chart;
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(20, '#fdcb6e');
+            drawLine(-1, '#e17055');
+        }
+    }]
+    });
+
+    new Chart(document.getElementById("chart-QQQ-net"), {
+        type: 'bar',
+        data: {
+            labels: ["QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640"],
+            datasets: [{
+                data: [1.1, 2.469, 2.043, 3.212, 116.52, 9.777, 10.306, 17.007, 14.851, 78.221, 16.74, 12.529, 14.046, 13.144, 86.636, 0.954, 13.072, 9.748, 4.228, 84.783, -25.884, -142.381, -19.241, 5.51, 33.653, -10.335, -12.88, -5.585, -8.062, -4.501, -9.192, -7.305, -6.52, -13.48, -0.574, -7.74, -11.193, -2.813, -11.848, -16.779],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                borderColor: 'transparent',
+                barThickness: 14,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(2) + 'M'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: { color: '#a0a0b0', callback: v => v + 'M' },
+                    title: { display: true, text: "Net GEX (Millions)", color: '#a0a0b0' }
+                },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.04)' },
+                    ticks: { color: '#e0e0e0', font: { size: 11 } }
+                }
+            }
+        },
+        plugins: [{
+        id: 'spotLine_chart_QQQ_net',
+        afterDraw(chart) {
+            const {ctx, scales} = chart;
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(20, '#fdcb6e');
+            drawLine(39, '#e17055');
+        }
+    }]
+    });
+
+    new Chart(document.getElementById("chart-USO-delta"), {
+        type: 'bar',
+        data: {
+            labels: ["USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
+            datasets: [{
+                data: [4.448, 0.277, 1.091, 8.028, 1.221, 2.889, 0.959, 0.656],
                 backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -387,32 +520,35 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_CL_delta',
+        id: 'spotLine_chart_USO_delta',
         afterDraw(chart) {
-            const idx = 3;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(3, '#fdcb6e');
+            drawLine(-1, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-CL-net"), {
+    new Chart(document.getElementById("chart-USO-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 143", "USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137", "USO 136"],
+            labels: ["USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
             datasets: [{
-                data: [2.639, 0.682, 0.179, 8.379, 0.394, 1.98, 0.362, 1.244],
+                data: [4.448, 0.277, 1.091, 8.028, 1.221, 2.889, 0.959, 0.656],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -443,33 +579,36 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_CL_net',
+        id: 'spotLine_chart_USO_net',
         afterDraw(chart) {
-            const idx = 3;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(3, '#fdcb6e');
+            drawLine(7, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-GC-delta"), {
+    new Chart(document.getElementById("chart-GLD-delta"), {
         type: 'bar',
         data: {
-            labels: ["GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410"],
+            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405"],
             datasets: [{
-                data: [-0.011, 0.053, 0.048, 0.032, 0.018, -0.013, -0.014, 0.002, -0.01, 0.032, -0.001, -0.033, -0.002, 0.001, 0.061, 0.005, -0.0, 0.007, 0.005, 0.171, 0.009, 0.003, 0.008, 0.002, 0.072],
-                backgroundColor: ['#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [-2.075, 0.222, 1.611, 1.914, 0.164, 0.482, -0.523, 1.949, 1.754, 9.894, -2.691, -0.214, -1.114, -0.609, -13.451, -1.028, -0.781, -0.688, -0.287, -24.242, -0.272, -0.215, -0.572, -0.454, -4.835],
+                backgroundColor: ['#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -499,33 +638,36 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_GC_delta',
+        id: 'spotLine_chart_GLD_delta',
         afterDraw(chart) {
-            const idx = 12;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(12, '#fdcb6e');
+            drawLine(-1, '#e17055');
         }
     }]
     });
 
-    new Chart(document.getElementById("chart-GC-net"), {
+    new Chart(document.getElementById("chart-GLD-net"), {
         type: 'bar',
         data: {
-            labels: ["GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410"],
+            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405"],
             datasets: [{
-                data: [-0.07, 3.779, 2.639, 2.479, -1.87, -2.952, -0.908, 0.281, 0.198, -1.759, -0.38, -3.41, -1.032, 0.224, 7.659, -1.422, -0.121, -1.156, -0.58, -14.42, -0.714, -0.528, -0.694, -0.222, -22.973],
-                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [-2.075, 0.222, 1.611, 1.914, 0.164, 0.482, -0.523, 1.949, 1.754, 9.894, -2.691, -0.214, -1.114, -0.609, -13.451, -1.028, -0.781, -0.688, -0.287, -24.242, -0.272, -0.215, -0.572, -0.454, -4.835],
+                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -555,27 +697,30 @@
             }
         },
         plugins: [{
-        id: 'spotLine_chart_GC_net',
+        id: 'spotLine_chart_GLD_net',
         afterDraw(chart) {
-            const idx = 12;
-            if (idx < 0) return;
             const {ctx, scales} = chart;
-            const y = scales.y.getPixelForValue(idx);
-            ctx.save();
-            ctx.beginPath();
-            ctx.strokeStyle = '#fdcb6e';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([6, 4]);
-            ctx.moveTo(scales.x.left,  y);
-            ctx.lineTo(scales.x.right, y);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            ctx.restore();
+            function drawLine(idx, color) {
+                if (idx < 0) return;
+                const y = scales.y.getPixelForValue(idx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(scales.x.left,  y);
+                ctx.lineTo(scales.x.right, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+            }
+            drawLine(12, '#fdcb6e');
+            drawLine(14, '#e17055');
         }
     }]
     });
         // Activate first tab
-        document.querySelector('[data-inst="ES"]').classList.add('active');
+        document.querySelector('[data-inst="SPY"]').classList.add('active');
     });
 </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CL Key Levels - 2026-04-29 10:06</title>
+    <title>CL Key Levels - 2026-04-29 10:24</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -411,12 +411,12 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>CL Futures Key Levels</h1>
-    <div class="subtitle">2026-04-29 10:06 &bull; CLM26 &bull; 0DTE + Weekly</div>
+    <div class="subtitle">2026-04-29 10:24 &bull; CLM26 &bull; 0DTE + Weekly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">CL Last</div>
-            <div class="value">101.68</div>
-            <div class="change up">+1.75</div>
+            <div class="value">102.67</div>
+            <div class="change up">+2.74</div>
         </div>
         <div class="price-box">
             <div class="label">CL Prev Close</div>
@@ -523,56 +523,39 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 <div class="section collapsed">
     <div class="section-header">
         <h2>Gamma Exposure (GEX)</h2>
-        <span class="badge gex-regime-pos" style="background:none;padding:0">Stabilizing</span>
+        <span class="badge gex-regime-neg" style="background:none;padding:0">Amplifying</span>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
         <div class="gex-summary">
         <div class="gex-card">
             <div class="gex-label">USO Total GEX</div>
-            <div class="gex-value gex-positive">+$35.36M</div>
-            <span class="gex-regime-badge gex-regime-pos">Stabilizing</span>
-        </div>
-        <div class="gex-card">
-            <div class="gex-label">USO Call GEX</div>
-            <div class="gex-value gex-positive">+$90.93M</div>
-            <div class="gex-bar-row">
-                <span class="gex-bar-label" style="color:var(--green)">Calls</span>
-                <div class="gex-bar-container"><div class="gex-bar gex-bar-call" style="width:100%"></div></div>
-            </div>
-        </div>
-        <div class="gex-card">
-            <div class="gex-label">USO Put GEX</div>
-            <div class="gex-value gex-negative">+$55.58M</div>
-            <div class="gex-bar-row">
-                <span class="gex-bar-label" style="color:var(--red)">Puts</span>
-                <div class="gex-bar-container"><div class="gex-bar gex-bar-put" style="width:61%"></div></div>
-            </div>
-        </div>
-        <div class="gex-card">
-            <div class="gex-label">USO 0DTE GEX</div>
-            <div class="gex-value">+$9.65M</div>
-        </div>
-        <div class="gex-card">
-            <div class="gex-label">GEX Flip Level</div>
-            <div class="gex-value gex-flip-val">N/A</div>
-        </div></div><div class="gex-summary gex-vol-row">
-        <div class="gex-card gex-vol-header">
-            <div class="gex-label" style="font-size:0.7rem;letter-spacing:0.06em;color:var(--accent)">VOLUME GEX</div>
             <div class="gex-value gex-negative">-$1.22M</div>
             <span class="gex-regime-badge gex-regime-neg">Amplifying</span>
         </div>
         <div class="gex-card">
-            <div class="gex-label">USO Vol Call GEX</div>
+            <div class="gex-label">USO Call GEX</div>
             <div class="gex-value gex-positive">+$23.22M</div>
+            <div class="gex-bar-row">
+                <span class="gex-bar-label" style="color:var(--green)">Calls</span>
+                <div class="gex-bar-container"><div class="gex-bar gex-bar-call" style="width:95%"></div></div>
+            </div>
         </div>
         <div class="gex-card">
-            <div class="gex-label">USO Vol Put GEX</div>
+            <div class="gex-label">USO Put GEX</div>
             <div class="gex-value gex-negative">+$24.44M</div>
+            <div class="gex-bar-row">
+                <span class="gex-bar-label" style="color:var(--red)">Puts</span>
+                <div class="gex-bar-container"><div class="gex-bar gex-bar-put" style="width:100%"></div></div>
+            </div>
         </div>
         <div class="gex-card">
-            <div class="gex-label">USO Vol 0DTE GEX</div>
+            <div class="gex-label">USO 0DTE GEX</div>
             <div class="gex-value">+$3.76M</div>
+        </div>
+        <div class="gex-card">
+            <div class="gex-label">GEX Flip Level</div>
+            <div class="gex-value gex-flip-val">105.00</div>
         </div></div><div style="margin:16px 0 20px;">
 <canvas id="gexChart_USO" height="90"></canvas>
 <script>
@@ -604,11 +587,11 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     data: {
       labels: ["133","134","135","136","137","138","139","140","141","142","143","144","145","146"],
       datasets: [
-        { label: '+ Gamma', data: [null,595892.372,5202784.508000001,1292412.612,377319.2559999999,2082086.5359999998,416093.1560000002,8628017.088000001,179768.50399999993,694537.9200000002,2689116.196,1145843.78,6746598.571999999,867126.796], backgroundColor: '#00cec9', borderWidth: 0,
+        { label: '+ Gamma', data: [null,null,null,null,null,null,null,3039117.128,773970.32,962650.8879999997,397720.3999999999,329267.54000000004,2629829.4719999996,298643.488], backgroundColor: '#00cec9', borderWidth: 0,
            yAxisID: 'yL', order: 2, barPercentage: 0.85, categoryPercentage: 0.9 },
-        { label: '\u2212 Gamma', data: [-334421.57200000004,null,null,null,null,null,null,null,null,null,null,null,null,null], backgroundColor: '#e17055', borderWidth: 0,
+        { label: '\u2212 Gamma', data: [-104568.77600000001,-404376.52800000005,-1350814.2720000003,-69265.33200000005,-337697.9840000002,-2330557.783999999,-409343.4959999996,null,null,null,null,null,null,null], backgroundColor: '#e17055', borderWidth: 0,
            yAxisID: 'yL', order: 2, barPercentage: 0.85, categoryPercentage: 0.9 },
-        { label: 'ABS GEX (AG)', data: [1501081.108,1291362.8200000003,10573925.22,1834046.652,761347.6879999998,2772210.304,861380.8600000001,10302371.112000002,672430.864,879711.736,2813480.252,1253020.2840000002,7414816.307999998,891981.18], type: 'line',
+        { label: 'ABS GEX (AG)', data: [487865.7040000001,940934.7119999999,5516137.648,889348.324,1182322.656,3780342.8719999995,2639283.1840000004,8010750.559999999,879974.184,1114923.7759999996,455115.5439999999,569033.3319999999,3447656.5279999995,307558.34400000004], type: 'line',
            backgroundColor: 'rgba(108,92,231,0.4)', borderColor: 'rgba(162,155,254,0.9)',
            borderWidth: 1.5, pointRadius: 0, tension: 0.35, fill: true,
            yAxisID: 'yR', order: 1 }
@@ -651,137 +634,137 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
   });
 })();
 </script>
-</div><p class="note">VIX/VXN used as IV fallback for 5 options with missing IV.</p><table>
+</div><table>
         <thead><tr>
             <th style="text-align:left"></th>
             <th>NET GEX</th><th>CALL GEX</th><th>PUT GEX</th>
             <th>CALL OI</th><th>PUT OI</th><th>TOTAL OI</th><th>STRIKE</th>
         </tr></thead>
         <tbody><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:10%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$867.13K</span></td>
-            <td><span class="gex-positive">+$879.55K</span></td>
-            <td><span class="gex-negative">-$12.43K</span></td>
-            <td>2,751</td>
-            <td>73</td>
-            <td>2,824</td>
+            <td style="width:80px;padding-right:8px"><div style="width:9%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$298.64K</span></td>
+            <td><span class="gex-positive">+$303.10K</span></td>
+            <td><span class="gex-negative">-$4.46K</span></td>
+            <td>682</td>
+            <td>18</td>
+            <td>700</td>
             <td style="font-family:Consolas;font-size:0.85em">146.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:78%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$6.75M</span></td>
-            <td><span class="gex-positive">+$7.08M</span></td>
-            <td><span class="gex-negative">-$334.11K</span></td>
-            <td>30,695</td>
-            <td>2,114</td>
-            <td>32,809</td>
+            <td style="width:80px;padding-right:8px"><div style="width:86%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$2.63M</span></td>
+            <td><span class="gex-positive">+$3.04M</span></td>
+            <td><span class="gex-negative">-$408.91K</span></td>
+            <td>5,624</td>
+            <td>1,484</td>
+            <td>7,108</td>
             <td style="font-family:Consolas;font-size:0.85em">145.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:13%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$1.15M</span></td>
-            <td><span class="gex-positive">+$1.20M</span></td>
-            <td><span class="gex-negative">-$53.59K</span></td>
-            <td>2,189</td>
-            <td>225</td>
-            <td>2,414</td>
+            <td style="width:80px;padding-right:8px"><div style="width:10%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$329.27K</span></td>
+            <td><span class="gex-positive">+$449.15K</span></td>
+            <td><span class="gex-negative">-$119.88K</span></td>
+            <td>774</td>
+            <td>245</td>
+            <td>1,019</td>
             <td style="font-family:Consolas;font-size:0.85em">144.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:31%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$2.69M</span></td>
-            <td><span class="gex-positive">+$2.75M</span></td>
-            <td><span class="gex-negative">-$62.18K</span></td>
-            <td>5,412</td>
-            <td>395</td>
-            <td>5,807</td>
+            <td style="width:80px;padding-right:8px"><div style="width:13%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$397.72K</span></td>
+            <td><span class="gex-positive">+$426.42K</span></td>
+            <td><span class="gex-negative">-$28.70K</span></td>
+            <td>753</td>
+            <td>123</td>
+            <td>876</td>
             <td style="font-family:Consolas;font-size:0.85em">143.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:8%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$694.54K</span></td>
-            <td><span class="gex-positive">+$787.12K</span></td>
-            <td><span class="gex-negative">-$92.59K</span></td>
-            <td>2,710</td>
-            <td>517</td>
-            <td>3,227</td>
+            <td style="width:80px;padding-right:8px"><div style="width:31%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$962.65K</span></td>
+            <td><span class="gex-positive">+$1.04M</span></td>
+            <td><span class="gex-negative">-$76.14K</span></td>
+            <td>1,478</td>
+            <td>255</td>
+            <td>1,733</td>
             <td style="font-family:Consolas;font-size:0.85em">142.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:2%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$179.77K</span></td>
-            <td><span class="gex-positive">+$426.10K</span></td>
-            <td><span class="gex-negative">-$246.33K</span></td>
-            <td>1,750</td>
-            <td>959</td>
-            <td>2,709</td>
+            <td style="width:80px;padding-right:8px"><div style="width:25%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
+            <td><span class="gex-positive">+$773.97K</span></td>
+            <td><span class="gex-positive">+$826.97K</span></td>
+            <td><span class="gex-negative">-$53.00K</span></td>
+            <td>1,122</td>
+            <td>120</td>
+            <td>1,242</td>
             <td style="font-family:Consolas;font-size:0.85em">141.00</td>
         </tr><tr class="">
             <td style="width:80px;padding-right:8px"><div style="width:100%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$8.63M</span></td>
-            <td><span class="gex-positive">+$9.47M</span></td>
-            <td><span class="gex-negative">-$837.18K</span></td>
-            <td>29,549</td>
-            <td>4,699</td>
-            <td>34,248</td>
+            <td><span class="gex-positive">+$3.04M</span></td>
+            <td><span class="gex-positive">+$5.52M</span></td>
+            <td><span class="gex-negative">-$2.49M</span></td>
+            <td>9,860</td>
+            <td>5,837</td>
+            <td>15,697</td>
             <td style="font-family:Consolas;font-size:0.85em">140.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:4%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$416.09K</span></td>
-            <td><span class="gex-positive">+$638.74K</span></td>
-            <td><span class="gex-negative">-$222.64K</span></td>
-            <td>1,226</td>
-            <td>1,044</td>
-            <td>2,270</td>
+            <td style="width:80px;padding-right:8px"><div style="width:13%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$409.34K</span></td>
+            <td><span class="gex-positive">+$1.11M</span></td>
+            <td><span class="gex-negative">-$1.52M</span></td>
+            <td>1,553</td>
+            <td>3,267</td>
+            <td>4,820</td>
             <td style="font-family:Consolas;font-size:0.85em">139.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:24%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$2.08M</span></td>
-            <td><span class="gex-positive">+$2.43M</span></td>
-            <td><span class="gex-negative">-$345.06K</span></td>
-            <td>4,465</td>
-            <td>896</td>
-            <td>5,361</td>
+            <td style="width:80px;padding-right:8px"><div style="width:76%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$2.33M</span></td>
+            <td><span class="gex-positive">+$724.89K</span></td>
+            <td><span class="gex-negative">-$3.06M</span></td>
+            <td>1,086</td>
+            <td>4,391</td>
+            <td>5,477</td>
             <td style="font-family:Consolas;font-size:0.85em">138.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:4%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$377.32K</span></td>
-            <td><span class="gex-positive">+$569.33K</span></td>
-            <td><span class="gex-negative">-$192.01K</span></td>
-            <td>1,641</td>
-            <td>613</td>
-            <td>2,254</td>
+            <td style="width:80px;padding-right:8px"><div style="width:11%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$337.70K</span></td>
+            <td><span class="gex-positive">+$422.31K</span></td>
+            <td><span class="gex-negative">-$760.01K</span></td>
+            <td>830</td>
+            <td>1,154</td>
+            <td>1,984</td>
             <td style="font-family:Consolas;font-size:0.85em">137.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:14%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$1.29M</span></td>
-            <td><span class="gex-positive">+$1.56M</span></td>
-            <td><span class="gex-negative">-$270.82K</span></td>
-            <td>3,415</td>
-            <td>1,009</td>
-            <td>4,424</td>
+            <td style="width:80px;padding-right:8px"><div style="width:2%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$69.27K</span></td>
+            <td><span class="gex-positive">+$410.04K</span></td>
+            <td><span class="gex-negative">-$479.31K</span></td>
+            <td>691</td>
+            <td>956</td>
+            <td>1,647</td>
             <td style="font-family:Consolas;font-size:0.85em">136.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:60%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$5.20M</span></td>
-            <td><span class="gex-positive">+$7.89M</span></td>
-            <td><span class="gex-negative">-$2.69M</span></td>
-            <td>26,888</td>
-            <td>13,713</td>
-            <td>40,601</td>
+            <td style="width:80px;padding-right:8px"><div style="width:44%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$1.35M</span></td>
+            <td><span class="gex-positive">+$2.08M</span></td>
+            <td><span class="gex-negative">-$3.43M</span></td>
+            <td>4,356</td>
+            <td>8,865</td>
+            <td>13,221</td>
             <td style="font-family:Consolas;font-size:0.85em">135.00</td>
         </tr><tr class="">
-            <td style="width:80px;padding-right:8px"><div style="width:6%;min-width:2px;height:18px;background:var(--green);border-radius:2px;"></div></td>
-            <td><span class="gex-positive">+$595.89K</span></td>
-            <td><span class="gex-positive">+$943.63K</span></td>
-            <td><span class="gex-negative">-$347.74K</span></td>
-            <td>2,644</td>
-            <td>1,146</td>
-            <td>3,790</td>
+            <td style="width:80px;padding-right:8px"><div style="width:13%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
+            <td><span class="gex-negative">-$404.38K</span></td>
+            <td><span class="gex-positive">+$268.28K</span></td>
+            <td><span class="gex-negative">-$672.66K</span></td>
+            <td>681</td>
+            <td>1,599</td>
+            <td>2,280</td>
             <td style="font-family:Consolas;font-size:0.85em">134.00</td>
         </tr><tr class="">
             <td style="width:80px;padding-right:8px"><div style="width:3%;min-width:2px;height:18px;background:var(--red);border-radius:2px;"></div></td>
-            <td><span class="gex-negative">-$334.42K</span></td>
-            <td><span class="gex-positive">+$583.33K</span></td>
-            <td><span class="gex-negative">-$917.75K</span></td>
-            <td>1,998</td>
-            <td>3,355</td>
-            <td>5,353</td>
+            <td><span class="gex-negative">-$104.57K</span></td>
+            <td><span class="gex-positive">+$191.65K</span></td>
+            <td><span class="gex-negative">-$296.22K</span></td>
+            <td>451</td>
+            <td>717</td>
+            <td>1,168</td>
             <td style="font-family:Consolas;font-size:0.85em">133.00</td>
         </tr></tbody>
     </table>

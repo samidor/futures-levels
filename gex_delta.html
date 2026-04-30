@@ -94,8 +94,8 @@
 <div class="container">
     <div class="header">
         <h1>GEX — Gamma Exposure</h1>
-        <div class="subtitle">Net GEX by strike &amp; 15-min change since last snapshot</div>
-        <div class="subtitle">Current: <b>2026-04-29 19:57</b> &nbsp;|&nbsp; Previous: <b>2026-04-29 19:42</b></div>
+        <div class="subtitle">Net GEX by strike &amp; 5-min change since last snapshot</div>
+        <div class="subtitle">Current: <b>2026-04-30 09:30</b> &nbsp;|&nbsp; Previous: <b>2026-04-29 19:57</b></div>
     </div>
 
     <div class="tabs">
@@ -115,15 +115,15 @@
         <div class="legend-item"><div class="legend-line" style="border-color:#e17055"></div> Max Pain</div>
     </div>
 
-        <div class="chart-wrap" id="wrap-SPY" style="display:block"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1424px"><canvas id="chart-SPY-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1424px"><canvas id="chart-SPY-net"></canvas></div></div></div></div>
-        <div class="chart-wrap" id="wrap-SPX" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:2800px"><canvas id="chart-SPX-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:2800px"><canvas id="chart-SPX-net"></canvas></div></div></div></div>
-        <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:1360px"><canvas id="chart-QQQ-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1360px"><canvas id="chart-QQQ-net"></canvas></div></div></div></div>
-        <div class="chart-wrap" id="wrap-USO" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:400px"><canvas id="chart-USO-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:400px"><canvas id="chart-USO-net"></canvas></div></div></div></div>
-        <div class="chart-wrap" id="wrap-GLD" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 15-min Change</div><div style="height:880px"><canvas id="chart-GLD-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:880px"><canvas id="chart-GLD-net"></canvas></div></div></div></div>
+        <div class="chart-wrap" id="wrap-SPY" style="display:block"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 5-min Change</div><div style="height:1456px"><canvas id="chart-SPY-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1456px"><canvas id="chart-SPY-net"></canvas></div></div></div><div class="chart-section-title">ODTE GEX — Intraday (ET)</div><div style="height:380px"><canvas id="chart-SPY-ts"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-SPX" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 5-min Change</div><div style="height:2832px"><canvas id="chart-SPX-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:2832px"><canvas id="chart-SPX-net"></canvas></div></div></div><div class="chart-section-title">ODTE GEX — Intraday (ET)</div><div style="height:380px"><canvas id="chart-SPX-ts"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 5-min Change</div><div style="height:1360px"><canvas id="chart-QQQ-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:1360px"><canvas id="chart-QQQ-net"></canvas></div></div></div><div class="chart-section-title">ODTE GEX — Intraday (ET)</div><div style="height:380px"><canvas id="chart-QQQ-ts"></canvas></div></div>
+        <div class="chart-wrap" id="wrap-USO" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 5-min Change</div><div style="height:400px"><canvas id="chart-USO-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:400px"><canvas id="chart-USO-net"></canvas></div></div></div></div>
+        <div class="chart-wrap" id="wrap-GLD" style="display:none"><div class="charts-row"><div class="chart-col"><div class="chart-section-title">GEX Delta — 5-min Change</div><div style="height:880px"><canvas id="chart-GLD-delta"></canvas></div></div><div class="chart-col"><div class="chart-section-title">Net GEX — Open Interest</div><div style="height:880px"><canvas id="chart-GLD-net"></canvas></div></div></div></div>
 
     <div class="footer">
         Data source: CBOE (options OI + gamma) &nbsp;|&nbsp; Prices: Yahoo Finance (~15 min delayed for futures)<br>
-        Generated: 2026-04-29 19:57
+        Generated: 2026-04-30 09:30
     </div>
 </div>
 
@@ -141,10 +141,10 @@
     new Chart(document.getElementById("chart-SPY-delta"), {
         type: 'bar',
         data: {
-            labels: ["SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690"],
+            labels: ["SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694"],
             datasets: [{
-                data: [-0.188, -2.1, -0.33, -0.926, -0.773, -1.004, -3.553, -0.982, -3.197, -1.199, -1.272, -4.264, -2.693, -10.84, -2.993, -3.247, -8.861, -1.248, -1.89, -1.438, -0.157, -7.838, -1.286, -1.498, -1.463, -2.209, -6.309, -1.9, -1.408, -0.744, -0.25, -4.02, -2.94, -0.128, -0.02, -0.182, -3.961, -0.369, -0.235, -0.064, -0.15, -1.738],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [1.674, -0.435, 0.375, 0.269, -0.042, -0.079, 3.349, 0.902, -1.604, -1.854, 0.673, -5.023, -0.308, -8.938, -0.363, -0.148, 14.543, 1.277, -14.068, -2.347, -1.016, -29.829, 3.35, -13.623, -9.436, 14.099, -250.619, -41.617, -39.148, -18.435, -23.865, -30.549, 1.252, -10.702, -5.569, -3.78, -72.192, -16.976, -13.734, -4.207, -4.166, -39.138, -4.975],
+                backgroundColor: ['#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -191,7 +191,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(20, '#fdcb6e');
+            drawLine(21, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -200,10 +200,10 @@
     new Chart(document.getElementById("chart-SPY-net"), {
         type: 'bar',
         data: {
-            labels: ["SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690"],
+            labels: ["SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694"],
             datasets: [{
-                data: [3.898, 75.352, 5.787, 11.629, 10.999, 16.458, 88.726, 11.191, 30.116, 15.276, 14.313, 106.033, 21.364, 45.922, 41.793, 29.841, 171.02, 35.976, 24.382, 39.516, 8.982, -325.129, -33.075, 16.488, -2.559, -31.96, -33.199, -21.658, -13.245, -8.702, -3.196, -169.164, -53.842, -12.603, -6.594, -9.416, -82.056, -13.447, -8.999, -3.501, -7.602, -71.573],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [5.183, 42.476, 8.527, 4.588, 4.382, 3.82, 78.701, 6.69, 10.025, 9.145, 17.131, 83.702, 10.883, 21.178, 14.913, 14.165, 120.576, 22.642, 31.854, 39.445, 28.825, 141.191, 39.326, 10.759, 30.08, 23.082, -575.748, -74.692, -22.66, -20.994, -55.825, -63.748, -20.406, -23.946, -14.271, -6.976, -241.356, -70.819, -26.338, -10.801, -13.582, -121.194, -18.421],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -250,19 +250,499 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(20, '#fdcb6e');
-            drawLine(36, '#e17055');
+            drawLine(21, '#fdcb6e');
+            drawLine(40, '#e17055');
         }
     }]
+    });
+
+    new Chart(document.getElementById("chart-SPY-ts"), {
+        type: 'line',
+        data: {
+            labels: ["09:30"],
+            datasets: [
+        {
+            label: "736",
+            data: [5.183],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "735",
+            data: [42.476],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "734",
+            data: [8.527],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "733",
+            data: [4.588],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "732",
+            data: [4.382],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "731",
+            data: [3.82],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "730",
+            data: [78.701],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "729",
+            data: [6.69],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "728",
+            data: [10.025],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "727",
+            data: [9.145],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "726",
+            data: [17.131],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "725",
+            data: [83.702],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "724",
+            data: [10.883],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "723",
+            data: [21.178],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "722",
+            data: [14.913],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "721",
+            data: [14.165],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "720",
+            data: [120.576],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "719",
+            data: [22.642],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "718",
+            data: [31.854],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "717",
+            data: [39.445],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "716",
+            data: [28.825],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "715",
+            data: [141.191],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "714",
+            data: [39.326],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "713",
+            data: [10.759],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "712",
+            data: [30.08],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "711",
+            data: [23.082],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "710",
+            data: [-575.748],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "709",
+            data: [-74.692],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "708",
+            data: [-22.66],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "707",
+            data: [-20.994],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "706",
+            data: [-55.825],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "705",
+            data: [-63.748],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "704",
+            data: [-20.406],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "703",
+            data: [-23.946],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "702",
+            data: [-14.271],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "701",
+            data: [-6.976],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "700",
+            data: [-241.356],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "699",
+            data: [-70.819],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "698",
+            data: [-26.338],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "697",
+            data: [-10.801],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "696",
+            data: [-13.582],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "695",
+            data: [-121.194],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "694",
+            data: [-18.421],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        }
+        ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#a0a0b0',
+                        boxWidth: 12,
+                        padding: 10,
+                        font: { size: 10 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ctx.dataset.label + ': ' +
+                            (ctx.raw != null
+                                ? (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(2) + 'M'
+                                : 'n/a')
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: {
+                        color: '#a0a0b0',
+                        maxRotation: 0,
+                        autoSkip: true,
+                        maxTicksLimit: 14
+                    },
+                    title: { display: true, text: 'Time (ET)', color: '#a0a0b0' }
+                },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: { color: '#a0a0b0', callback: v => v + 'M' },
+                    title: { display: true, text: 'Net GEX (Millions)', color: '#a0a0b0' }
+                }
+            }
+        }
     });
 
     new Chart(document.getElementById("chart-SPX-delta"), {
         type: 'bar',
         data: {
-            labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920"],
+            labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925"],
             datasets: [{
-                data: [-0.125, -0.001, -0.073, -0.3, -0.251, -0.018, -0.225, -0.058, -0.497, -0.027, -0.238, -0.061, -0.1, -0.511, -0.2, -0.019, -0.199, -0.238, -0.807, -0.286, -0.241, -0.204, -0.117, -0.712, -0.22, -0.081, -0.329, -0.097, -1.665, -0.283, -0.257, -0.153, -0.423, -0.392, -0.862, -1.151, -2.4, -0.947, -4.756, -1.957, -1.952, -1.034, -1.78, -1.91, -1.632, -0.187, -0.011, -0.0, 0.596, -0.149, 0.495, 0.064, 0.404, -0.077, -0.083, -0.002, 0.123, -0.064, 0.229, -0.052, 0.075, -0.01, -0.016, -0.067, -0.146, 0.036, -0.138, -0.055, -0.394, -0.068, -0.002, -0.08, -0.346, 0.072, 0.023, -0.017, -0.163, -0.004, -0.202, 0.001, -0.007, -0.02, -0.185, -0.013, -0.007],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [3.446, 0.028, 1.764, 0.259, 1.157, 3.831, 1.255, 2.622, 4.118, 0.86, 14.608, 0.798, 0.928, 1.533, 3.579, 4.197, 2.355, 1.176, 1.991, 2.283, 8.809, 15.265, 18.555, 4.362, 6.891, 10.699, 4.873, 3.419, 6.929, 12.507, 40.339, 5.242, 5.988, 8.109, 8.249, 7.474, 10.229, 2.419, 2.108, 4.601, 1.145, -1.082, -57.286, -46.222, 6.124, 2.612, 5.43, 2.412, 2.247, 2.372, 0.524, -1.344, -0.985, 0.214, 2.192, -1.663, 1.167, 0.503, -1.174, 4.086, -7.057, -0.444, -1.52, 0.799, 0.129, -0.522, 1.252, -0.666, -6.71, -2.275, 2.64, 0.489, 0.776, 1.971, 2.025, -2.64, 0.326, 0.061, 0.133, 0.175, -0.203, 0.211, 0.495, 0.171, 0.545, 0.363],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -309,7 +789,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(42, '#fdcb6e');
+            drawLine(43, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -318,10 +798,10 @@
     new Chart(document.getElementById("chart-SPX-net"), {
         type: 'bar',
         data: {
-            labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920"],
+            labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925"],
             datasets: [{
-                data: [3.672, 0.973, 2.877, 22.237, 4.699, 2.242, 8.458, 1.814, 68.642, 1.566, 6.1, 1.448, 7.706, 22.108, 7.912, 2.565, 7.084, 6.666, 49.615, 7.218, 7.506, 4.989, 9.635, 34.616, 9.569, 3.339, 9.921, 5.979, 99.692, 4.105, 8.575, 7.0, 10.337, 22.175, 8.284, 3.724, 5.839, 2.214, 50.568, 3.812, 18.212, -6.986, 4.246, 3.221, -7.424, -2.922, -1.91, -2.128, 31.825, -6.183, 7.857, -2.316, -4.908, 6.822, -3.191, -1.717, 1.577, -6.171, 8.696, -2.647, 0.138, -3.491, -3.245, 1.183, -5.04, -0.664, 2.254, -1.783, -7.326, -2.118, -4.99, -4.587, -6.025, 1.149, -2.57, -0.766, -2.838, -0.716, -2.843, -1.131, -1.326, -0.975, -2.57, -2.132, -1.96],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [39.777, 0.925, 5.436, 1.231, 4.034, 26.069, 5.955, 4.863, 12.576, 2.674, 83.249, 2.364, 7.028, 2.981, 11.285, 26.305, 10.268, 3.741, 9.075, 8.949, 58.424, 22.483, 26.06, 9.35, 16.525, 45.315, 14.442, 6.758, 16.851, 18.485, 140.03, 9.347, 14.563, 15.109, 18.587, 29.648, 18.513, 6.143, 7.947, 6.815, 51.713, 2.731, -39.074, -53.208, 10.37, 5.832, -1.993, -0.51, 0.337, 0.245, 32.348, -7.527, 6.871, -2.103, -2.716, 5.159, -2.024, -1.215, 0.402, -2.085, 1.639, -3.091, -1.381, -2.692, -3.115, 0.661, -3.788, -1.33, -4.457, -4.058, -4.686, -1.628, -4.214, -2.616, -4.001, -1.491, -2.244, -0.705, -2.706, -0.541, -3.046, -0.92, -0.831, -0.805, -2.025, -1.77],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -368,19 +848,929 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(42, '#fdcb6e');
-            drawLine(84, '#e17055');
+            drawLine(43, '#fdcb6e');
+            drawLine(85, '#e17055');
         }
     }]
+    });
+
+    new Chart(document.getElementById("chart-SPX-ts"), {
+        type: 'line',
+        data: {
+            labels: ["09:30"],
+            datasets: [
+        {
+            label: "7350",
+            data: [39.777],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7345",
+            data: [0.925],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7340",
+            data: [5.436],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7335",
+            data: [1.231],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7330",
+            data: [4.034],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7325",
+            data: [26.069],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7320",
+            data: [5.955],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7315",
+            data: [4.863],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7310",
+            data: [12.576],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7305",
+            data: [2.674],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7300",
+            data: [83.249],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7295",
+            data: [2.364],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7290",
+            data: [7.028],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7285",
+            data: [2.981],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7280",
+            data: [11.285],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7275",
+            data: [26.305],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7270",
+            data: [10.268],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7265",
+            data: [3.741],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7260",
+            data: [9.075],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7255",
+            data: [8.949],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7250",
+            data: [58.424],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7245",
+            data: [22.483],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7240",
+            data: [26.06],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7235",
+            data: [9.35],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7230",
+            data: [16.525],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7225",
+            data: [45.315],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7220",
+            data: [14.442],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7215",
+            data: [6.758],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7210",
+            data: [16.851],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7205",
+            data: [18.485],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7200",
+            data: [140.03],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7195",
+            data: [9.347],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7190",
+            data: [14.563],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7185",
+            data: [15.109],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7180",
+            data: [18.587],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7175",
+            data: [29.648],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7170",
+            data: [18.513],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7165",
+            data: [6.143],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7160",
+            data: [7.947],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7155",
+            data: [6.815],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7150",
+            data: [51.713],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7145",
+            data: [2.731],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7140",
+            data: [-39.074],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7135",
+            data: [-53.208],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7130",
+            data: [10.37],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7125",
+            data: [5.832],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7120",
+            data: [-1.993],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7115",
+            data: [-0.51],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7110",
+            data: [0.337],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7105",
+            data: [0.245],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7100",
+            data: [32.348],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7095",
+            data: [-7.527],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7090",
+            data: [6.871],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7085",
+            data: [-2.103],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7080",
+            data: [-2.716],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7075",
+            data: [5.159],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7070",
+            data: [-2.024],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7065",
+            data: [-1.215],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7060",
+            data: [0.402],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7055",
+            data: [-2.085],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7050",
+            data: [1.639],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7045",
+            data: [-3.091],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7040",
+            data: [-1.381],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7035",
+            data: [-2.692],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7030",
+            data: [-3.115],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7025",
+            data: [0.661],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7020",
+            data: [-3.788],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7015",
+            data: [-1.33],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7010",
+            data: [-4.457],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7005",
+            data: [-4.058],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "7000",
+            data: [-4.686],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6995",
+            data: [-1.628],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6990",
+            data: [-4.214],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6985",
+            data: [-2.616],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6980",
+            data: [-4.001],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6975",
+            data: [-1.491],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6970",
+            data: [-2.244],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6965",
+            data: [-0.705],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6960",
+            data: [-2.706],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6955",
+            data: [-0.541],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6950",
+            data: [-3.046],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6945",
+            data: [-0.92],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6940",
+            data: [-0.831],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6935",
+            data: [-0.805],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6930",
+            data: [-2.025],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "6925",
+            data: [-1.77],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        }
+        ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#a0a0b0',
+                        boxWidth: 12,
+                        padding: 10,
+                        font: { size: 10 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ctx.dataset.label + ': ' +
+                            (ctx.raw != null
+                                ? (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(2) + 'M'
+                                : 'n/a')
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: {
+                        color: '#a0a0b0',
+                        maxRotation: 0,
+                        autoSkip: true,
+                        maxTicksLimit: 14
+                    },
+                    title: { display: true, text: 'Time (ET)', color: '#a0a0b0' }
+                },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: { color: '#a0a0b0', callback: v => v + 'M' },
+                    title: { display: true, text: 'Net GEX (Millions)', color: '#a0a0b0' }
+                }
+            }
+        }
     });
 
     new Chart(document.getElementById("chart-QQQ-delta"), {
         type: 'bar',
         data: {
-            labels: ["QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641"],
+            labels: ["QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646"],
             datasets: [{
-                data: [-4.137, -0.076, -0.181, -0.151, -0.377, -5.31, -0.668, -1.143, -0.926, -1.048, -3.377, -1.02, -0.927, -1.534, -0.997, -3.841, -0.488, -0.624, -0.9, -0.376, -1.315, -0.013, 0.189, 0.413, 1.197, 0.582, -0.362, -0.815, -0.404, -0.408, -1.055, -0.565, -0.235, -0.275, -0.802, -0.235, -0.263, -0.477, -0.146, -0.451],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [1.671, 0.803, 2.367, 1.403, 2.169, -7.895, 0.66, -0.092, 0.313, 2.066, -20.142, -2.217, 0.602, -1.369, -1.397, -7.644, -2.324, -1.625, -5.821, 5.391, -6.802, -1.332, -4.72, -7.997, -5.715, -30.67, -1.379, -8.158, 1.721, 23.454, 7.55, -5.279, -2.867, -10.412, -5.461, -49.359, -0.338, -4.063, -4.902, -9.709],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -427,7 +1817,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(20, '#fdcb6e');
+            drawLine(19, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -436,10 +1826,10 @@
     new Chart(document.getElementById("chart-QQQ-net"), {
         type: 'bar',
         data: {
-            labels: ["QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641"],
+            labels: ["QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646"],
             datasets: [{
-                data: [96.271, 1.197, 2.77, 2.094, 3.109, 123.709, 10.15, 10.603, 17.725, 13.756, 80.936, 17.83, 13.457, 16.003, 14.613, 93.36, 2.569, 17.132, 17.056, 11.609, 102.274, 7.909, 6.921, 13.47, 14.165, 41.436, -5.486, -10.771, -4.003, -6.638, -0.448, -5.786, -5.527, -4.191, -9.688, 2.968, -3.51, -7.754, -1.475, -10.079],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [39.529, 1.598, 3.064, 2.951, 3.102, 88.376, 1.856, 2.679, 2.407, 5.174, 103.567, 7.933, 11.205, 16.355, 12.36, 73.291, 15.506, 11.832, 10.182, 20.004, 86.558, 1.237, 12.412, 9.058, 5.894, 71.604, 6.53, -1.237, 15.192, 37.619, 48.987, -10.765, -13.638, -14.415, -12.099, -49.807, -6.124, -9.591, -9.094, -19.397],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -486,19 +1876,469 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(20, '#fdcb6e');
+            drawLine(19, '#fdcb6e');
             drawLine(39, '#e17055');
         }
     }]
     });
 
+    new Chart(document.getElementById("chart-QQQ-ts"), {
+        type: 'line',
+        data: {
+            labels: ["09:30"],
+            datasets: [
+        {
+            label: "685",
+            data: [39.529],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "684",
+            data: [1.598],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "683",
+            data: [3.064],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "682",
+            data: [2.951],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "681",
+            data: [3.102],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "680",
+            data: [88.376],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "679",
+            data: [1.856],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "678",
+            data: [2.679],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "677",
+            data: [2.407],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "676",
+            data: [5.174],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "675",
+            data: [103.567],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "674",
+            data: [7.933],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "673",
+            data: [11.205],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "672",
+            data: [16.355],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "671",
+            data: [12.36],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "670",
+            data: [73.291],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "669",
+            data: [15.506],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "668",
+            data: [11.832],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "667",
+            data: [10.182],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "666",
+            data: [20.004],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "665",
+            data: [86.558],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "664",
+            data: [1.237],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "663",
+            data: [12.412],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "662",
+            data: [9.058],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "661",
+            data: [5.894],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "660",
+            data: [71.604],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "659",
+            data: [6.53],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "658",
+            data: [-1.237],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "657",
+            data: [15.192],
+            borderColor: "#74b9ff",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "656",
+            data: [37.619],
+            borderColor: "#e17055",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "655",
+            data: [48.987],
+            borderColor: "#00cec9",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "654",
+            data: [-10.765],
+            borderColor: "#6c5ce7",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "653",
+            data: [-13.638],
+            borderColor: "#00b894",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "652",
+            data: [-14.415],
+            borderColor: "#d63031",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "651",
+            data: [-12.099],
+            borderColor: "#636e72",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "650",
+            data: [-49.807],
+            borderColor: "#fab1a0",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "649",
+            data: [-6.124],
+            borderColor: "#a29bfe",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "648",
+            data: [-9.591],
+            borderColor: "#fd79a8",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "647",
+            data: [-9.094],
+            borderColor: "#55efc4",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        },
+        {
+            label: "646",
+            data: [-19.397],
+            borderColor: "#fdcb6e",
+            backgroundColor: "transparent",
+            tension: 0.3,
+            pointRadius: 2,
+            borderWidth: 1.5,
+            spanGaps: true
+        }
+        ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#a0a0b0',
+                        boxWidth: 12,
+                        padding: 10,
+                        font: { size: 10 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ctx.dataset.label + ': ' +
+                            (ctx.raw != null
+                                ? (ctx.raw >= 0 ? '+' : '') + ctx.raw.toFixed(2) + 'M'
+                                : 'n/a')
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: {
+                        color: '#a0a0b0',
+                        maxRotation: 0,
+                        autoSkip: true,
+                        maxTicksLimit: 14
+                    },
+                    title: { display: true, text: 'Time (ET)', color: '#a0a0b0' }
+                },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.07)' },
+                    ticks: { color: '#a0a0b0', callback: v => v + 'M' },
+                    title: { display: true, text: 'Net GEX (Millions)', color: '#a0a0b0' }
+                }
+            }
+        }
+    });
+
     new Chart(document.getElementById("chart-USO-delta"), {
         type: 'bar',
         data: {
-            labels: ["USO 155", "USO 154", "USO 153", "USO 152.5", "USO 152", "USO 151", "USO 150", "USO 149", "USO 148", "USO 147"],
+            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142"],
             datasets: [{
-                data: [0.008, 0.022, 0.104, 0.168, 0.334, -0.038, -2.881, -1.802, -0.178, -0.017],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.061, 0.649, -0.288, 2.106, -0.291, -1.721, -0.389, -0.877, -0.444],
+                backgroundColor: ['#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -545,7 +2385,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(5, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -554,10 +2394,10 @@
     new Chart(document.getElementById("chart-USO-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 155", "USO 154", "USO 153", "USO 152.5", "USO 152", "USO 151", "USO 150", "USO 149", "USO 148", "USO 147"],
+            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142"],
             datasets: [{
-                data: [2.587, 0.356, 0.429, 0.33, 1.117, 0.568, 11.767, 4.476, 4.659, 0.296],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
+                data: [11.828, 5.124, 4.371, 2.402, 0.646, 3.877, 0.272, 1.102, -0.009],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -604,8 +2444,8 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(5, '#fdcb6e');
-            drawLine(9, '#e17055');
+            drawLine(4, '#fdcb6e');
+            drawLine(8, '#e17055');
         }
     }]
     });
@@ -613,10 +2453,10 @@
     new Chart(document.getElementById("chart-GLD-delta"), {
         type: 'bar',
         data: {
-            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405"],
+            labels: ["GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
             datasets: [{
-                data: [0.19, 0.171, -0.044, -0.053, -0.092, -0.107, 0.308, 0.011, 0.001, -0.84, -0.106, 0.187, -0.059, -0.306, -0.462, 0.01, 0.009, -0.014, -0.009, -0.619, -0.006, -0.007, -0.027, -0.014, -0.214],
-                backgroundColor: ['#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.046, 0.149, 0.061, -0.137, -0.131, 0.024, 0.239, 0.049, 0.704, -0.102, 0.306, 0.382, 0.632, 3.475, 0.72, 0.454, 0.554, 0.47, 2.403, 1.021, -1.043, 0.388, 0.289, 2.836, 0.216],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -672,10 +2512,10 @@
     new Chart(document.getElementById("chart-GLD-net"), {
         type: 'bar',
         data: {
-            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405"],
+            labels: ["GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
             datasets: [{
-                data: [-1.684, 0.44, 1.045, 1.271, 0.405, -0.203, 0.772, 1.931, 1.738, 9.286, -2.877, -0.969, -1.641, -1.53, -16.415, -1.683, -1.005, -0.901, -0.364, -26.492, -0.304, -0.272, -0.858, -0.607, -4.813],
-                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.296, 0.862, 1.205, 8.909, 0.384, 2.21, 1.944, 1.461, 1.489, -1.786, 0.746, 1.427, 1.903, 3.88, 0.518, 1.226, 2.485, 2.209, 11.69, -1.856, -2.012, -1.253, -1.241, -13.579, -1.468],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -723,7 +2563,7 @@
                 ctx.restore();
             }
             drawLine(12, '#fdcb6e');
-            drawLine(14, '#e17055');
+            drawLine(23, '#e17055');
         }
     }]
     });

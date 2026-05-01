@@ -134,7 +134,7 @@
     <div class="header">
         <h1>GEX — Gamma Exposure</h1>
         <div class="subtitle">Net GEX by strike &amp; 5-min change since last snapshot</div>
-        <div class="subtitle">Current: <b>2026-05-01 10:31</b> &nbsp;|&nbsp; Previous: <b>2026-05-01 10:26</b></div>
+        <div class="subtitle">Current: <b>2026-05-01 10:36</b> &nbsp;|&nbsp; Previous: <b>2026-05-01 10:31</b></div>
     </div>
 
     <div class="tabs">
@@ -162,7 +162,7 @@
 
     <div class="footer">
         Data source: CBOE (options OI + gamma) &nbsp;|&nbsp; Prices: Yahoo Finance (~15 min delayed for futures)<br>
-        Generated: 2026-05-01 10:31
+        Generated: 2026-05-01 10:36
     </div>
 </div>
 
@@ -202,10 +202,10 @@
     new Chart(document.getElementById("chart-SPY-delta"), {
         type: 'bar',
         data: {
-            labels: ["SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710"],
+            labels: ["SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711"],
             datasets: [{
-                data: [0.334, 0.318, 0.562, 1.072, 0.996, 0.675, 0.679, 0.734, 3.146, 1.47, 3.157, 3.949, 4.523, 6.857, 0.398, -1.315, -1.987, -1.122, -4.592, -0.428, -0.605, -0.634, 0.311, -0.548, 0.181, 0.194, 0.08, 0.071, -0.273],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055'],
+                data: [0.28, 0.262, 0.286, 0.454, 1.263, 0.988, 0.656, 0.735, 0.867, 4.505, 2.731, 6.443, 7.735, 7.992, 8.249, -1.377, -3.042, -3.814, -1.677, -6.156, -0.578, -0.726, -0.807, 0.144, 0.009, -0.463, 0.189, 0.055, 0.055],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -261,10 +261,10 @@
     new Chart(document.getElementById("chart-SPY-net"), {
         type: 'bar',
         data: {
-            labels: ["SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710"],
+            labels: ["SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711"],
             datasets: [{
-                data: [7.653, 10.053, 12.382, 71.451, 26.635, 15.64, 19.105, 20.536, 151.755, 34.389, 69.511, 72.064, 104.241, 292.72, 80.675, 73.124, 59.211, 33.084, 144.777, 13.956, 42.435, 33.113, 1.636, 34.788, 13.71, -1.319, 0.385, -0.164, -31.795],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055'],
+                data: [9.642, 7.916, 10.34, 12.835, 72.714, 27.623, 16.296, 19.84, 21.403, 156.259, 37.12, 75.954, 79.799, 112.234, 300.969, 79.298, 70.082, 55.397, 31.407, 138.621, 13.378, 41.708, 32.306, 1.78, 34.797, 13.247, -1.13, 0.44, -0.108],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -319,177 +319,177 @@
 
     new Chart(document.getElementById("chart-SPY-ts"), {
         type: 'line',
-        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31"], datasets: [
+        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31", "10:36"], datasets: [
         {
-            label:"738",data:[4.855, 4.857, null, 5.89, 5.926, 6.143, 5.971, 6.267, 7.211, 7.337, 7.319, 7.653],
+            label:"739",data:[6.552, 6.555, null, 7.634, 7.777, 7.917, 7.745, 8.027, 9.071, 9.137, 9.069, 9.362, 9.642],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737",data:[6.977, 6.98, null, 8.135, 8.211, 8.427, 8.296, 8.616, 9.598, 9.731, 9.735, 10.053],
+            label:"738",data:[4.855, 4.857, null, 5.89, 5.926, 6.143, 5.971, 6.267, 7.211, 7.337, 7.319, 7.653, 7.916],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"736",data:[7.859, 7.862, null, 9.482, 9.597, 9.895, 9.678, 10.121, 11.657, 11.842, 11.82, 12.382],
+            label:"737",data:[6.977, 6.98, null, 8.135, 8.211, 8.427, 8.296, 8.616, 9.598, 9.731, 9.735, 10.053, 10.34],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"735",data:[58.023, 58.047, null, 63.391, 63.973, 64.585, 64.104, 65.434, 69.984, 70.188, 70.379, 71.451],
+            label:"736",data:[7.859, 7.862, null, 9.482, 9.597, 9.895, 9.678, 10.121, 11.657, 11.842, 11.82, 12.382, 12.835],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[17.229, 17.236, null, 20.91, 21.224, 21.634, 21.129, 22.091, 25.53, 25.79, 25.638, 26.635],
+            label:"735",data:[58.023, 58.047, null, 63.391, 63.973, 64.585, 64.104, 65.434, 69.984, 70.188, 70.379, 71.451, 72.714],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[9.48, 9.484, null, 11.636, 11.83, 12.226, 11.873, 12.556, 14.779, 14.99, 14.965, 15.64],
+            label:"734",data:[17.229, 17.236, null, 20.91, 21.224, 21.634, 21.129, 22.091, 25.53, 25.79, 25.638, 26.635, 27.623],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[11.935, 11.94, null, 14.565, 14.844, 15.293, 14.969, 15.719, 18.305, 18.509, 18.426, 19.105],
+            label:"733",data:[9.48, 9.484, null, 11.636, 11.83, 12.226, 11.873, 12.556, 14.779, 14.99, 14.965, 15.64, 16.296],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[12.649, 12.655, null, 15.203, 15.651, 16.223, 15.83, 16.62, 19.775, 20.011, 19.802, 20.536],
+            label:"732",data:[11.935, 11.94, null, 14.565, 14.844, 15.293, 14.969, 15.719, 18.305, 18.509, 18.426, 19.105, 19.84],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[113.717, 113.766, null, 126.229, 129.356, 131.736, 130.259, 133.282, 149.21, 149.637, 148.609, 151.755],
+            label:"731",data:[12.649, 12.655, null, 15.203, 15.651, 16.223, 15.83, 16.62, 19.775, 20.011, 19.802, 20.536, 21.403],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[17.934, 17.942, null, 22.33, 23.958, 24.871, 23.977, 25.195, 33.474, 33.625, 32.92, 34.389],
+            label:"730",data:[113.717, 113.766, null, 126.229, 129.356, 131.736, 130.259, 133.282, 149.21, 149.637, 148.609, 151.755, 156.259],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[33.109, 33.123, null, 42.631, 46.082, 47.885, 46.295, 49.05, 66.877, 67.224, 66.354, 69.511],
+            label:"729",data:[17.934, 17.942, null, 22.33, 23.958, 24.871, 23.977, 25.195, 33.474, 33.625, 32.92, 34.389, 37.12],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[30.226, 30.239, null, 39.676, 43.366, 45.475, 43.787, 47.441, 68.183, 68.949, 68.114, 72.064],
+            label:"728",data:[33.109, 33.123, null, 42.631, 46.082, 47.885, 46.295, 49.05, 66.877, 67.224, 66.354, 69.511, 75.954],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[45.847, 45.867, null, 61.813, 65.947, 68.827, 67.339, 73.477, 98.84, 101.406, 99.718, 104.241],
+            label:"727",data:[30.226, 30.239, null, 39.676, 43.366, 45.475, 43.787, 47.441, 68.183, 68.949, 68.114, 72.064, 79.799],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[161.853, 161.922, null, 205.693, 214.147, 220.464, 217.645, 236.66, 283.441, 293.095, 285.864, 292.72],
+            label:"726",data:[45.847, 45.867, null, 61.813, 65.947, 68.827, 67.339, 73.477, 98.84, 101.406, 99.718, 104.241, 112.234],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[44.569, 44.588, null, 64.825, 67.37, 68.442, 67.782, 74.333, 79.66, 83.195, 80.277, 80.675],
+            label:"725",data:[161.853, 161.922, null, 205.693, 214.147, 220.464, 217.645, 236.66, 283.441, 293.095, 285.864, 292.72, 300.969],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[95.486, 95.527, null, 73.638, 75.798, 75.473, 75.809, 78.983, 73.536, 75.439, 74.439, 73.124],
+            label:"724",data:[44.569, 44.588, null, 64.825, 67.37, 68.442, 67.782, 74.333, 79.66, 83.195, 80.277, 80.675, 79.298],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[65.44, 65.468, null, 71.465, 72.703, 71.33, 71.946, 72.808, 60.572, 61.344, 61.198, 59.211],
+            label:"723",data:[95.486, 95.527, null, 73.638, 75.798, 75.473, 75.809, 78.983, 73.536, 75.439, 74.439, 73.124, 70.082],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[56.701, 56.725, null, 41.128, 41.29, 40.537, 41.171, 40.437, 33.811, 33.911, 34.207, 33.084],
+            label:"722",data:[65.44, 65.468, null, 71.465, 72.703, 71.33, 71.946, 72.808, 60.572, 61.344, 61.198, 59.211, 55.397],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[607.171, 607.433, null, 186.601, 183.777, 179.965, 182.979, 176.383, 147.945, 147.18, 149.369, 144.777],
+            label:"721",data:[56.701, 56.725, null, 41.128, 41.29, 40.537, 41.171, 40.437, 33.811, 33.911, 34.207, 33.084, 31.407],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[115.733, 115.783, null, 17.4, 17.212, 16.926, 17.267, 16.578, 14.203, 14.145, 14.384, 13.956],
+            label:"720",data:[607.171, 607.433, null, 186.601, 183.777, 179.965, 182.979, 176.383, 147.945, 147.18, 149.369, 144.777, 138.621],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[113.499, 113.548, null, 43.994, 44.457, 44.338, 44.981, 44.748, 42.565, 42.801, 43.04, 42.435],
+            label:"719",data:[115.733, 115.783, null, 17.4, 17.212, 16.926, 17.267, 16.578, 14.203, 14.145, 14.384, 13.956, 13.378],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[71.088, 71.118, null, 38.059, 37.93, 37.575, 37.963, 36.866, 33.427, 33.347, 33.748, 33.113],
+            label:"718",data:[113.499, 113.548, null, 43.994, 44.457, 44.338, 44.981, 44.748, 42.565, 42.801, 43.04, 42.435, 41.708],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[11.276, 11.281, null, -1.313, -1.327, -1.117, -1.268, -0.169, 1.284, 1.566, 1.325, 1.636],
+            label:"717",data:[71.088, 71.118, null, 38.059, 37.93, 37.575, 37.963, 36.866, 33.427, 33.347, 33.748, 33.113, 32.306],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[63.385, 63.412, null, 36.176, 36.228, 35.973, 36.441, 35.877, 34.826, 34.915, 35.336, 34.788],
+            label:"716",data:[11.276, 11.281, null, -1.313, -1.327, -1.117, -1.268, -0.169, 1.284, 1.566, 1.325, 1.636, 1.78],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[14.05, 14.056, null, 13.323, 12.805, 12.871, 13.022, 13.649, 13.521, 13.731, 13.529, 13.71],
+            label:"715",data:[63.385, 63.412, null, 36.176, 36.228, 35.973, 36.441, 35.877, 34.826, 34.915, 35.336, 34.788, 34.797],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[-8.228, -8.231, null, -3.316, -3.527, -3.484, -3.522, -2.732, -1.511, -1.331, -1.513, -1.319],
+            label:"714",data:[14.05, 14.056, null, 13.323, 12.805, 12.871, 13.022, 13.649, 13.521, 13.731, 13.529, 13.71, 13.247],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-3.533, -3.535, null, -0.542, -0.685, -0.652, -0.564, -0.302, 0.245, 0.414, 0.305, 0.385],
+            label:"713",data:[-8.228, -8.231, null, -3.316, -3.527, -3.484, -3.522, -2.732, -1.511, -1.331, -1.513, -1.319, -1.13],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[0.751, 0.752, null, -1.016, -0.932, -0.903, -0.868, -0.747, -0.274, -0.224, -0.235, -0.164],
+            label:"712",data:[-3.533, -3.535, null, -0.542, -0.685, -0.652, -0.564, -0.302, 0.245, 0.414, 0.305, 0.385, 0.44],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[-51.281, -51.303, null, -41.097, -40.132, -39.835, -39.793, -37.806, -32.221, -31.313, -31.523, -31.795],
+            label:"711",data:[0.751, 0.752, null, -1.016, -0.932, -0.903, -0.868, -0.747, -0.274, -0.224, -0.235, -0.164, -0.108],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -528,8 +528,8 @@
         data: {
             labels: ["SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125"],
             datasets: [{
-                data: [0.018, 0.001, 0.267, 0.0, 0.203, 0.02, 0.101, 0.314, 0.53, 0.036, 0.18, 0.13, 1.142, 0.102, 2.847, 0.584, 0.565, 0.646, 0.455, 0.25, 2.112, 0.89, 4.718, 0.95, 10.69, 7.329, 14.989, 3.977, 0.623, 0.073, -0.475, -0.77, -3.379, -2.122, -1.43, -0.732, -1.341, -1.386, -0.761, -0.386, -0.411, -0.193, -3.029, -0.027, -0.216, 0.038, -0.195, 0.061, 0.026, -0.089, -0.039, 0.031, -0.063, 0.018, -0.064, 0.101, 0.006, -0.116],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055'],
+                data: [0.051, 0.001, 0.724, 0.0, 0.072, 0.056, 0.053, 0.202, 0.407, 0.01, 0.34, 0.016, 1.884, 0.169, 2.801, 0.378, 0.573, 0.489, 0.479, 0.351, 2.983, 0.962, 3.34, 0.88, 8.048, 5.186, 11.626, 4.101, 0.863, 0.172, -0.136, -0.837, -1.817, -1.706, -0.736, -0.439, -0.677, -0.474, -0.477, -0.221, -0.201, -0.124, -1.027, -0.005, -0.038, 0.034, -0.029, -0.063, 0.01, -0.072, 0.074, -0.005, -0.048, -0.014, 0.03, 0.031, 0.136, 0.051],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -576,7 +576,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(29, '#fdcb6e');
+            drawLine(28, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -587,7 +587,7 @@
         data: {
             labels: ["SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125"],
             datasets: [{
-                data: [4.019, 3.148, 90.644, 0.693, 5.469, 0.707, 5.47, 31.264, 13.36, 0.96, 15.342, 1.842, 80.554, 3.479, 49.126, 11.407, 17.557, 47.577, 19.474, 12.593, 53.405, 21.845, 147.995, 15.719, 117.826, 78.324, 217.313, 118.124, 45.361, 26.839, 35.863, 35.651, 108.861, 39.444, 30.643, 14.804, 23.995, 35.953, 17.161, 6.506, 10.008, 3.75, 82.633, 1.364, 4.937, 0.747, 5.544, 7.622, -0.584, 1.651, 1.134, -0.194, 28.144, -0.83, -1.51, -2.445, 7.335, 5.264],
+                data: [4.07, 3.15, 91.368, 0.694, 5.541, 0.763, 5.523, 31.467, 13.766, 0.971, 15.682, 1.858, 82.439, 3.648, 51.926, 11.785, 18.13, 48.066, 19.953, 12.944, 56.388, 22.807, 151.336, 16.599, 125.874, 83.51, 228.939, 122.226, 46.224, 27.011, 35.727, 34.814, 107.044, 37.738, 29.907, 14.365, 23.317, 35.478, 16.684, 6.285, 9.806, 3.626, 81.607, 1.36, 4.899, 0.781, 5.516, 7.559, -0.574, 1.579, 1.209, -0.199, 28.095, -0.844, -1.479, -2.414, 7.471, 5.315],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -635,7 +635,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(29, '#fdcb6e');
+            drawLine(28, '#fdcb6e');
             drawLine(57, '#e17055');
         }
     }]
@@ -643,351 +643,351 @@
 
     new Chart(document.getElementById("chart-SPX-ts"), {
         type: 'line',
-        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31"], datasets: [
+        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31", "10:36"], datasets: [
         {
-            label:"7410",data:[3.41, 3.41, null, 3.608, 3.609, 3.627, 3.595, 3.758, 3.902, 3.994, 4.001, 4.019],
+            label:"7410",data:[3.41, 3.41, null, 3.608, 3.609, 3.627, 3.595, 3.758, 3.902, 3.994, 4.001, 4.019, 4.07],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7405",data:[2.652, 2.652, null, 2.823, 2.824, 2.824, 2.824, 2.985, 3.148, 3.148, 3.148, 3.148],
+            label:"7405",data:[2.652, 2.652, null, 2.823, 2.824, 2.824, 2.824, 2.985, 3.148, 3.148, 3.148, 3.148, 3.15],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7400",data:[82.81, 82.828, null, 84.091, 85.493, 85.599, 85.445, 87.65, 88.781, 89.501, 90.378, 90.644],
+            label:"7400",data:[82.81, 82.828, null, 84.091, 85.493, 85.599, 85.445, 87.65, 88.781, 89.501, 90.378, 90.644, 91.368],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7395",data:[0.618, 0.618, null, 0.638, 0.638, 0.638, 0.638, 0.656, 0.684, 0.674, 0.693, 0.693],
+            label:"7395",data:[0.618, 0.618, null, 0.638, 0.638, 0.638, 0.638, 0.656, 0.684, 0.674, 0.693, 0.693, 0.694],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7390",data:[3.767, 3.789, null, 3.929, 4.15, 4.277, 4.063, 4.613, 5.219, 5.289, 5.266, 5.469],
+            label:"7390",data:[3.767, 3.789, null, 3.929, 4.15, 4.277, 4.063, 4.613, 5.219, 5.289, 5.266, 5.469, 5.541],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7385",data:[0.48, 0.48, null, 0.517, 0.553, 0.589, 0.589, 0.63, 0.68, 0.736, 0.686, 0.707],
+            label:"7385",data:[0.48, 0.48, null, 0.517, 0.553, 0.589, 0.589, 0.63, 0.68, 0.736, 0.686, 0.707, 0.763],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7380",data:[3.859, 3.836, null, 4.085, 4.316, 4.421, 4.342, 4.714, 5.18, 5.451, 5.368, 5.47],
+            label:"7380",data:[3.859, 3.836, null, 4.085, 4.316, 4.421, 4.342, 4.714, 5.18, 5.451, 5.368, 5.47, 5.523],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7375",data:[25.729, 25.836, null, 27.204, 27.478, 27.629, 27.503, 28.629, 30.072, 30.818, 30.951, 31.264],
+            label:"7375",data:[25.729, 25.836, null, 27.204, 27.478, 27.629, 27.503, 28.629, 30.072, 30.818, 30.951, 31.264, 31.467],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7370",data:[9.585, 9.821, null, 10.665, 10.819, 10.927, 10.821, 11.828, 12.826, 13.061, 12.829, 13.36],
+            label:"7370",data:[9.585, 9.821, null, 10.665, 10.819, 10.927, 10.821, 11.828, 12.826, 13.061, 12.829, 13.36, 13.766],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7365",data:[0.686, 0.692, null, 0.744, 0.772, 0.754, 0.754, 0.815, 0.918, 0.954, 0.924, 0.96],
+            label:"7365",data:[0.686, 0.692, null, 0.744, 0.772, 0.754, 0.754, 0.815, 0.918, 0.954, 0.924, 0.96, 0.971],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7360",data:[11.363, 11.407, null, 12.086, 12.758, 12.637, 12.552, 13.406, 14.702, 15.201, 15.162, 15.342],
+            label:"7360",data:[11.363, 11.407, null, 12.086, 12.758, 12.637, 12.552, 13.406, 14.702, 15.201, 15.162, 15.342, 15.682],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7355",data:[1.032, 1.038, null, 1.182, 1.296, 1.297, 1.182, 1.344, 1.612, 1.727, 1.712, 1.842],
+            label:"7355",data:[1.032, 1.038, null, 1.182, 1.296, 1.297, 1.182, 1.344, 1.612, 1.727, 1.712, 1.842, 1.858],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7350",data:[64.56, 65.442, null, 68.714, 68.954, 70.792, 70.398, 73.2, 78.356, 80.599, 79.412, 80.554],
+            label:"7350",data:[64.56, 65.442, null, 68.714, 68.954, 70.792, 70.398, 73.2, 78.356, 80.599, 79.412, 80.554, 82.439],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[2.227, 2.227, null, 2.439, 2.58, 2.612, 2.512, 2.876, 3.34, 3.428, 3.377, 3.479],
+            label:"7345",data:[2.227, 2.227, null, 2.439, 2.58, 2.612, 2.512, 2.876, 3.34, 3.428, 3.377, 3.479, 3.648],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[25.416, 27.693, null, 28.953, 33.756, 33.997, 29.304, 35.348, 43.913, 50.996, 46.279, 49.126],
+            label:"7340",data:[25.416, 27.693, null, 28.953, 33.756, 33.997, 29.304, 35.348, 43.913, 50.996, 46.279, 49.126, 51.926],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[6.438, 6.703, null, 7.31, 7.625, 7.885, 7.618, 9.066, 10.53, 10.877, 10.823, 11.407],
+            label:"7335",data:[6.438, 6.703, null, 7.31, 7.625, 7.885, 7.618, 9.066, 10.53, 10.877, 10.823, 11.407, 11.785],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[10.746, 10.96, null, 11.811, 12.746, 13.135, 12.514, 14.276, 16.568, 17.09, 16.992, 17.557],
+            label:"7330",data:[10.746, 10.96, null, 11.811, 12.746, 13.135, 12.514, 14.276, 16.568, 17.09, 16.992, 17.557, 18.13],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[38.648, 38.861, null, 40.32, 41.247, 41.761, 41.514, 43.487, 46.176, 46.882, 46.931, 47.577],
+            label:"7325",data:[38.648, 38.861, null, 40.32, 41.247, 41.761, 41.514, 43.487, 46.176, 46.882, 46.931, 47.577, 48.066],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[13.362, 13.539, null, 14.5, 15.254, 15.436, 15.004, 16.511, 18.736, 19.206, 19.019, 19.474],
+            label:"7320",data:[13.362, 13.539, null, 14.5, 15.254, 15.436, 15.004, 16.511, 18.736, 19.206, 19.019, 19.474, 19.953],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[8.165, 8.48, null, 8.868, 9.398, 9.707, 9.423, 10.468, 12.077, 12.388, 12.343, 12.593],
+            label:"7315",data:[8.165, 8.48, null, 8.868, 9.398, 9.707, 9.423, 10.468, 12.077, 12.388, 12.343, 12.593, 12.944],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[29.436, 29.606, null, 31.757, 35.57, 36.515, 34.584, 39.838, 50.242, 51.902, 51.293, 53.405],
+            label:"7310",data:[29.436, 29.606, null, 31.757, 35.57, 36.515, 34.584, 39.838, 50.242, 51.902, 51.293, 53.405, 56.388],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[12.872, 13.095, null, 14.098, 15.23, 15.614, 15.156, 17.218, 20.717, 21.109, 20.955, 21.845],
+            label:"7305",data:[12.872, 13.095, null, 14.098, 15.23, 15.614, 15.156, 17.218, 20.717, 21.109, 20.955, 21.845, 22.807],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[108.618, 108.82, null, 113.292, 117.775, 119.079, 117.163, 125.984, 141.178, 143.368, 143.277, 147.995],
+            label:"7300",data:[108.618, 108.82, null, 113.292, 117.775, 119.079, 117.163, 125.984, 141.178, 143.368, 143.277, 147.995, 151.336],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[7.251, 7.415, null, 8.15, 9.066, 9.427, 9.053, 11.053, 14.184, 14.802, 14.769, 15.719],
+            label:"7295",data:[7.251, 7.415, null, 8.15, 9.066, 9.427, 9.053, 11.053, 14.184, 14.802, 14.769, 15.719, 16.599],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[37.245, 40.242, null, 45.653, 52.786, 56.773, 53.017, 72.078, 101.907, 108.911, 107.136, 117.826],
+            label:"7290",data:[37.245, 40.242, null, 45.653, 52.786, 56.773, 53.017, 72.078, 101.907, 108.911, 107.136, 117.826, 125.874],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[24.781, 26.531, null, 30.862, 35.526, 37.875, 36.265, 50.144, 67.964, 73.148, 70.994, 78.324],
+            label:"7285",data:[24.781, 26.531, null, 30.862, 35.526, 37.875, 36.265, 50.144, 67.964, 73.148, 70.994, 78.324, 83.51],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[77.864, 82.093, null, 96.767, 109.779, 115.434, 112.944, 152.534, 193.386, 207.493, 202.324, 217.313],
+            label:"7280",data:[77.864, 82.093, null, 96.767, 109.779, 115.434, 112.944, 152.534, 193.386, 207.493, 202.324, 217.313, 228.939],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[62.529, 64.946, null, 72.811, 77.797, 80.71, 80.377, 97.485, 110.703, 115.937, 114.147, 118.124],
+            label:"7275",data:[62.529, 64.946, null, 72.811, 77.797, 80.71, 80.377, 97.485, 110.703, 115.937, 114.147, 118.124, 122.226],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[27.818, 28.8, null, 32.207, 33.959, 34.76, 34.921, 41.069, 43.508, 45.475, 44.738, 45.361],
+            label:"7270",data:[27.818, 28.8, null, 32.207, 33.959, 34.76, 34.921, 41.069, 43.508, 45.475, 44.738, 45.361, 46.224],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[16.176, 16.896, null, 19.721, 20.886, 21.468, 21.423, 26.02, 26.346, 27.447, 26.766, 26.839],
+            label:"7265",data:[16.176, 16.896, null, 19.721, 20.886, 21.468, 21.423, 26.02, 26.346, 27.447, 26.766, 26.839, 27.011],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[26.976, 27.897, null, 31.168, 32.762, 32.996, 33.131, 37.267, 35.971, 36.942, 36.338, 35.863],
+            label:"7260",data:[26.976, 27.897, null, 31.168, 32.762, 32.996, 33.131, 37.267, 35.971, 36.942, 36.338, 35.863, 35.727],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[30.059, 30.92, null, 34.617, 36.349, 36.373, 36.434, 39.121, 36.293, 36.979, 36.421, 35.651],
+            label:"7255",data:[30.059, 30.92, null, 34.617, 36.349, 36.373, 36.434, 39.121, 36.293, 36.979, 36.421, 35.651, 34.814],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[108.248, 110.126, null, 116.782, 119.184, 118.728, 119.055, 122.941, 111.665, 112.137, 112.241, 108.861],
+            label:"7250",data:[108.248, 110.126, null, 116.782, 119.184, 118.728, 119.055, 122.941, 111.665, 112.137, 112.241, 108.861, 107.044],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[45.918, 46.595, null, 49.869, 50.986, 49.987, 50.431, 47.704, 41.822, 41.478, 41.566, 39.444],
+            label:"7245",data:[45.918, 46.595, null, 49.869, 50.986, 49.987, 50.431, 47.704, 41.822, 41.478, 41.566, 39.444, 37.738],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[36.541, 36.878, null, 37.841, 37.991, 37.505, 37.957, 35.87, 32.007, 31.691, 32.073, 30.643],
+            label:"7240",data:[36.541, 36.878, null, 37.841, 37.991, 37.505, 37.957, 35.87, 32.007, 31.691, 32.073, 30.643, 29.907],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7235",data:[19.506, 19.618, null, 19.655, 19.667, 19.371, 19.46, 17.887, 15.69, 15.391, 15.536, 14.804],
+            label:"7235",data:[19.506, 19.618, null, 19.655, 19.667, 19.371, 19.46, 17.887, 15.69, 15.391, 15.536, 14.804, 14.365],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7230",data:[35.35, 35.096, null, 34.798, 34.104, 33.467, 33.821, 30.407, 25.735, 24.953, 25.336, 23.995],
+            label:"7230",data:[35.35, 35.096, null, 34.798, 34.104, 33.467, 33.821, 30.407, 25.735, 24.953, 25.336, 23.995, 23.317],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7225",data:[45.329, 45.206, null, 43.793, 43.238, 42.811, 43.141, 40.552, 37.15, 36.721, 37.339, 35.953],
+            label:"7225",data:[45.329, 45.206, null, 43.793, 43.238, 42.811, 43.141, 40.552, 37.15, 36.721, 37.339, 35.953, 35.478],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7220",data:[33.351, 33.232, null, 23.882, 23.248, 22.703, 23.115, 20.653, 18.095, 17.612, 17.921, 17.161],
+            label:"7220",data:[33.351, 33.232, null, 23.882, 23.248, 22.703, 23.115, 20.653, 18.095, 17.612, 17.921, 17.161, 16.684],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7215",data:[26.836, 26.563, null, 10.243, 9.83, 9.569, 9.698, 8.201, 7.047, 6.693, 6.892, 6.506],
+            label:"7215",data:[26.836, 26.563, null, 10.243, 9.83, 9.569, 9.698, 8.201, 7.047, 6.693, 6.892, 6.506, 6.285],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7210",data:[119.236, 119.025, null, 13.319, 12.885, 12.719, 12.867, 11.518, 10.525, 10.19, 10.418, 10.008],
+            label:"7210",data:[119.236, 119.025, null, 13.319, 12.885, 12.719, 12.867, 11.518, 10.525, 10.19, 10.418, 10.008, 9.806],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7205",data:[91.628, 91.465, null, 5.54, 5.303, 5.199, 5.269, 4.5, 3.966, 3.807, 3.943, 3.75],
+            label:"7205",data:[91.628, 91.465, null, 5.54, 5.303, 5.199, 5.269, 4.5, 3.966, 3.807, 3.943, 3.75, 3.626],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7200",data:[115.35, 113.154, null, 105.772, 103.536, 102.103, 102.464, 81.824, 85.845, 83.459, 85.663, 82.633],
+            label:"7200",data:[115.35, 113.154, null, 105.772, 103.536, 102.103, 102.464, 81.824, 85.845, 83.459, 85.663, 82.633, 81.607],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7195",data:[2.026, 1.969, null, 1.812, 1.759, 1.736, 1.741, 1.492, 1.398, 1.369, 1.392, 1.364],
+            label:"7195",data:[2.026, 1.969, null, 1.812, 1.759, 1.736, 1.741, 1.492, 1.398, 1.369, 1.392, 1.364, 1.36],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7190",data:[6.029, 5.939, null, 5.761, 5.708, 5.678, 5.71, 5.162, 5.031, 4.962, 5.153, 4.937],
+            label:"7190",data:[6.029, 5.939, null, 5.761, 5.708, 5.678, 5.71, 5.162, 5.031, 4.962, 5.153, 4.937, 4.899],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7185",data:[-0.748, -0.623, null, -0.076, -0.087, 0.036, -0.004, 0.219, 0.638, 0.761, 0.709, 0.747],
+            label:"7185",data:[-0.748, -0.623, null, -0.076, -0.087, 0.036, -0.004, 0.219, 0.638, 0.761, 0.709, 0.747, 0.781],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7180",data:[7.6, 7.462, null, 6.875, 6.865, 6.777, 6.864, 6.239, 5.765, 5.632, 5.739, 5.544],
+            label:"7180",data:[7.6, 7.462, null, 6.875, 6.865, 6.777, 6.864, 6.239, 5.765, 5.632, 5.739, 5.544, 5.516],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7175",data:[6.795, 6.877, null, 7.301, 7.19, 7.244, 7.267, 7.629, 7.604, 7.634, 7.56, 7.622],
+            label:"7175",data:[6.795, 6.877, null, 7.301, 7.19, 7.244, 7.267, 7.629, 7.604, 7.634, 7.56, 7.622, 7.559],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7170",data:[-0.625, -0.628, null, -0.672, -0.669, -0.659, -0.651, -0.615, -0.577, -0.579, -0.61, -0.584],
+            label:"7170",data:[-0.625, -0.628, null, -0.672, -0.669, -0.659, -0.651, -0.615, -0.577, -0.579, -0.61, -0.584, -0.574],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7165",data:[2.787, 2.711, null, 2.22, 2.285, 2.273, 2.314, 1.965, 1.744, 1.593, 1.741, 1.651],
+            label:"7165",data:[2.787, 2.711, null, 2.22, 2.285, 2.273, 2.314, 1.965, 1.744, 1.593, 1.741, 1.651, 1.579],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7160",data:[0.054, 0.138, null, 0.736, 0.628, 0.584, 0.626, 0.959, 1.184, 1.258, 1.173, 1.134],
+            label:"7160",data:[0.054, 0.138, null, 0.736, 0.628, 0.584, 0.626, 0.959, 1.184, 1.258, 1.173, 1.134, 1.209],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7155",data:[-0.53, -0.5, null, -0.345, -0.383, -0.383, -0.387, -0.283, -0.22, -0.192, -0.225, -0.194],
+            label:"7155",data:[-0.53, -0.5, null, -0.345, -0.383, -0.383, -0.387, -0.283, -0.22, -0.192, -0.225, -0.194, -0.199],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7150",data:[29.286, 29.263, null, 29.423, 29.402, 28.856, 29.458, 28.108, 28.137, 28.132, 28.207, 28.144],
+            label:"7150",data:[29.286, 29.263, null, 29.423, 29.402, 28.856, 29.458, 28.108, 28.137, 28.132, 28.207, 28.144, 28.095],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7145",data:[-1.327, -1.259, null, -1.049, -1.15, -1.093, -1.1, -0.972, -0.848, -0.784, -0.848, -0.83],
+            label:"7145",data:[-1.327, -1.259, null, -1.049, -1.15, -1.093, -1.1, -0.972, -0.848, -0.784, -0.848, -0.83, -0.844],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7140",data:[-2.639, -2.499, null, -2.093, -2.205, -2.183, -2.18, -1.813, -1.446, -1.378, -1.445, -1.51],
+            label:"7140",data:[-2.639, -2.499, null, -2.093, -2.205, -2.183, -2.18, -1.813, -1.446, -1.378, -1.445, -1.51, -1.479],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7135",data:[-3.278, -3.167, null, -3.001, -3.022, -3.004, -3.024, -2.763, -2.475, -2.473, -2.547, -2.445],
+            label:"7135",data:[-3.278, -3.167, null, -3.001, -3.022, -3.004, -3.024, -2.763, -2.475, -2.473, -2.547, -2.445, -2.414],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7130",data:[7.155, 7.288, null, 7.739, 7.453, 7.45, 7.453, 7.194, 7.474, 7.473, 7.329, 7.335],
+            label:"7130",data:[7.155, 7.288, null, 7.739, 7.453, 7.45, 7.453, 7.194, 7.474, 7.473, 7.329, 7.335, 7.471],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7125",data:[5.188, 5.159, null, 5.315, 5.268, 5.245, 5.31, 5.359, 5.323, 5.279, 5.38, 5.264],
+            label:"7125",data:[5.188, 5.159, null, 5.315, 5.268, 5.245, 5.31, 5.359, 5.323, 5.279, 5.38, 5.264, 5.315],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1026,8 +1026,8 @@
         data: {
             labels: ["QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662"],
             datasets: [{
-                data: [0.085, 0.035, 0.023, -0.327, 0.038, 0.049, 0.149, 0.229, 5.029, 0.48, 1.896, 1.7, 2.055, 3.923, 0.517, -0.405, -2.282, -0.711, -2.527, -0.532, -0.453, 0.209, -0.231, -0.743, 0.204, 0.117, 0.08],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894'],
+                data: [0.086, 0.053, 0.041, 1.25, 0.136, 0.199, 0.343, 0.465, 9.551, 0.719, 2.209, 1.747, 1.492, 0.734, -1.166, -0.93, -3.553, -0.784, -2.242, -0.47, -0.371, 0.139, -0.241, -0.556, 0.048, 0.056, 0.046],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1085,7 +1085,7 @@
         data: {
             labels: ["QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662"],
             datasets: [{
-                data: [7.677, 2.524, 1.795, 64.622, 5.299, 9.416, 9.148, 8.155, 223.168, 14.405, 32.814, 29.671, 47.479, 264.507, 57.587, 34.527, 75.215, 19.23, 103.904, 14.557, 13.69, 2.206, 13.042, 34.37, -4.605, -0.52, -0.986],
+                data: [7.763, 2.577, 1.836, 65.872, 5.435, 9.614, 9.491, 8.62, 232.719, 15.124, 35.022, 31.418, 48.971, 265.241, 56.421, 33.597, 71.663, 18.446, 101.662, 14.087, 13.319, 2.346, 12.801, 33.814, -4.557, -0.464, -0.94],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -1141,165 +1141,165 @@
 
     new Chart(document.getElementById("chart-QQQ-ts"), {
         type: 'line',
-        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31"], datasets: [
+        data: { labels: ["09:33", "09:38", "09:43", "09:49", "09:54", "09:59", "10:05", "10:10", "10:15", "10:21", "10:26", "10:31", "10:36"], datasets: [
         {
-            label:"688",data:[5.742, 5.744, null, 6.571, 6.712, 6.86, 6.913, 7.063, 7.583, 7.635, 7.592, 7.677],
+            label:"688",data:[5.742, 5.744, null, 6.571, 6.712, 6.86, 6.913, 7.063, 7.583, 7.635, 7.592, 7.677, 7.763],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"687",data:[1.634, 1.634, null, 1.973, 2.005, 2.111, 2.13, 2.18, 2.477, 2.515, 2.489, 2.524],
+            label:"687",data:[1.634, 1.634, null, 1.973, 2.005, 2.111, 2.13, 2.18, 2.477, 2.515, 2.489, 2.524, 2.577],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"686",data:[1.206, 1.206, null, 1.407, 1.421, 1.496, 1.514, 1.541, 1.766, 1.791, 1.772, 1.795],
+            label:"686",data:[1.206, 1.206, null, 1.407, 1.421, 1.496, 1.514, 1.541, 1.766, 1.791, 1.772, 1.795, 1.836],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"685",data:[49.99, 50.008, null, 55.005, 53.526, 55.806, 56.486, 56.01, 64.528, 64.871, 64.949, 64.622],
+            label:"685",data:[49.99, 50.008, null, 55.005, 53.526, 55.806, 56.486, 56.01, 64.528, 64.871, 64.949, 64.622, 65.872],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"684",data:[3.491, 3.492, null, 4.188, 4.167, 4.395, 4.463, 4.505, 5.247, 5.31, 5.262, 5.299],
+            label:"684",data:[3.491, 3.492, null, 4.188, 4.167, 4.395, 4.463, 4.505, 5.247, 5.31, 5.262, 5.299, 5.435],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"683",data:[6.634, 6.636, null, 7.863, 7.921, 8.216, 8.32, 8.425, 9.36, 9.448, 9.366, 9.416],
+            label:"683",data:[6.634, 6.636, null, 7.863, 7.921, 8.216, 8.32, 8.425, 9.36, 9.448, 9.366, 9.416, 9.614],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"682",data:[5.419, 5.421, null, 6.626, 6.656, 7.134, 7.253, 7.394, 8.963, 9.158, 8.999, 9.148],
+            label:"682",data:[5.419, 5.421, null, 6.626, 6.656, 7.134, 7.253, 7.394, 8.963, 9.158, 8.999, 9.148, 9.491],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"681",data:[4.874, 4.875, null, 5.018, 4.94, 5.508, 5.651, 5.725, 7.877, 8.163, 7.926, 8.155],
+            label:"681",data:[4.874, 4.875, null, 5.018, 4.94, 5.508, 5.651, 5.725, 7.877, 8.163, 7.926, 8.155, 8.62],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"680",data:[129.315, 129.361, null, 159.877, 160.892, 171.575, 174.737, 178.597, 217.749, 223.923, 218.14, 223.168],
+            label:"680",data:[129.315, 129.361, null, 159.877, 160.892, 171.575, 174.737, 178.597, 217.749, 223.923, 218.14, 223.168, 232.719],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"679",data:[7.549, 7.552, null, 9.517, 9.636, 10.443, 10.694, 11.017, 13.909, 14.435, 13.925, 14.405],
+            label:"679",data:[7.549, 7.552, null, 9.517, 9.636, 10.443, 10.694, 11.017, 13.909, 14.435, 13.925, 14.405, 15.124],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"678",data:[11.423, 11.427, null, 17.149, 17.59, 20.169, 20.763, 22.059, 30.881, 32.813, 30.918, 32.814],
+            label:"678",data:[11.423, 11.427, null, 17.149, 17.59, 20.169, 20.763, 22.059, 30.881, 32.813, 30.918, 32.814, 35.022],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"677",data:[10.339, 10.343, null, 15.856, 16.744, 18.934, 19.493, 21.028, 27.918, 29.705, 27.971, 29.671],
+            label:"677",data:[10.339, 10.343, null, 15.856, 16.744, 18.934, 19.493, 21.028, 27.918, 29.705, 27.971, 29.671, 31.418],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"676",data:[19.178, 19.185, null, 28.206, 30.431, 33.595, 34.469, 37.498, 45.293, 47.433, 45.424, 47.479],
+            label:"676",data:[19.178, 19.185, null, 28.206, 30.431, 33.595, 34.469, 37.498, 45.293, 47.433, 45.424, 47.479, 48.971],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"675",data:[164.881, 164.94, null, 208.885, 221.121, 231.318, 234.771, 249.169, 258.87, 263.907, 260.584, 264.507],
+            label:"675",data:[164.881, 164.94, null, 208.885, 221.121, 231.318, 234.771, 249.169, 258.87, 263.907, 260.584, 264.507, 265.241],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"674",data:[31.254, 31.265, null, 47.762, 51.925, 54.34, 54.974, 59.721, 56.271, 57.107, 57.07, 57.587],
+            label:"674",data:[31.254, 31.265, null, 47.762, 51.925, 54.34, 54.974, 59.721, 56.271, 57.107, 57.07, 57.587, 56.421],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"673",data:[27.499, 27.509, null, 35.013, 36.956, 36.625, 36.971, 38.801, 34.268, 34.456, 34.932, 34.527],
+            label:"673",data:[27.499, 27.509, null, 35.013, 36.956, 36.625, 36.971, 38.801, 34.268, 34.456, 34.932, 34.527, 33.597],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"672",data:[64.653, 64.676, null, 90.698, 94.994, 90.883, 91.346, 94.6, 76.567, 75.089, 77.497, 75.215],
+            label:"672",data:[64.653, 64.676, null, 90.698, 94.994, 90.883, 91.346, 94.6, 76.567, 75.089, 77.497, 75.215, 71.663],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"671",data:[42.622, 42.638, null, 25.113, 25.501, 24.043, 24.101, 24.261, 19.746, 19.259, 19.941, 19.23],
+            label:"671",data:[42.622, 42.638, null, 25.113, 25.501, 24.043, 24.101, 24.261, 19.746, 19.259, 19.941, 19.23, 18.446],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"670",data:[141.834, 141.885, null, 127.613, 126.929, 121.412, 121.255, 120.325, 105.882, 103.938, 106.431, 103.904],
+            label:"670",data:[141.834, 141.885, null, 127.613, 126.929, 121.412, 121.255, 120.325, 105.882, 103.938, 106.431, 103.904, 101.662],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"669",data:[72.475, 72.501, null, 20.668, 20.171, 18.834, 18.723, 18.182, 15.014, 14.584, 15.089, 14.557],
+            label:"669",data:[72.475, 72.501, null, 20.668, 20.171, 18.834, 18.723, 18.182, 15.014, 14.584, 15.089, 14.557, 14.087],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"668",data:[62.518, 62.541, null, 19.275, 18.662, 17.433, 17.313, 16.701, 14.095, 13.73, 14.143, 13.69],
+            label:"668",data:[62.518, 62.541, null, 19.275, 18.662, 17.433, 17.313, 16.701, 14.095, 13.73, 14.143, 13.69, 13.319],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"667",data:[42.348, 42.363, null, -1.25, -0.641, 0.02, 0.229, 0.816, 1.925, 2.193, 1.997, 2.206],
+            label:"667",data:[42.348, 42.363, null, -1.25, -0.641, 0.02, 0.229, 0.816, 1.925, 2.193, 1.997, 2.206, 2.346],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"666",data:[32.843, 32.855, null, 15.562, 15.387, 14.799, 14.789, 14.619, 13.2, 13.045, 13.273, 13.042],
+            label:"666",data:[32.843, 32.855, null, 15.562, 15.387, 14.799, 14.789, 14.619, 13.2, 13.045, 13.273, 13.042, 12.801],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"665",data:[110.019, 110.058, null, 43.44, 41.989, 40.089, 39.825, 38.595, 35.001, 34.344, 35.113, 34.37],
+            label:"665",data:[110.019, 110.058, null, 43.44, 41.989, 40.089, 39.825, 38.595, 35.001, 34.344, 35.113, 34.37, 33.814],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"664",data:[-6.252, -6.254, null, -6.668, -6.313, -5.87, -5.813, -5.441, -4.777, -4.623, -4.809, -4.605],
+            label:"664",data:[-6.252, -6.254, null, -6.668, -6.313, -5.87, -5.813, -5.441, -4.777, -4.623, -4.809, -4.605, -4.557],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"663",data:[-0.858, -0.858, null, -2.419, -2.099, -1.706, -1.643, -1.266, -0.68, -0.538, -0.637, -0.52],
+            label:"663",data:[-0.858, -0.858, null, -2.419, -2.099, -1.706, -1.643, -1.266, -0.68, -0.538, -0.637, -0.52, -0.464],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"662",data:[-3.675, -3.676, null, -2.321, -2.122, -1.869, -1.815, -1.537, -1.11, -1.009, -1.066, -0.986],
+            label:"662",data:[-3.675, -3.676, null, -2.321, -2.122, -1.869, -1.815, -1.537, -1.11, -1.009, -1.066, -0.986, -0.94],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1336,10 +1336,10 @@
     new Chart(document.getElementById("chart-USO-delta"), {
         type: 'bar',
         data: {
-            labels: ["USO 142", "USO 141", "USO 140", "USO 139", "USO 138"],
+            labels: ["USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137"],
             datasets: [{
-                data: [0.054, 0.002, 0.011, -0.014, -0.062],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#e17055'],
+                data: [0.01, -0.0, -0.004, -0.009, -0.026, -0.006],
+                backgroundColor: ['#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1395,10 +1395,10 @@
     new Chart(document.getElementById("chart-USO-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 142", "USO 141", "USO 140", "USO 139", "USO 138"],
+            labels: ["USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137"],
             datasets: [{
-                data: [-0.689, -0.032, -0.665, -0.993, -1.435],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [-0.679, -0.032, -0.669, -1.002, -1.461, -0.232],
+                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1446,7 +1446,7 @@
                 ctx.restore();
             }
             drawLine(2, '#fdcb6e');
-            drawLine(4, '#e17055');
+            drawLine(5, '#e17055');
         }
     }]
     });
@@ -1454,10 +1454,10 @@
     new Chart(document.getElementById("chart-GLD-delta"), {
         type: 'bar',
         data: {
-            labels: ["GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420"],
+            labels: ["GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419"],
             datasets: [{
-                data: [0.921, 2.421, 0.275, 1.977, 2.991, 3.771, 1.9, 0.595, 1.096, 0.066, -0.542, -2.683, -0.087, -0.269, -0.186, -0.033, 0.099],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894'],
+                data: [-0.893, -0.082, -0.526, -0.675, -0.725, -0.291, -0.059, -0.063, 0.15, 0.141, 0.552, 0.01, 0.018, 0.001, 0.026, 0.132, 0.022],
+                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1513,10 +1513,10 @@
     new Chart(document.getElementById("chart-GLD-net"), {
         type: 'bar',
         data: {
-            labels: ["GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420"],
+            labels: ["GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419"],
             datasets: [{
-                data: [2.763, 13.931, 1.615, 5.997, 7.915, 10.445, 6.013, -0.782, 4.985, 5.332, 4.448, 6.953, 1.667, 1.067, 2.263, 1.867, 11.006],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
+                data: [13.038, 1.532, 5.471, 7.24, 9.72, 5.721, -0.84, 4.922, 5.481, 4.588, 7.506, 1.677, 1.086, 2.264, 1.893, 11.139, -1.909],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]

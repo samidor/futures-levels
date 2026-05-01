@@ -134,7 +134,7 @@
     <div class="header">
         <h1>GEX — Gamma Exposure</h1>
         <div class="subtitle">Net GEX by strike &amp; 5-min change since last snapshot</div>
-        <div class="subtitle">Current: <b>2026-05-01 09:33</b> &nbsp;|&nbsp; Previous: <b>2026-04-30 15:58</b></div>
+        <div class="subtitle">Current: <b>2026-05-01 09:38</b> &nbsp;|&nbsp; Previous: <b>2026-05-01 09:33</b></div>
     </div>
 
     <div class="tabs">
@@ -158,11 +158,11 @@
         <div class="chart-wrap" id="wrap-SPX" style="display:none"><div class="view-header"><div class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="SPX" onclick="toggleViewMenu('SPX')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-SPX"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('SPX','change')">By Change</div><div class="ts-menu-item" onclick="setView('SPX','strike')">By Strike</div><div class="ts-menu-item" onclick="setView('SPX','time')">By Time</div></div></div></div><div id="view-SPX-change" style="display:none"><div style="height:1936px"><canvas id="chart-SPX-delta"></canvas></div></div><div id="view-SPX-strike" style="display:block"><div style="height:1936px"><canvas id="chart-SPX-net"></canvas></div></div><div id="view-SPX-time" style="display:none"><div style="height:420px"><canvas id="chart-SPX-ts"></canvas></div></div></div>
         <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="view-header"><div class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="QQQ" onclick="toggleViewMenu('QQQ')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-QQQ"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('QQQ','change')">By Change</div><div class="ts-menu-item" onclick="setView('QQQ','strike')">By Strike</div><div class="ts-menu-item" onclick="setView('QQQ','time')">By Time</div></div></div></div><div id="view-QQQ-change" style="display:none"><div style="height:944px"><canvas id="chart-QQQ-delta"></canvas></div></div><div id="view-QQQ-strike" style="display:block"><div style="height:944px"><canvas id="chart-QQQ-net"></canvas></div></div><div id="view-QQQ-time" style="display:none"><div style="height:420px"><canvas id="chart-QQQ-ts"></canvas></div></div></div>
         <div class="chart-wrap" id="wrap-USO" style="display:none"><div class="view-header"><div class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="USO" onclick="toggleViewMenu('USO')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-USO"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('USO','change')">By Change</div><div class="ts-menu-item" onclick="setView('USO','strike')">By Strike</div></div></div></div><div id="view-USO-change" style="display:none"><div style="height:400px"><canvas id="chart-USO-delta"></canvas></div></div><div id="view-USO-strike" style="display:block"><div style="height:400px"><canvas id="chart-USO-net"></canvas></div></div></div>
-        <div class="chart-wrap" id="wrap-GLD" style="display:none"><div class="view-header"><div class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="GLD" onclick="toggleViewMenu('GLD')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-GLD"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('GLD','change')">By Change</div><div class="ts-menu-item" onclick="setView('GLD','strike')">By Strike</div></div></div></div><div id="view-GLD-change" style="display:none"><div style="height:592px"><canvas id="chart-GLD-delta"></canvas></div></div><div id="view-GLD-strike" style="display:block"><div style="height:592px"><canvas id="chart-GLD-net"></canvas></div></div></div>
+        <div class="chart-wrap" id="wrap-GLD" style="display:none"><div class="view-header"><div class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="GLD" onclick="toggleViewMenu('GLD')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-GLD"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('GLD','change')">By Change</div><div class="ts-menu-item" onclick="setView('GLD','strike')">By Strike</div></div></div></div><div id="view-GLD-change" style="display:none"><div style="height:624px"><canvas id="chart-GLD-delta"></canvas></div></div><div id="view-GLD-strike" style="display:block"><div style="height:624px"><canvas id="chart-GLD-net"></canvas></div></div></div>
 
     <div class="footer">
         Data source: CBOE (options OI + gamma) &nbsp;|&nbsp; Prices: Yahoo Finance (~15 min delayed for futures)<br>
-        Generated: 2026-05-01 09:33
+        Generated: 2026-05-01 09:38
     </div>
 </div>
 
@@ -204,8 +204,8 @@
         data: {
             labels: ["SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707"],
             datasets: [{
-                data: [-0.202, 4.234, 1.224, 2.852, 4.184, -0.702, 3.52, 12.229, 8.925, 7.944, -4.611, 12.927, -5.697, 17.069, 7.715, 129.382, 18.644, 22.118, 0.898, -37.243, -111.77, -26.69, -12.44, -22.055, -9.942, -37.724, -12.503, -9.878, -10.367],
-                backgroundColor: ['#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.025, 0.007, 0.004, 0.005, 0.005, 0.049, 0.008, 0.014, 0.013, 0.02, 0.07, 0.019, 0.041, 0.028, 0.024, 0.261, 0.05, 0.049, 0.031, 0.005, 0.027, 0.006, -0.004, -0.002, 0.0, -0.022, -0.008, 0.001, -0.003],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -263,7 +263,7 @@
         data: {
             labels: ["SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707"],
             datasets: [{
-                data: [58.023, 17.229, 9.48, 11.935, 12.649, 113.717, 17.934, 33.109, 30.226, 45.847, 161.853, 44.569, 95.486, 65.44, 56.701, 607.171, 115.733, 113.499, 71.088, 11.276, 63.385, 14.05, -8.228, -3.533, 0.751, -51.281, -19.226, 1.916, -6.261],
+                data: [58.047, 17.236, 9.484, 11.94, 12.655, 113.766, 17.942, 33.123, 30.239, 45.867, 161.922, 44.588, 95.527, 65.468, 56.725, 607.433, 115.783, 113.548, 71.118, 11.281, 63.412, 14.056, -8.231, -3.535, 0.752, -51.303, -19.234, 1.916, -6.264],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -319,177 +319,177 @@
 
     new Chart(document.getElementById("chart-SPY-ts"), {
         type: 'line',
-        data: { labels: ["09:33"], datasets: [
+        data: { labels: ["09:33", "09:38"], datasets: [
         {
-            label:"735",data:[58.023],
+            label:"735",data:[58.023, 58.047],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[17.229],
+            label:"734",data:[17.229, 17.236],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[9.48],
+            label:"733",data:[9.48, 9.484],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[11.935],
+            label:"732",data:[11.935, 11.94],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[12.649],
+            label:"731",data:[12.649, 12.655],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[113.717],
+            label:"730",data:[113.717, 113.766],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[17.934],
+            label:"729",data:[17.934, 17.942],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[33.109],
+            label:"728",data:[33.109, 33.123],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[30.226],
+            label:"727",data:[30.226, 30.239],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[45.847],
+            label:"726",data:[45.847, 45.867],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[161.853],
+            label:"725",data:[161.853, 161.922],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[44.569],
+            label:"724",data:[44.569, 44.588],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[95.486],
+            label:"723",data:[95.486, 95.527],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[65.44],
+            label:"722",data:[65.44, 65.468],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[56.701],
+            label:"721",data:[56.701, 56.725],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[607.171],
+            label:"720",data:[607.171, 607.433],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[115.733],
+            label:"719",data:[115.733, 115.783],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[113.499],
+            label:"718",data:[113.499, 113.548],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[71.088],
+            label:"717",data:[71.088, 71.118],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[11.276],
+            label:"716",data:[11.276, 11.281],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[63.385],
+            label:"715",data:[63.385, 63.412],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[14.05],
+            label:"714",data:[14.05, 14.056],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[-8.228],
+            label:"713",data:[-8.228, -8.231],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-3.533],
+            label:"712",data:[-3.533, -3.535],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[0.751],
+            label:"711",data:[0.751, 0.752],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[-51.281],
+            label:"710",data:[-51.281, -51.303],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[-19.226],
+            label:"709",data:[-19.226, -19.234],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[1.916],
+            label:"708",data:[1.916, 1.916],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[-6.261],
+            label:"707",data:[-6.261, -6.264],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -528,8 +528,8 @@
         data: {
             labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065"],
             datasets: [{
-                data: [16.516, 1.054, 17.247, 4.522, 4.549, 6.681, 4.893, 1.029, 12.019, 8.958, 10.826, 3.53, 26.159, 19.896, 61.237, 27.88, 13.666, 9.943, 14.644, 15.566, 33.836, 8.09, -10.474, 2.702, 0.451, -70.721, -11.896, -3.336, 67.982, 35.966, -66.066, -7.563, -6.245, -8.844, -4.064, -14.235, -5.984, -1.473, -4.431, -2.261, -10.09, -2.24, -3.21, -1.641, -1.915, -1.091, -1.72, -0.802, -1.273, -0.518, -3.842, 0.737, -1.812, -0.203, 0.091, -2.326, -0.998, -0.693],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055'],
+                data: [0.882, 0.0, 2.277, 0.265, 0.214, 0.213, 0.177, 0.315, 0.17, 0.223, 0.202, 0.164, 2.997, 1.751, 4.229, 2.417, 0.981, 0.72, 0.921, 0.862, 1.877, 0.677, 0.337, 0.111, -0.254, -0.123, -0.12, -0.273, -0.211, -0.163, -2.196, -0.057, -0.09, 0.124, -0.138, 0.082, -0.003, -0.075, 0.084, 0.03, -0.023, 0.068, 0.139, 0.111, 0.133, -0.029, 0.012, 0.01, 0.103, 0.037, -0.013, 0.014, -0.206, 0.016, -0.089, -0.006, 0.044, 0.004],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -587,7 +587,7 @@
         data: {
             labels: ["SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065"],
             datasets: [{
-                data: [64.56, 2.227, 25.416, 6.438, 10.746, 38.648, 13.362, 8.165, 29.436, 12.872, 108.618, 7.251, 37.245, 24.781, 77.864, 62.529, 27.818, 16.176, 26.976, 30.059, 108.248, 45.918, 36.541, 19.506, 35.35, 45.329, 33.351, 26.836, 119.236, 91.628, 115.35, 2.026, 6.029, -0.748, 7.6, 6.795, -0.625, 2.787, 0.054, -0.53, 29.286, -1.327, -2.639, -3.278, 7.155, 5.188, -2.493, -0.75, -0.585, -0.113, 29.892, -2.857, 4.352, -1.314, 0.496, 3.333, -1.444, -1.132],
+                data: [65.442, 2.227, 27.693, 6.703, 10.96, 38.861, 13.539, 8.48, 29.606, 13.095, 108.82, 7.415, 40.242, 26.531, 82.093, 64.946, 28.8, 16.896, 27.897, 30.92, 110.126, 46.595, 36.878, 19.618, 35.096, 45.206, 33.232, 26.563, 119.025, 91.465, 113.154, 1.969, 5.939, -0.623, 7.462, 6.877, -0.628, 2.711, 0.138, -0.5, 29.263, -1.259, -2.499, -3.167, 7.288, 5.159, -2.481, -0.74, -0.482, -0.076, 29.879, -2.843, 4.146, -1.297, 0.407, 3.327, -1.4, -1.129],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -643,351 +643,351 @@
 
     new Chart(document.getElementById("chart-SPX-ts"), {
         type: 'line',
-        data: { labels: ["09:33"], datasets: [
+        data: { labels: ["09:33", "09:38"], datasets: [
         {
-            label:"7350",data:[64.56],
+            label:"7350",data:[64.56, 65.442],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[2.227],
+            label:"7345",data:[2.227, 2.227],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[25.416],
+            label:"7340",data:[25.416, 27.693],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[6.438],
+            label:"7335",data:[6.438, 6.703],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[10.746],
+            label:"7330",data:[10.746, 10.96],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[38.648],
+            label:"7325",data:[38.648, 38.861],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[13.362],
+            label:"7320",data:[13.362, 13.539],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[8.165],
+            label:"7315",data:[8.165, 8.48],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[29.436],
+            label:"7310",data:[29.436, 29.606],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[12.872],
+            label:"7305",data:[12.872, 13.095],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[108.618],
+            label:"7300",data:[108.618, 108.82],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[7.251],
+            label:"7295",data:[7.251, 7.415],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[37.245],
+            label:"7290",data:[37.245, 40.242],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[24.781],
+            label:"7285",data:[24.781, 26.531],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[77.864],
+            label:"7280",data:[77.864, 82.093],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[62.529],
+            label:"7275",data:[62.529, 64.946],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[27.818],
+            label:"7270",data:[27.818, 28.8],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[16.176],
+            label:"7265",data:[16.176, 16.896],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[26.976],
+            label:"7260",data:[26.976, 27.897],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[30.059],
+            label:"7255",data:[30.059, 30.92],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[108.248],
+            label:"7250",data:[108.248, 110.126],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[45.918],
+            label:"7245",data:[45.918, 46.595],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[36.541],
+            label:"7240",data:[36.541, 36.878],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7235",data:[19.506],
+            label:"7235",data:[19.506, 19.618],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7230",data:[35.35],
+            label:"7230",data:[35.35, 35.096],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7225",data:[45.329],
+            label:"7225",data:[45.329, 45.206],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7220",data:[33.351],
+            label:"7220",data:[33.351, 33.232],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7215",data:[26.836],
+            label:"7215",data:[26.836, 26.563],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7210",data:[119.236],
+            label:"7210",data:[119.236, 119.025],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7205",data:[91.628],
+            label:"7205",data:[91.628, 91.465],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7200",data:[115.35],
+            label:"7200",data:[115.35, 113.154],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7195",data:[2.026],
+            label:"7195",data:[2.026, 1.969],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7190",data:[6.029],
+            label:"7190",data:[6.029, 5.939],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7185",data:[-0.748],
+            label:"7185",data:[-0.748, -0.623],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7180",data:[7.6],
+            label:"7180",data:[7.6, 7.462],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7175",data:[6.795],
+            label:"7175",data:[6.795, 6.877],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7170",data:[-0.625],
+            label:"7170",data:[-0.625, -0.628],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7165",data:[2.787],
+            label:"7165",data:[2.787, 2.711],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7160",data:[0.054],
+            label:"7160",data:[0.054, 0.138],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7155",data:[-0.53],
+            label:"7155",data:[-0.53, -0.5],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7150",data:[29.286],
+            label:"7150",data:[29.286, 29.263],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7145",data:[-1.327],
+            label:"7145",data:[-1.327, -1.259],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7140",data:[-2.639],
+            label:"7140",data:[-2.639, -2.499],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7135",data:[-3.278],
+            label:"7135",data:[-3.278, -3.167],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7130",data:[7.155],
+            label:"7130",data:[7.155, 7.288],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7125",data:[5.188],
+            label:"7125",data:[5.188, 5.159],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7120",data:[-2.493],
+            label:"7120",data:[-2.493, -2.481],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7115",data:[-0.75],
+            label:"7115",data:[-0.75, -0.74],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7110",data:[-0.585],
+            label:"7110",data:[-0.585, -0.482],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7105",data:[-0.113],
+            label:"7105",data:[-0.113, -0.076],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7100",data:[29.892],
+            label:"7100",data:[29.892, 29.879],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7095",data:[-2.857],
+            label:"7095",data:[-2.857, -2.843],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7090",data:[4.352],
+            label:"7090",data:[4.352, 4.146],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7085",data:[-1.314],
+            label:"7085",data:[-1.314, -1.297],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7080",data:[0.496],
+            label:"7080",data:[0.496, 0.407],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7075",data:[3.333],
+            label:"7075",data:[3.333, 3.327],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7070",data:[-1.444],
+            label:"7070",data:[-1.444, -1.4],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7065",data:[-1.132],
+            label:"7065",data:[-1.132, -1.129],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1026,8 +1026,8 @@
         data: {
             labels: ["QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656"],
             datasets: [{
-                data: [1.103, 1.124, -14.721, 4.963, 6.905, 5.915, 11.039, -7.09, 14.208, 0.511, 17.322, -5.714, 6.013, 8.461, 13.897, -0.563, -10.111, -45.73, -9.918, -14.522, -8.711, -8.629, -24.585, -5.948, -2.424, -6.211, -7.027],
-                backgroundColor: ['#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.002, 0.002, 0.046, 0.003, 0.004, 0.004, 0.007, 0.059, 0.011, 0.01, 0.023, 0.015, 0.051, 0.026, 0.022, 0.015, 0.012, 0.039, -0.002, -0.0, -0.001, -0.002, 0.012, -0.001, -0.002, -0.002, -0.003],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1085,7 +1085,7 @@
         data: {
             labels: ["QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656"],
             datasets: [{
-                data: [5.419, 4.874, 129.315, 7.549, 11.423, 10.339, 19.178, 164.881, 31.254, 27.499, 64.653, 42.622, 141.834, 72.475, 62.518, 42.348, 32.843, 110.019, -6.252, -0.858, -3.675, -5.919, 32.559, -2.66, -5.471, -6.407, -8.414],
+                data: [5.421, 4.875, 129.361, 7.552, 11.427, 10.343, 19.185, 164.94, 31.265, 27.509, 64.676, 42.638, 141.885, 72.501, 62.541, 42.363, 32.855, 110.058, -6.254, -0.858, -3.676, -5.921, 32.57, -2.661, -5.473, -6.409, -8.417],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -1141,165 +1141,165 @@
 
     new Chart(document.getElementById("chart-QQQ-ts"), {
         type: 'line',
-        data: { labels: ["09:33"], datasets: [
+        data: { labels: ["09:33", "09:38"], datasets: [
         {
-            label:"682",data:[5.419],
+            label:"682",data:[5.419, 5.421],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"681",data:[4.874],
+            label:"681",data:[4.874, 4.875],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"680",data:[129.315],
+            label:"680",data:[129.315, 129.361],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"679",data:[7.549],
+            label:"679",data:[7.549, 7.552],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"678",data:[11.423],
+            label:"678",data:[11.423, 11.427],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"677",data:[10.339],
+            label:"677",data:[10.339, 10.343],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"676",data:[19.178],
+            label:"676",data:[19.178, 19.185],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"675",data:[164.881],
+            label:"675",data:[164.881, 164.94],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"674",data:[31.254],
+            label:"674",data:[31.254, 31.265],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"673",data:[27.499],
+            label:"673",data:[27.499, 27.509],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"672",data:[64.653],
+            label:"672",data:[64.653, 64.676],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"671",data:[42.622],
+            label:"671",data:[42.622, 42.638],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"670",data:[141.834],
+            label:"670",data:[141.834, 141.885],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"669",data:[72.475],
+            label:"669",data:[72.475, 72.501],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"668",data:[62.518],
+            label:"668",data:[62.518, 62.541],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"667",data:[42.348],
+            label:"667",data:[42.348, 42.363],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"666",data:[32.843],
+            label:"666",data:[32.843, 32.855],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"665",data:[110.019],
+            label:"665",data:[110.019, 110.058],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"664",data:[-6.252],
+            label:"664",data:[-6.252, -6.254],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"663",data:[-0.858],
+            label:"663",data:[-0.858, -0.858],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"662",data:[-3.675],
+            label:"662",data:[-3.675, -3.676],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"661",data:[-5.919],
+            label:"661",data:[-5.919, -5.921],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"660",data:[32.559],
+            label:"660",data:[32.559, 32.57],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"659",data:[-2.66],
+            label:"659",data:[-2.66, -2.661],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"658",data:[-5.471],
+            label:"658",data:[-5.471, -5.473],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"657",data:[-6.407],
+            label:"657",data:[-6.407, -6.409],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"656",data:[-8.414],
+            label:"656",data:[-8.414, -8.417],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1336,10 +1336,10 @@
     new Chart(document.getElementById("chart-USO-delta"), {
         type: 'bar',
         data: {
-            labels: ["USO 146", "USO 145", "USO 144", "USO 143", "USO 142"],
+            labels: ["USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
             datasets: [{
-                data: [-0.715, -1.541, -0.087, -0.188, -0.045],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.0, -0.008, -0.001, -0.005, 0.001, 0.0],
+                backgroundColor: ['#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1395,10 +1395,10 @@
     new Chart(document.getElementById("chart-USO-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 146", "USO 145", "USO 144", "USO 143", "USO 142"],
+            labels: ["USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
             datasets: [{
-                data: [-0.024, 2.445, 0.327, 1.642, -0.202],
-                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055'],
+                data: [-0.024, 2.438, 0.326, 1.636, -0.202, -0.024],
+                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1446,7 +1446,7 @@
                 ctx.restore();
             }
             drawLine(2, '#fdcb6e');
-            drawLine(4, '#e17055');
+            drawLine(5, '#e17055');
         }
     }]
     });
@@ -1454,10 +1454,10 @@
     new Chart(document.getElementById("chart-GLD-delta"), {
         type: 'bar',
         data: {
-            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
+            labels: ["GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
             datasets: [{
-                data: [0.933, 1.004, 0.735, 1.391, 0.967, 0.903, -0.321, -0.375, -0.542, -0.152, -0.572, -0.146, -0.185, -0.143, 0.094, -0.36],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055'],
+                data: [0.001, -0.0, 0.001, 0.001, 0.001, 0.002, 0.0, 0.0, 0.001, 0.0, 0.003, -0.001, -0.0, -0.0, -0.0, -0.003, -0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1504,7 +1504,7 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(7, '#fdcb6e');
+            drawLine(8, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }]
@@ -1513,10 +1513,10 @@
     new Chart(document.getElementById("chart-GLD-net"), {
         type: 'bar',
         data: {
-            labels: ["GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
+            labels: ["GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414"],
             datasets: [{
-                data: [-1.645, 2.271, 3.202, 3.845, 6.372, 1.711, 1.284, 2.517, 1.833, 10.286, -2.732, -0.271, -0.953, -0.611, -11.072, -1.107],
-                backgroundColor: ['#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [3.015, -1.645, 2.272, 3.203, 3.846, 6.373, 1.712, 1.284, 2.517, 1.833, 10.289, -2.733, -0.272, -0.953, -0.612, -11.075, -1.107],
+                backgroundColor: ['#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1563,8 +1563,8 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(7, '#fdcb6e');
-            drawLine(14, '#e17055');
+            drawLine(8, '#fdcb6e');
+            drawLine(15, '#e17055');
         }
     }]
     });

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — Options Exposure</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMJ343XKJV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WMJ343XKJV');
+    </script>
+    <style>
+        :root {
+            --bg:     #1a1a2e;
+            --bg2:    #16213e;
+            --bg3:    #0f3460;
+            --text:   #e0e0e0;
+            --text2:  #a0a0b0;
+            --accent: #e94560;
+            --border: #2d3436;
+            --green:  #00b894;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-wrap {
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            font-size: 3em;
+            margin-bottom: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo p {
+            color: var(--text2);
+            font-size: 0.9em;
+            margin-top: 6px;
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 36px 32px;
+        }
+
+        .card h2 {
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.82em;
+            color: var(--text2);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .field input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 14px;
+            color: var(--text);
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .field input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.15s;
+        }
+
+        .btn:hover { opacity: 0.88; }
+        .btn:active { opacity: 0.75; }
+
+        .error {
+            display: none;
+            color: var(--accent);
+            font-size: 0.85em;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%       { transform: translateX(-6px); }
+            40%       { transform: translateX(6px); }
+            60%       { transform: translateX(-4px); }
+            80%       { transform: translateX(4px); }
+        }
+
+        .shake { animation: shake 0.35s ease; }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            color: var(--text2);
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-wrap">
+    <div class="logo">
+        <div class="logo-icon">📊</div>
+        <h1>Options Exposure</h1>
+        <p>Real-time GEX &nbsp;·&nbsp; DEX &nbsp;·&nbsp; Greeks</p>
+    </div>
+
+    <div class="card" id="loginCard">
+        <h2>Sign in to continue</h2>
+        <form id="loginForm" autocomplete="off">
+            <div class="field">
+                <label>Password</label>
+                <input type="password" id="pw" placeholder="Enter your password" autofocus>
+            </div>
+            <button type="submit" class="btn">Sign In &rarr;</button>
+            <div class="error" id="errMsg">Incorrect password &mdash; please try again.</div>
+        </form>
+    </div>
+
+    <div class="footer-note">
+        Access restricted to subscribers &nbsp;·&nbsp; Contact us for access
+    </div>
+</div>
+
+<script>
+    // SHA-256 of password — change via set_password.html utility
+    // Default password: options2026
+    const STORED_HASH = '1b75147287f9587f1d3752ab5360619783b4071de0952ed2b0aeca8e20183112';
+
+    // Already logged in? Go straight to hub
+    if (sessionStorage.getItem('auth') === 'ok') {
+        location.replace('index.html');
+    }
+
+    async function sha256(str) {
+        const buf  = await crypto.subtle.digest('SHA-256',
+                         new TextEncoder().encode(str));
+        return Array.from(new Uint8Array(buf))
+                    .map(b => b.toString(16).padStart(2, '0'))
+                    .join('');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const pw   = document.getElementById('pw').value;
+        const hash = await sha256(pw);
+
+        if (hash === STORED_HASH) {
+            sessionStorage.setItem('auth', 'ok');
+            location.replace('index.html');
+        } else {
+            const card = document.getElementById('loginCard');
+            document.getElementById('errMsg').style.display = 'block';
+            card.classList.remove('shake');
+            void card.offsetWidth;          // force reflow to restart animation
+            card.classList.add('shake');
+            document.getElementById('pw').value = '';
+            document.getElementById('pw').focus();
+        }
+    });
+</script>
+
+</body>
+</html>

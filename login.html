@@ -177,9 +177,13 @@
 </div>
 
 <script>
-    // SHA-256 of password — change via set_password.html utility
-    // Default password: options2026
-    const STORED_HASH = '1b75147287f9587f1d3752ab5360619783b4071de0952ed2b0aeca8e20183112';
+    // One SHA-256 hash per subscriber — add/remove as needed.
+    // Generate a hash: python -c "import hashlib; print(hashlib.sha256(b'PASSWORD').hexdigest())"
+    //
+    // Subscriber 1 (you) — password: options2026
+    const HASHES = [
+        '1b75147287f9587f1d3752ab5360619783b4071de0952ed2b0aeca8e20183112',
+    ];
 
     // Already logged in? Go straight to hub
     if (sessionStorage.getItem('auth') === 'ok') {
@@ -199,7 +203,7 @@
         const pw   = document.getElementById('pw').value;
         const hash = await sha256(pw);
 
-        if (hash === STORED_HASH) {
+        if (HASHES.includes(hash)) {
             sessionStorage.setItem('auth', 'ok');
             location.replace('index.html');
         } else {

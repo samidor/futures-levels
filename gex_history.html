@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEX History — by Expiry Type</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    :root{--bg:#1a1a2e;--card:#16213e;--border:rgba(255,255,255,0.08);--text:#e0e0e0;--text2:#a0a0b0}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;font-size:14px}
+    .page{max-width:1400px;margin:0 auto;padding:20px}
+    h1{text-align:center;font-size:1.6rem;font-weight:600;margin-bottom:4px}
+    .subtitle{text-align:center;color:var(--text2);font-size:0.85rem;margin-bottom:20px}
+    .tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+    .tab-btn{padding:7px 18px;border:1px solid var(--border);border-radius:6px;
+             background:transparent;color:var(--text2);cursor:pointer;font-size:0.85rem;transition:all .15s}
+    .tab-btn.active,.tab-btn:hover{background:#0984e3;color:#fff;border-color:#0984e3}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+          padding:18px;margin-bottom:20px}
+    .card-title{font-size:0.95rem;font-weight:600;margin-bottom:14px;
+                display:flex;align-items:center;gap:10px}
+    .date-badge{background:#2d3436;border-radius:4px;padding:2px 8px;
+                font-size:0.75rem;color:var(--text2)}
+    .bkt-tabs{display:flex;gap:6px;margin-bottom:12px}
+    .bkt-btn{padding:4px 12px;border:1px solid var(--border);border-radius:4px;
+             background:transparent;cursor:pointer;font-size:0.8rem;color:var(--text2);transition:all .15s}
+    .bkt-btn.active{color:#fff;border-color:currentColor}
+    .chart-wrap{position:relative}
+    .no-data{color:var(--text2);font-size:0.85rem;padding:30px;text-align:center}
+    .walls{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+    .wall-chip{padding:3px 10px;border-radius:4px;font-size:0.78rem;font-weight:600}
+    .wall-call{background:rgba(0,206,201,0.18);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
+    .wall-put{background:rgba(225,112,85,0.18);color:#e17055;border:1px solid rgba(225,112,85,0.3)}
+    .footer{text-align:center;color:var(--text2);font-size:0.78rem;margin-top:24px;padding-top:12px;
+            border-top:1px solid var(--border)}
+    </style>
+</head>
+<body>
+<div class="page">
+  <h1>GEX History — by Expiry Type</h1>
+  <div class="subtitle">
+    Where market makers have positioned — past 7 trading days
+    &nbsp;|&nbsp; <a href="gex_delta.html" style="color:#74b9ff">← Live GEX</a>
+  </div>
+
+  <div class="tabs" id="inst-tabs">
+    <button class="tab-btn active" onclick="showInst('SPY')" id="itab-SPY">SPY</button><button class="tab-btn" onclick="showInst('SPX')" id="itab-SPX">SPX</button><button class="tab-btn" onclick="showInst('QQQ')" id="itab-QQQ">QQQ</button><button class="tab-btn" onclick="showInst('USO')" id="itab-USO">USO</button><button class="tab-btn" onclick="showInst('GLD')" id="itab-GLD">GLD</button>
+  </div>
+
+  
+    <div class="card" id="card-2026-05-05">
+      <div class="card-title">
+        Today — 2026-05-05
+        <span class="date-badge">Updated 2026-05-05 05:57</span>
+      </div>
+      <div id="isect-2026-05-05-SPY" class="inst-section" data-date="2026-05-05" data-inst="SPY" style="display:block"><div class="bkt-tabs"><button class="bkt-btn active" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','SPY','0dte')">0DTE</button><button class="bkt-btn" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','SPY','weekly')">Weekly</button><button class="bkt-btn" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','SPY','monthly')">Monthly</button></div>
+                <div id="hist-2026-05-05-SPY-0dte" style="display:block">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-04, 2026-05-05</div>
+                  <div class="walls"><span class="wall-chip wall-put">SPY 717 (-111.1M)</span><span class="wall-chip wall-put">SPY 718 (-88.0M)</span><span class="wall-chip wall-put">SPY 710 (-62.2M)</span></div>
+                  <div class="chart-wrap" style="height:1984px">
+                    <canvas id="hc-2026-05-05-SPY-0dte"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-SPY-weekly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-08</div>
+                  <div class="walls"><span class="wall-chip wall-put">SPY 700 (-84.6M)</span><span class="wall-chip wall-call">SPY 723 (+63.7M)</span><span class="wall-chip wall-call">SPY 718 (+45.4M)</span></div>
+                  <div class="chart-wrap" style="height:1984px">
+                    <canvas id="hc-2026-05-05-SPY-weekly"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-SPY-monthly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-14, 2026-05-15</div>
+                  <div class="walls"><span class="wall-chip wall-put">SPY 700 (-89.1M)</span><span class="wall-chip wall-call">SPY 730 (+81.7M)</span><span class="wall-chip wall-call">SPY 750 (+78.0M)</span></div>
+                  <div class="chart-wrap" style="height:2068px">
+                    <canvas id="hc-2026-05-05-SPY-monthly"></canvas>
+                  </div>
+                </div></div><div id="isect-2026-05-05-SPX" class="inst-section" data-date="2026-05-05" data-inst="SPX" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','SPX','0dte')">0DTE</button><button class="bkt-btn" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','SPX','weekly')">Weekly</button><button class="bkt-btn" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','SPX','monthly')">Monthly</button></div>
+                <div id="hist-2026-05-05-SPX-0dte" style="display:block">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-04, 2026-05-05</div>
+                  <div class="walls"><span class="wall-chip wall-put">SPX 7200 (-417.3M)</span><span class="wall-chip wall-put">SPX 7205 (-32.2M)</span><span class="wall-chip wall-put">SPX 7210 (-17.1M)</span></div>
+                  <div class="chart-wrap" style="height:3776px">
+                    <canvas id="hc-2026-05-05-SPX-0dte"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-SPX-weekly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-08</div>
+                  <div class="walls"><span class="wall-chip wall-call">SPX 7300 (+20.9M)</span><span class="wall-chip wall-call">SPX 7350 (+17.9M)</span><span class="wall-chip wall-call">SPX 7305 (+14.7M)</span></div>
+                  <div class="chart-wrap" style="height:3860px">
+                    <canvas id="hc-2026-05-05-SPX-weekly"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-SPX-monthly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-14, 2026-05-15</div>
+                  <div class="walls"><span class="wall-chip wall-call">SPX 7400 (+86.2M)</span><span class="wall-chip wall-call">SPX 7300 (+81.4M)</span><span class="wall-chip wall-call">SPX 7500 (+61.4M)</span></div>
+                  <div class="chart-wrap" style="height:4112px">
+                    <canvas id="hc-2026-05-05-SPX-monthly"></canvas>
+                  </div>
+                </div></div><div id="isect-2026-05-05-QQQ" class="inst-section" data-date="2026-05-05" data-inst="QQQ" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','QQQ','0dte')">0DTE</button><button class="bkt-btn" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','QQQ','weekly')">Weekly</button><button class="bkt-btn" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','QQQ','monthly')">Monthly</button></div>
+                <div id="hist-2026-05-05-QQQ-0dte" style="display:block">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-04, 2026-05-05</div>
+                  <div class="walls"><span class="wall-chip wall-put">QQQ 672 (-67.2M)</span><span class="wall-chip wall-put">QQQ 670 (-40.8M)</span><span class="wall-chip wall-call">QQQ 680 (+34.0M)</span></div>
+                  <div class="chart-wrap" style="height:1928px">
+                    <canvas id="hc-2026-05-05-QQQ-0dte"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-QQQ-weekly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-08</div>
+                  <div class="walls"><span class="wall-chip wall-call">QQQ 675 (+48.8M)</span><span class="wall-chip wall-put">QQQ 645 (-36.3M)</span><span class="wall-chip wall-call">QQQ 680 (+22.5M)</span></div>
+                  <div class="chart-wrap" style="height:1816px">
+                    <canvas id="hc-2026-05-05-QQQ-weekly"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-QQQ-monthly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-14, 2026-05-15</div>
+                  <div class="walls"><span class="wall-chip wall-call">QQQ 680 (+56.4M)</span><span class="wall-chip wall-call">QQQ 675 (+50.2M)</span><span class="wall-chip wall-call">QQQ 690 (+48.8M)</span></div>
+                  <div class="chart-wrap" style="height:1928px">
+                    <canvas id="hc-2026-05-05-QQQ-monthly"></canvas>
+                  </div>
+                </div></div><div id="isect-2026-05-05-USO" class="inst-section" data-date="2026-05-05" data-inst="USO" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','USO','weekly')">Weekly</button><button class="bkt-btn" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','USO','monthly')">Monthly</button></div>
+                <div id="hist-2026-05-05-USO-weekly" style="display:block">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-08</div>
+                  <div class="walls"><span class="wall-chip wall-call">USO 150 (+2.8M)</span><span class="wall-chip wall-call">USO 146 (+1.5M)</span><span class="wall-chip wall-call">USO 154 (+1.3M)</span></div>
+                  <div class="chart-wrap" style="height:500px">
+                    <canvas id="hc-2026-05-05-USO-weekly"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-USO-monthly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-15, 2026-05-22</div>
+                  <div class="walls"><span class="wall-chip wall-call">USO 148 (+4.4M)</span><span class="wall-chip wall-call">USO 145 (+3.9M)</span><span class="wall-chip wall-call">USO 150 (+3.3M)</span></div>
+                  <div class="chart-wrap" style="height:500px">
+                    <canvas id="hc-2026-05-05-USO-monthly"></canvas>
+                  </div>
+                </div></div><div id="isect-2026-05-05-GLD" class="inst-section" data-date="2026-05-05" data-inst="GLD" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','GLD','0dte')">0DTE</button><button class="bkt-btn" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','GLD','weekly')">Weekly</button><button class="bkt-btn" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','GLD','monthly')">Monthly</button></div>
+                <div id="hist-2026-05-05-GLD-0dte" style="display:block">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-04</div>
+                  <div class="walls"><span class="wall-chip wall-put">GLD 415 (-7.1M)</span><span class="wall-chip wall-put">GLD 414 (-4.7M)</span><span class="wall-chip wall-put">GLD 417 (-0.9M)</span></div>
+                  <div class="chart-wrap" style="height:1256px">
+                    <canvas id="hc-2026-05-05-GLD-0dte"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-GLD-weekly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-08, 2026-05-11</div>
+                  <div class="walls"><span class="wall-chip wall-call">GLD 425 (+7.0M)</span><span class="wall-chip wall-put">GLD 410 (-4.4M)</span><span class="wall-chip wall-call">GLD 426 (+2.7M)</span></div>
+                  <div class="chart-wrap" style="height:1116px">
+                    <canvas id="hc-2026-05-05-GLD-weekly"></canvas>
+                  </div>
+                </div>
+                <div id="hist-2026-05-05-GLD-monthly" style="display:none">
+                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-15, 2026-05-18</div>
+                  <div class="walls"><span class="wall-chip wall-put">GLD 410 (-19.5M)</span><span class="wall-chip wall-put">GLD 400 (-17.1M)</span><span class="wall-chip wall-put">GLD 415 (-13.4M)</span></div>
+                  <div class="chart-wrap" style="height:1256px">
+                    <canvas id="hc-2026-05-05-GLD-monthly"></canvas>
+                  </div>
+                </div></div>
+    </div>
+
+  <div class="footer">Generated: 2026-05-05 05:58 ET &nbsp;|&nbsp; Data: Massive API / CBOE &nbsp;|&nbsp; Prices: Yahoo Finance</div>
+</div>
+
+<script>
+var _activeInst = 'SPY';
+
+function showInst(inst) {
+    _activeInst = inst;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.id === 'itab-' + inst));
+    document.querySelectorAll('.inst-section').forEach(el => {
+        el.style.display = (el.dataset.inst === inst) ? 'block' : 'none';
+    });
+}
+
+function showBkt(date, inst, bkt) {
+    ['0dte','weekly','monthly'].forEach(function(b) {
+        var el = document.getElementById('hist-' + date + '-' + inst + '-' + b);
+        if (el) el.style.display = (b === bkt) ? 'block' : 'none';
+    });
+    // Update button styles for this card
+    var card = document.getElementById('card-' + date);
+    if (card) {
+        var sect = card.querySelector('[data-inst="' + inst + '"]');
+        if (sect) sect.querySelectorAll('.bkt-btn').forEach(function(btn) {
+            var isBkt = btn.textContent.toLowerCase().startsWith(bkt === '0dte' ? '0' : bkt.slice(0,4));
+            btn.classList.toggle('active', isBkt);
+        });
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    showInst('SPY');
+    
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPY-0dte");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689", "SPY 688", "SPY 687", "SPY 686", "SPY 685", "SPY 684", "SPY 683"],
+                datasets:[{
+                    data:[0.129, 0.005, 0.095, 0.045, 0.134, 0.375, 0.191, 0.376, 0.028, 0.023, 0.393, 0.238, 0.09, 0.259, 0.379, 1.023, 1.386, 0.994, 0.854, 1.455, 4.611, 2.127, 7.06, 9.22, 7.427, 16.165, 14.468, 21.492, 58.185, 26.087, -20.832, -22.322, -87.951, -111.105, -33.111, -48.336, -35.4, -21.74, -25.443, -12.388, -62.224, -7.558, -12.982, -8.43, -5.001, -12.86, -13.961, -3.223, -3.429, -1.049, -6.131, -0.886, -1.351, -0.265, -0.539, -0.851, -0.327, -0.33, -0.874, -1.896, -1.912, -0.568, -1.297, -0.409, -0.479, -1.223, -0.903, -0.3],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPY-weekly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689", "SPY 688", "SPY 687", "SPY 686", "SPY 685", "SPY 684", "SPY 683"],
+                datasets:[{
+                    data:[0.356, 0.092, 0.106, 0.109, 0.631, 0.954, 0.288, 1.002, 0.624, 0.604, 2.54, 1.593, 2.342, 3.135, 2.631, 5.652, 3.213, 3.152, 5.634, 5.617, 18.344, 5.119, 10.859, 10.551, 22.124, 43.504, 16.128, 63.692, 19.993, 8.48, 3.099, 0.548, 45.356, -13.894, -4.088, -11.718, 20.081, -3.243, -7.742, -6.388, -22.18, -10.022, -10.001, -10.327, -16.513, 3.541, -4.743, -7.77, -8.842, -5.206, -84.557, -29.651, -5.179, -3.379, -1.982, -16.154, -5.046, -1.574, -1.332, -1.791, -7.65, -1.298, -2.24, -2.4, -1.16, -23.147, -0.516, -2.938],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPY-monthly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPY 753", "SPY 752", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689", "SPY 688", "SPY 687", "SPY 686", "SPY 685", "SPY 684", "SPY 683"],
+                datasets:[{
+                    data:[0.054, 0.202, 0.91, 77.993, 3.772, 2.205, 2.305, 1.641, 47.861, 1.781, 3.945, 5.308, 4.444, 58.875, 4.426, 4.181, 4.244, 5.736, 46.463, 14.207, 6.313, 4.498, 6.235, 81.715, 7.111, 12.199, 7.103, 8.464, 75.415, 6.827, 3.333, 5.905, 8.379, 59.356, -2.397, -1.097, 20.313, -0.722, 21.146, -0.998, 0.275, 2.517, 7.843, -39.17, -5.948, -7.453, -3.546, -2.406, -22.462, -11.526, 0.397, 0.685, -0.61, -89.053, -4.941, -4.612, -4.07, -5.355, -10.366, -2.425, -3.271, -15.097, -3.768, -76.301, -6.548, -10.437, -8.952, -10.934, -28.731, -9.969, -3.536],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPX-0dte");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPX 7550", "SPX 7525", "SPX 7520", "SPX 7510", "SPX 7500", "SPX 7490", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7460", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910", "SPX 6905", "SPX 6900", "SPX 6895", "SPX 6890", "SPX 6885", "SPX 6880", "SPX 6875", "SPX 6870", "SPX 6865", "SPX 6860", "SPX 6855", "SPX 6850", "SPX 6845"],
+                datasets:[{
+                    data:[0.049, 0.014, 0.003, 0.009, 0.063, 0.002, 0.006, 0.124, 0.025, 0.002, 0.053, 0.001, 0.003, 0.275, 0.004, 0.093, 0.018, 0.011, 2.382, 0.021, 0.39, 0.011, 0.112, 0.071, 0.198, 0.292, 0.289, 0.086, 1.039, 0.075, 6.881, 0.269, 2.206, 0.745, 0.454, 1.122, 0.643, 0.703, 1.22, 1.621, 3.372, 3.057, 7.179, 3.264, 7.678, 8.664, 10.105, 6.996, 12.043, 8.739, 15.631, 9.222, 16.75, 5.211, 6.704, 7.292, -3.44, -5.203, -17.086, -32.202, -417.281, -4.427, -3.204, -1.92, -3.379, -2.727, -1.983, -2.134, -4.306, -3.926, -5.24, -2.257, -1.543, -1.809, -1.401, -9.141, -7.258, -0.756, -0.97, -0.893, -2.369, -0.8, -0.592, -0.3, -0.568, -0.562, -0.356, -0.425, -0.333, -0.289, -0.848, -0.248, -0.348, -0.6, -0.14, -1.338, -0.358, -0.111, -0.474, -0.137, -1.196, -0.007, -0.235, -0.026, -0.108, -0.028, -0.083, -0.025, -0.038, -0.028, -0.09, -0.016, -0.157, -0.227, -0.015, -0.617, -0.042, -0.166, -0.254, -0.025, -5.411, -0.088, -0.423, -0.104, -0.108, -0.149, -0.116, -0.091, -0.094, -0.079, -0.204, -0.041],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPX-weekly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPX 7560", "SPX 7550", "SPX 7540", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7510", "SPX 7500", "SPX 7490", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7460", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910", "SPX 6905", "SPX 6900", "SPX 6895", "SPX 6890", "SPX 6885", "SPX 6880", "SPX 6875", "SPX 6870", "SPX 6865", "SPX 6860", "SPX 6855", "SPX 6850", "SPX 6845"],
+                datasets:[{
+                    data:[0.005, 0.035, 0.008, 0.006, 0.116, 0.009, 0.023, 0.662, 0.035, 0.04, 0.454, 0.07, 0.103, 1.713, 0.022, 0.215, 0.021, 0.644, 1.149, 0.847, 0.11, 1.182, 0.17, 4.331, 0.507, 2.267, 0.508, 3.573, 5.137, 2.579, 0.898, 3.599, 1.269, 17.883, 2.159, 6.854, 4.458, 5.709, 12.245, 6.327, 4.363, 12.747, 14.7, 20.935, 4.945, 13.659, 4.438, 9.78, 14.477, 10.788, 3.733, 6.755, 5.082, 11.507, -1.079, 5.4, 3.899, 4.708, 6.291, 2.063, 0.519, 1.431, 1.337, 0.417, -1.752, -1.754, -2.998, -1.379, -1.687, -5.942, -1.5, -3.328, -1.477, -13.013, -1.495, -2.943, -1.835, -2.152, -3.672, -5.452, -3.092, -2.131, -0.961, -10.708, -2.898, -3.532, -1.169, -3.248, -2.111, -3.613, -0.574, -1.269, -1.765, -3.482, -1.494, -2.685, -0.96, -1.072, -0.545, -1.989, -1.359, -3.202, -2.15, -7.824, -0.466, -0.601, -0.895, -1.246, -1.267, -0.468, -0.35, -0.502, -0.321, -0.025, -0.413, -0.708, -0.206, -0.22, -0.48, -0.375, -0.134, -0.037, -0.118, -1.192, -1.141, -0.2, -0.488, -0.647, -0.396, -0.176, -0.088, -0.086, -0.122, -0.9, -0.112],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-SPX-monthly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["SPX 7560", "SPX 7555", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910", "SPX 6905", "SPX 6900", "SPX 6895", "SPX 6890", "SPX 6885", "SPX 6880", "SPX 6875", "SPX 6870", "SPX 6865", "SPX 6860", "SPX 6855", "SPX 6850", "SPX 6845"],
+                datasets:[{
+                    data:[0.764, 0.061, 17.161, 0.195, 0.785, 0.069, 0.679, 11.068, 0.694, 0.194, 1.96, 0.246, 61.383, 0.19, 0.7, 0.129, 1.327, 15.449, 0.912, 0.376, 3.172, 0.48, 38.714, 0.451, 2.065, 0.449, 9.962, 16.597, 2.024, 0.573, 3.135, 2.646, 86.212, 0.866, 2.126, 1.524, 3.473, 23.849, 6.409, 0.955, 7.935, 1.154, 45.562, 0.973, 7.963, 1.622, 5.094, 27.031, 5.516, 3.083, 7.211, 1.782, 81.399, 1.478, 5.709, 1.179, 4.262, 15.701, 4.258, 1.885, 4.298, 1.313, 36.72, 2.528, 6.183, 2.738, 1.152, 7.993, 3.469, 0.332, 3.862, 0.063, 54.744, 0.585, 2.367, -0.048, 2.878, 7.763, -0.017, -3.664, -0.362, -4.893, 25.163, -0.337, 0.618, -0.756, 8.999, 2.22, -0.258, 0.069, -0.169, 0.236, 28.947, -0.063, 1.811, -0.18, 1.844, 3.273, -0.65, -0.228, -1.385, 0.258, -1.047, -0.504, -0.636, -0.263, -1.911, -0.391, -1.057, -0.098, -0.103, 0.295, -2.92, -0.944, -1.089, -0.125, -0.897, -1.79, -1.026, -0.913, -4.845, -0.045, -8.862, -1.163, -0.397, -0.094, -0.759, -3.79, -0.915, -0.198, -0.316, -0.757, -19.238, 1.189, -0.893, -0.106, -0.766, -0.912, -0.566, 1.045, -1.049, -0.418, -5.885, -0.796],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-QQQ-0dte");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640"],
+                datasets:[{
+                    data:[0.239, 0.025, 0.031, 0.021, 0.042, 0.284, 0.075, 0.056, 0.101, 0.075, 0.066, 0.079, 0.055, 0.064, 0.176, 0.463, 0.401, 0.444, 0.411, 0.417, 2.19, 1.552, 2.218, 10.221, 2.952, 34.037, 9.962, 5.889, 9.55, 5.855, 17.933, 9.722, 17.629, -67.184, -13.148, -40.756, -15.863, -15.9, -7.03, -5.835, -7.952, -4.613, -6.362, -9.742, -8.17, -8.39, -2.413, -2.09, -4.259, -1.883, -2.235, -0.501, -0.467, -0.825, -0.458, -6.451, -0.593, -0.876, -0.398, -0.493, -1.887, -0.572, -0.325, -0.353, -1.042, -1.406],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-QQQ-weekly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["QQQ 705", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640"],
+                datasets:[{
+                    data:[0.489, 1.062, 0.255, 0.184, 0.304, 0.62, 2.125, 0.844, 2.152, 1.052, 1.86, 6.525, 1.322, 2.806, 3.062, 2.337, 11.566, 2.878, 10.893, 6.057, 3.382, 22.462, 7.044, 13.58, 0.662, 10.785, 48.771, 13.466, -1.992, 2.571, -1.147, -1.491, -0.498, -2.734, 0.606, 3.08, -1.683, -3.278, -2.651, -2.907, -3.189, -2.79, -2.462, -0.7, -2.83, -4.578, -0.623, -5.898, -2.556, -0.913, -2.208, -6.656, -1.374, -2.32, -1.077, -1.155, -36.284, -0.767, -0.593, -0.436, -0.348, -4.353],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-QQQ-monthly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648", "QQQ 647", "QQQ 646", "QQQ 645", "QQQ 644", "QQQ 643", "QQQ 642", "QQQ 641", "QQQ 640"],
+                datasets:[{
+                    data:[13.42, 0.0, 0.0, 0.001, 0.0, 44.953, 1.466, 0.856, 1.13, 1.169, 36.997, 1.109, 1.204, 1.704, 1.885, 48.827, 1.102, 6.382, 1.369, 0.789, 39.546, 2.393, 2.823, 4.204, 1.934, 56.417, 2.587, 3.988, 3.071, 4.935, 50.204, -2.477, -0.616, 2.829, 0.593, 28.435, 0.657, 0.595, -0.453, 0.278, 11.164, -3.832, 0.343, -1.351, -0.939, 30.168, -0.085, -1.332, 0.757, -2.747, 21.646, -0.871, -1.854, -2.116, -1.377, 0.002, -0.964, -0.602, -0.628, -0.114, -11.661, -0.302, -0.392, -0.501, -0.319, -19.949],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-USO-weekly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["USO 154", "USO 153", "USO 152.5", "USO 152", "USO 151", "USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
+                datasets:[{
+                    data:[1.298, 0.613, 0.116, 0.555, 0.673, 2.788, 0.253, 0.196, 0.47, 1.481, 1.249, -0.014, 1.081, 0.245, -0.249],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-USO-monthly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["USO 154", "USO 153", "USO 152.5", "USO 152", "USO 151", "USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141"],
+                datasets:[{
+                    data:[0.222, 0.127, -0.0, 0.047, 0.059, 3.263, 0.162, 4.398, 0.003, 0.088, 3.877, 0.203, 0.005, 0.061, 0.16],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-GLD-0dte");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400", "GLD 399", "GLD 398", "GLD 397", "GLD 396", "GLD 395", "GLD 394"],
+                datasets:[{
+                    data:[0.176, 0.069, 0.061, 0.17, 0.286, 0.416, 0.117, 0.319, 0.355, 0.122, 0.248, 0.036, 0.141, 0.115, 0.001, -0.008, 0.039, -0.136, -0.874, -0.81, -7.095, -4.659, -0.318, -0.507, -0.073, -0.279, -0.013, -0.007, -0.019, -0.01, -0.057, -0.007, -0.004, -0.002, -0.002, -0.019, -0.0, 0.008, 0.0, -0.0, -0.001, -0.0],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-GLD-weekly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400", "GLD 395"],
+                datasets:[{
+                    data:[0.508, 0.358, 0.501, 0.475, 0.543, 1.724, -1.375, 0.995, 0.798, 2.744, 7.006, 1.736, 2.363, 2.158, 1.926, 1.623, -2.591, 0.019, -0.701, 0.571, -2.42, -1.578, -0.719, -1.047, -0.668, -4.363, -0.385, -0.811, -0.377, -0.48, -1.588, -0.469, -0.316, -0.178, -0.19, -1.16, -0.225],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+
+    (function(){
+        var ctx = document.getElementById("hc-2026-05-05-GLD-monthly");
+        if (!ctx) return;
+        new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:["GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400", "GLD 399", "GLD 398", "GLD 397", "GLD 396", "GLD 395", "GLD 394"],
+                datasets:[{
+                    data:[6.639, 0.552, 0.052, -0.169, -0.418, 0.698, 0.405, -0.054, -0.025, 1.027, 1.663, 0.04, 0.687, -0.408, 1.024, 12.875, -0.088, 0.228, 0.174, 1.002, -13.443, -0.424, 0.254, -0.205, -0.022, -19.52, -0.427, 0.291, -0.403, -0.434, -4.222, -0.787, -0.221, -0.165, -0.25, -17.13, -0.047, -0.026, -0.023, -0.001, -6.131, -0.085],
+                    backgroundColor:['#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
+                    borderWidth:0,
+                    barThickness:20
+                }]
+            },
+            options:{
+                indexAxis:'y',
+                responsive:true,maintainAspectRatio:false,
+                plugins:{legend:{display:false},
+                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.07)'},
+                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
+                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                    y:{grid:{color:'rgba(255,255,255,0.04)'},
+                        ticks:{color:'#e0e0e0',font:{size:11}}}
+                }
+            }
+        });
+    })();
+});
+</script>
+</body>
+</html>

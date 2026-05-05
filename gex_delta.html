@@ -188,7 +188,7 @@
     <div class="header">
         <h1>Options Exposure — GEX / DEX / Greeks</h1>
         <div class="subtitle">Real-time snapshots every 5 min &nbsp;|&nbsp; Massive API (CBOE fallback)&nbsp;|&nbsp; <a href="gex_history.html" style="color:#74b9ff;text-decoration:none">📅 GEX History</a></div>
-        <div class="subtitle">Current: <b>2026-05-05 05:57</b> &nbsp;|&nbsp; Previous: <b>2026-05-05 03:28</b></div>
+        <div class="subtitle">Current: <b>2026-05-05 06:43</b> &nbsp;|&nbsp; Previous: <b>2026-05-05 05:57</b></div>
     </div>
 
     <div class="tabs">
@@ -221,7 +221,7 @@
 
     <div class="footer">
         Data: Massive API (real-time Greeks) with CBOE fallback (delayed) &nbsp;|&nbsp;
-        Prices: Yahoo Finance &nbsp;|&nbsp; Generated: 2026-05-05 05:57
+        Prices: Yahoo Finance &nbsp;|&nbsp; Generated: 2026-05-05 06:43
         &nbsp;|&nbsp; Next update in: <span id="refresh-countdown">5:00</span>
     </div>
 </div>
@@ -313,8 +313,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [1.817, 0.729, 6.742, 1.069, 4.298, 8.254, 9.319, 19.024, 13.934, 15.633, 61.666, 25.103, 23.215, 3.849, 22.933, -24.104, -23.055, -35.721, -30.258, -21.062, -9.639, -7.597, -62.037, -2.735, -11.441, -9.102, -4.185, -16.132, -3.845],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -368,8 +368,8 @@
         id: 'dotTrail_chart_SPY_gex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [1.771,0.648,6.333,0.832,2.591,7.696,8.441,18.304,13.257,14.508,59.718,25.63,39.266,28.767,-4.675,-30.235,-15.11,-26.186,-27.889,-20.252,-8.432,-7.193,-49.703,-0.991,-8.772,-8.185,-3.194,-15.021,-2.819];
-            var p2v = [-0.566,-0.645,-2.619,-0.956,-4.278,-1.845,-2.733,-3.576,-2.162,-5.495,-5.607,-1.014,45.062,49.392,-24.369,-27.815,3.458,5.236,1.495,0.404,0.127,-0.024,10.181,1.122,2.127,0.56,0.502,0.954,0.669];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [1.817,0.729,6.742,1.069,4.298,8.254,9.319,19.024,13.934,15.633,61.666,25.103,23.215,3.849,22.933,-24.104,-23.055,-35.721,-30.258,-21.062,-9.639,-7.597,-62.037,-2.735,-11.441,-9.102,-4.185,-16.132,-3.845];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -398,8 +398,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [1.252, 0.084, 4.124, 0.112, 0.02, 6.409, 6.586, 15.448, 11.771, 10.138, 56.059, 24.088, 68.277, 53.24, -1.437, -51.919, -19.598, -30.485, -28.764, -20.658, -9.512, -7.621, -51.856, -1.613, -9.315, -8.542, -3.683, -15.178, -3.176],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [1.817, 0.729, 6.742, 1.069, 4.298, 8.254, 9.319, 19.024, 13.934, 15.633, 61.666, 25.103, 23.215, 3.849, 22.933, -24.104, -23.055, -35.721, -30.258, -21.062, -9.639, -7.597, -62.037, -2.735, -11.441, -9.102, -4.185, -16.132, -3.845],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -453,8 +453,8 @@
         id: 'dotTrail_chart_SPY_gex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [1.361,0.198,4.744,0.291,1.026,6.698,7.224,16.543,12.323,11.566,56.34,24.264,72.325,52.562,-18.054,-56.599,-18.622,-27.229,-27.528,-20.509,-9.719,-7.623,-52.763,-1.695,-9.426,-8.448,-3.635,-15.066,-2.25];
-            var p2v = [-0.629,-0.756,-2.718,-0.957,-3.823,-1.799,-2.604,-3.44,-2.073,-5.562,-6.456,-1.303,60.039,55.425,-47.094,-37.699,2.613,5.493,2.043,0.356,-0.518,-0.298,8.342,0.709,1.595,0.341,0.234,0.707,0.489];
+            var pv  = [1.771,0.648,6.333,0.832,2.591,7.696,8.441,18.304,13.257,14.508,59.718,25.63,39.266,28.767,-4.675,-30.235,-15.11,-26.186,-27.889,-20.252,-8.432,-7.193,-49.703,-0.991,-8.772,-8.185,-3.194,-15.021,-2.819];
+            var p2v = [1.252,0.084,4.124,0.112,0.02,6.409,6.586,15.448,11.771,10.138,56.059,24.088,68.277,53.24,-1.437,-51.919,-19.598,-30.485,-28.764,-20.658,-9.512,-7.621,-51.856,-1.613,-9.315,-8.542,-3.683,-15.178,-3.176];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -483,8 +483,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [1.189, -0.026, 4.024, 0.112, 0.476, 6.455, 6.715, 15.583, 11.861, 10.071, 55.21, 23.799, 83.254, 59.274, -24.162, -61.803, -20.442, -30.228, -28.215, -20.706, -10.157, -7.895, -53.694, -2.026, -9.846, -8.761, -3.951, -15.424, -3.356],
-                backgroundColor: ['#00b894', '#e17055', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [1.252, 0.084, 4.124, 0.112, 0.02, 6.409, 6.586, 15.448, 11.771, 10.138, 56.059, 24.088, 68.277, 53.24, -1.437, -51.919, -19.598, -30.485, -28.764, -20.658, -9.512, -7.621, -51.856, -1.613, -9.315, -8.542, -3.683, -15.178, -3.176],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -538,8 +538,8 @@
         id: 'dotTrail_chart_SPY_gex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [1.077,-0.183,3.312,-0.121,-0.432,6.107,6.107,14.879,11.446,9.129,54.348,23.525,90.185,63.418,-25.723,-64.529,-21.306,-31.28,-28.261,-20.849,-10.555,-8.04,-54.643,-2.281,-10.081,-8.88,-4.184,-15.373,-3.545];
-            var p2v = [-0.487,-0.516,-1.233,-0.667,-3.055,-1.182,-1.463,-0.882,-1.13,-1.733,-3.309,0.215,31.481,35.095,-52.286,-32.512,8.016,17.856,6.413,2.264,2.165,0.478,11.523,1.543,2.402,0.857,0.939,1.066,2.179];
+            var pv  = [1.361,0.198,4.744,0.291,1.026,6.698,7.224,16.543,12.323,11.566,56.34,24.264,72.325,52.562,-18.054,-56.599,-18.622,-27.229,-27.528,-20.509,-9.719,-7.623,-52.763,-1.695,-9.426,-8.448,-3.635,-15.066,-2.25];
+            var p2v = [1.189,-0.026,4.024,0.112,0.476,6.455,6.715,15.583,11.861,10.071,55.21,23.799,83.254,59.274,-24.162,-61.803,-20.442,-30.228,-28.215,-20.706,-10.157,-7.895,-53.694,-2.026,-9.846,-8.761,-3.951,-15.424,-3.356];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -624,7 +624,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [10.986,13.307,104.67,14.357,30.118,26.874,38.014,135.083,37.423,88.517,84.082,42.946,41.623,-24.171,-43.692,-104.686,-37.921,-38.908,-16.317,-24.708,-30.668,-10.934,-123.573,-23.529,-30.435,-22.304,-23.92,-31.781,-30.23];
-            var p2v = [9.168,12.578,97.927,13.288,25.82,18.62,28.695,116.06,23.489,72.884,22.416,17.843,18.408,-28.019,-66.625,-80.582,-14.866,-3.188,13.941,-3.646,-21.029,-3.337,-61.537,-20.794,-18.994,-13.202,-19.736,-15.649,-26.384];
+            var p2v = [10.986,13.307,104.67,14.357,30.118,26.874,38.014,135.083,37.423,88.517,84.082,42.946,41.623,-24.171,-43.692,-104.686,-37.921,-38.908,-16.317,-24.708,-30.668,-10.934,-123.573,-23.529,-30.435,-22.304,-23.92,-31.781,-30.23];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -650,177 +650,177 @@
 
     new Chart(document.getElementById("chart-SPY-gex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"732",data:[9.168, 10.986, 10.986],
+            label:"732",data:[9.168, 10.986, 10.986, 10.986, 10.986],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[12.578, 13.307, 13.307],
+            label:"731",data:[12.578, 13.307, 13.307, 13.307, 13.307],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[97.927, 104.67, 104.67],
+            label:"730",data:[97.927, 104.67, 104.67, 104.67, 104.67],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[13.288, 14.357, 14.357],
+            label:"729",data:[13.288, 14.357, 14.357, 14.357, 14.357],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[25.82, 30.118, 30.118],
+            label:"728",data:[25.82, 30.118, 30.118, 30.118, 30.118],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[18.62, 26.874, 26.874],
+            label:"727",data:[18.62, 26.874, 26.874, 26.874, 26.874],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[28.695, 38.014, 38.014],
+            label:"726",data:[28.695, 38.014, 38.014, 38.014, 38.014],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[116.06, 135.083, 135.083],
+            label:"725",data:[116.06, 135.083, 135.083, 135.083, 135.083],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[23.489, 37.423, 37.423],
+            label:"724",data:[23.489, 37.423, 37.423, 37.423, 37.423],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[72.884, 88.517, 88.517],
+            label:"723",data:[72.884, 88.517, 88.517, 88.517, 88.517],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[22.416, 84.082, 84.082],
+            label:"722",data:[22.416, 84.082, 84.082, 84.082, 84.082],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[17.843, 42.946, 42.946],
+            label:"721",data:[17.843, 42.946, 42.946, 42.946, 42.946],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[18.408, 41.623, 41.623],
+            label:"720",data:[18.408, 41.623, 41.623, 41.623, 41.623],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[-28.019, -24.171, -24.171],
+            label:"719",data:[-28.019, -24.171, -24.171, -24.171, -24.171],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[-66.625, -43.692, -43.692],
+            label:"718",data:[-66.625, -43.692, -43.692, -43.692, -43.692],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[-80.582, -104.686, -104.686],
+            label:"717",data:[-80.582, -104.686, -104.686, -104.686, -104.686],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[-14.866, -37.921, -37.921],
+            label:"716",data:[-14.866, -37.921, -37.921, -37.921, -37.921],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[-3.188, -38.908, -38.908],
+            label:"715",data:[-3.188, -38.908, -38.908, -38.908, -38.908],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[13.941, -16.317, -16.317],
+            label:"714",data:[13.941, -16.317, -16.317, -16.317, -16.317],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[-3.646, -24.708, -24.708],
+            label:"713",data:[-3.646, -24.708, -24.708, -24.708, -24.708],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-21.029, -30.668, -30.668],
+            label:"712",data:[-21.029, -30.668, -30.668, -30.668, -30.668],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[-3.337, -10.934, -10.934],
+            label:"711",data:[-3.337, -10.934, -10.934, -10.934, -10.934],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[-61.537, -123.573, -123.573],
+            label:"710",data:[-61.537, -123.573, -123.573, -123.573, -123.573],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[-20.794, -23.529, -23.529],
+            label:"709",data:[-20.794, -23.529, -23.529, -23.529, -23.529],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[-18.994, -30.435, -30.435],
+            label:"708",data:[-18.994, -30.435, -30.435, -30.435, -30.435],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[-13.202, -22.304, -22.304],
+            label:"707",data:[-13.202, -22.304, -22.304, -22.304, -22.304],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[-19.736, -23.92, -23.92],
+            label:"706",data:[-19.736, -23.92, -23.92, -23.92, -23.92],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[-15.649, -31.781, -31.781],
+            label:"705",data:[-15.649, -31.781, -31.781, -31.781, -31.781],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-26.384, -30.23, -30.23],
+            label:"704",data:[-26.384, -30.23, -30.23, -30.23, -30.23],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -960,8 +960,8 @@
         id: 'dotTrail_chart_SPY_gex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [116.06,23.489,72.884,22.416,17.843,18.408,-28.019,-66.625,-80.582,-14.866,-3.188,13.941,-3.646,-21.029,-3.337];
-            var p2v = [119.636,25.652,78.379,28.023,18.858,-26.654,-77.411,-42.256,-52.767,-18.324,-8.423,12.446,-4.05,-21.156,-3.313];
+            var pv  = [135.083,37.423,88.517,84.082,42.946,41.623,-24.171,-43.692,-104.686,-37.921,-38.908,-16.317,-24.708,-30.668,-10.934];
+            var p2v = [116.06,23.489,72.884,22.416,17.843,18.408,-28.019,-66.625,-80.582,-14.866,-3.188,13.941,-3.646,-21.029,-3.337];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -990,8 +990,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [-0.005, -0.035, -0.015, -0.107, 0.003, -0.001, 0.075, 0.022, 0.108, 0.095, 0.382, 0.087, 0.096, -0.058, 0.266, 0.005, -0.168, -0.359, -0.158, -0.133, 0.039, -0.003, -0.628, 0.12, -0.08, 0.007, 0.017, -0.15, -0.058],
-                backgroundColor: ['#f72585', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#f72585', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#f72585', '#f72585'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1045,8 +1045,8 @@
         id: 'dotTrail_chart_SPY_dex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.009,-0.032,-0.043,-0.106,0.051,-0.006,0.11,0.236,0.589,0.411,0.376,0.091,0.08,-0.054,0.254,0.009,-0.167,-0.351,-0.009,-0.117,0.04,0.139,-0.397,0.214,-0.03,0.024,0.08,0.108,0.023];
-            var p2v = [0.035,0.03,0.079,0.07,0.124,0.084,0.069,0.328,0.537,0.416,0.083,0.794,0.058,0.028,0.034,0.048,0.02,0.068,0.049,0.03,0.185,0.038,0.272,0.033,0.01,0.067,0.098,0.289,0.092];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [-0.005,-0.035,-0.015,-0.107,0.003,-0.001,0.075,0.022,0.108,0.095,0.382,0.087,0.096,-0.058,0.266,0.005,-0.168,-0.359,-0.158,-0.133,0.039,-0.003,-0.628,0.12,-0.08,0.007,0.017,-0.15,-0.058];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1075,8 +1075,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [0.031, -0.006, 0.065, -0.037, 0.126, 0.084, 0.144, 0.35, 0.645, 0.511, 0.465, 0.881, 0.154, -0.029, 0.3, 0.053, -0.149, -0.291, -0.109, -0.103, 0.224, 0.035, -0.356, 0.153, -0.07, 0.075, 0.114, 0.139, 0.035],
-                backgroundColor: ['#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [-0.005, -0.035, -0.015, -0.107, 0.003, -0.001, 0.075, 0.022, 0.108, 0.095, 0.382, 0.087, 0.096, -0.058, 0.266, 0.005, -0.168, -0.359, -0.158, -0.133, 0.039, -0.003, -0.628, 0.12, -0.08, 0.007, 0.017, -0.15, -0.058],
+                backgroundColor: ['#f72585', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#f72585', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#f72585', '#f72585'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1130,8 +1130,8 @@
         id: 'dotTrail_chart_SPY_dex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.043,0.005,0.098,-0.026,0.171,0.101,0.217,0.366,0.679,0.54,0.5,0.939,0.194,-0.015,0.319,0.076,-0.14,-0.269,-0.105,-0.101,0.048,0.042,-0.564,0.152,-0.079,0.074,0.116,0.165,0.043];
-            var p2v = [0.055,0.047,0.124,0.089,0.212,0.111,0.114,0.355,0.605,0.469,0.152,0.866,0.091,0.03,0.032,0.05,0.013,0.047,0.161,0.08,0.157,0.146,0.174,0.082,0.017,0.054,0.084,0.276,0.081];
+            var pv  = [0.009,-0.032,-0.043,-0.106,0.051,-0.006,0.11,0.236,0.589,0.411,0.376,0.091,0.08,-0.054,0.254,0.009,-0.167,-0.351,-0.009,-0.117,0.04,0.139,-0.397,0.214,-0.03,0.024,0.08,0.108,0.023];
+            var p2v = [0.031,-0.006,0.065,-0.037,0.126,0.084,0.144,0.35,0.645,0.511,0.465,0.881,0.154,-0.029,0.3,0.053,-0.149,-0.291,-0.109,-0.103,0.224,0.035,-0.356,0.153,-0.07,0.075,0.114,0.139,0.035];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1160,8 +1160,8 @@
         data: {
             labels: ["SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704"],
             datasets: [{
-                data: [0.05, 0.011, 0.109, -0.018, 0.214, 0.111, 0.188, 0.377, 0.712, 0.565, 0.534, 0.952, 0.187, -0.028, 0.298, 0.055, -0.155, -0.313, 0.003, -0.053, 0.196, 0.143, -0.454, 0.203, -0.062, 0.061, 0.101, 0.127, 0.023],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#f72585', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [0.031, -0.006, 0.065, -0.037, 0.126, 0.084, 0.144, 0.35, 0.645, 0.511, 0.465, 0.881, 0.154, -0.029, 0.3, 0.053, -0.149, -0.291, -0.109, -0.103, 0.224, 0.035, -0.356, 0.153, -0.07, 0.075, 0.114, 0.139, 0.035],
+                backgroundColor: ['#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1215,8 +1215,8 @@
         id: 'dotTrail_chart_SPY_dex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.049,0.013,0.108,-0.016,0.226,0.116,0.236,0.383,0.731,0.565,0.531,0.964,0.177,-0.035,0.285,0.045,-0.16,-0.326,-0.138,-0.124,0.186,0.01,-0.491,0.122,-0.112,0.057,0.08,0.112,0.049];
-            var p2v = [0.052,0.042,0.089,0.086,0.155,0.09,0.129,0.323,0.617,0.442,0.149,0.874,0.054,0.009,-0.003,0.018,-0.005,-0.008,-0.001,-0.004,-0.059,-0.008,0.076,-0.015,-0.013,0.04,0.036,0.209,0.065];
+            var pv  = [0.043,0.005,0.098,-0.026,0.171,0.101,0.217,0.366,0.679,0.54,0.5,0.939,0.194,-0.015,0.319,0.076,-0.14,-0.269,-0.105,-0.101,0.048,0.042,-0.564,0.152,-0.079,0.074,0.116,0.165,0.043];
+            var p2v = [0.05,0.011,0.109,-0.018,0.214,0.111,0.188,0.377,0.712,0.565,0.534,0.952,0.187,-0.028,0.298,0.055,-0.155,-0.313,0.003,-0.053,0.196,0.143,-0.454,0.203,-0.062,0.061,0.101,0.127,0.023];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1301,7 +1301,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [0.23,0.255,4.82,0.225,1.022,0.363,0.653,4.619,0.667,1.003,0.383,0.853,3.584,-0.381,1.067,0.828,0.081,3.111,0.884,0.313,0.299,0.925,0.626,0.122,-0.211,0.044,-0.002,3.345,-0.15];
-            var p2v = [0.234,0.29,4.835,0.332,1.019,0.364,0.578,4.597,0.559,0.908,0.001,0.766,3.489,-0.324,0.801,0.823,0.249,3.471,1.042,0.446,0.26,0.928,1.254,0.002,-0.131,0.036,-0.018,3.495,-0.092];
+            var p2v = [0.23,0.255,4.82,0.225,1.022,0.363,0.653,4.619,0.667,1.003,0.383,0.853,3.584,-0.381,1.067,0.828,0.081,3.111,0.884,0.313,0.299,0.925,0.626,0.122,-0.211,0.044,-0.002,3.345,-0.15];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1327,177 +1327,177 @@
 
     new Chart(document.getElementById("chart-SPY-dex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"732",data:[0.234, 0.23, 0.23],
+            label:"732",data:[0.234, 0.23, 0.23, 0.23, 0.23],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[0.29, 0.255, 0.255],
+            label:"731",data:[0.29, 0.255, 0.255, 0.255, 0.255],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[4.835, 4.82, 4.82],
+            label:"730",data:[4.835, 4.82, 4.82, 4.82, 4.82],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[0.332, 0.225, 0.225],
+            label:"729",data:[0.332, 0.225, 0.225, 0.225, 0.225],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[1.019, 1.022, 1.022],
+            label:"728",data:[1.019, 1.022, 1.022, 1.022, 1.022],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[0.364, 0.363, 0.363],
+            label:"727",data:[0.364, 0.363, 0.363, 0.363, 0.363],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[0.578, 0.653, 0.653],
+            label:"726",data:[0.578, 0.653, 0.653, 0.653, 0.653],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[4.597, 4.619, 4.619],
+            label:"725",data:[4.597, 4.619, 4.619, 4.619, 4.619],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[0.559, 0.667, 0.667],
+            label:"724",data:[0.559, 0.667, 0.667, 0.667, 0.667],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[0.908, 1.003, 1.003],
+            label:"723",data:[0.908, 1.003, 1.003, 1.003, 1.003],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[0.001, 0.383, 0.383],
+            label:"722",data:[0.001, 0.383, 0.383, 0.383, 0.383],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[0.766, 0.853, 0.853],
+            label:"721",data:[0.766, 0.853, 0.853, 0.853, 0.853],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[3.489, 3.584, 3.584],
+            label:"720",data:[3.489, 3.584, 3.584, 3.584, 3.584],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[-0.324, -0.381, -0.381],
+            label:"719",data:[-0.324, -0.381, -0.381, -0.381, -0.381],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[0.801, 1.067, 1.067],
+            label:"718",data:[0.801, 1.067, 1.067, 1.067, 1.067],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[0.823, 0.828, 0.828],
+            label:"717",data:[0.823, 0.828, 0.828, 0.828, 0.828],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[0.249, 0.081, 0.081],
+            label:"716",data:[0.249, 0.081, 0.081, 0.081, 0.081],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[3.471, 3.111, 3.111],
+            label:"715",data:[3.471, 3.111, 3.111, 3.111, 3.111],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[1.042, 0.884, 0.884],
+            label:"714",data:[1.042, 0.884, 0.884, 0.884, 0.884],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[0.446, 0.313, 0.313],
+            label:"713",data:[0.446, 0.313, 0.313, 0.313, 0.313],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[0.26, 0.299, 0.299],
+            label:"712",data:[0.26, 0.299, 0.299, 0.299, 0.299],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[0.928, 0.925, 0.925],
+            label:"711",data:[0.928, 0.925, 0.925, 0.925, 0.925],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[1.254, 0.626, 0.626],
+            label:"710",data:[1.254, 0.626, 0.626, 0.626, 0.626],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[0.002, 0.122, 0.122],
+            label:"709",data:[0.002, 0.122, 0.122, 0.122, 0.122],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[-0.131, -0.211, -0.211],
+            label:"708",data:[-0.131, -0.211, -0.211, -0.211, -0.211],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[0.036, 0.044, 0.044],
+            label:"707",data:[0.036, 0.044, 0.044, 0.044, 0.044],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[-0.018, -0.002, -0.002],
+            label:"706",data:[-0.018, -0.002, -0.002, -0.002, -0.002],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[3.495, 3.345, 3.345],
+            label:"705",data:[3.495, 3.345, 3.345, 3.345, 3.345],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-0.092, -0.15, -0.15],
+            label:"704",data:[-0.092, -0.15, -0.15, -0.15, -0.15],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1637,8 +1637,8 @@
         id: 'dotTrail_chart_SPY_dex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [4.597,0.559,0.908,0.001,0.766,3.489,-0.324,0.801,0.823,0.249,3.471,1.042,0.446,0.26,0.928];
-            var p2v = [4.269,0.022,0.493,-0.082,-0.028,3.43,-0.352,0.767,0.775,0.23,3.402,0.993,0.416,0.075,0.89];
+            var pv  = [4.619,0.667,1.003,0.383,0.853,3.584,-0.381,1.067,0.828,0.081,3.111,0.884,0.313,0.299,0.925];
+            var p2v = [4.597,0.559,0.908,0.001,0.766,3.489,-0.324,0.801,0.823,0.249,3.471,1.042,0.446,0.26,0.928];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1765,8 +1765,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [-0.08, 0.189, 0.445, 0.946, 0.518, 0.334, 0.79, 0.951, 2.618, 0.482, 1.367, 0.46, 1.202, 1.404, 1.384, 0.858, 1.647, 1.306, 3.154, 0.967, 2.126, 0.708, 0.724, 0.837, 0.301, 0.125, 0.076, 0.06, 0.002, 0.066, 0.124, 0.061, 0.218, 0.36, 0.196, 0.309, 0.889, 0.693, 1.992, 0.563, 0.558, 0.57, 0.516, 3.662, 2.631, 0.348, 0.503, 0.483, 1.157, 0.394, 0.333, 0.194, 0.48, 0.425, 0.197, 0.159, 0.124],
-                backgroundColor: ['#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894'],
+                data: [-0.058, -0.214, 0.097, 0.125, 0.014, -0.006, -0.034, 0.013, 0.188, 0.002, -0.242, -0.086, 0.144, 0.505, 0.315, 0.223, 0.489, 0.279, 0.382, 0.3, 0.584, 0.163, 0.247, 0.089, 0.108, 0.045, 0.07, 0.026, 0.16, -0.068, 0.032, -0.042, 0.065, 0.055, 0.086, -0.063, 0.136, 0.276, 0.919, 0.205, 0.066, 0.234, 0.187, 0.806, 1.241, 0.152, 0.108, 0.109, 0.662, 0.131, 0.245, 0.06, 0.114, 0.088, 0.205, 0.106, 0.083],
+                backgroundColor: ['#e17055', '#e17055', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#f72585', '#f72585', '#f72585', '#e17055', '#e17055', '#f72585', '#f72585', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#f72585', '#e17055', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#f72585', '#00b894', '#f72585', '#00b894', '#f72585', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1820,8 +1820,8 @@
         id: 'dotTrail_chart_SPX_gex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [3.495,3.212,2.931,7.735,3.468,3.528,6.397,9.609,16.665,4.808,9.59,5.371,9.074,12.691,12.577,8.949,15.369,8.302,17.932,9.539,16.049,4.978,5.538,5.696,-7.046,-8.425,-12.92,-23.591,-356.066,38.302,27.732,2.862,2.58,2.814,0.168,-2.185,-6.852,-8.395,-13.63,-1.831,-0.895,-0.656,-2.819,-11.916,-7.3,-2.185,0.345,-0.8,-10.573,-0.237,-2.383,-0.271,-1.737,-0.516,-1.732,0.397,0.1];
-            var p2v = [5.016,3.552,3.505,7.883,2.519,2.951,5.352,8.632,12.931,4.474,8.4,5.078,8.08,11.118,11.541,8.211,13.94,7.082,15.034,8.687,14.004,4.268,4.829,5.102,-7.222,-11.647,-10.427,-17.281,-379.015,18.739,24.339,3.347,2.629,5.318,0.733,-1.862,-6.763,-8.963,-16.323,-2.398,-1.277,-1.367,-2.759,-15.11,-9.988,-2.57,-0.129,-1.305,-12.008,-0.515,-2.908,-0.379,-2.085,-1.181,-2.417,-0.438,-0.44];
+            var pv  = [0.0,0.0,-0.101,0.068,0.007,-0.179,-0.105,-0.125,-0.047,-0.029,-0.012,-0.076,-0.18,-0.213,0.138,-0.055,-0.075,0.028,0.285,-0.068,0.177,0.052,0.062,-0.236,0.056,0.023,0.018,0.016,0.16,-0.017,-0.016,-0.031,-0.083,-0.035,-0.07,0.001,0.017,-0.019,-0.264,0.0,0.001,-0.106,0.0,-0.008,0.0,-0.108,0.0,-0.123,-0.175,-0.001,-0.002,0.0,0.0,-0.153,-0.006,-0.007,0.025];
+            var p2v = [-0.08,0.189,0.445,0.946,0.518,0.334,0.79,0.951,2.618,0.482,1.367,0.46,1.202,1.404,1.384,0.858,1.647,1.306,3.154,0.967,2.126,0.708,0.724,0.837,0.301,0.125,0.076,0.06,0.002,0.066,0.124,0.061,0.218,0.36,0.196,0.309,0.889,0.693,1.992,0.563,0.558,0.57,0.516,3.662,2.631,0.348,0.503,0.483,1.157,0.394,0.333,0.194,0.48,0.425,0.197,0.159,0.124];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1850,8 +1850,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [4.935, 3.741, 3.95, 8.828, 3.037, 3.284, 6.142, 9.583, 15.548, 4.956, 9.766, 5.539, 9.282, 12.522, 12.925, 9.069, 15.587, 8.388, 18.188, 9.653, 16.13, 4.976, 5.553, 5.939, -6.921, -11.523, -10.351, -17.22, -379.012, 18.805, 24.463, 3.408, 2.847, 5.677, 0.929, -1.553, -5.874, -8.27, -14.331, -1.835, -0.719, -0.797, -2.244, -11.449, -7.357, -2.221, 0.374, -0.822, -10.85, -0.12, -2.575, -0.185, -1.605, -0.756, -2.221, -0.279, -0.316],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [-0.138, -0.025, 0.542, 1.071, 0.532, 0.328, 0.755, 0.963, 2.806, 0.484, 1.125, 0.374, 1.346, 1.909, 1.698, 1.081, 2.136, 1.585, 3.536, 1.267, 2.71, 0.871, 0.971, 0.926, 0.41, 0.17, 0.146, 0.087, 0.163, -0.002, 0.156, 0.019, 0.283, 0.415, 0.282, 0.246, 1.025, 0.969, 2.911, 0.768, 0.625, 0.804, 0.702, 4.468, 3.872, 0.5, 0.61, 0.592, 1.82, 0.525, 0.578, 0.254, 0.594, 0.512, 0.402, 0.266, 0.207],
+                backgroundColor: ['#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1905,8 +1905,8 @@
         id: 'dotTrail_chart_SPX_gex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [4.652,3.531,3.73,8.333,2.874,3.157,5.683,9.292,15.79,4.592,9.31,5.279,8.754,12.251,12.319,8.842,15.199,7.975,17.599,9.606,15.902,4.834,5.755,6.511,-6.451,-12.871,-10.044,-19.706,-389.59,14.481,27.213,5.245,5.897,12.808,2.445,-1.162,-5.449,-8.283,-11.47,-1.509,-0.665,-0.531,-1.948,-12.143,-7.353,-2.252,0.212,-0.842,-10.768,-0.232,-2.561,-0.278,-1.759,-0.823,-2.2,-0.3,-0.333];
-            var p2v = [4.645,3.443,3.225,7.06,2.422,2.81,5.054,8.235,12.642,4.402,8.315,5.006,7.71,11.042,11.419,7.983,13.69,6.741,14.96,8.793,13.871,4.008,5.189,6.035,-6.425,-15.049,-9.794,-20.928,-393.879,11.522,23.39,4.53,4.902,11.175,1.889,-1.385,-6.271,-8.863,-13.628,-2.121,-1.152,-1.158,-2.358,-14.462,-10.0,-2.586,-0.272,-1.347,-11.272,-0.661,-2.903,-0.423,-2.089,-1.049,-2.449,-0.442,-0.44];
+            var pv  = [3.495,3.212,2.83,7.802,3.475,3.349,6.292,9.484,16.619,4.779,9.577,5.296,8.895,12.477,12.715,8.894,15.294,8.33,18.217,9.472,16.227,5.03,5.6,5.46,-6.99,-8.401,-12.902,-23.575,-355.906,38.285,27.717,2.831,2.497,2.779,0.099,-2.184,-6.835,-8.414,-13.894,-1.831,-0.894,-0.763,-2.819,-11.924,-7.3,-2.293,0.345,-0.923,-10.748,-0.238,-2.386,-0.271,-1.737,-0.669,-1.738,0.39,0.125];
+            var p2v = [4.935,3.741,3.95,8.828,3.037,3.284,6.142,9.583,15.548,4.956,9.766,5.539,9.282,12.522,12.925,9.069,15.587,8.388,18.188,9.653,16.13,4.976,5.553,5.939,-6.921,-11.523,-10.351,-17.22,-379.012,18.805,24.463,3.408,2.847,5.677,0.929,-1.553,-5.874,-8.27,-14.331,-1.835,-0.719,-0.797,-2.244,-11.449,-7.357,-2.221,0.374,-0.822,-10.85,-0.12,-2.575,-0.185,-1.605,-0.756,-2.221,-0.279,-0.316];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -1935,8 +1935,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [4.565, 3.632, 3.67, 8.006, 2.939, 3.144, 5.844, 9.186, 15.259, 4.884, 9.682, 5.466, 8.912, 12.445, 12.803, 8.841, 15.336, 8.047, 18.114, 9.76, 15.998, 4.716, 5.913, 6.872, -6.123, -14.925, -9.718, -20.868, -393.876, 11.588, 23.513, 4.591, 5.12, 11.535, 2.085, -1.076, -5.382, -8.17, -11.636, -1.558, -0.594, -0.588, -1.843, -10.8, -7.369, -2.238, 0.23, -0.863, -10.114, -0.266, -2.57, -0.229, -1.609, -0.624, -2.252, -0.283, -0.316],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [4.878, 3.527, 4.047, 8.953, 3.051, 3.279, 6.107, 9.595, 15.737, 4.958, 9.524, 5.453, 9.426, 13.027, 13.24, 9.291, 16.076, 8.668, 18.57, 9.954, 16.714, 5.138, 5.8, 6.028, -6.812, -11.478, -10.281, -17.194, -378.852, 18.737, 24.495, 3.366, 2.912, 5.732, 1.015, -1.616, -5.738, -7.994, -13.412, -1.63, -0.653, -0.562, -2.057, -10.643, -6.116, -2.069, 0.482, -0.713, -10.188, 0.01, -2.33, -0.125, -1.491, -0.669, -2.016, -0.173, -0.233],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -1990,8 +1990,8 @@
         id: 'dotTrail_chart_SPX_gex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [4.585,3.627,3.755,8.13,2.798,3.105,5.596,9.025,14.896,4.62,9.303,5.214,8.474,12.027,12.202,8.615,14.948,7.669,17.491,9.609,15.601,4.599,5.791,6.788,-6.148,-14.712,-9.811,-21.214,-394.201,11.51,24.12,4.918,5.471,12.532,2.221,-1.167,-5.071,-8.323,-10.162,-1.274,-0.781,-0.557,-1.95,-11.458,-6.923,-2.155,0.122,-0.869,-10.9,-0.374,-2.607,-0.289,-1.803,-0.737,-2.239,-0.324,-0.386];
-            var p2v = [5.016,3.606,3.545,8.369,2.798,2.943,5.756,8.849,14.955,4.579,8.911,5.149,8.278,11.152,11.633,8.046,14.001,7.207,15.857,8.808,14.341,4.353,5.247,5.966,-6.619,-12.025,-11.233,-23.187,-394.68,13.702,31.626,7.964,9.899,20.414,4.254,-0.297,-4.413,-8.677,-10.269,-1.449,-0.712,-0.727,-2.048,-14.101,-9.487,-2.217,0.195,-1.128,-11.501,-0.481,-2.874,-0.351,-2.013,-1.145,-2.388,-0.418,-0.362];
+            var pv  = [4.652,3.531,3.629,8.401,2.881,2.977,5.577,9.167,15.744,4.564,9.298,5.203,8.574,12.038,12.458,8.787,15.123,8.002,17.884,9.538,16.08,4.887,5.817,6.275,-6.395,-12.848,-10.026,-19.69,-389.43,14.464,27.197,5.214,5.814,12.773,2.375,-1.161,-5.431,-8.302,-11.734,-1.509,-0.664,-0.637,-1.948,-12.151,-7.353,-2.36,0.212,-0.965,-10.944,-0.233,-2.563,-0.278,-1.759,-0.977,-2.206,-0.307,-0.308];
+            var p2v = [4.565,3.632,3.67,8.006,2.939,3.144,5.844,9.186,15.259,4.884,9.682,5.466,8.912,12.445,12.803,8.841,15.336,8.047,18.114,9.76,15.998,4.716,5.913,6.872,-6.123,-14.925,-9.718,-20.868,-393.876,11.588,23.513,4.591,5.12,11.535,2.085,-1.076,-5.382,-8.17,-11.636,-1.558,-0.594,-0.588,-1.843,-10.8,-7.369,-2.238,0.23,-0.863,-10.114,-0.266,-2.57,-0.229,-1.609,-0.624,-2.252,-0.283,-0.316];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2020,7 +2020,7 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [17.024, 6.825, 11.257, 40.398, 12.487, 8.149, 21.178, 18.103, 105.706, 9.48, 26.547, 8.88, 21.72, 38.841, 25.151, 12.613, 23.095, 15.134, 63.858, 10.67, 28.333, 11.848, 12.564, 21.577, 2.092, -4.351, -11.793, -30.803, -362.12, -5.594, -2.591, -4.965, -1.879, 3.349, -7.942, -7.298, -7.996, -10.296, 6.91, -4.09, -3.868, -4.4, 5.447, -10.593, -12.969, -3.779, -3.269, -1.618, 15.869, -3.761, -2.313, -1.65, -1.972, 0.6, -4.618, -1.228, -2.987],
+                data: [16.966, 6.611, 11.353, 40.523, 12.501, 8.143, 21.144, 18.115, 105.894, 9.482, 26.305, 8.794, 21.864, 39.347, 25.466, 12.836, 23.584, 15.414, 64.24, 10.971, 28.917, 12.011, 12.811, 21.665, 2.2, -4.306, -11.723, -30.776, -361.959, -5.662, -2.559, -5.007, -1.814, 3.404, -7.857, -7.36, -7.86, -10.02, 7.829, -3.884, -3.801, -4.166, 5.634, -9.787, -11.728, -3.627, -3.161, -1.509, 16.532, -3.63, -2.068, -1.59, -1.858, 0.688, -4.414, -1.121, -2.904],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -2075,8 +2075,8 @@
         id: 'dotTrail_chart_SPX_gex_net',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [16.859,6.698,11.204,40.21,12.314,8.149,20.845,17.867,105.244,9.187,26.176,8.662,21.318,38.468,24.566,12.398,22.707,14.755,63.247,10.551,28.007,11.796,12.537,21.577,2.092,-4.33,-11.757,-30.776,-362.119,-5.718,-2.639,-5.044,-1.94,3.308,-7.961,-7.494,-8.167,-10.448,7.136,-4.118,-4.071,-4.407,5.339,-11.296,-12.969,-3.799,-3.421,-1.624,15.898,-3.872,-2.327,-1.71,-2.143,0.51,-4.618,-1.257,-3.039];
-            var p2v = [17.104,6.636,10.811,39.452,11.969,7.815,20.388,17.152,103.088,8.997,25.18,8.42,20.519,37.437,23.768,11.755,21.448,13.828,60.704,9.704,26.207,11.14,11.84,20.739,1.79,-4.476,-11.87,-30.863,-362.122,-5.66,-2.714,-5.026,-2.097,2.99,-8.138,-7.606,-8.885,-10.989,4.918,-4.652,-4.426,-4.97,4.931,-14.254,-15.6,-4.128,-3.772,-2.102,14.712,-4.155,-2.646,-1.844,-2.452,0.175,-4.815,-1.387,-3.111];
+            var pv  = [16.859,6.698,11.103,40.278,12.321,7.97,20.74,17.742,105.197,9.158,26.163,8.586,21.139,38.255,24.704,12.343,22.632,14.783,63.532,10.484,28.184,11.849,12.599,21.341,2.148,-4.306,-11.739,-30.76,-361.958,-5.735,-2.655,-5.075,-2.023,3.273,-8.03,-7.494,-8.149,-10.467,6.871,-4.118,-4.07,-4.514,5.339,-11.304,-12.969,-3.907,-3.421,-1.747,15.722,-3.873,-2.329,-1.71,-2.143,0.357,-4.624,-1.264,-3.013];
+            var p2v = [17.024,6.825,11.257,40.398,12.487,8.149,21.178,18.103,105.706,9.48,26.547,8.88,21.72,38.841,25.151,12.613,23.095,15.134,63.858,10.67,28.333,11.848,12.564,21.577,2.092,-4.351,-11.793,-30.803,-362.12,-5.594,-2.591,-4.965,-1.879,3.349,-7.942,-7.298,-7.996,-10.296,6.91,-4.09,-3.868,-4.4,5.447,-10.593,-12.969,-3.779,-3.269,-1.618,15.869,-3.761,-2.313,-1.65,-1.972,0.6,-4.618,-1.228,-2.987];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2102,345 +2102,345 @@
 
     new Chart(document.getElementById("chart-SPX-gex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"7340",data:[17.104, 16.859, 17.024],
+            label:"7340",data:[17.104, 16.859, 17.024, 16.859, 16.966],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[6.636, 6.698, 6.825],
+            label:"7335",data:[6.636, 6.698, 6.825, 6.698, 6.611],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[10.811, 11.204, 11.257],
+            label:"7330",data:[10.811, 11.204, 11.257, 11.103, 11.353],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[39.452, 40.21, 40.398],
+            label:"7325",data:[39.452, 40.21, 40.398, 40.278, 40.523],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[11.969, 12.314, 12.487],
+            label:"7320",data:[11.969, 12.314, 12.487, 12.321, 12.501],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[7.815, 8.149, 8.149],
+            label:"7315",data:[7.815, 8.149, 8.149, 7.97, 8.143],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[20.388, 20.845, 21.178],
+            label:"7310",data:[20.388, 20.845, 21.178, 20.74, 21.144],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[17.152, 17.867, 18.103],
+            label:"7305",data:[17.152, 17.867, 18.103, 17.742, 18.115],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[103.088, 105.244, 105.706],
+            label:"7300",data:[103.088, 105.244, 105.706, 105.197, 105.894],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[8.997, 9.187, 9.48],
+            label:"7295",data:[8.997, 9.187, 9.48, 9.158, 9.482],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[25.18, 26.176, 26.547],
+            label:"7290",data:[25.18, 26.176, 26.547, 26.163, 26.305],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[8.42, 8.662, 8.88],
+            label:"7285",data:[8.42, 8.662, 8.88, 8.586, 8.794],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[20.519, 21.318, 21.72],
+            label:"7280",data:[20.519, 21.318, 21.72, 21.139, 21.864],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[37.437, 38.468, 38.841],
+            label:"7275",data:[37.437, 38.468, 38.841, 38.255, 39.347],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[23.768, 24.566, 25.151],
+            label:"7270",data:[23.768, 24.566, 25.151, 24.704, 25.466],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[11.755, 12.398, 12.613],
+            label:"7265",data:[11.755, 12.398, 12.613, 12.343, 12.836],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[21.448, 22.707, 23.095],
+            label:"7260",data:[21.448, 22.707, 23.095, 22.632, 23.584],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[13.828, 14.755, 15.134],
+            label:"7255",data:[13.828, 14.755, 15.134, 14.783, 15.414],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[60.704, 63.247, 63.858],
+            label:"7250",data:[60.704, 63.247, 63.858, 63.532, 64.24],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[9.704, 10.551, 10.67],
+            label:"7245",data:[9.704, 10.551, 10.67, 10.484, 10.971],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[26.207, 28.007, 28.333],
+            label:"7240",data:[26.207, 28.007, 28.333, 28.184, 28.917],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7235",data:[11.14, 11.796, 11.848],
+            label:"7235",data:[11.14, 11.796, 11.848, 11.849, 12.011],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7230",data:[11.84, 12.537, 12.564],
+            label:"7230",data:[11.84, 12.537, 12.564, 12.599, 12.811],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7225",data:[20.739, 21.577, 21.577],
+            label:"7225",data:[20.739, 21.577, 21.577, 21.341, 21.665],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7220",data:[1.79, 2.092, 2.092],
+            label:"7220",data:[1.79, 2.092, 2.092, 2.148, 2.2],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7215",data:[-4.476, -4.33, -4.351],
+            label:"7215",data:[-4.476, -4.33, -4.351, -4.306, -4.306],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7210",data:[-11.87, -11.757, -11.793],
+            label:"7210",data:[-11.87, -11.757, -11.793, -11.739, -11.723],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7205",data:[-30.863, -30.776, -30.803],
+            label:"7205",data:[-30.863, -30.776, -30.803, -30.76, -30.776],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7200",data:[-362.122, -362.119, -362.12],
+            label:"7200",data:[-362.122, -362.119, -362.12, -361.958, -361.959],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7195",data:[-5.66, -5.718, -5.594],
+            label:"7195",data:[-5.66, -5.718, -5.594, -5.735, -5.662],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7190",data:[-2.714, -2.639, -2.591],
+            label:"7190",data:[-2.714, -2.639, -2.591, -2.655, -2.559],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7185",data:[-5.026, -5.044, -4.965],
+            label:"7185",data:[-5.026, -5.044, -4.965, -5.075, -5.007],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7180",data:[-2.097, -1.94, -1.879],
+            label:"7180",data:[-2.097, -1.94, -1.879, -2.023, -1.814],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7175",data:[2.99, 3.308, 3.349],
+            label:"7175",data:[2.99, 3.308, 3.349, 3.273, 3.404],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7170",data:[-8.138, -7.961, -7.942],
+            label:"7170",data:[-8.138, -7.961, -7.942, -8.03, -7.857],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7165",data:[-7.606, -7.494, -7.298],
+            label:"7165",data:[-7.606, -7.494, -7.298, -7.494, -7.36],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7160",data:[-8.885, -8.167, -7.996],
+            label:"7160",data:[-8.885, -8.167, -7.996, -8.149, -7.86],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7155",data:[-10.989, -10.448, -10.296],
+            label:"7155",data:[-10.989, -10.448, -10.296, -10.467, -10.02],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7150",data:[4.918, 7.136, 6.91],
+            label:"7150",data:[4.918, 7.136, 6.91, 6.871, 7.829],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7145",data:[-4.652, -4.118, -4.09],
+            label:"7145",data:[-4.652, -4.118, -4.09, -4.118, -3.884],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7140",data:[-4.426, -4.071, -3.868],
+            label:"7140",data:[-4.426, -4.071, -3.868, -4.07, -3.801],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7135",data:[-4.97, -4.407, -4.4],
+            label:"7135",data:[-4.97, -4.407, -4.4, -4.514, -4.166],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7130",data:[4.931, 5.339, 5.447],
+            label:"7130",data:[4.931, 5.339, 5.447, 5.339, 5.634],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7125",data:[-14.254, -11.296, -10.593],
+            label:"7125",data:[-14.254, -11.296, -10.593, -11.304, -9.787],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7120",data:[-15.6, -12.969, -12.969],
+            label:"7120",data:[-15.6, -12.969, -12.969, -12.969, -11.728],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7115",data:[-4.128, -3.799, -3.779],
+            label:"7115",data:[-4.128, -3.799, -3.779, -3.907, -3.627],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7110",data:[-3.772, -3.421, -3.269],
+            label:"7110",data:[-3.772, -3.421, -3.269, -3.421, -3.161],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7105",data:[-2.102, -1.624, -1.618],
+            label:"7105",data:[-2.102, -1.624, -1.618, -1.747, -1.509],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7100",data:[14.712, 15.898, 15.869],
+            label:"7100",data:[14.712, 15.898, 15.869, 15.722, 16.532],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7095",data:[-4.155, -3.872, -3.761],
+            label:"7095",data:[-4.155, -3.872, -3.761, -3.873, -3.63],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7090",data:[-2.646, -2.327, -2.313],
+            label:"7090",data:[-2.646, -2.327, -2.313, -2.329, -2.068],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7085",data:[-1.844, -1.71, -1.65],
+            label:"7085",data:[-1.844, -1.71, -1.65, -1.71, -1.59],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7080",data:[-2.452, -2.143, -1.972],
+            label:"7080",data:[-2.452, -2.143, -1.972, -2.143, -1.858],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7075",data:[0.175, 0.51, 0.6],
+            label:"7075",data:[0.175, 0.51, 0.6, 0.357, 0.688],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7070",data:[-4.815, -4.618, -4.618],
+            label:"7070",data:[-4.815, -4.618, -4.618, -4.624, -4.414],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7065",data:[-1.387, -1.257, -1.228],
+            label:"7065",data:[-1.387, -1.257, -1.228, -1.264, -1.121],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7060",data:[-3.111, -3.039, -2.987],
+            label:"7060",data:[-3.111, -3.039, -2.987, -3.013, -2.904],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -2525,7 +2525,7 @@
         data: {
             labels: ["SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130"],
             datasets: [{
-                data: [25.15149967500001, 12.613337752500005, 23.094965475000002, 15.134392334999994, 63.85797917999998, 10.670431387499992, 28.333267384040123, 11.847981881330979, 12.564318667179833, 21.576621799671674, 2.091782230567459, -4.351309967195224, -11.793172327500015, -30.802504260000013, -362.11974087749996, -5.593974645000001, -2.5909018574999925, -4.9649171249999995, -1.8792194236062243, 3.349272753675446, -7.9423751953584985, -7.297586128294937, -7.996072837499996, -10.295776364999988, 6.9096956849999875, -4.0895219475, -3.8678108549999988, -4.400378325, 5.4468633224999925],
+                data: [25.46602843500001, 12.835912935000003, 23.5841124225, 15.413709427499999, 64.24005097499997, 10.970918684999996, 28.917176201540126, 12.010646823830982, 12.811376399679832, 21.665191024671664, 2.199937495567452, -4.306377287195224, -11.723181037500016, -30.776149515000014, -361.95930816750007, -5.6615896875, -2.558642497499993, -5.006969504999998, -1.8141966511062253, 3.4042144761754463, -7.856542255358499, -7.360232653294934, -7.859762639999999, -10.019627602499984, 7.828871422499985, -3.884300572500001, -3.8014199399999975, -4.166137927500001, 5.633650777499994],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -2580,8 +2580,8 @@
         id: 'dotTrail_chart_SPX_gex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [23.768,11.755,21.448,13.828,60.704,9.704,26.207,11.14,11.84,20.739,1.79,-4.476,-11.87,-30.863,-362.122,-5.66,-2.714,-5.026,-2.097,2.99,-8.138,-7.606,-8.885,-10.989,4.918,-4.652,-4.426,-4.97,4.931];
-            var p2v = [12.226,3.544,7.508,6.746,45.67,1.017,12.203,6.872,7.011,15.637,9.012,7.171,-1.442,-13.582,16.892,-24.399,-27.054,-8.372,-4.726,-2.328,-8.871,-5.744,-2.122,-2.026,21.241,-2.255,-3.149,-3.604,7.69];
+            var pv  = [25.151,12.613,23.095,15.134,63.858,10.67,28.333,11.848,12.564,21.577,2.092,-4.351,-11.793,-30.803,-362.12,-5.594,-2.591,-4.965,-1.879,3.349,-7.942,-7.298,-7.996,-10.296,6.91,-4.09,-3.868,-4.4,5.447];
+            var p2v = [23.768,11.755,21.448,13.828,60.704,9.704,26.207,11.14,11.84,20.739,1.79,-4.476,-11.87,-30.863,-362.122,-5.66,-2.714,-5.026,-2.097,2.99,-8.138,-7.606,-8.885,-10.989,4.918,-4.652,-4.426,-4.97,4.931];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2610,8 +2610,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [0.002, 0.001, -0.0, -0.003, 0.0, 0.0, 0.0, 0.002, -0.009, 0.001, 0.002, 0.001, 0.001, -0.001, 0.001, 0.001, 0.001, 0.001, 0.003, 0.0, 0.001, 0.0, 0.001, -0.0, 0.0, 0.0, 0.0, 0.0, 0.004, 0.001, 0.001, 0.001, 0.001, 0.003, 0.002, 0.002, 0.003, 0.003, 0.023, 0.002, 0.002, 0.002, 0.004, 0.005, -0.001, 0.001, 0.001, -0.001, 0.022, -0.0, 0.001, -0.0, 0.0, 0.002, 0.002, -0.001, 0.001],
-                backgroundColor: ['#f72585', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#f72585', '#f72585', '#f72585', '#f72585', '#e17055', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#00b894', '#00b894', '#e17055', '#f72585', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#00b894'],
+                data: [-0.0, -0.001, 0.0, -0.001, 0.002, -0.001, -0.001, -0.0, -0.004, 0.0, 0.001, -0.0, 0.0, -0.001, -0.0, 0.0, -0.0, 0.0, 0.001, 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.0, 0.0, 0.0, 0.0, 0.001, 0.0, 0.0, 0.001, 0.001, 0.008, 0.0, 0.001, 0.001, 0.002, 0.003, 0.002, 0.001, 0.001, 0.0, 0.012, 0.001, 0.001, 0.0, 0.001, -0.001, 0.001, -0.0, 0.0],
+                backgroundColor: ['#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -2665,8 +2665,8 @@
         id: 'dotTrail_chart_SPX_dex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.274,-0.08,-0.183,-0.175,-0.24,-0.109,-0.153,-0.053,-0.047,-0.068,-0.096,-0.072,-0.075,-0.118,-0.067,-0.022,-0.004,-0.008,-0.352,-0.029,0.058,0.059,0.066,0.025,0.014,0.012,0.055,0.007,-0.151,-0.072,-0.046,-0.037,-0.038,-0.015,-0.021,-0.044,-0.055,-0.163,-0.015,0.01,0.008,0.008,0.037,-0.121,-0.072,0.008,0.037,0.0,-0.053,0.015,-0.172,0.012,-0.007,0.006,0.019,0.096,0.058];
-            var p2v = [-0.231,-0.065,-0.15,-0.136,-0.204,-0.093,-0.125,-0.042,-0.133,-0.058,-0.083,-0.062,-0.066,-0.097,-0.058,0.001,0.025,-0.001,-0.267,-0.024,0.064,0.072,0.081,0.043,0.022,0.019,0.058,0.008,-0.151,-0.073,-0.075,-0.061,-0.067,-0.097,-0.05,-0.065,-0.067,-0.147,-0.077,0.011,-0.001,0.013,0.021,-0.148,-0.083,0.0,0.029,-0.004,-0.096,0.016,-0.195,0.012,0.002,0.03,0.017,0.088,0.061];
+            var pv  = [0.001,0.001,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.001,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.001,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0,-0.0,0.002,-0.0,-0.0,-0.001,-0.0,-0.001,-0.002,-0.0,-0.0,-0.0,0.001,-0.0,-0.0,0.0,-0.0,-0.001,-0.0,-0.0,-0.0];
+            var p2v = [0.002,0.001,-0.0,-0.003,0.0,0.0,0.0,0.002,-0.009,0.001,0.002,0.001,0.001,-0.001,0.001,0.001,0.001,0.001,0.003,0.0,0.001,0.0,0.001,-0.0,0.0,0.0,0.0,0.0,0.004,0.001,0.001,0.001,0.001,0.003,0.002,0.002,0.003,0.003,0.023,0.002,0.002,0.002,0.004,0.005,-0.001,0.001,0.001,-0.001,0.022,-0.0,0.001,-0.0,0.0,0.002,0.002,-0.001,0.001];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2695,8 +2695,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [-0.229, -0.064, -0.15, -0.139, -0.204, -0.092, -0.124, -0.041, -0.142, -0.057, -0.081, -0.062, -0.065, -0.098, -0.057, 0.001, 0.026, -0.0, -0.264, -0.023, 0.065, 0.072, 0.082, 0.042, 0.022, 0.019, 0.059, 0.008, -0.147, -0.072, -0.074, -0.06, -0.066, -0.094, -0.047, -0.063, -0.063, -0.145, -0.054, 0.013, 0.001, 0.015, 0.025, -0.143, -0.084, 0.001, 0.03, -0.004, -0.074, 0.015, -0.194, 0.012, 0.002, 0.031, 0.019, 0.087, 0.062],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#f72585', '#e17055', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [0.002, 0.0, -0.0, -0.004, 0.002, -0.0, -0.0, 0.001, -0.012, 0.001, 0.002, 0.001, 0.001, -0.002, 0.001, 0.001, 0.0, 0.001, 0.004, 0.0, 0.001, 0.0, 0.001, -0.0, 0.0, 0.0, 0.0, 0.0, 0.006, 0.001, 0.001, 0.001, 0.001, 0.004, 0.003, 0.003, 0.004, 0.003, 0.031, 0.002, 0.003, 0.002, 0.005, 0.008, 0.001, 0.001, 0.002, -0.0, 0.034, 0.0, 0.002, 0.0, 0.001, 0.0, 0.003, -0.001, 0.001],
+                backgroundColor: ['#f72585', '#00b894', '#00b894', '#e17055', '#f72585', '#00b894', '#00b894', '#f72585', '#e17055', '#f72585', '#f72585', '#f72585', '#f72585', '#e17055', '#f72585', '#f72585', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#f72585', '#00b894', '#f72585', '#00b894', '#f72585', '#00b894', '#00b894', '#f72585', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -2750,8 +2750,8 @@
         id: 'dotTrail_chart_SPX_dex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.198,-0.055,-0.131,-0.118,-0.179,-0.081,-0.112,-0.034,0.051,-0.035,-0.069,-0.051,-0.053,-0.07,-0.027,0.007,0.03,0.004,-0.251,0.034,0.12,0.079,0.091,0.05,0.026,0.022,0.061,0.009,-0.126,-0.07,-0.071,-0.059,-0.065,-0.094,-0.046,-0.062,-0.066,-0.167,-0.045,0.002,-0.0,0.002,0.022,-0.104,-0.073,0.002,0.035,0.003,-0.029,0.014,0.033,0.01,0.001,0.03,0.014,0.076,0.056];
-            var p2v = [-0.182,-0.05,-0.118,-0.106,-0.164,-0.075,-0.104,-0.031,0.069,-0.032,-0.069,-0.048,-0.052,-0.068,-0.026,0.008,0.03,0.006,-0.266,0.036,0.12,0.077,0.086,0.042,0.022,0.019,0.056,0.006,-0.176,-0.076,-0.08,-0.065,-0.074,-0.117,-0.058,-0.072,-0.08,-0.174,-0.131,-0.005,-0.011,-0.007,0.007,-0.174,-0.101,-0.011,0.017,-0.0,-0.14,0.006,-0.231,0.005,-0.019,-0.012,-0.004,0.067,0.037];
+            var pv  = [-0.273,-0.079,-0.183,-0.175,-0.24,-0.109,-0.153,-0.054,-0.048,-0.068,-0.095,-0.072,-0.076,-0.119,-0.067,-0.022,-0.004,-0.008,-0.353,-0.029,0.058,0.059,0.066,0.025,0.014,0.012,0.055,0.007,-0.151,-0.072,-0.046,-0.037,-0.038,-0.015,-0.021,-0.044,-0.055,-0.163,-0.013,0.009,0.008,0.008,0.036,-0.122,-0.074,0.008,0.037,-0.0,-0.053,0.014,-0.172,0.012,-0.008,0.005,0.019,0.096,0.058];
+            var p2v = [-0.229,-0.064,-0.15,-0.139,-0.204,-0.092,-0.124,-0.041,-0.142,-0.057,-0.081,-0.062,-0.065,-0.098,-0.057,0.001,0.026,-0.0,-0.264,-0.023,0.065,0.072,0.082,0.042,0.022,0.019,0.059,0.008,-0.147,-0.072,-0.074,-0.06,-0.066,-0.094,-0.047,-0.063,-0.063,-0.145,-0.054,0.013,0.001,0.015,0.025,-0.143,-0.084,0.001,0.03,-0.004,-0.074,0.015,-0.194,0.012,0.002,0.031,0.019,0.087,0.062];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2780,8 +2780,8 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [-0.18, -0.049, -0.118, -0.108, -0.164, -0.074, -0.104, -0.03, 0.061, -0.031, -0.067, -0.047, -0.051, -0.069, -0.025, 0.009, 0.031, 0.006, -0.263, 0.036, 0.121, 0.077, 0.087, 0.041, 0.022, 0.02, 0.057, 0.006, -0.171, -0.075, -0.079, -0.064, -0.073, -0.114, -0.056, -0.07, -0.077, -0.172, -0.108, -0.004, -0.008, -0.005, 0.011, -0.17, -0.103, -0.011, 0.018, -0.001, -0.118, 0.006, -0.23, 0.005, -0.018, -0.011, -0.002, 0.066, 0.038],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894'],
+                data: [-0.229, -0.065, -0.15, -0.14, -0.202, -0.093, -0.125, -0.041, -0.145, -0.057, -0.081, -0.062, -0.065, -0.099, -0.057, 0.001, 0.026, -0.0, -0.263, -0.023, 0.066, 0.073, 0.082, 0.042, 0.022, 0.019, 0.059, 0.008, -0.145, -0.072, -0.074, -0.06, -0.066, -0.093, -0.047, -0.063, -0.062, -0.144, -0.046, 0.013, 0.002, 0.015, 0.026, -0.14, -0.082, 0.001, 0.031, -0.004, -0.062, 0.016, -0.193, 0.012, 0.003, 0.03, 0.02, 0.086, 0.062],
+                backgroundColor: ['#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#e17055', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#00b894', '#f72585', '#e17055', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -2835,8 +2835,8 @@
         id: 'dotTrail_chart_SPX_dex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.175,-0.05,-0.118,-0.105,-0.159,-0.074,-0.112,-0.032,-0.116,-0.045,-0.068,-0.049,-0.054,-0.082,-0.023,0.009,0.031,0.006,-0.263,0.034,0.119,0.076,0.085,0.04,0.021,0.019,0.056,0.006,-0.178,-0.076,-0.08,-0.065,-0.075,-0.118,-0.059,-0.072,-0.079,-0.173,-0.116,-0.004,-0.011,-0.007,0.028,-0.123,-0.082,-0.004,0.026,-0.002,-0.078,0.005,-0.243,0.004,-0.019,-0.013,-0.004,0.063,0.036];
-            var p2v = [-0.175,-0.048,-0.114,-0.109,-0.159,-0.073,-0.107,-0.033,0.016,-0.034,-0.074,-0.048,-0.058,-0.086,-0.036,0.002,0.022,-0.003,-0.298,0.029,0.111,0.072,0.078,0.024,0.014,0.016,0.05,0.002,-0.238,-0.083,-0.09,-0.071,-0.083,-0.141,-0.071,-0.082,-0.094,-0.181,-0.204,-0.011,-0.021,-0.015,-0.008,-0.205,-0.111,-0.016,0.011,-0.003,-0.144,0.005,0.015,0.007,-0.004,0.009,0.005,0.065,0.055];
+            var pv  = [-0.197,-0.054,-0.131,-0.118,-0.179,-0.081,-0.112,-0.034,0.05,-0.035,-0.069,-0.051,-0.053,-0.07,-0.027,0.007,0.03,0.004,-0.252,0.034,0.12,0.079,0.091,0.05,0.026,0.022,0.061,0.009,-0.126,-0.07,-0.071,-0.059,-0.065,-0.093,-0.046,-0.062,-0.066,-0.167,-0.043,0.002,-0.0,0.001,0.022,-0.106,-0.075,0.002,0.035,0.002,-0.028,0.014,0.033,0.01,0.001,0.029,0.014,0.076,0.056];
+            var p2v = [-0.18,-0.049,-0.118,-0.108,-0.164,-0.074,-0.104,-0.03,0.061,-0.031,-0.067,-0.047,-0.051,-0.069,-0.025,0.009,0.031,0.006,-0.263,0.036,0.121,0.077,0.087,0.041,0.022,0.02,0.057,0.006,-0.171,-0.075,-0.079,-0.064,-0.073,-0.114,-0.056,-0.07,-0.077,-0.172,-0.108,-0.004,-0.008,-0.005,0.011,-0.17,-0.103,-0.011,0.018,-0.001,-0.118,0.006,-0.23,0.005,-0.018,-0.011,-0.002,0.066,0.038];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2865,7 +2865,7 @@
         data: {
             labels: ["SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060"],
             datasets: [{
-                data: [0.315, 0.051, 0.158, 1.531, 0.243, 0.07, 0.328, 0.095, 4.275, 0.049, 0.271, 0.028, 0.136, 0.809, 0.195, 0.052, 0.163, 0.069, 2.204, -0.032, 0.313, 0.165, 0.156, 0.807, 0.23, 0.075, 0.266, 0.044, 4.951, -0.015, 0.034, -0.037, 0.091, 0.572, 0.027, 0.022, 0.214, -0.016, 3.79, 0.065, 0.19, 0.093, 0.695, 0.931, 0.01, 0.034, 0.139, 0.063, 5.197, 0.037, 0.305, 0.049, 0.34, 1.019, 0.234, 0.1, 0.228],
+                data: [0.315, 0.05, 0.159, 1.53, 0.245, 0.069, 0.327, 0.095, 4.272, 0.049, 0.272, 0.027, 0.136, 0.808, 0.194, 0.052, 0.163, 0.069, 2.205, -0.032, 0.313, 0.165, 0.156, 0.806, 0.23, 0.075, 0.267, 0.044, 4.952, -0.015, 0.034, -0.037, 0.091, 0.572, 0.028, 0.023, 0.215, -0.016, 3.798, 0.065, 0.191, 0.094, 0.697, 0.934, 0.012, 0.035, 0.14, 0.063, 5.209, 0.037, 0.306, 0.05, 0.341, 1.018, 0.234, 0.099, 0.228],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -2920,8 +2920,8 @@
         id: 'dotTrail_chart_SPX_dex_net',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.316,0.051,0.159,1.531,0.243,0.07,0.328,0.095,4.277,0.05,0.272,0.028,0.137,0.81,0.195,0.052,0.163,0.069,2.207,-0.032,0.313,0.165,0.156,0.807,0.23,0.075,0.266,0.044,4.95,-0.015,0.034,-0.037,0.091,0.571,0.027,0.022,0.214,-0.017,3.789,0.065,0.19,0.093,0.695,0.93,0.011,0.034,0.139,0.063,5.197,0.037,0.305,0.049,0.34,1.019,0.233,0.099,0.227];
-            var p2v = [0.312,0.05,0.159,1.533,0.243,0.069,0.327,0.094,4.284,0.048,0.269,0.027,0.135,0.81,0.194,0.051,0.162,0.068,2.201,-0.032,0.312,0.164,0.156,0.807,0.229,0.074,0.266,0.043,4.946,-0.016,0.033,-0.037,0.09,0.569,0.025,0.02,0.211,-0.019,3.767,0.064,0.188,0.092,0.692,0.926,0.011,0.033,0.138,0.063,5.174,0.037,0.304,0.049,0.34,1.018,0.232,0.101,0.227];
+            var pv  = [0.317,0.053,0.159,1.531,0.243,0.07,0.328,0.095,4.275,0.049,0.273,0.028,0.136,0.809,0.195,0.052,0.163,0.069,2.205,-0.032,0.313,0.165,0.156,0.807,0.23,0.075,0.266,0.044,4.951,-0.015,0.034,-0.037,0.091,0.572,0.027,0.022,0.214,-0.017,3.791,0.065,0.189,0.093,0.695,0.929,0.009,0.034,0.138,0.062,5.197,0.037,0.304,0.049,0.34,1.017,0.233,0.099,0.227];
+            var p2v = [0.315,0.051,0.158,1.531,0.243,0.07,0.328,0.095,4.275,0.049,0.271,0.028,0.136,0.809,0.195,0.052,0.163,0.069,2.204,-0.032,0.313,0.165,0.156,0.807,0.23,0.075,0.266,0.044,4.951,-0.015,0.034,-0.037,0.091,0.572,0.027,0.022,0.214,-0.016,3.79,0.065,0.19,0.093,0.695,0.931,0.01,0.034,0.139,0.063,5.197,0.037,0.305,0.049,0.34,1.019,0.234,0.1,0.228];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -2947,345 +2947,345 @@
 
     new Chart(document.getElementById("chart-SPX-dex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"7340",data:[0.312, 0.316, 0.315],
+            label:"7340",data:[0.312, 0.316, 0.315, 0.317, 0.315],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[0.05, 0.051, 0.051],
+            label:"7335",data:[0.05, 0.051, 0.051, 0.053, 0.05],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[0.159, 0.159, 0.158],
+            label:"7330",data:[0.159, 0.159, 0.158, 0.159, 0.159],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[1.533, 1.531, 1.531],
+            label:"7325",data:[1.533, 1.531, 1.531, 1.531, 1.53],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[0.243, 0.243, 0.243],
+            label:"7320",data:[0.243, 0.243, 0.243, 0.243, 0.245],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[0.069, 0.07, 0.07],
+            label:"7315",data:[0.069, 0.07, 0.07, 0.07, 0.069],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[0.327, 0.328, 0.328],
+            label:"7310",data:[0.327, 0.328, 0.328, 0.328, 0.327],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[0.094, 0.095, 0.095],
+            label:"7305",data:[0.094, 0.095, 0.095, 0.095, 0.095],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[4.284, 4.277, 4.275],
+            label:"7300",data:[4.284, 4.277, 4.275, 4.275, 4.272],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[0.048, 0.05, 0.049],
+            label:"7295",data:[0.048, 0.05, 0.049, 0.049, 0.049],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[0.269, 0.272, 0.271],
+            label:"7290",data:[0.269, 0.272, 0.271, 0.273, 0.272],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[0.027, 0.028, 0.028],
+            label:"7285",data:[0.027, 0.028, 0.028, 0.028, 0.027],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[0.135, 0.137, 0.136],
+            label:"7280",data:[0.135, 0.137, 0.136, 0.136, 0.136],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[0.81, 0.81, 0.809],
+            label:"7275",data:[0.81, 0.81, 0.809, 0.809, 0.808],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[0.194, 0.195, 0.195],
+            label:"7270",data:[0.194, 0.195, 0.195, 0.195, 0.194],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[0.051, 0.052, 0.052],
+            label:"7265",data:[0.051, 0.052, 0.052, 0.052, 0.052],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[0.162, 0.163, 0.163],
+            label:"7260",data:[0.162, 0.163, 0.163, 0.163, 0.163],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[0.068, 0.069, 0.069],
+            label:"7255",data:[0.068, 0.069, 0.069, 0.069, 0.069],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[2.201, 2.207, 2.204],
+            label:"7250",data:[2.201, 2.207, 2.204, 2.205, 2.205],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[-0.032, -0.032, -0.032],
+            label:"7245",data:[-0.032, -0.032, -0.032, -0.032, -0.032],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[0.312, 0.313, 0.313],
+            label:"7240",data:[0.312, 0.313, 0.313, 0.313, 0.313],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7235",data:[0.164, 0.165, 0.165],
+            label:"7235",data:[0.164, 0.165, 0.165, 0.165, 0.165],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7230",data:[0.156, 0.156, 0.156],
+            label:"7230",data:[0.156, 0.156, 0.156, 0.156, 0.156],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7225",data:[0.807, 0.807, 0.807],
+            label:"7225",data:[0.807, 0.807, 0.807, 0.807, 0.806],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7220",data:[0.229, 0.23, 0.23],
+            label:"7220",data:[0.229, 0.23, 0.23, 0.23, 0.23],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7215",data:[0.074, 0.075, 0.075],
+            label:"7215",data:[0.074, 0.075, 0.075, 0.075, 0.075],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7210",data:[0.266, 0.266, 0.266],
+            label:"7210",data:[0.266, 0.266, 0.266, 0.266, 0.267],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7205",data:[0.043, 0.044, 0.044],
+            label:"7205",data:[0.043, 0.044, 0.044, 0.044, 0.044],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7200",data:[4.946, 4.95, 4.951],
+            label:"7200",data:[4.946, 4.95, 4.951, 4.951, 4.952],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7195",data:[-0.016, -0.015, -0.015],
+            label:"7195",data:[-0.016, -0.015, -0.015, -0.015, -0.015],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7190",data:[0.033, 0.034, 0.034],
+            label:"7190",data:[0.033, 0.034, 0.034, 0.034, 0.034],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7185",data:[-0.037, -0.037, -0.037],
+            label:"7185",data:[-0.037, -0.037, -0.037, -0.037, -0.037],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7180",data:[0.09, 0.091, 0.091],
+            label:"7180",data:[0.09, 0.091, 0.091, 0.091, 0.091],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7175",data:[0.569, 0.571, 0.572],
+            label:"7175",data:[0.569, 0.571, 0.572, 0.572, 0.572],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7170",data:[0.025, 0.027, 0.027],
+            label:"7170",data:[0.025, 0.027, 0.027, 0.027, 0.028],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7165",data:[0.02, 0.022, 0.022],
+            label:"7165",data:[0.02, 0.022, 0.022, 0.022, 0.023],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7160",data:[0.211, 0.214, 0.214],
+            label:"7160",data:[0.211, 0.214, 0.214, 0.214, 0.215],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7155",data:[-0.019, -0.017, -0.016],
+            label:"7155",data:[-0.019, -0.017, -0.016, -0.017, -0.016],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7150",data:[3.767, 3.789, 3.79],
+            label:"7150",data:[3.767, 3.789, 3.79, 3.791, 3.798],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7145",data:[0.064, 0.065, 0.065],
+            label:"7145",data:[0.064, 0.065, 0.065, 0.065, 0.065],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7140",data:[0.188, 0.19, 0.19],
+            label:"7140",data:[0.188, 0.19, 0.19, 0.189, 0.191],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7135",data:[0.092, 0.093, 0.093],
+            label:"7135",data:[0.092, 0.093, 0.093, 0.093, 0.094],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7130",data:[0.692, 0.695, 0.695],
+            label:"7130",data:[0.692, 0.695, 0.695, 0.695, 0.697],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7125",data:[0.926, 0.93, 0.931],
+            label:"7125",data:[0.926, 0.93, 0.931, 0.929, 0.934],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7120",data:[0.011, 0.011, 0.01],
+            label:"7120",data:[0.011, 0.011, 0.01, 0.009, 0.012],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7115",data:[0.033, 0.034, 0.034],
+            label:"7115",data:[0.033, 0.034, 0.034, 0.034, 0.035],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7110",data:[0.138, 0.139, 0.139],
+            label:"7110",data:[0.138, 0.139, 0.139, 0.138, 0.14],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7105",data:[0.063, 0.063, 0.063],
+            label:"7105",data:[0.063, 0.063, 0.063, 0.062, 0.063],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7100",data:[5.174, 5.197, 5.197],
+            label:"7100",data:[5.174, 5.197, 5.197, 5.197, 5.209],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7095",data:[0.037, 0.037, 0.037],
+            label:"7095",data:[0.037, 0.037, 0.037, 0.037, 0.037],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7090",data:[0.304, 0.305, 0.305],
+            label:"7090",data:[0.304, 0.305, 0.305, 0.304, 0.306],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7085",data:[0.049, 0.049, 0.049],
+            label:"7085",data:[0.049, 0.049, 0.049, 0.049, 0.05],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7080",data:[0.34, 0.34, 0.34],
+            label:"7080",data:[0.34, 0.34, 0.34, 0.34, 0.341],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7075",data:[1.018, 1.019, 1.019],
+            label:"7075",data:[1.018, 1.019, 1.019, 1.017, 1.018],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7070",data:[0.232, 0.233, 0.234],
+            label:"7070",data:[0.232, 0.233, 0.234, 0.233, 0.234],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7065",data:[0.101, 0.099, 0.1],
+            label:"7065",data:[0.101, 0.099, 0.1, 0.099, 0.099],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7060",data:[0.227, 0.227, 0.228],
+            label:"7060",data:[0.227, 0.227, 0.228, 0.227, 0.228],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -3370,7 +3370,7 @@
         data: {
             labels: ["SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130"],
             datasets: [{
-                data: [0.19457542967342248, 0.05174716731731541, 0.16289041220342562, 0.06880705569637953, 2.204401780604094, -0.032275533309672186, 0.3126087110241651, 0.16454009834967215, 0.15615904400820366, 0.80654135353315, 0.22951248776863775, 0.07458408070127422, 0.2664307647111304, 0.04357765910297533, 4.95064244964223, -0.01546616308196383, 0.033605054009722996, -0.03663849602184506, 0.0911113250406629, 0.5715624847123729, 0.027193017813152233, 0.022455193655912777, 0.21442744769584077, -0.016493265828436236, 3.7901853702499544, 0.06515668803248621, 0.18993164838880305, 0.09334662380451533, 0.6952154037873087],
+                data: [0.19449211182388448, 0.05175004776628948, 0.16271067705228012, 0.06887516134412298, 2.205328595450327, -0.032177698634874304, 0.3130508842479399, 0.16471834515465708, 0.15630135616737903, 0.8064873841921903, 0.22964876709500076, 0.07469335542473145, 0.26655727011668223, 0.04365641021817808, 4.951808654795673, -0.015366131109755361, 0.03370864488977941, -0.03657624219672229, 0.0911704030104094, 0.5721973046389028, 0.027681655208884614, 0.02279246182155073, 0.21523598933066862, -0.015824065884833677, 3.7984851367054238, 0.06545456422334563, 0.19087864541025837, 0.09393040978705504, 0.6968951116588965],
                 backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -3425,8 +3425,8 @@
         id: 'dotTrail_chart_SPX_dex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.194,0.051,0.162,0.068,2.201,-0.032,0.312,0.164,0.156,0.807,0.229,0.074,0.266,0.043,4.946,-0.016,0.033,-0.037,0.09,0.569,0.025,0.02,0.211,-0.019,3.767,0.064,0.188,0.092,0.692];
-            var p2v = [0.252,0.051,0.137,0.069,2.468,-0.009,0.247,0.092,0.075,0.764,0.207,0.056,0.208,0.036,5.097,0.057,0.108,0.024,0.157,0.665,0.074,0.086,0.278,0.128,3.844,0.052,0.189,0.078,0.671];
+            var pv  = [0.195,0.052,0.163,0.069,2.204,-0.032,0.313,0.165,0.156,0.807,0.23,0.075,0.266,0.044,4.951,-0.015,0.034,-0.037,0.091,0.572,0.027,0.022,0.214,-0.016,3.79,0.065,0.19,0.093,0.695];
+            var p2v = [0.194,0.051,0.162,0.068,2.201,-0.032,0.312,0.164,0.156,0.807,0.229,0.074,0.266,0.043,4.946,-0.016,0.033,-0.037,0.09,0.569,0.025,0.02,0.211,-0.019,3.767,0.064,0.188,0.092,0.692];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -3553,8 +3553,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.855, 0.789, 1.762, 0.149, 11.663, 2.3, -7.669, 9.797, 13.565, 4.928, 6.01, -11.754, 17.34, -4.065, -1.617, -7.363, -34.303, -15.085, -12.668, -6.785, -6.703, -14.251, -3.786, -5.874, -10.357, -10.232, -18.457],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -3608,8 +3608,8 @@
         id: 'dotTrail_chart_QQQ_gex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.911,0.971,1.881,0.256,11.734,2.542,-7.885,10.097,13.81,5.21,6.553,-6.772,18.009,-0.48,-30.042,-5.892,-20.385,-13.131,-11.412,-6.743,-6.392,-12.561,-2.542,-4.194,-10.039,-10.002,-18.044];
-            var p2v = [-0.15,-1.244,-0.3,-0.722,-0.466,-0.417,-6.076,-0.429,-0.448,-1.593,0.469,6.48,1.262,1.328,-34.784,-0.697,6.68,1.007,0.428,-0.019,0.244,1.707,1.236,1.731,0.307,0.226,0.318];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [0.855,0.789,1.762,0.149,11.663,2.3,-7.669,9.797,13.565,4.928,6.01,-11.754,17.34,-4.065,-1.617,-7.363,-34.303,-15.085,-12.668,-6.785,-6.703,-14.251,-3.786,-5.874,-10.357,-10.232,-18.457];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -3638,8 +3638,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.705, -0.455, 1.462, -0.573, 11.196, 1.883, -13.744, 9.368, 13.118, 3.335, 6.479, -5.274, 18.602, -2.737, -36.402, -8.06, -27.624, -14.078, -12.24, -6.805, -6.458, -12.544, -2.55, -4.143, -10.049, -10.007, -18.139],
-                backgroundColor: ['#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.855, 0.789, 1.762, 0.149, 11.663, 2.3, -7.669, 9.797, 13.565, 4.928, 6.01, -11.754, 17.34, -4.065, -1.617, -7.363, -34.303, -15.085, -12.668, -6.785, -6.703, -14.251, -3.786, -5.874, -10.357, -10.232, -18.457],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -3693,8 +3693,8 @@
         id: 'dotTrail_chart_QQQ_gex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.66,-0.826,1.366,-0.77,11.075,1.631,-14.988,9.022,12.786,1.87,6.561,-3.639,18.784,-1.308,-39.295,-8.503,-28.448,-14.075,-12.079,-6.792,-6.415,-12.279,-2.316,-3.827,-9.991,-9.967,-17.813];
-            var p2v = [-0.255,-1.784,-0.521,-0.904,-0.651,-1.019,-6.974,-1.149,-1.222,-4.99,0.856,9.137,1.266,5.024,-39.444,-0.895,9.31,1.929,1.843,0.101,0.362,2.335,1.674,2.318,0.42,0.293,0.697];
+            var pv  = [0.911,0.971,1.881,0.256,11.734,2.542,-7.885,10.097,13.81,5.21,6.553,-6.772,18.009,-0.48,-30.042,-5.892,-20.385,-13.131,-11.412,-6.743,-6.392,-12.561,-2.542,-4.194,-10.039,-10.002,-18.044];
+            var p2v = [0.705,-0.455,1.462,-0.573,11.196,1.883,-13.744,9.368,13.118,3.335,6.479,-5.274,18.602,-2.737,-36.402,-8.06,-27.624,-14.078,-12.24,-6.805,-6.458,-12.544,-2.55,-4.143,-10.049,-10.007,-18.139];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -3723,8 +3723,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.6, -0.995, 1.241, -0.755, 11.012, 1.282, -14.643, 8.648, 12.344, -0.062, 6.866, -2.616, 18.606, 0.959, -41.061, -8.258, -24.994, -13.156, -10.825, -6.684, -6.341, -11.916, -2.112, -3.556, -9.936, -9.94, -17.76],
-                backgroundColor: ['#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.705, -0.455, 1.462, -0.573, 11.196, 1.883, -13.744, 9.368, 13.118, 3.335, 6.479, -5.274, 18.602, -2.737, -36.402, -8.06, -27.624, -14.078, -12.24, -6.805, -6.458, -12.544, -2.55, -4.143, -10.049, -10.007, -18.139],
+                backgroundColor: ['#00b894', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -3778,8 +3778,8 @@
         id: 'dotTrail_chart_QQQ_gex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.56,-1.186,1.146,-1.038,10.859,1.078,-16.508,8.38,12.042,-0.988,6.9,-1.716,18.743,0.817,-42.248,-8.723,-27.037,-13.493,-11.16,-6.702,-6.328,-11.784,-2.11,-3.554,-9.959,-9.932,-17.771];
-            var p2v = [-0.249,-1.502,-0.542,-0.706,-0.609,-1.09,-5.365,-0.983,-0.9,-3.692,0.911,8.583,1.104,6.051,-39.698,-0.453,13.332,3.042,3.616,0.283,0.509,3.251,2.228,2.83,0.504,0.339,0.468];
+            var pv  = [0.66,-0.826,1.366,-0.77,11.075,1.631,-14.988,9.022,12.786,1.87,6.561,-3.639,18.784,-1.308,-39.295,-8.503,-28.448,-14.075,-12.079,-6.792,-6.415,-12.279,-2.316,-3.827,-9.991,-9.967,-17.813];
+            var p2v = [0.6,-0.995,1.241,-0.755,11.012,1.282,-14.643,8.648,12.344,-0.062,6.866,-2.616,18.606,0.959,-41.061,-8.258,-24.994,-13.156,-10.825,-6.684,-6.341,-11.916,-2.112,-3.556,-9.936,-9.94,-17.76];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -3864,7 +3864,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [3.543,53.302,6.823,15.934,20.482,8.267,112.916,19.593,23.456,13.282,21.575,116.908,20.71,15.021,-61.785,-13.703,-13.811,-15.704,-18.04,-6.877,-2.476,1.529,-11.723,-8.67,-14.001,-12.298,18.988];
-            var p2v = [2.688,52.513,5.061,15.785,8.819,5.967,120.585,9.796,9.891,8.354,15.565,128.662,3.37,19.086,-60.167,-6.339,20.492,-0.62,-5.372,-0.091,4.226,15.78,-7.937,-2.796,-3.644,-2.065,37.445];
+            var p2v = [3.543,53.302,6.823,15.934,20.482,8.267,112.916,19.593,23.456,13.282,21.575,116.908,20.71,15.021,-61.785,-13.703,-13.811,-15.704,-18.04,-6.877,-2.476,1.529,-11.723,-8.67,-14.001,-12.298,18.988];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -3890,165 +3890,165 @@
 
     new Chart(document.getElementById("chart-QQQ-gex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"686",data:[2.688, 3.543, 3.543],
+            label:"686",data:[2.688, 3.543, 3.543, 3.543, 3.543],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"685",data:[52.513, 53.302, 53.302],
+            label:"685",data:[52.513, 53.302, 53.302, 53.302, 53.302],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"684",data:[5.061, 6.823, 6.823],
+            label:"684",data:[5.061, 6.823, 6.823, 6.823, 6.823],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"683",data:[15.785, 15.934, 15.934],
+            label:"683",data:[15.785, 15.934, 15.934, 15.934, 15.934],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"682",data:[8.819, 20.482, 20.482],
+            label:"682",data:[8.819, 20.482, 20.482, 20.482, 20.482],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"681",data:[5.967, 8.267, 8.267],
+            label:"681",data:[5.967, 8.267, 8.267, 8.267, 8.267],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"680",data:[120.585, 112.916, 112.916],
+            label:"680",data:[120.585, 112.916, 112.916, 112.916, 112.916],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"679",data:[9.796, 19.593, 19.593],
+            label:"679",data:[9.796, 19.593, 19.593, 19.593, 19.593],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"678",data:[9.891, 23.456, 23.456],
+            label:"678",data:[9.891, 23.456, 23.456, 23.456, 23.456],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"677",data:[8.354, 13.282, 13.282],
+            label:"677",data:[8.354, 13.282, 13.282, 13.282, 13.282],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"676",data:[15.565, 21.575, 21.575],
+            label:"676",data:[15.565, 21.575, 21.575, 21.575, 21.575],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"675",data:[128.662, 116.908, 116.908],
+            label:"675",data:[128.662, 116.908, 116.908, 116.908, 116.908],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"674",data:[3.37, 20.71, 20.71],
+            label:"674",data:[3.37, 20.71, 20.71, 20.71, 20.71],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"673",data:[19.086, 15.021, 15.021],
+            label:"673",data:[19.086, 15.021, 15.021, 15.021, 15.021],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"672",data:[-60.167, -61.785, -61.785],
+            label:"672",data:[-60.167, -61.785, -61.785, -61.785, -61.785],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"671",data:[-6.339, -13.703, -13.703],
+            label:"671",data:[-6.339, -13.703, -13.703, -13.703, -13.703],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"670",data:[20.492, -13.811, -13.811],
+            label:"670",data:[20.492, -13.811, -13.811, -13.811, -13.811],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"669",data:[-0.62, -15.704, -15.704],
+            label:"669",data:[-0.62, -15.704, -15.704, -15.704, -15.704],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"668",data:[-5.372, -18.04, -18.04],
+            label:"668",data:[-5.372, -18.04, -18.04, -18.04, -18.04],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"667",data:[-0.091, -6.877, -6.877],
+            label:"667",data:[-0.091, -6.877, -6.877, -6.877, -6.877],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"666",data:[4.226, -2.476, -2.476],
+            label:"666",data:[4.226, -2.476, -2.476, -2.476, -2.476],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"665",data:[15.78, 1.529, 1.529],
+            label:"665",data:[15.78, 1.529, 1.529, 1.529, 1.529],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"664",data:[-7.937, -11.723, -11.723],
+            label:"664",data:[-7.937, -11.723, -11.723, -11.723, -11.723],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"663",data:[-2.796, -8.67, -8.67],
+            label:"663",data:[-2.796, -8.67, -8.67, -8.67, -8.67],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"662",data:[-3.644, -14.001, -14.001],
+            label:"662",data:[-3.644, -14.001, -14.001, -14.001, -14.001],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"661",data:[-2.065, -12.298, -12.298],
+            label:"661",data:[-2.065, -12.298, -12.298, -12.298, -12.298],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"660",data:[37.445, 18.988, 18.988],
+            label:"660",data:[37.445, 18.988, 18.988, 18.988, 18.988],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -4188,8 +4188,8 @@
         id: 'dotTrail_chart_QQQ_gex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [9.796,9.891,8.354,15.565,128.662,3.37,19.086,-60.167,-6.339,20.492,-0.62,-5.372,-0.091];
-            var p2v = [10.225,10.339,9.947,15.096,122.182,2.108,17.758,-25.383,-5.642,13.813,-1.626,-5.799,-0.072];
+            var pv  = [19.593,23.456,13.282,21.575,116.908,20.71,15.021,-61.785,-13.703,-13.811,-15.704,-18.04,-6.877];
+            var p2v = [9.796,9.891,8.354,15.565,128.662,3.37,19.086,-60.167,-6.339,20.492,-0.62,-5.372,-0.091];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4218,8 +4218,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.007, 0.035, 0.02, -0.005, 0.069, 0.003, -0.104, 0.079, 0.067, -0.041, 0.126, -0.251, 0.193, -0.087, 0.076, -0.068, -0.658, -0.141, -0.192, -0.06, -0.061, -0.276, -0.03, -0.086, -0.058, -0.081, -0.292],
-                backgroundColor: ['#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -4273,8 +4273,8 @@
         id: 'dotTrail_chart_QQQ_dex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.011,-0.017,0.025,-0.032,0.064,0.017,-0.161,0.074,0.068,-0.031,0.113,0.06,0.198,-0.084,0.087,-0.159,-0.665,-0.149,-0.191,0.035,-0.08,-0.243,-0.019,-0.09,-0.045,-0.074,-0.195];
-            var p2v = [0.01,-0.01,0.021,-0.008,0.014,0.044,0.023,0.013,0.078,0.074,0.01,0.433,0.033,0.023,0.025,-0.082,0.044,-0.008,0.006,0.004,0.247,0.048,0.007,-0.013,0.005,0.003,0.111];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [0.007,0.035,0.02,-0.005,0.069,0.003,-0.104,0.079,0.067,-0.041,0.126,-0.251,0.193,-0.087,0.076,-0.068,-0.658,-0.141,-0.192,-0.06,-0.061,-0.276,-0.03,-0.086,-0.058,-0.081,-0.292];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4303,8 +4303,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.017, 0.025, 0.041, -0.013, 0.083, 0.047, -0.082, 0.092, 0.145, 0.033, 0.137, 0.182, 0.226, -0.064, 0.101, -0.149, -0.614, -0.149, -0.186, -0.056, 0.186, -0.228, -0.023, -0.098, -0.053, -0.078, -0.181],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#00b894', '#e17055', '#f72585', '#e17055', '#f72585', '#e17055', '#f72585'],
+                data: [0.007, 0.035, 0.02, -0.005, 0.069, 0.003, -0.104, 0.079, 0.067, -0.041, 0.126, -0.251, 0.193, -0.087, 0.076, -0.068, -0.658, -0.141, -0.192, -0.06, -0.061, -0.276, -0.03, -0.086, -0.058, -0.081, -0.292],
+                backgroundColor: ['#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#f72585', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -4358,8 +4358,8 @@
         id: 'dotTrail_chart_QQQ_dex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.021,0.045,0.049,-0.003,0.09,0.067,0.034,0.112,0.146,0.049,0.359,0.207,0.235,-0.059,0.104,-0.148,-0.621,-0.064,-0.099,0.038,0.185,-0.094,0.049,-0.066,0.04,-0.04,0.001];
-            var p2v = [0.012,-0.025,0.026,-0.022,0.016,0.042,-0.049,0.009,0.013,0.024,0.217,0.301,0.002,-0.005,0.003,-0.099,-0.067,-0.024,-0.026,-0.014,-0.048,-0.03,-0.027,-0.071,-0.019,-0.012,0.025];
+            var pv  = [0.011,-0.017,0.025,-0.032,0.064,0.017,-0.161,0.074,0.068,-0.031,0.113,0.06,0.198,-0.084,0.087,-0.159,-0.665,-0.149,-0.191,0.035,-0.08,-0.243,-0.019,-0.09,-0.045,-0.074,-0.195];
+            var p2v = [0.017,0.025,0.041,-0.013,0.083,0.047,-0.082,0.092,0.145,0.033,0.137,0.182,0.226,-0.064,0.101,-0.149,-0.614,-0.149,-0.186,-0.056,0.186,-0.228,-0.023,-0.098,-0.053,-0.078,-0.181];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4388,8 +4388,8 @@
         data: {
             labels: ["QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660"],
             datasets: [{
-                data: [0.02, 0.009, 0.047, -0.027, 0.085, 0.045, -0.153, 0.088, 0.08, -0.017, 0.344, 0.05, 0.195, -0.092, 0.079, -0.167, -0.726, -0.165, -0.218, -0.074, -0.109, -0.306, -0.057, -0.157, -0.077, -0.093, -0.267],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
+                data: [0.017, 0.025, 0.041, -0.013, 0.083, 0.047, -0.082, 0.092, 0.145, 0.033, 0.137, 0.182, 0.226, -0.064, 0.101, -0.149, -0.614, -0.149, -0.186, -0.056, 0.186, -0.228, -0.023, -0.098, -0.053, -0.078, -0.181],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#f72585', '#00b894', '#e17055', '#f72585', '#e17055', '#f72585', '#e17055', '#f72585'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -4443,8 +4443,8 @@
         id: 'dotTrail_chart_QQQ_dex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.023,0.05,0.055,0.002,0.093,0.068,0.024,0.119,0.156,0.042,0.366,0.181,0.227,-0.064,0.101,-0.15,-0.63,-0.154,-0.199,-0.066,-0.098,-0.253,-0.046,-0.133,-0.068,-0.087,-0.2];
-            var p2v = [0.016,0.001,0.034,0.0,0.015,0.062,0.077,0.036,0.079,0.075,0.237,0.401,0.026,0.014,0.018,-0.089,-0.008,-0.018,-0.012,0.09,-0.058,0.146,-0.033,-0.013,0.085,0.03,0.25];
+            var pv  = [0.021,0.045,0.049,-0.003,0.09,0.067,0.034,0.112,0.146,0.049,0.359,0.207,0.235,-0.059,0.104,-0.148,-0.621,-0.064,-0.099,0.038,0.185,-0.094,0.049,-0.066,0.04,-0.04,0.001];
+            var p2v = [0.02,0.009,0.047,-0.027,0.085,0.045,-0.153,0.088,0.08,-0.017,0.344,0.05,0.195,-0.092,0.079,-0.167,-0.726,-0.165,-0.218,-0.074,-0.109,-0.306,-0.057,-0.157,-0.077,-0.093,-0.267];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4529,7 +4529,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [0.092,3.186,0.203,0.269,0.317,0.318,5.198,0.334,0.378,0.265,0.502,5.356,0.189,-0.032,0.215,-0.025,3.96,0.038,0.021,0.182,0.433,2.472,-0.063,-0.017,0.065,-0.006,6.722];
-            var p2v = [0.085,3.151,0.183,0.274,0.248,0.315,5.302,0.255,0.311,0.306,0.376,5.607,-0.004,0.055,0.139,0.042,4.618,0.178,0.213,0.243,0.494,2.747,-0.033,0.069,0.123,0.075,7.014];
+            var p2v = [0.092,3.186,0.203,0.269,0.317,0.318,5.198,0.334,0.378,0.265,0.502,5.356,0.189,-0.032,0.215,-0.025,3.96,0.038,0.021,0.182,0.433,2.472,-0.063,-0.017,0.065,-0.006,6.722];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4555,165 +4555,165 @@
 
     new Chart(document.getElementById("chart-QQQ-dex-ts"), {
         type: 'line',
-        data: { labels: ["03:28", "05:54", "05:57"], datasets: [
+        data: { labels: ["03:28", "05:54", "05:57", "06:06", "06:43"], datasets: [
         {
-            label:"686",data:[0.085, 0.092, 0.092],
+            label:"686",data:[0.085, 0.092, 0.092, 0.092, 0.092],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"685",data:[3.151, 3.186, 3.186],
+            label:"685",data:[3.151, 3.186, 3.186, 3.186, 3.186],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"684",data:[0.183, 0.203, 0.203],
+            label:"684",data:[0.183, 0.203, 0.203, 0.203, 0.203],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"683",data:[0.274, 0.269, 0.269],
+            label:"683",data:[0.274, 0.269, 0.269, 0.269, 0.269],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"682",data:[0.248, 0.317, 0.317],
+            label:"682",data:[0.248, 0.317, 0.317, 0.317, 0.317],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"681",data:[0.315, 0.318, 0.318],
+            label:"681",data:[0.315, 0.318, 0.318, 0.318, 0.318],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"680",data:[5.302, 5.198, 5.198],
+            label:"680",data:[5.302, 5.198, 5.198, 5.198, 5.198],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"679",data:[0.255, 0.334, 0.334],
+            label:"679",data:[0.255, 0.334, 0.334, 0.334, 0.334],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"678",data:[0.311, 0.378, 0.378],
+            label:"678",data:[0.311, 0.378, 0.378, 0.378, 0.378],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"677",data:[0.306, 0.265, 0.265],
+            label:"677",data:[0.306, 0.265, 0.265, 0.265, 0.265],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"676",data:[0.376, 0.502, 0.502],
+            label:"676",data:[0.376, 0.502, 0.502, 0.502, 0.502],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"675",data:[5.607, 5.356, 5.356],
+            label:"675",data:[5.607, 5.356, 5.356, 5.356, 5.356],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"674",data:[-0.004, 0.189, 0.189],
+            label:"674",data:[-0.004, 0.189, 0.189, 0.189, 0.189],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"673",data:[0.055, -0.032, -0.032],
+            label:"673",data:[0.055, -0.032, -0.032, -0.032, -0.032],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"672",data:[0.139, 0.215, 0.215],
+            label:"672",data:[0.139, 0.215, 0.215, 0.215, 0.215],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"671",data:[0.042, -0.025, -0.025],
+            label:"671",data:[0.042, -0.025, -0.025, -0.025, -0.025],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"670",data:[4.618, 3.96, 3.96],
+            label:"670",data:[4.618, 3.96, 3.96, 3.96, 3.96],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"669",data:[0.178, 0.038, 0.038],
+            label:"669",data:[0.178, 0.038, 0.038, 0.038, 0.038],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"668",data:[0.213, 0.021, 0.021],
+            label:"668",data:[0.213, 0.021, 0.021, 0.021, 0.021],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"667",data:[0.243, 0.182, 0.182],
+            label:"667",data:[0.243, 0.182, 0.182, 0.182, 0.182],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"666",data:[0.494, 0.433, 0.433],
+            label:"666",data:[0.494, 0.433, 0.433, 0.433, 0.433],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"665",data:[2.747, 2.472, 2.472],
+            label:"665",data:[2.747, 2.472, 2.472, 2.472, 2.472],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"664",data:[-0.033, -0.063, -0.063],
+            label:"664",data:[-0.033, -0.063, -0.063, -0.063, -0.063],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"663",data:[0.069, -0.017, -0.017],
+            label:"663",data:[0.069, -0.017, -0.017, -0.017, -0.017],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"662",data:[0.123, 0.065, 0.065],
+            label:"662",data:[0.123, 0.065, 0.065, 0.065, 0.065],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"661",data:[0.075, -0.006, -0.006],
+            label:"661",data:[0.075, -0.006, -0.006, -0.006, -0.006],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"660",data:[7.014, 6.722, 6.722],
+            label:"660",data:[7.014, 6.722, 6.722, 6.722, 6.722],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -4853,8 +4853,8 @@
         id: 'dotTrail_chart_QQQ_dex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.255,0.311,0.306,0.376,5.607,-0.004,0.055,0.139,0.042,4.618,0.178,0.213,0.243];
-            var p2v = [0.242,0.233,0.232,0.365,5.174,-0.037,0.032,0.114,0.124,4.574,0.186,0.206,0.239];
+            var pv  = [0.334,0.378,0.265,0.502,5.356,0.189,-0.032,0.215,-0.025,3.96,0.038,0.021,0.182];
+            var p2v = [0.255,0.311,0.306,0.376,5.607,-0.004,0.055,0.139,0.042,4.618,0.178,0.213,0.243];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -4979,10 +4979,10 @@
     new Chart(document.getElementById("chart-USO-gex-d10"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [0.805, -0.011, 0.162, 0.323, 0.001, 0.054, 0.013, 0.142],
+                backgroundColor: ['#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5029,15 +5029,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_gex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.011,0.001,-0.025,0.0,-0.008,-0.018];
-            var p2v = [0.018,0.001,-0.022,0.002,0.008,0.011];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5064,10 +5064,10 @@
     new Chart(document.getElementById("chart-USO-gex-d20"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [0.018, 0.001, -0.022, 0.002, 0.008, 0.011],
-                backgroundColor: ['#f72585', '#00b894', '#e17055', '#f72585', '#f72585', '#f72585'],
+                data: [0.805, -0.011, 0.162, 0.323, 0.001, 0.054, 0.013, 0.142],
+                backgroundColor: ['#00b894', '#e17055', '#00b894', '#f72585', '#00b894', '#00b894', '#f72585', '#f72585'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5114,15 +5114,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_gex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.005,0.001,-0.03,-0.001,-0.004,-0.022];
-            var p2v = [0.031,0.005,-0.019,0.005,0.004,-0.0];
+            var pv  = [0.011,0.0,0.001,-0.025,0.0,0.0,-0.008,-0.018];
+            var p2v = [0.018,0.0,0.001,-0.022,0.0,0.002,0.008,0.011];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5149,10 +5149,10 @@
     new Chart(document.getElementById("chart-USO-gex-d30"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [0.031, 0.005, -0.019, 0.005, 0.004, -0.0],
-                backgroundColor: ['#00b894', '#00b894', '#e17055', '#00b894', '#00b894', '#00b894'],
+                data: [0.823, -0.011, 0.163, 0.301, 0.001, 0.056, 0.021, 0.154],
+                backgroundColor: ['#f72585', '#e17055', '#00b894', '#f72585', '#00b894', '#f72585', '#f72585', '#f72585'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5199,15 +5199,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_gex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.05,0.006,-0.012,0.006,0.001,-0.017];
-            var p2v = [0.087,0.011,0.013,0.018,0.031,0.077];
+            var pv  = [-0.005,0.0,0.001,-0.03,0.0,-0.001,-0.004,-0.022];
+            var p2v = [0.031,0.0,0.005,-0.019,0.0,0.005,0.004,-0.0];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5234,10 +5234,10 @@
     new Chart(document.getElementById("chart-USO-gex-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [6.052, 0.414, 4.594, 0.473, 1.569, 5.126],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
+                data: [6.857, -0.011, 0.576, 4.917, 0.001, 0.526, 1.582, 5.268],
+                backgroundColor: ['#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5284,15 +5284,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
-            drawLine(5, '#e17055');
+            drawLine(4, '#fdcb6e');
+            drawLine(7, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_gex_net',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [6.052,0.414,4.594,0.473,1.569,5.126];
-            var p2v = [6.052,0.414,4.594,0.473,1.569,5.126];
+            var pv  = [6.052,null,0.414,4.594,null,0.473,1.569,5.126];
+            var p2v = [6.052,null,0.414,4.594,null,0.473,1.569,5.126];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5365,10 +5365,10 @@
     new Chart(document.getElementById("chart-USO-gex-level"), {
         type: 'bar',
         data: {
-            labels: ["USO 149", "USO 148", "USO 147"],
+            labels: ["USO 149", "USO 148", "USO 147.5", "USO 147"],
             datasets: [{
-                data: [0.4142807516130067, 4.594181184796449, 0.4727800709548951],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9'],
+                data: [0.5758517060810852, 4.916853693930665, 0.0013949145057678223, 0.5264407344767759],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5415,15 +5415,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(1, '#fdcb6e');
+            drawLine(2, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_gex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.414,4.594,0.473];
-            var p2v = [0.413,4.616,0.47];
+            var pv  = [0.414,4.594,0.0,0.473];
+            var p2v = [0.414,4.594,0.0,0.473];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5450,10 +5450,10 @@
     new Chart(document.getElementById("chart-USO-dex-d10"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
+                data: [0.164, -0.003, 0.019, 0.022, 0.001, 0.036, 0.015, 0.008],
+                backgroundColor: ['#00b894', '#e17055', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5500,15 +5500,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_dex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.026,-0.003,-0.006,-0.0,0.004,0.008];
-            var p2v = [-0.02,-0.002,-0.003,0.001,0.005,0.01];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5535,10 +5535,10 @@
     new Chart(document.getElementById("chart-USO-dex-d20"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [-0.02, -0.002, -0.003, 0.001, 0.005, 0.01],
-                backgroundColor: ['#e17055', '#e17055', '#e17055', '#f72585', '#00b894', '#00b894'],
+                data: [0.164, -0.003, 0.019, 0.022, 0.001, 0.036, 0.015, 0.008],
+                backgroundColor: ['#f72585', '#e17055', '#f72585', '#f72585', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5585,15 +5585,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_dex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.035,-0.004,-0.011,-0.001,0.001,0.0];
-            var p2v = [-0.022,-0.002,-0.002,0.001,0.006,0.012];
+            var pv  = [-0.026,0.0,-0.003,-0.006,0.0,-0.0,0.004,0.008];
+            var p2v = [-0.02,0.0,-0.002,-0.003,0.0,0.001,0.005,0.01];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5620,10 +5620,10 @@
     new Chart(document.getElementById("chart-USO-dex-d30"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [-0.022, -0.002, -0.002, 0.001, 0.006, 0.012],
-                backgroundColor: ['#e17055', '#e17055', '#f72585', '#00b894', '#00b894', '#00b894'],
+                data: [0.144, -0.003, 0.016, 0.018, 0.001, 0.036, 0.02, 0.019],
+                backgroundColor: ['#f72585', '#e17055', '#f72585', '#f72585', '#00b894', '#f72585', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5670,15 +5670,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
+            drawLine(4, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_dex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.013,-0.001,0.004,0.002,0.009,0.021];
-            var p2v = [-0.02,-0.002,-0.001,0.001,0.007,0.015];
+            var pv  = [-0.035,0.0,-0.004,-0.011,0.0,-0.001,0.001,0.0];
+            var p2v = [-0.022,0.0,-0.002,-0.002,0.0,0.001,0.006,0.012];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5705,10 +5705,10 @@
     new Chart(document.getElementById("chart-USO-dex-net"), {
         type: 'bar',
         data: {
-            labels: ["USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145"],
+            labels: ["USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145"],
             datasets: [{
-                data: [1.376, 0.06, 0.918, 0.07, 0.262, 1.449],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
+                data: [1.54, -0.003, 0.078, 0.939, 0.001, 0.106, 0.277, 1.457],
+                backgroundColor: ['#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5755,15 +5755,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(2, '#fdcb6e');
-            drawLine(5, '#e17055');
+            drawLine(4, '#fdcb6e');
+            drawLine(7, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_dex_net',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [1.376,0.06,0.918,0.07,0.262,1.449];
-            var p2v = [1.376,0.06,0.918,0.07,0.262,1.449];
+            var pv  = [1.376,null,0.06,0.918,null,0.07,0.262,1.449];
+            var p2v = [1.376,null,0.06,0.918,null,0.07,0.262,1.449];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -5836,10 +5836,10 @@
     new Chart(document.getElementById("chart-USO-dex-level"), {
         type: 'bar',
         data: {
-            labels: ["USO 149", "USO 148", "USO 147"],
+            labels: ["USO 149", "USO 148", "USO 147.5", "USO 147"],
             datasets: [{
-                data: [0.05961460078822012, 0.9177400178342048, 0.07012152936519182],
-                backgroundColor: ['#00cec9', '#00cec9', '#00cec9'],
+                data: [0.07811560605381199, 0.9393783394591647, 0.0005023919346764617, 0.10567930841918644],
+                backgroundColor: ['#00cec9', '#00cec9', '#00cec9', '#00cec9'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -5886,15 +5886,15 @@
                 ctx.setLineDash([]);
                 ctx.restore();
             }
-            drawLine(1, '#fdcb6e');
+            drawLine(2, '#fdcb6e');
             drawLine(-1, '#e17055');
         }
     }, {
         id: 'dotTrail_chart_USO_dex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.06,0.918,0.07];
-            var p2v = [0.062,0.921,0.07];
+            var pv  = [0.06,0.918,0.0,0.07];
+            var p2v = [0.06,0.918,0.0,0.07];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6021,8 +6021,8 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [0.229, 0.544, 0.861, 2.181, 0.418, 0.343, 0.588, 1.756, -2.63, -0.968, -0.027, -0.56, -0.223, 0.946, -0.334, -0.459, -0.245],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -6076,8 +6076,8 @@
         id: 'dotTrail_chart_GLD_gex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.228,0.549,0.876,2.09,0.403,0.334,0.667,1.803,-3.238,-1.253,-0.016,-0.56,-0.228,0.886,-0.337,-0.463,-0.249];
-            var p2v = [0.089,0.097,-0.008,-0.019,-0.068,0.168,0.887,0.515,-1.006,-1.958,-0.14,-0.116,-0.021,-0.41,-0.014,-0.018,-0.019];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [0.229,0.544,0.861,2.181,0.418,0.343,0.588,1.756,-2.63,-0.968,-0.027,-0.56,-0.223,0.946,-0.334,-0.459,-0.245];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6106,7 +6106,7 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [0.318, 0.64, 0.853, 2.163, 0.35, 0.512, 1.474, 2.271, -3.636, -2.926, -0.167, -0.676, -0.244, 0.536, -0.349, -0.477, -0.264],
+                data: [0.229, 0.544, 0.861, 2.181, 0.418, 0.343, 0.588, 1.756, -2.63, -0.968, -0.027, -0.56, -0.223, 0.946, -0.334, -0.459, -0.245],
                 backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -6161,8 +6161,8 @@
         id: 'dotTrail_chart_GLD_gex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.3,0.629,0.84,2.121,0.32,0.609,1.852,2.379,-4.324,-3.296,-0.184,-0.669,-0.244,0.328,-0.35,-0.482,-0.268];
-            var p2v = [0.136,0.125,0.015,0.022,-0.109,0.138,0.569,0.218,-1.513,-1.22,-0.021,0.128,0.008,-0.235,-0.007,-0.014,-0.007];
+            var pv  = [0.228,0.549,0.876,2.09,0.403,0.334,0.667,1.803,-3.238,-1.253,-0.016,-0.56,-0.228,0.886,-0.337,-0.463,-0.249];
+            var p2v = [0.318,0.64,0.853,2.163,0.35,0.512,1.474,2.271,-3.636,-2.926,-0.167,-0.676,-0.244,0.536,-0.349,-0.477,-0.264];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6191,7 +6191,7 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [0.365, 0.668, 0.875, 2.203, 0.309, 0.482, 1.156, 1.974, -4.143, -2.188, -0.048, -0.432, -0.215, 0.711, -0.341, -0.472, -0.252],
+                data: [0.318, 0.64, 0.853, 2.163, 0.35, 0.512, 1.474, 2.271, -3.636, -2.926, -0.167, -0.676, -0.244, 0.536, -0.349, -0.477, -0.264],
                 backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#e17055'],
                 borderColor: 'transparent',
                 barThickness: 14,
@@ -6246,8 +6246,8 @@
         id: 'dotTrail_chart_GLD_gex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.356,0.662,0.873,2.194,0.298,0.523,1.292,2.017,-4.286,-2.382,-0.059,-0.44,-0.215,0.631,-0.341,-0.474,-0.252];
-            var p2v = [0.176,0.151,0.035,0.018,-0.144,0.113,0.362,0.031,-2.147,-0.772,0.084,0.377,0.035,-0.166,-0.0,-0.004,0.004];
+            var pv  = [0.3,0.629,0.84,2.121,0.32,0.609,1.852,2.379,-4.324,-3.296,-0.184,-0.669,-0.244,0.328,-0.35,-0.482,-0.268];
+            var p2v = [0.365,0.668,0.875,2.203,0.309,0.482,1.156,1.974,-4.143,-2.188,-0.048,-0.432,-0.215,0.711,-0.341,-0.472,-0.252];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6332,7 +6332,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [3.191,1.865,2.951,14.489,-2.64,0.112,-1.402,0.763,-22.958,-6.66,-0.782,-1.759,-0.763,-24.162,-0.824,-0.527,-0.799];
-            var p2v = [2.962,1.321,2.09,12.308,-3.058,-0.232,-1.989,-0.993,-20.328,-5.692,-0.756,-1.199,-0.54,-25.108,-0.49,-0.068,-0.554];
+            var p2v = [3.191,1.865,2.951,14.489,-2.64,0.112,-1.402,0.763,-22.958,-6.66,-0.782,-1.759,-0.763,-24.162,-0.824,-0.527,-0.799];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6462,8 +6462,8 @@
         id: 'dotTrail_chart_GLD_gex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.232,-1.989,-0.993,-20.328,-5.692,-0.756,-1.199,-0.54];
-            var p2v = [-0.4,-2.876,-1.508,-19.322,-3.734,-0.615,-1.083,-0.519];
+            var pv  = [0.112,-1.402,0.763,-22.958,-6.66,-0.782,-1.759,-0.763];
+            var p2v = [-0.232,-1.989,-0.993,-20.328,-5.692,-0.756,-1.199,-0.54];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6492,8 +6492,8 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [-0.001, 0.008, 0.021, 0.056, 0.004, 0.005, 0.024, 0.071, -0.207, -0.025, 0.006, -0.009, -0.001, 0.197, -0.012, -0.0, 0.0],
-                backgroundColor: ['#e17055', '#f72585', '#00b894', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894'],
+                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -6547,8 +6547,8 @@
         id: 'dotTrail_chart_GLD_dex_d10',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.012,-0.003,0.015,0.017,-0.013,-0.013,0.022,0.06,-0.213,-0.025,0.007,-0.008,-0.0,0.218,-0.011,0.002,0.002];
-            var p2v = [0.009,0.005,-0.004,-0.02,-0.014,-0.017,-0.001,-0.0,0.006,0.001,0.001,0.002,0.001,0.038,0.002,0.003,0.002];
+            var pv  = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+            var p2v = [-0.001,0.008,0.021,0.056,0.004,0.005,0.024,0.071,-0.207,-0.025,0.006,-0.009,-0.001,0.197,-0.012,-0.0,0.0];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6577,8 +6577,8 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [0.008, 0.013, 0.017, 0.036, -0.01, -0.012, 0.023, 0.071, -0.201, -0.025, 0.008, -0.007, 0.0, 0.235, -0.01, 0.002, 0.002],
-                backgroundColor: ['#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894'],
+                data: [-0.001, 0.008, 0.021, 0.056, 0.004, 0.005, 0.024, 0.071, -0.207, -0.025, 0.006, -0.009, -0.001, 0.197, -0.012, -0.0, 0.0],
+                backgroundColor: ['#e17055', '#f72585', '#00b894', '#00b894', '#f72585', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -6632,8 +6632,8 @@
         id: 'dotTrail_chart_GLD_dex_d20',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [0.001,0.006,0.022,-0.028,-0.005,0.001,0.045,0.068,-0.248,-0.028,0.006,-0.009,0.002,0.173,-0.011,0.001,0.001];
-            var p2v = [0.002,-0.003,-0.011,-0.126,-0.01,-0.022,0.021,-0.003,-0.052,-0.004,-0.002,-0.002,0.002,-0.04,0.0,0.0,0.001];
+            var pv  = [-0.012,-0.003,0.015,0.017,-0.013,-0.013,0.022,0.06,-0.213,-0.025,0.007,-0.008,-0.0,0.218,-0.011,0.002,0.002];
+            var p2v = [0.008,0.013,0.017,0.036,-0.01,-0.012,0.023,0.071,-0.201,-0.025,0.008,-0.007,0.0,0.235,-0.01,0.002,0.002];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6662,8 +6662,8 @@
         data: {
             labels: ["GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407"],
             datasets: [{
-                data: [0.001, 0.005, 0.011, -0.07, -0.006, -0.016, 0.045, 0.068, -0.259, -0.029, 0.004, -0.01, 0.001, 0.157, -0.012, 0.0, 0.001],
-                backgroundColor: ['#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#f72585', '#00b894', '#e17055', '#00b894', '#00b894'],
+                data: [0.008, 0.013, 0.017, 0.036, -0.01, -0.012, 0.023, 0.071, -0.201, -0.025, 0.008, -0.007, 0.0, 0.235, -0.01, 0.002, 0.002],
+                backgroundColor: ['#00b894', '#00b894', '#00b894', '#f72585', '#e17055', '#f72585', '#00b894', '#00b894', '#e17055', '#e17055', '#00b894', '#e17055', '#00b894', '#00b894', '#e17055', '#00b894', '#00b894'],
                 borderColor: 'transparent',
                 barThickness: 14,
             }]
@@ -6717,8 +6717,8 @@
         id: 'dotTrail_chart_GLD_dex_d30',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.001,0.004,0.009,-0.091,-0.018,0.001,0.019,0.067,-0.271,-0.03,0.003,-0.011,-0.002,0.141,-0.012,0.0,0.0];
-            var p2v = [0.006,0.0,0.002,-0.051,-0.007,-0.003,0.023,-0.002,-0.023,-0.002,0.0,-0.0,-0.0,0.003,0.001,0.001,0.001];
+            var pv  = [0.001,0.006,0.022,-0.028,-0.005,0.001,0.045,0.068,-0.248,-0.028,0.006,-0.009,0.002,0.173,-0.011,0.001,0.001];
+            var p2v = [0.001,0.005,0.011,-0.07,-0.006,-0.016,0.045,0.068,-0.259,-0.029,0.004,-0.01,0.001,0.157,-0.012,0.0,0.001];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6803,7 +6803,7 @@
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
             var pv  = [0.049,-0.028,0.097,0.887,-0.147,-0.013,-0.016,0.056,-0.64,-0.084,0.031,-0.046,-0.012,-0.375,-0.026,0.053,-0.013];
-            var p2v = [0.05,-0.037,0.076,0.831,-0.151,-0.018,-0.04,-0.015,-0.433,-0.058,0.025,-0.037,-0.011,-0.571,-0.014,0.053,-0.013];
+            var p2v = [0.049,-0.028,0.097,0.887,-0.147,-0.013,-0.016,0.056,-0.64,-0.084,0.031,-0.046,-0.012,-0.375,-0.026,0.053,-0.013];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();
@@ -6933,8 +6933,8 @@
         id: 'dotTrail_chart_GLD_dex_level',
         afterDatasetsDraw(chart) {
             const {ctx, scales} = chart;
-            var pv  = [-0.018,-0.04,-0.015,-0.433,-0.058,0.025,-0.037,-0.011];
-            var p2v = [-0.001,-0.039,-0.015,-0.439,-0.059,0.024,-0.039,-0.012];
+            var pv  = [-0.013,-0.016,0.056,-0.64,-0.084,0.031,-0.046,-0.012];
+            var p2v = [-0.018,-0.04,-0.015,-0.433,-0.058,0.025,-0.037,-0.011];
             function drawDots(vals, fillColor, radius) {
                 if (!vals) return;
                 ctx.save();

@@ -3,1507 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GEX History — by Expiry Type</title>
+<title>Historical GEX</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-    :root{--bg:#1a1a2e;--card:#16213e;--border:rgba(255,255,255,0.08);--text:#e0e0e0;--text2:#a0a0b0}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;font-size:14px}
-    .page{max-width:1400px;margin:0 auto;padding:20px}
-    h1{text-align:center;font-size:1.6rem;font-weight:600;margin-bottom:4px}
-    .subtitle{text-align:center;color:var(--text2);font-size:0.85rem;margin-bottom:20px}
-    .tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-    .tab-btn{padding:7px 18px;border:1px solid var(--border);border-radius:6px;
-             background:transparent;color:var(--text2);cursor:pointer;font-size:0.85rem;transition:all .15s}
-    .tab-btn.active,.tab-btn:hover{background:#0984e3;color:#fff;border-color:#0984e3}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;
-          padding:18px;margin-bottom:20px}
-    .card-title{font-size:0.95rem;font-weight:600;margin-bottom:14px;
-                display:flex;align-items:center;gap:10px}
-    .date-badge{background:#2d3436;border-radius:4px;padding:2px 8px;
-                font-size:0.75rem;color:var(--text2)}
-    .bkt-tabs{display:flex;gap:6px;margin-bottom:12px}
-    .bkt-btn{padding:4px 12px;border:1px solid var(--border);border-radius:4px;
-             background:transparent;cursor:pointer;font-size:0.8rem;color:var(--text2);transition:all .15s}
-    .bkt-btn.active{color:#fff;border-color:currentColor}
-    .chart-wrap{position:relative}
-    .no-data{color:var(--text2);font-size:0.85rem;padding:30px;text-align:center}
-    .walls{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap}
-    .wall-chip{padding:3px 10px;border-radius:4px;font-size:0.78rem;font-weight:600}
-    .wall-call{background:rgba(0,206,201,0.18);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
-    .wall-put{background:rgba(225,112,85,0.18);color:#e17055;border:1px solid rgba(225,112,85,0.3)}
-    .footer{text-align:center;color:var(--text2);font-size:0.78rem;margin-top:24px;padding-top:12px;
-            border-top:1px solid var(--border)}
-    </style>
+  :root {
+    --bg:#1a1a2e; --bg2:#16213e; --bg3:#0f3460;
+    --text:#e0e0e0; --text2:#a0a0b0; --border:rgba(255,255,255,0.1);
+    --cyan:#00cec9; --red:#e17055;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+  a{color:var(--cyan);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .page-header{text-align:center;padding:28px 16px 12px}
+  .page-header h1{font-size:1.6rem;font-weight:700;margin-bottom:6px}
+  .page-header .sub{color:var(--text2);font-size:0.85rem}
+  .back-link{font-size:0.82rem;margin-top:8px;display:block}
+
+  .section-wrap{max-width:1100px;margin:0 auto;padding:0 16px 48px}
+
+  /* Live today section */
+  .live-section{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:32px}
+  .live-section-title{font-size:1rem;font-weight:600;color:var(--cyan);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);display:inline-block;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+  /* Instrument & expiry buttons */
+  .hinst-bar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .hinst-btn{padding:5px 14px;border:1px solid var(--border);border-radius:4px;background:transparent;
+              color:var(--text2);cursor:pointer;font-size:0.82rem;transition:all .15s}
+  .hinst-btn.active{background:rgba(116,185,255,0.15);border-color:#74b9ff;color:#74b9ff}
+  .hexp-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+  .hexp-btn{padding:4px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;
+             cursor:pointer;font-size:0.8rem;color:var(--text2);transition:all .15s}
+  .hexp-btn.active{color:#fff !important;background:rgba(255,255,255,0.08)}
+
+  /* Chart area */
+  .chart-area{position:relative;min-height:300px}
+
+  /* Time slider */
+  .slider-wrap{margin-top:16px;padding:12px 0 4px}
+  .slider-label{color:var(--text2);font-size:0.78rem;margin-bottom:6px;display:flex;justify-content:space-between}
+  input[type=range]{width:100%;accent-color:var(--cyan);cursor:pointer}
+  .slider-time{font-size:0.9rem;color:var(--cyan);font-weight:600;text-align:center;margin-top:4px}
+
+  /* Past day cards */
+  .past-section-title{font-size:0.9rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.08em;
+                       margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .hday-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:20px}
+  .hday-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .hday-title{font-weight:600;font-size:1rem}
+  .hday-badge{background:var(--bg3);border-radius:4px;padding:2px 8px;font-size:0.75rem;color:var(--text2)}
+  .hday-inst{}
+
+  .no-data{color:var(--text2);font-size:0.85rem;padding:30px;text-align:center}
+</style>
 </head>
 <body>
-<div class="page">
-  <h1>GEX History — by Expiry Type</h1>
-  <div class="subtitle">
-    Where market makers have positioned — past 7 trading days
-    &nbsp;|&nbsp; <a href="gex_delta.html" style="color:#74b9ff">← Live GEX</a>
-  </div>
-
-  <div class="tabs" id="inst-tabs">
-    <button class="tab-btn active" onclick="showInst('SPY')" id="itab-SPY">SPY</button><button class="tab-btn" onclick="showInst('SPX')" id="itab-SPX">SPX</button><button class="tab-btn" onclick="showInst('QQQ')" id="itab-QQQ">QQQ</button><button class="tab-btn" onclick="showInst('USO')" id="itab-USO">USO</button><button class="tab-btn" onclick="showInst('GLD')" id="itab-GLD">GLD</button>
-  </div>
-
-  
-    <div class="card" id="card-2026-05-06">
-      <div class="card-title">
-        Today — 2026-05-06
-        <span class="date-badge">Updated 2026-05-06 14:26</span>
-      </div>
-      <div id="isect-2026-05-06-SPY" class="inst-section" data-date="2026-05-06" data-inst="SPY" style="display:block"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-06','SPY','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-06','SPY','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-06','SPY','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-06','SPY','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-06-SPY-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 730 (+90.6M)</span><span class="wall-chip wall-call">SPY 734 (+69.4M)</span><span class="wall-chip wall-call">SPY 732 (+59.1M)</span></div>
-                  <div class="chart-wrap" style="height:1732px">
-                    <canvas id="hc-2026-05-06-SPY-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPY-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-07, 2026-05-11, 2026-05-12</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 730 (+49.5M)</span><span class="wall-chip wall-call">SPY 735 (+42.7M)</span><span class="wall-chip wall-call">SPY 740 (+42.4M)</span></div>
-                  <div class="chart-wrap" style="height:1732px">
-                    <canvas id="hc-2026-05-06-SPY-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPY-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 733 (+57.3M)</span><span class="wall-chip wall-put">SPY 700 (-57.1M)</span><span class="wall-chip wall-call">SPY 735 (+54.6M)</span></div>
-                  <div class="chart-wrap" style="height:2152px">
-                    <canvas id="hc-2026-05-06-SPY-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPY-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 730 (+65.5M)</span><span class="wall-chip wall-call">SPY 750 (+57.0M)</span><span class="wall-chip wall-call">SPY 740 (+48.0M)</span></div>
-                  <div class="chart-wrap" style="height:1844px">
-                    <canvas id="hc-2026-05-06-SPY-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-06-SPX" class="inst-section" data-date="2026-05-06" data-inst="SPX" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-06','SPX','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-06','SPX','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-06','SPX','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-06','SPX','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-06-SPX-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7350 (+490.6M)</span><span class="wall-chip wall-call">SPX 7345 (+251.6M)</span><span class="wall-chip wall-call">SPX 7340 (+117.7M)</span></div>
-                  <div class="chart-wrap" style="height:3132px">
-                    <canvas id="hc-2026-05-06-SPX-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPX-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-07, 2026-05-11, 2026-05-12</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7400 (+50.5M)</span><span class="wall-chip wall-call">SPX 7300 (+35.3M)</span><span class="wall-chip wall-call">SPX 7500 (+35.0M)</span></div>
-                  <div class="chart-wrap" style="height:4168px">
-                    <canvas id="hc-2026-05-06-SPX-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPX-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7350 (+59.5M)</span><span class="wall-chip wall-call">SPX 7400 (+37.0M)</span><span class="wall-chip wall-call">SPX 7300 (+24.2M)</span></div>
-                  <div class="chart-wrap" style="height:4140px">
-                    <canvas id="hc-2026-05-06-SPX-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-SPX-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7400 (+52.1M)</span><span class="wall-chip wall-call">SPX 7300 (+41.1M)</span><span class="wall-chip wall-call">SPX 7350 (+39.1M)</span></div>
-                  <div class="chart-wrap" style="height:3832px">
-                    <canvas id="hc-2026-05-06-SPX-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-06-QQQ" class="inst-section" data-date="2026-05-06" data-inst="QQQ" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-06','QQQ','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-06','QQQ','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-06','QQQ','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-06','QQQ','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-06-QQQ-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 694 (+34.3M)</span><span class="wall-chip wall-call">QQQ 693 (+23.9M)</span><span class="wall-chip wall-call">QQQ 690 (+21.6M)</span></div>
-                  <div class="chart-wrap" style="height:1592px">
-                    <canvas id="hc-2026-05-06-QQQ-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-QQQ-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-07, 2026-05-11, 2026-05-12</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 695 (+28.6M)</span><span class="wall-chip wall-call">QQQ 700 (+23.6M)</span><span class="wall-chip wall-call">QQQ 690 (+23.1M)</span></div>
-                  <div class="chart-wrap" style="height:1564px">
-                    <canvas id="hc-2026-05-06-QQQ-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-QQQ-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 695 (+24.6M)</span><span class="wall-chip wall-call">QQQ 700 (+21.4M)</span><span class="wall-chip wall-put">QQQ 660 (-20.2M)</span></div>
-                  <div class="chart-wrap" style="height:1844px">
-                    <canvas id="hc-2026-05-06-QQQ-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-QQQ-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 700 (+32.7M)</span><span class="wall-chip wall-call">QQQ 690 (+26.5M)</span><span class="wall-chip wall-call">QQQ 710 (+21.1M)</span></div>
-                  <div class="chart-wrap" style="height:1760px">
-                    <canvas id="hc-2026-05-06-QQQ-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-06-USO" class="inst-section" data-date="2026-05-06" data-inst="USO" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-06','USO','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-06','USO','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-06','USO','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-06','USO','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-06-USO-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06</div>
-                  <div class="walls"><span class="wall-chip wall-put">USO 133 (-3.6M)</span><span class="wall-chip wall-put">USO 130 (-2.0M)</span><span class="wall-chip wall-put">USO 135 (-1.9M)</span></div>
-                  <div class="chart-wrap" style="height:444px">
-                    <canvas id="hc-2026-05-06-USO-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-USO-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-13, 2026-05-20, 2026-06-18</div>
-                  <div class="walls"><span class="wall-chip wall-call">USO 130 (+0.1M)</span><span class="wall-chip wall-call">USO 132 (+0.1M)</span><span class="wall-chip wall-call">USO 138 (+0.1M)</span></div>
-                  <div class="chart-wrap" style="height:444px">
-                    <canvas id="hc-2026-05-06-USO-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-USO-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-put">USO 130 (-2.7M)</span><span class="wall-chip wall-put">USO 135 (-1.9M)</span><span class="wall-chip wall-call">USO 127 (+0.4M)</span></div>
-                  <div class="chart-wrap" style="height:640px">
-                    <canvas id="hc-2026-05-06-USO-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-USO-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-09-18</div>
-                  <div class="walls"><span class="wall-chip wall-put">USO 139 (-0.5M)</span><span class="wall-chip wall-put">USO 130 (-0.4M)</span><span class="wall-chip wall-call">USO 135 (+0.4M)</span></div>
-                  <div class="chart-wrap" style="height:444px">
-                    <canvas id="hc-2026-05-06-USO-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-06-GLD" class="inst-section" data-date="2026-05-06" data-inst="GLD" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-06','GLD','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-06','GLD','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-06','GLD','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-06','GLD','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-06-GLD-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06</div>
-                  <div class="walls"><span class="wall-chip wall-call">GLD 430 (+16.4M)</span><span class="wall-chip wall-call">GLD 431 (+3.6M)</span><span class="wall-chip wall-call">GLD 432 (+2.2M)</span></div>
-                  <div class="chart-wrap" style="height:1284px">
-                    <canvas id="hc-2026-05-06-GLD-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-GLD-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-11, 2026-05-13, 2026-05-18</div>
-                  <div class="walls"><span class="wall-chip wall-call">GLD 450 (+17.3M)</span><span class="wall-chip wall-call">GLD 425 (+13.9M)</span><span class="wall-chip wall-call">GLD 440 (+7.4M)</span></div>
-                  <div class="chart-wrap" style="height:1284px">
-                    <canvas id="hc-2026-05-06-GLD-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-GLD-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">GLD 425 (+11.4M)</span><span class="wall-chip wall-call">GLD 426 (+5.7M)</span><span class="wall-chip wall-call">GLD 430 (+4.7M)</span></div>
-                  <div class="chart-wrap" style="height:1284px">
-                    <canvas id="hc-2026-05-06-GLD-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-06-GLD-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-put">GLD 425 (-16.1M)</span><span class="wall-chip wall-put">GLD 410 (-9.7M)</span><span class="wall-chip wall-call">GLD 450 (+8.1M)</span></div>
-                  <div class="chart-wrap" style="height:1284px">
-                    <canvas id="hc-2026-05-06-GLD-monthly"></canvas>
-                  </div>
-                </div></div>
-    </div>
-
-    <div class="card" id="card-2026-05-05">
-      <div class="card-title">
-        2026-05-05
-        <span class="date-badge">Updated 2026-05-05 15:59</span>
-      </div>
-      <div id="isect-2026-05-05-SPY" class="inst-section" data-date="2026-05-05" data-inst="SPY" style="display:block"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','SPY','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-05','SPY','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','SPY','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','SPY','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-05-SPY-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-05</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 725 (+208.5M)</span><span class="wall-chip wall-call">SPY 724 (+117.5M)</span><span class="wall-chip wall-call">SPY 722 (+68.0M)</span></div>
-                  <div class="chart-wrap" style="height:1872px">
-                    <canvas id="hc-2026-05-05-SPY-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPY-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-11</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 725 (+54.4M)</span><span class="wall-chip wall-call">SPY 730 (+44.3M)</span><span class="wall-chip wall-call">SPY 740 (+34.4M)</span></div>
-                  <div class="chart-wrap" style="height:1900px">
-                    <canvas id="hc-2026-05-05-SPY-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPY-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-put">SPY 700 (-84.8M)</span><span class="wall-chip wall-call">SPY 723 (+74.9M)</span><span class="wall-chip wall-call">SPY 725 (+53.8M)</span></div>
-                  <div class="chart-wrap" style="height:2096px">
-                    <canvas id="hc-2026-05-05-SPY-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPY-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPY 730 (+62.7M)</span><span class="wall-chip wall-call">SPY 750 (+48.0M)</span><span class="wall-chip wall-call">SPY 720 (+42.2M)</span></div>
-                  <div class="chart-wrap" style="height:1872px">
-                    <canvas id="hc-2026-05-05-SPY-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-05-SPX" class="inst-section" data-date="2026-05-05" data-inst="SPX" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','SPX','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-05','SPX','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','SPX','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','SPX','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-05-SPX-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-05</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7270 (+131.9M)</span><span class="wall-chip wall-call">SPX 7275 (+83.4M)</span><span class="wall-chip wall-call">SPX 7265 (+52.9M)</span></div>
-                  <div class="chart-wrap" style="height:3496px">
-                    <canvas id="hc-2026-05-05-SPX-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPX-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-11</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7300 (+52.2M)</span><span class="wall-chip wall-call">SPX 7400 (+38.1M)</span><span class="wall-chip wall-call">SPX 7500 (+27.8M)</span></div>
-                  <div class="chart-wrap" style="height:4140px">
-                    <canvas id="hc-2026-05-05-SPX-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPX-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7350 (+29.1M)</span><span class="wall-chip wall-call">SPX 7300 (+27.3M)</span><span class="wall-chip wall-call">SPX 7400 (+21.8M)</span></div>
-                  <div class="chart-wrap" style="height:4112px">
-                    <canvas id="hc-2026-05-05-SPX-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-SPX-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">SPX 7300 (+42.9M)</span><span class="wall-chip wall-call">SPX 7400 (+42.7M)</span><span class="wall-chip wall-call">SPX 7350 (+33.2M)</span></div>
-                  <div class="chart-wrap" style="height:3972px">
-                    <canvas id="hc-2026-05-05-SPX-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-05-QQQ" class="inst-section" data-date="2026-05-05" data-inst="QQQ" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="showBkt('2026-05-05','QQQ','0dte')">0DTE</button><button class="bkt-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-05','QQQ','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','QQQ','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','QQQ','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-05-QQQ-0dte" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-05</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 680 (+138.5M)</span><span class="wall-chip wall-call">QQQ 682 (+121.0M)</span><span class="wall-chip wall-call">QQQ 683 (+26.0M)</span></div>
-                  <div class="chart-wrap" style="height:1648px">
-                    <canvas id="hc-2026-05-05-QQQ-0dte"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-QQQ-daily" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-07, 2026-05-11</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 680 (+29.1M)</span><span class="wall-chip wall-call">QQQ 690 (+27.4M)</span><span class="wall-chip wall-call">QQQ 695 (+24.5M)</span></div>
-                  <div class="chart-wrap" style="height:1648px">
-                    <canvas id="hc-2026-05-05-QQQ-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-QQQ-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 675 (+47.0M)</span><span class="wall-chip wall-call">QQQ 680 (+22.3M)</span><span class="wall-chip wall-call">QQQ 685 (+20.3M)</span></div>
-                  <div class="chart-wrap" style="height:1956px">
-                    <canvas id="hc-2026-05-05-QQQ-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-QQQ-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-call">QQQ 680 (+35.3M)</span><span class="wall-chip wall-call">QQQ 675 (+29.0M)</span><span class="wall-chip wall-call">QQQ 690 (+27.3M)</span></div>
-                  <div class="chart-wrap" style="height:1648px">
-                    <canvas id="hc-2026-05-05-QQQ-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-05-USO" class="inst-section" data-date="2026-05-05" data-inst="USO" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-05','USO','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','USO','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','USO','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-05-USO-daily" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-13, 2026-06-18</div>
-                  <div class="walls"><span class="wall-chip wall-call">USO 150 (+3.2M)</span><span class="wall-chip wall-put">USO 140 (-3.1M)</span><span class="wall-chip wall-call">USO 145 (+2.1M)</span></div>
-                  <div class="chart-wrap" style="height:500px">
-                    <canvas id="hc-2026-05-05-USO-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-USO-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">USO 150 (+1.8M)</span><span class="wall-chip wall-call">USO 146 (+1.5M)</span><span class="wall-chip wall-call">USO 145 (+1.2M)</span></div>
-                  <div class="chart-wrap" style="height:556px">
-                    <canvas id="hc-2026-05-05-USO-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-USO-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-09-18</div>
-                  <div class="walls"><span class="wall-chip wall-call">USO 148 (+5.1M)</span><span class="wall-chip wall-call">USO 145 (+3.6M)</span><span class="wall-chip wall-call">USO 150 (+2.5M)</span></div>
-                  <div class="chart-wrap" style="height:500px">
-                    <canvas id="hc-2026-05-05-USO-monthly"></canvas>
-                  </div>
-                </div></div><div id="isect-2026-05-05-GLD" class="inst-section" data-date="2026-05-05" data-inst="GLD" style="display:none"><div class="bkt-tabs"><button class="bkt-btn active" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="showBkt('2026-05-05','GLD','daily')">Daily</button><button class="bkt-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="showBkt('2026-05-05','GLD','weekly')">Weekly</button><button class="bkt-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="showBkt('2026-05-05','GLD','monthly')">Monthly</button></div>
-                <div id="hist-2026-05-05-GLD-daily" style="display:block">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-06, 2026-05-11, 2026-05-13</div>
-                  <div class="walls"><span class="wall-chip wall-call">GLD 425 (+16.3M)</span><span class="wall-chip wall-call">GLD 420 (+9.6M)</span><span class="wall-chip wall-put">GLD 415 (-8.1M)</span></div>
-                  <div class="chart-wrap" style="height:1256px">
-                    <canvas id="hc-2026-05-05-GLD-daily"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-GLD-weekly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-08, 2026-05-22, 2026-05-29</div>
-                  <div class="walls"><span class="wall-chip wall-call">GLD 425 (+10.9M)</span><span class="wall-chip wall-put">GLD 415 (-5.3M)</span><span class="wall-chip wall-put">GLD 410 (-5.1M)</span></div>
-                  <div class="chart-wrap" style="height:1200px">
-                    <canvas id="hc-2026-05-05-GLD-weekly"></canvas>
-                  </div>
-                </div>
-                <div id="hist-2026-05-05-GLD-monthly" style="display:none">
-                  <div style="font-size:0.75rem;color:var(--text2);margin-bottom:6px">2026-05-15, 2026-07-17, 2026-08-21</div>
-                  <div class="walls"><span class="wall-chip wall-put">GLD 410 (-17.5M)</span><span class="wall-chip wall-put">GLD 425 (-17.2M)</span><span class="wall-chip wall-put">GLD 400 (-10.3M)</span></div>
-                  <div class="chart-wrap" style="height:1200px">
-                    <canvas id="hc-2026-05-05-GLD-monthly"></canvas>
-                  </div>
-                </div></div>
-    </div>
-
-  <div class="footer">Generated: 2026-05-06 14:26 ET &nbsp;|&nbsp; Data: Massive API / CBOE &nbsp;|&nbsp; Prices: Yahoo Finance</div>
+<div class="page-header">
+  <h1>&#128200; Historical GEX</h1>
+  <div class="sub">GEX by individual option expiry &mdash; see how gamma evolved intraday and day over day</div>
+  <a class="back-link" href="gex_delta.html">&#8592; Back to GEX / DEX / Greeks</a>
 </div>
 
+<div class="section-wrap">
+
+  <!-- ── TODAY (live, with slider) ───────────────────────────── -->
+  <div class="live-section">
+    <div class="live-section-title">
+      <span class="live-dot"></span> Today &mdash; intraday evolution
+    </div>
+    <div class="hinst-bar" id="live-inst-bar"><button class="hinst-btn active" onclick="selectInst('SPY')">SPY</button> <button class="hinst-btn" onclick="selectInst('SPX')">SPX</button> <button class="hinst-btn" onclick="selectInst('QQQ')">QQQ</button> <button class="hinst-btn" onclick="selectInst('USO')">USO</button> <button class="hinst-btn" onclick="selectInst('GLD')">GLD</button></div>
+    <div class="hexp-tabs" id="live-exp-tabs"><button class="hexp-btn active" data-bkt="0dte" style="color:#fd79a8;border-color:#fd79a8" onclick="selectExp('2026-05-06')">Wed May 06 (0DTE)</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-07')">Thu May 07</button>
+<button class="hexp-btn" data-bkt="weekly" style="color:#74b9ff;border-color:#74b9ff" onclick="selectExp('2026-05-08')">Fri May 08</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-11')">Mon May 11</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-12')">Tue May 12</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-13')">Wed May 13</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-14')">Thu May 14</button>
+<button class="hexp-btn" data-bkt="monthly" style="color:#a29bfe;border-color:#a29bfe" onclick="selectExp('2026-05-15')">Fri May 15</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-18')">Mon May 18</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-19')">Tue May 19</button>
+<button class="hexp-btn" data-bkt="daily" style="color:#ffeaa7;border-color:#ffeaa7" onclick="selectExp('2026-05-20')">Wed May 20</button></div>
+
+    <div class="chart-area">
+      <div id="live-chart-wrap" style="position:relative;height:420px">
+        <canvas id="live-chart"></canvas>
+      </div>
+      <div class="slider-wrap" id="live-slider-wrap" style="display:none">
+        <div class="slider-label">
+          <span>09:30</span><span>Time</span><span>16:00</span>
+        </div>
+        <input type="range" id="live-slider" min="0" max="0" value="0">
+        <div class="slider-time" id="live-slider-time"></div>
+      </div>
+      <div class="no-data" id="live-no-data" style="display:none">No data for this expiry today.</div>
+    </div>
+  </div>
+
+  <!-- ── PAST DAYS ────────────────────────────────────────────── -->
+  
+
+</div><!-- /section-wrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-var _activeInst = 'SPY';
+var DATA = {"SPY":{"2026-05-06":{"type":"0dte","label":"Wed May 06 (0DTE)","series":[{"t":"13:53","s":{"746.0":0.076,"745.0":0.354,"744.0":0.157,"743.0":0.065,"742.0":1.052,"741.0":0.436,"740.0":0.756,"739.0":1.586,"738.0":1.979,"737.0":2.391,"736.0":6.123,"735.0":7.534,"734.0":44.032,"733.0":37.222,"732.0":60.16,"731.0":73.244,"730.0":130.671,"729.0":33.035,"728.0":54.778,"727.0":26.913,"726.0":9.655,"725.0":6.555,"724.0":11.024,"723.0":0.05,"722.0":-1.359,"721.0":-2.266,"720.0":-5.712,"719.0":-1.566,"718.0":-0.928}},{"t":"13:54","s":{"746.0":0.073,"745.0":0.343,"744.0":0.149,"743.0":0.063,"742.0":1.03,"741.0":0.421,"740.0":0.724,"739.0":1.513,"738.0":1.889,"737.0":2.296,"736.0":5.878,"735.0":7.163,"734.0":41.025,"733.0":34.859,"732.0":59.51,"731.0":76.387,"730.0":138.61,"729.0":35.092,"728.0":58.251,"727.0":28.577,"726.0":10.16,"725.0":6.897,"724.0":11.516,"723.0":0.121,"722.0":-1.387,"721.0":-2.294,"720.0":-5.792,"719.0":-1.566,"718.0":-0.945}}]},"2026-05-07":{"type":"daily","label":"Thu May 07","series":[{"t":"13:53","s":{"746.0":0.042,"745.0":0.62,"744.0":0.174,"743.0":0.157,"742.0":0.133,"741.0":0.892,"740.0":2.392,"739.0":2.84,"738.0":3.462,"737.0":7.585,"736.0":9.094,"735.0":17.09,"734.0":4.37,"733.0":12.789,"732.0":11.845,"731.0":13.845,"730.0":24.3,"729.0":10.314,"728.0":3.823,"727.0":1.648,"726.0":4.3,"725.0":2.065,"724.0":-1.88,"723.0":-3.107,"722.0":-1.754,"721.0":-1.343,"720.0":-2.886,"719.0":-0.8,"718.0":-4.94}},{"t":"13:54","s":{"746.0":0.042,"745.0":0.607,"744.0":0.174,"743.0":0.154,"742.0":0.131,"741.0":0.871,"740.0":2.339,"739.0":2.737,"738.0":3.361,"737.0":7.339,"736.0":8.85,"735.0":16.76,"734.0":4.317,"733.0":12.746,"732.0":11.886,"731.0":13.962,"730.0":24.592,"729.0":10.468,"728.0":3.897,"727.0":1.682,"726.0":4.396,"725.0":2.108,"724.0":-1.92,"723.0":-3.171,"722.0":-1.768,"721.0":-1.367,"720.0":-2.919,"719.0":-0.797,"718.0":-4.978}}]},"2026-05-08":{"type":"weekly","label":"Fri May 08","series":[{"t":"13:53","s":{"746.0":0.28,"745.0":2.581,"744.0":1.168,"743.0":1.434,"742.0":2.406,"741.0":3.481,"740.0":11.649,"739.0":6.845,"738.0":5.6,"737.0":12.375,"736.0":11.779,"735.0":25.977,"734.0":8.51,"733.0":11.596,"732.0":14.742,"731.0":9.196,"730.0":26.374,"729.0":7.71,"728.0":16.362,"727.0":8.548,"726.0":19.803,"725.0":16.031,"724.0":8.924,"723.0":40.089,"722.0":1.676,"721.0":0.73,"720.0":-1.414,"719.0":1.048,"718.0":21.009}},{"t":"13:54","s":{"746.0":0.28,"745.0":2.554,"744.0":1.158,"743.0":1.415,"742.0":2.356,"741.0":3.408,"740.0":11.372,"739.0":6.691,"738.0":5.506,"737.0":12.193,"736.0":11.667,"735.0":25.838,"734.0":8.496,"733.0":11.618,"732.0":14.823,"731.0":9.263,"730.0":26.579,"729.0":7.791,"728.0":16.551,"727.0":8.655,"726.0":20.016,"725.0":16.208,"724.0":9.048,"723.0":40.706,"722.0":1.698,"721.0":0.705,"720.0":-1.373,"719.0":1.061,"718.0":21.295}}]},"2026-05-11":{"type":"daily","label":"Mon May 11","series":[{"t":"13:53","s":{"746.0":3.582,"745.0":2.427,"744.0":0.526,"743.0":6.013,"742.0":0.999,"741.0":0.872,"740.0":4.672,"739.0":2.736,"738.0":8.977,"737.0":7.448,"736.0":3.117,"735.0":4.954,"734.0":4.579,"733.0":1.435,"732.0":3.856,"731.0":3.411,"730.0":4.564,"729.0":0.396,"728.0":1.133,"727.0":3.163,"726.0":1.037,"725.0":5.826,"724.0":-0.35,"723.0":0.175,"722.0":0.836,"721.0":-0.199,"720.0":-1.012,"719.0":-0.008,"718.0":0.023}},{"t":"13:54","s":{"746.0":3.492,"745.0":2.377,"744.0":0.517,"743.0":5.926,"742.0":0.987,"741.0":0.86,"740.0":4.612,"739.0":2.712,"738.0":8.906,"737.0":7.393,"736.0":3.094,"735.0":4.942,"734.0":4.569,"733.0":1.435,"732.0":3.865,"731.0":3.419,"730.0":4.575,"729.0":0.394,"728.0":1.144,"727.0":3.191,"726.0":1.047,"725.0":5.886,"724.0":-0.347,"723.0":0.176,"722.0":0.844,"721.0":-0.201,"720.0":-1.04,"719.0":-0.008,"718.0":0.024}}]},"2026-05-12":{"type":"daily","label":"Tue May 12","series":[{"t":"13:53","s":{"746.0":0.208,"745.0":0.513,"744.0":0.193,"743.0":1.652,"742.0":0.733,"741.0":0.602,"740.0":1.698,"739.0":2.277,"738.0":1.163,"737.0":1.062,"736.0":1.396,"735.0":1.559,"734.0":1.413,"733.0":0.869,"732.0":0.811,"731.0":1.384,"730.0":2.945,"729.0":0.647,"728.0":0.587,"727.0":0.88,"726.0":0.142,"725.0":1.374,"724.0":-0.124,"723.0":-2.193,"722.0":0.015,"721.0":0.214,"720.0":-0.683,"719.0":0.155,"718.0":-0.503}},{"t":"13:54","s":{"746.0":0.206,"745.0":0.507,"744.0":0.19,"743.0":1.63,"742.0":0.721,"741.0":0.596,"740.0":1.687,"739.0":2.263,"738.0":1.156,"737.0":1.056,"736.0":1.389,"735.0":1.555,"734.0":1.413,"733.0":0.869,"732.0":0.809,"731.0":1.388,"730.0":2.954,"729.0":0.654,"728.0":0.589,"727.0":0.882,"726.0":0.143,"725.0":1.385,"724.0":-0.125,"723.0":-2.214,"722.0":0.016,"721.0":0.216,"720.0":-0.69,"719.0":0.156,"718.0":-0.506}}]},"2026-05-13":{"type":"daily","label":"Wed May 13","series":[{"t":"13:53","s":{"746.0":1.08,"745.0":0.161,"744.0":0.134,"743.0":0.348,"742.0":2.551,"741.0":1.977,"740.0":1.58,"739.0":1.747,"738.0":0.689,"737.0":2.017,"736.0":0.606,"735.0":0.575,"734.0":0.441,"733.0":0.706,"732.0":1.026,"731.0":0.553,"730.0":1.13,"729.0":1.142,"728.0":1.055,"727.0":0.759,"726.0":0.11,"725.0":2.225,"724.0":-0.579,"723.0":0.317,"722.0":0.692,"721.0":-0.132,"720.0":0.663,"719.0":0.634,"718.0":-0.319}},{"t":"13:54","s":{"746.0":1.067,"745.0":0.159,"744.0":0.132,"743.0":0.344,"742.0":2.531,"741.0":1.963,"740.0":1.569,"739.0":1.735,"738.0":0.687,"737.0":2.011,"736.0":0.604,"735.0":0.575,"734.0":0.441,"733.0":0.708,"732.0":1.029,"731.0":0.555,"730.0":1.134,"729.0":1.145,"728.0":1.062,"727.0":0.765,"726.0":0.108,"725.0":2.233,"724.0":-0.589,"723.0":0.318,"722.0":0.702,"721.0":-0.136,"720.0":0.667,"719.0":0.637,"718.0":-0.321}}]},"2026-05-14":{"type":"daily","label":"Thu May 14","series":[{"t":"13:53","s":{"746.0":0.185,"745.0":0.3,"744.0":0.171,"743.0":0.03,"742.0":0.322,"741.0":0.414,"740.0":1.625,"739.0":0.236,"738.0":1.672,"737.0":0.312,"736.0":0.234,"735.0":0.846,"734.0":0.18,"733.0":0.613,"732.0":-0.243,"731.0":-0.188,"730.0":1.11,"729.0":0.631,"728.0":0.365,"727.0":-0.075,"726.0":-0.061,"725.0":0.603,"724.0":-2.367,"723.0":-0.319,"722.0":-0.398,"721.0":-0.171,"720.0":-0.375,"719.0":-0.298,"718.0":0.007}},{"t":"13:54","s":{"746.0":0.184,"745.0":0.297,"744.0":0.169,"743.0":0.03,"742.0":0.319,"741.0":0.411,"740.0":1.619,"739.0":0.235,"738.0":1.666,"737.0":0.311,"736.0":0.234,"735.0":0.843,"734.0":0.181,"733.0":0.613,"732.0":-0.243,"731.0":-0.189,"730.0":1.109,"729.0":0.634,"728.0":0.368,"727.0":-0.078,"726.0":-0.061,"725.0":0.61,"724.0":-2.377,"723.0":-0.32,"722.0":-0.397,"721.0":-0.172,"720.0":-0.377,"719.0":-0.3,"718.0":0.007}}]},"2026-05-15":{"type":"monthly","label":"Fri May 15","series":[{"t":"13:53","s":{"746.0":1.698,"745.0":17.582,"744.0":1.65,"743.0":3.022,"742.0":3.924,"741.0":2.021,"740.0":36.266,"739.0":3.658,"738.0":2.789,"737.0":4.845,"736.0":3.781,"735.0":21.804,"734.0":7.273,"733.0":4.487,"732.0":2.94,"731.0":16.754,"730.0":43.585,"729.0":3.003,"728.0":6.24,"727.0":5.05,"726.0":6.332,"725.0":15.632,"724.0":4.9,"723.0":3.307,"722.0":4.515,"721.0":4.244,"720.0":15.269,"719.0":-1.708,"718.0":0.947}},{"t":"13:54","s":{"746.0":1.68,"745.0":17.495,"744.0":1.642,"743.0":3.009,"742.0":3.908,"741.0":2.013,"740.0":36.127,"739.0":3.658,"738.0":2.779,"737.0":4.827,"736.0":3.767,"735.0":21.805,"734.0":7.274,"733.0":4.487,"732.0":2.94,"731.0":16.753,"730.0":43.575,"729.0":3.002,"728.0":6.266,"727.0":5.072,"726.0":6.326,"725.0":15.704,"724.0":4.923,"723.0":3.325,"722.0":4.559,"721.0":4.268,"720.0":15.358,"719.0":-1.736,"718.0":0.954}}]},"2026-05-18":{"type":"daily","label":"Mon May 18","series":[{"t":"13:53","s":{"745.0":0.326,"740.0":0.922,"735.0":1.07,"730.0":1.152,"725.0":0.734,"720.0":-6.542}},{"t":"13:54","s":{"745.0":0.324,"740.0":0.923,"735.0":1.07,"730.0":1.151,"725.0":0.739,"720.0":-6.582}}]},"2026-05-19":{"type":"daily","label":"Tue May 19","series":[{"t":"13:53","s":{"745.0":0.091,"740.0":0.237,"735.0":0.073,"730.0":0.083,"725.0":-0.395,"720.0":-0.211}},{"t":"13:54","s":{"745.0":0.091,"740.0":0.237,"735.0":0.073,"730.0":0.083,"725.0":-0.397,"720.0":-0.211}}]}},"SPX":{"2026-05-06":{"type":"0dte","label":"Wed May 06 (0DTE)","series":[{"t":"13:53","s":{"7490.0":0.022,"7480.0":0.017,"7475.0":0.084,"7470.0":0.035,"7460.0":0.07,"7450.0":0.46,"7445.0":0.118,"7440.0":0.031,"7435.0":0.109,"7430.0":1.529,"7425.0":10.834,"7420.0":0.069,"7415.0":0.065,"7410.0":0.176,"7405.0":0.301,"7400.0":4.767,"7395.0":0.5,"7390.0":1.176,"7385.0":1.021,"7380.0":4.238,"7375.0":12.911,"7370.0":8.54,"7365.0":8.57,"7360.0":28.944,"7355.0":21.334,"7350.0":372.073,"7345.0":226.249,"7340.0":127.695,"7335.0":45.323,"7330.0":41.573,"7325.0":34.578,"7320.0":28.775,"7315.0":16.147,"7310.0":15.209,"7305.0":9.558,"7300.0":18.635,"7295.0":7.433,"7290.0":3.52,"7285.0":1.958,"7280.0":5.989,"7275.0":3.939,"7270.0":3.214,"7265.0":-0.442,"7260.0":-0.817,"7255.0":0.198,"7250.0":0.001,"7245.0":-0.212,"7240.0":-0.281,"7235.0":-0.271,"7230.0":-0.277,"7225.0":-0.485,"7220.0":-1.06,"7215.0":-0.356,"7210.0":-0.579,"7205.0":-0.202,"7200.0":-0.419}},{"t":"13:54","s":{"7490.0":0.022,"7480.0":0.017,"7475.0":0.084,"7470.0":0.035,"7460.0":0.07,"7450.0":0.46,"7445.0":0.118,"7440.0":0.031,"7435.0":0.109,"7430.0":1.529,"7425.0":10.834,"7420.0":0.069,"7415.0":0.065,"7410.0":0.176,"7405.0":0.301,"7400.0":4.767,"7395.0":0.5,"7390.0":1.111,"7385.0":0.972,"7380.0":4.092,"7375.0":12.265,"7370.0":7.961,"7365.0":8.072,"7360.0":27.324,"7355.0":20.255,"7350.0":359.468,"7345.0":221.371,"7340.0":128.61,"7335.0":46.064,"7330.0":43.074,"7325.0":35.99,"7320.0":30.083,"7315.0":16.925,"7310.0":16.16,"7305.0":9.933,"7300.0":19.544,"7295.0":7.652,"7290.0":3.646,"7285.0":2.128,"7280.0":6.619,"7275.0":4.171,"7270.0":3.673,"7265.0":-0.442,"7260.0":-0.891,"7255.0":0.198,"7250.0":0.001,"7245.0":-0.212,"7240.0":-0.281,"7235.0":-0.271,"7230.0":-0.277,"7225.0":-0.582,"7220.0":-1.06,"7215.0":-0.356,"7210.0":-0.579,"7205.0":-0.202,"7200.0":-0.419}}]},"2026-05-07":{"type":"daily","label":"Thu May 07","series":[{"t":"13:53","s":{"7490.0":0.083,"7480.0":0.018,"7475.0":0.067,"7470.0":0.064,"7460.0":0.07,"7450.0":0.449,"7445.0":0.095,"7440.0":0.18,"7435.0":0.049,"7430.0":0.389,"7425.0":1.59,"7420.0":0.373,"7415.0":0.534,"7410.0":0.88,"7405.0":0.448,"7400.0":4.663,"7395.0":3.645,"7390.0":6.955,"7385.0":4.127,"7380.0":3.76,"7375.0":9.238,"7370.0":8.154,"7365.0":3.101,"7360.0":5.312,"7355.0":3.078,"7350.0":11.553,"7345.0":2.789,"7340.0":8.229,"7335.0":6.537,"7330.0":5.022,"7325.0":9.532,"7320.0":7.82,"7315.0":1.885,"7310.0":11.774,"7305.0":10.208,"7300.0":3.787,"7295.0":1.909,"7290.0":0.899,"7285.0":0.938,"7280.0":1.017,"7275.0":4.061,"7270.0":0.646,"7265.0":0.41,"7260.0":-0.438,"7255.0":0.241,"7250.0":0.375,"7245.0":-0.063,"7240.0":0.069,"7235.0":0.053,"7230.0":0.71,"7225.0":0.207,"7220.0":-0.094,"7215.0":-0.208,"7210.0":-0.113,"7205.0":-0.08,"7200.0":-0.222}},{"t":"13:54","s":{"7490.0":0.083,"7480.0":0.018,"7475.0":0.056,"7470.0":0.064,"7460.0":0.061,"7450.0":0.405,"7445.0":0.087,"7440.0":0.18,"7435.0":0.046,"7430.0":0.365,"7425.0":1.59,"7420.0":0.355,"7415.0":0.534,"7410.0":0.849,"7405.0":0.435,"7400.0":4.541,"7395.0":3.562,"7390.0":6.816,"7385.0":4.055,"7380.0":3.701,"7375.0":9.106,"7370.0":8.154,"7365.0":3.064,"7360.0":5.312,"7355.0":3.044,"7350.0":11.554,"7345.0":2.789,"7340.0":8.229,"7335.0":6.537,"7330.0":5.084,"7325.0":9.654,"7320.0":7.82,"7315.0":1.912,"7310.0":11.958,"7305.0":10.381,"7300.0":3.857,"7295.0":1.948,"7290.0":0.899,"7285.0":0.96,"7280.0":1.017,"7275.0":4.177,"7270.0":0.666,"7265.0":0.41,"7260.0":-0.454,"7255.0":0.241,"7250.0":0.375,"7245.0":-0.066,"7240.0":0.069,"7235.0":0.053,"7230.0":0.71,"7225.0":0.207,"7220.0":-0.094,"7215.0":-0.224,"7210.0":-0.113,"7205.0":-0.08,"7200.0":-0.222}}]},"2026-05-08":{"type":"weekly","label":"Fri May 08","series":[{"t":"13:53","s":{"7490.0":0.192,"7480.0":0.206,"7475.0":0.446,"7470.0":0.472,"7460.0":0.52,"7450.0":6.208,"7445.0":0.354,"7440.0":0.972,"7435.0":0.483,"7430.0":2.684,"7425.0":3.008,"7420.0":4.122,"7415.0":0.337,"7410.0":3.581,"7405.0":0.966,"7400.0":16.67,"7395.0":1.692,"7390.0":6.236,"7385.0":1.127,"7380.0":8.82,"7375.0":7.335,"7370.0":9.645,"7365.0":6.44,"7360.0":12.431,"7355.0":2.799,"7350.0":52.151,"7345.0":3.22,"7340.0":8.8,"7335.0":2.875,"7330.0":6.139,"7325.0":13.755,"7320.0":22.409,"7315.0":2.721,"7310.0":4.766,"7305.0":10.51,"7300.0":11.83,"7295.0":3.236,"7290.0":4.386,"7285.0":1.7,"7280.0":2.001,"7275.0":5.371,"7270.0":3.65,"7265.0":0.868,"7260.0":4.913,"7255.0":0.605,"7250.0":2.774,"7245.0":-1.472,"7240.0":0.976,"7235.0":1.531,"7230.0":0.125,"7225.0":0.283,"7220.0":-0.044,"7215.0":0.166,"7210.0":-0.004,"7205.0":0.142,"7200.0":-1.062}},{"t":"13:54","s":{"7490.0":0.192,"7480.0":0.206,"7475.0":0.446,"7470.0":0.472,"7460.0":0.52,"7450.0":5.82,"7445.0":0.335,"7440.0":0.924,"7435.0":0.483,"7430.0":2.577,"7425.0":3.008,"7420.0":4.122,"7415.0":0.337,"7410.0":3.485,"7405.0":0.942,"7400.0":16.283,"7395.0":1.656,"7390.0":6.109,"7385.0":1.127,"7380.0":8.657,"7375.0":7.335,"7370.0":9.645,"7365.0":6.44,"7360.0":12.431,"7355.0":2.799,"7350.0":52.152,"7345.0":3.22,"7340.0":8.8,"7335.0":2.926,"7330.0":6.14,"7325.0":14.015,"7320.0":22.409,"7315.0":2.721,"7310.0":4.766,"7305.0":10.51,"7300.0":11.83,"7295.0":3.236,"7290.0":4.386,"7285.0":1.7,"7280.0":2.001,"7275.0":5.371,"7270.0":3.65,"7265.0":0.897,"7260.0":4.913,"7255.0":0.605,"7250.0":2.774,"7245.0":-1.472,"7240.0":0.976,"7235.0":1.604,"7230.0":0.125,"7225.0":0.283,"7220.0":-0.044,"7215.0":0.166,"7210.0":-0.004,"7205.0":0.142,"7200.0":-1.062}}]},"2026-05-11":{"type":"daily","label":"Mon May 11","series":[{"t":"13:53","s":{"7480.0":0.063,"7475.0":0.696,"7470.0":0.075,"7460.0":0.115,"7450.0":2.054,"7440.0":0.496,"7430.0":1.047,"7425.0":2.351,"7420.0":1.316,"7410.0":2.429,"7405.0":0.541,"7400.0":7.147,"7395.0":0.178,"7390.0":2.72,"7385.0":0.716,"7380.0":4.263,"7375.0":7.156,"7370.0":1.194,"7365.0":1.092,"7360.0":0.863,"7355.0":2.672,"7350.0":3.079,"7345.0":0.969,"7340.0":3.388,"7335.0":2.202,"7330.0":2.27,"7325.0":3.18,"7320.0":1.254,"7315.0":0.793,"7310.0":1.239,"7305.0":0.473,"7300.0":3.979,"7295.0":0.442,"7290.0":0.674,"7285.0":0.414,"7280.0":0.585,"7275.0":1.32,"7270.0":0.769,"7265.0":0.181,"7260.0":0.656,"7255.0":0.327,"7250.0":1.058,"7245.0":-0.164,"7240.0":0.147,"7235.0":0.144,"7230.0":0.376,"7225.0":0.665,"7220.0":0.272,"7215.0":0.07,"7210.0":-0.017,"7205.0":0.027,"7200.0":-0.806}},{"t":"13:54","s":{"7480.0":0.063,"7475.0":0.696,"7470.0":0.07,"7460.0":0.109,"7450.0":2.054,"7440.0":0.476,"7430.0":1.047,"7425.0":2.351,"7420.0":1.316,"7410.0":2.429,"7405.0":0.526,"7400.0":7.147,"7395.0":0.178,"7390.0":2.72,"7385.0":0.699,"7380.0":4.263,"7375.0":7.156,"7370.0":1.194,"7365.0":1.092,"7360.0":0.863,"7355.0":2.672,"7350.0":3.079,"7345.0":0.969,"7340.0":3.388,"7335.0":2.202,"7330.0":2.27,"7325.0":3.18,"7320.0":1.254,"7315.0":0.793,"7310.0":1.239,"7305.0":0.473,"7300.0":3.979,"7295.0":0.442,"7290.0":0.674,"7285.0":0.427,"7280.0":0.604,"7275.0":1.32,"7270.0":0.769,"7265.0":0.181,"7260.0":0.656,"7255.0":0.327,"7250.0":1.058,"7245.0":-0.164,"7240.0":0.147,"7235.0":0.144,"7230.0":0.376,"7225.0":0.665,"7220.0":0.272,"7215.0":0.07,"7210.0":-0.017,"7205.0":0.027,"7200.0":-0.806}}]},"2026-05-12":{"type":"daily","label":"Tue May 12","series":[{"t":"13:53","s":{"7475.0":1.469,"7450.0":2.36,"7440.0":1.858,"7430.0":1.569,"7425.0":0.922,"7420.0":2.607,"7410.0":3.278,"7400.0":2.317,"7390.0":1.01,"7380.0":0.875,"7375.0":0.905,"7370.0":1.147,"7365.0":0.486,"7360.0":0.481,"7355.0":0.321,"7350.0":3.391,"7345.0":0.222,"7340.0":0.513,"7335.0":0.087,"7330.0":0.311,"7325.0":0.422,"7320.0":0.347,"7315.0":0.12,"7310.0":0.545,"7305.0":0.099,"7300.0":1.045,"7295.0":0.08,"7290.0":0.469,"7285.0":0.277,"7280.0":0.432,"7275.0":0.465,"7270.0":0.289,"7265.0":-0.04,"7260.0":0.296,"7255.0":-0.24,"7250.0":0.71,"7245.0":0.066,"7240.0":0.155,"7235.0":0.136,"7230.0":-0.069,"7225.0":0.977,"7220.0":-0.107,"7215.0":0.045,"7210.0":0.03,"7205.0":-0.012,"7200.0":-0.052}},{"t":"13:54","s":{"7475.0":1.469,"7450.0":2.36,"7440.0":1.786,"7430.0":1.569,"7425.0":0.922,"7420.0":2.523,"7410.0":3.278,"7400.0":2.317,"7390.0":0.982,"7380.0":0.875,"7375.0":0.905,"7370.0":1.147,"7365.0":0.486,"7360.0":0.481,"7355.0":0.321,"7350.0":3.391,"7345.0":0.222,"7340.0":0.513,"7335.0":0.087,"7330.0":0.311,"7325.0":0.422,"7320.0":0.347,"7315.0":0.12,"7310.0":0.545,"7305.0":0.099,"7300.0":1.079,"7295.0":0.08,"7290.0":0.469,"7285.0":0.277,"7280.0":0.432,"7275.0":0.465,"7270.0":0.29,"7265.0":-0.04,"7260.0":0.296,"7255.0":-0.24,"7250.0":0.71,"7245.0":0.066,"7240.0":0.155,"7235.0":0.136,"7230.0":-0.072,"7225.0":0.977,"7220.0":-0.107,"7215.0":0.045,"7210.0":0.03,"7205.0":-0.012,"7200.0":-0.052}}]},"2026-05-13":{"type":"daily","label":"Wed May 13","series":[{"t":"13:53","s":{"7475.0":0.206,"7450.0":1.285,"7440.0":0.261,"7430.0":0.202,"7425.0":0.644,"7420.0":0.351,"7410.0":0.462,"7400.0":0.512,"7390.0":0.526,"7380.0":0.354,"7375.0":0.434,"7370.0":0.332,"7365.0":0.005,"7360.0":0.334,"7355.0":0.085,"7350.0":0.885,"7345.0":0.099,"7340.0":0.519,"7335.0":0.085,"7330.0":0.268,"7325.0":0.74,"7320.0":0.184,"7315.0":0.057,"7310.0":0.397,"7305.0":0.134,"7300.0":0.562,"7295.0":0.105,"7290.0":0.088,"7285.0":0.056,"7280.0":0.204,"7275.0":0.567,"7270.0":0.116,"7265.0":0.13,"7260.0":0.254,"7255.0":0.032,"7250.0":0.703,"7245.0":0.019,"7240.0":-0.046,"7235.0":0.093,"7230.0":0.031,"7225.0":0.283,"7220.0":-0.053,"7215.0":0.042,"7210.0":0.128,"7205.0":0.015,"7200.0":0.123}},{"t":"13:54","s":{"7475.0":0.206,"7450.0":1.285,"7440.0":0.261,"7430.0":0.202,"7425.0":0.644,"7420.0":0.351,"7410.0":0.447,"7400.0":0.512,"7390.0":0.51,"7380.0":0.354,"7375.0":0.434,"7370.0":0.332,"7365.0":0.005,"7360.0":0.334,"7355.0":0.085,"7350.0":0.885,"7345.0":0.099,"7340.0":0.519,"7335.0":0.085,"7330.0":0.268,"7325.0":0.764,"7320.0":0.184,"7315.0":0.059,"7310.0":0.397,"7305.0":0.134,"7300.0":0.562,"7295.0":0.105,"7290.0":0.088,"7285.0":0.056,"7280.0":0.204,"7275.0":0.567,"7270.0":0.116,"7265.0":0.13,"7260.0":0.254,"7255.0":0.032,"7250.0":0.703,"7245.0":0.019,"7240.0":-0.046,"7235.0":0.097,"7230.0":0.031,"7225.0":0.283,"7220.0":-0.053,"7215.0":0.042,"7210.0":0.128,"7205.0":0.015,"7200.0":0.123}}]},"2026-05-14":{"type":"daily","label":"Thu May 14","series":[{"t":"13:53","s":{"7475.0":0.202,"7450.0":0.282,"7440.0":0.151,"7430.0":0.095,"7425.0":0.541,"7420.0":0.137,"7410.0":0.325,"7400.0":1.406,"7390.0":0.079,"7380.0":0.055,"7375.0":0.443,"7370.0":0.066,"7365.0":0.104,"7360.0":0.093,"7355.0":0.077,"7350.0":1.738,"7345.0":0.055,"7340.0":0.696,"7335.0":0.045,"7330.0":0.16,"7325.0":0.322,"7320.0":0.084,"7315.0":0.09,"7310.0":0.216,"7305.0":0.109,"7300.0":1.029,"7295.0":0.076,"7290.0":0.081,"7285.0":0.013,"7280.0":0.137,"7275.0":1.288,"7270.0":0.076,"7265.0":-0.005,"7260.0":0.259,"7255.0":0.032,"7250.0":0.265,"7245.0":0.08,"7240.0":0.05,"7235.0":-0.057,"7230.0":-0.038,"7225.0":0.007,"7220.0":-0.044,"7215.0":-0.04,"7210.0":-0.022,"7205.0":-0.02,"7200.0":0.089}},{"t":"13:54","s":{"7475.0":0.202,"7450.0":0.282,"7440.0":0.151,"7430.0":0.095,"7425.0":0.541,"7420.0":0.137,"7410.0":0.325,"7400.0":1.406,"7390.0":0.079,"7380.0":0.055,"7375.0":0.443,"7370.0":0.066,"7365.0":0.104,"7360.0":0.093,"7355.0":0.077,"7350.0":1.738,"7345.0":0.055,"7340.0":0.696,"7335.0":0.045,"7330.0":0.16,"7325.0":0.322,"7320.0":0.084,"7315.0":0.09,"7310.0":0.216,"7305.0":0.109,"7300.0":1.029,"7295.0":0.076,"7290.0":0.084,"7285.0":0.013,"7280.0":0.137,"7275.0":1.288,"7270.0":0.076,"7265.0":-0.005,"7260.0":0.259,"7255.0":0.032,"7250.0":0.265,"7245.0":0.08,"7240.0":0.05,"7235.0":-0.057,"7230.0":-0.038,"7225.0":0.007,"7220.0":-0.044,"7215.0":-0.04,"7210.0":-0.022,"7205.0":-0.02,"7200.0":0.089}}]},"2026-05-15":{"type":"monthly","label":"Fri May 15","series":[{"t":"13:53","s":{"7490.0":0.568,"7485.0":0.145,"7480.0":1.306,"7475.0":2.983,"7470.0":0.906,"7465.0":0.768,"7460.0":1.326,"7455.0":0.438,"7450.0":11.792,"7445.0":0.512,"7440.0":1.787,"7435.0":0.412,"7430.0":1.473,"7425.0":7.213,"7420.0":1.642,"7415.0":0.49,"7410.0":2.227,"7405.0":4.548,"7400.0":32.002,"7395.0":0.823,"7390.0":2.119,"7385.0":3.36,"7380.0":2.503,"7375.0":11.001,"7370.0":7.931,"7365.0":1.021,"7360.0":7.98,"7355.0":0.564,"7350.0":30.746,"7345.0":0.598,"7340.0":1.943,"7335.0":1.662,"7330.0":2.659,"7325.0":10.407,"7320.0":1.698,"7315.0":3.053,"7310.0":3.224,"7305.0":1.439,"7300.0":28.817,"7295.0":0.729,"7290.0":1.777,"7285.0":1.21,"7280.0":1.598,"7275.0":2.135,"7270.0":0.165,"7265.0":1.089,"7260.0":0.855,"7255.0":0.677,"7250.0":8.463,"7245.0":2.122,"7240.0":2.354,"7235.0":1.627,"7230.0":0.481,"7225.0":-1.832,"7220.0":1.218,"7215.0":-0.147,"7210.0":1.246,"7205.0":-0.02,"7200.0":11.421}},{"t":"13:54","s":{"7490.0":0.568,"7485.0":0.141,"7480.0":1.306,"7475.0":2.983,"7470.0":0.906,"7465.0":0.754,"7460.0":1.326,"7455.0":0.438,"7450.0":11.657,"7445.0":0.512,"7440.0":1.787,"7435.0":0.412,"7430.0":1.473,"7425.0":7.213,"7420.0":1.642,"7415.0":0.49,"7410.0":2.227,"7405.0":4.548,"7400.0":32.003,"7395.0":0.823,"7390.0":2.119,"7385.0":3.36,"7380.0":2.503,"7375.0":11.001,"7370.0":7.931,"7365.0":1.021,"7360.0":7.98,"7355.0":0.576,"7350.0":30.747,"7345.0":0.598,"7340.0":1.943,"7335.0":1.662,"7330.0":2.659,"7325.0":10.407,"7320.0":1.698,"7315.0":3.172,"7310.0":3.224,"7305.0":1.439,"7300.0":28.817,"7295.0":0.729,"7290.0":1.777,"7285.0":1.21,"7280.0":1.598,"7275.0":2.135,"7270.0":0.171,"7265.0":1.129,"7260.0":0.855,"7255.0":0.692,"7250.0":8.464,"7245.0":2.122,"7240.0":2.354,"7235.0":1.627,"7230.0":0.481,"7225.0":-1.832,"7220.0":1.244,"7215.0":-0.147,"7210.0":1.246,"7205.0":-0.02,"7200.0":11.421}}]},"2026-05-18":{"type":"daily","label":"Mon May 18","series":[{"t":"13:53","s":{"7475.0":0.174,"7450.0":0.973,"7425.0":0.603,"7410.0":0.123,"7400.0":0.902,"7390.0":0.169,"7380.0":1.035,"7375.0":1.035,"7370.0":0.257,"7360.0":0.33,"7350.0":2.892,"7340.0":0.476,"7335.0":0.019,"7330.0":0.509,"7325.0":0.873,"7320.0":0.172,"7315.0":0.008,"7310.0":0.181,"7305.0":0.042,"7300.0":1.65,"7295.0":0.078,"7290.0":0.276,"7285.0":-0.025,"7280.0":0.327,"7275.0":0.648,"7270.0":0.914,"7265.0":0.051,"7260.0":0.359,"7255.0":0.043,"7250.0":0.53,"7245.0":-0.066,"7240.0":0.098,"7235.0":-0.057,"7230.0":0.002,"7225.0":1.576,"7220.0":-0.03,"7215.0":-0.008,"7210.0":0.145,"7205.0":0.029,"7200.0":0.197}},{"t":"13:54","s":{"7475.0":0.174,"7450.0":0.973,"7425.0":0.603,"7410.0":0.123,"7400.0":0.902,"7390.0":0.169,"7380.0":1.036,"7375.0":1.036,"7370.0":0.257,"7360.0":0.33,"7350.0":2.892,"7340.0":0.476,"7335.0":0.019,"7330.0":0.509,"7325.0":0.873,"7320.0":0.172,"7315.0":0.008,"7310.0":0.181,"7305.0":0.042,"7300.0":1.65,"7295.0":0.078,"7290.0":0.289,"7285.0":-0.025,"7280.0":0.327,"7275.0":0.648,"7270.0":0.914,"7265.0":0.051,"7260.0":0.377,"7255.0":0.043,"7250.0":0.53,"7245.0":-0.066,"7240.0":0.098,"7235.0":-0.057,"7230.0":0.002,"7225.0":1.576,"7220.0":-0.03,"7215.0":-0.008,"7210.0":0.145,"7205.0":0.029,"7200.0":0.197}}]},"2026-05-19":{"type":"daily","label":"Tue May 19","series":[{"t":"13:53","s":{"7475.0":0.391,"7450.0":0.54,"7425.0":0.637,"7410.0":0.446,"7400.0":0.316,"7390.0":0.061,"7380.0":0.046,"7375.0":0.189,"7370.0":0.068,"7360.0":0.096,"7350.0":0.346,"7340.0":0.062,"7330.0":0.037,"7325.0":0.451,"7320.0":0.05,"7310.0":0.254,"7305.0":0.019,"7300.0":0.962,"7295.0":0.003,"7290.0":0.414,"7285.0":0.018,"7280.0":0.123,"7275.0":0.195,"7270.0":0.018,"7265.0":0.031,"7260.0":0.138,"7255.0":0.067,"7250.0":-0.907,"7245.0":-0.015,"7240.0":0.062,"7235.0":0.002,"7230.0":-0.006,"7225.0":0.25,"7220.0":-0.008,"7215.0":-0.019,"7210.0":0.072,"7205.0":0.047,"7200.0":0.464}},{"t":"13:54","s":{"7475.0":0.391,"7450.0":0.54,"7425.0":0.637,"7410.0":0.446,"7400.0":0.316,"7390.0":0.061,"7380.0":0.046,"7375.0":0.189,"7370.0":0.068,"7360.0":0.096,"7350.0":0.346,"7340.0":0.062,"7330.0":0.037,"7325.0":0.451,"7320.0":0.05,"7310.0":0.254,"7305.0":0.019,"7300.0":0.962,"7295.0":0.003,"7290.0":0.414,"7285.0":0.018,"7280.0":0.123,"7275.0":0.195,"7270.0":0.018,"7265.0":0.031,"7260.0":0.138,"7255.0":0.067,"7250.0":-0.907,"7245.0":-0.015,"7240.0":0.062,"7235.0":0.002,"7230.0":-0.006,"7225.0":0.25,"7220.0":-0.008,"7215.0":-0.019,"7210.0":0.076,"7205.0":0.047,"7200.0":0.464}}]},"2026-05-20":{"type":"daily","label":"Wed May 20","series":[{"t":"13:53","s":{"7475.0":0.09,"7450.0":0.292,"7425.0":0.207,"7410.0":0.036,"7400.0":0.536,"7390.0":0.045,"7380.0":0.024,"7375.0":0.252,"7370.0":0.036,"7360.0":0.027,"7350.0":0.202,"7340.0":0.017,"7330.0":0.028,"7325.0":1.67,"7320.0":0.029,"7310.0":0.069,"7305.0":0.001,"7300.0":3.17,"7290.0":0.155,"7285.0":0.011,"7280.0":0.052,"7275.0":0.234,"7270.0":0.143,"7265.0":0.115,"7260.0":0.33,"7255.0":0.009,"7250.0":0.576,"7245.0":0.007,"7240.0":0.177,"7235.0":-0.008,"7230.0":0.045,"7225.0":0.572,"7220.0":0.028,"7215.0":0.02,"7210.0":-0.043,"7205.0":-0.011,"7200.0":0.357}},{"t":"13:54","s":{"7475.0":0.09,"7450.0":0.292,"7425.0":0.207,"7410.0":0.036,"7400.0":0.536,"7390.0":0.045,"7380.0":0.024,"7375.0":0.252,"7370.0":0.036,"7360.0":0.027,"7350.0":0.202,"7340.0":0.017,"7330.0":0.028,"7325.0":1.67,"7320.0":0.029,"7310.0":0.069,"7305.0":0.001,"7300.0":3.17,"7290.0":0.155,"7285.0":0.011,"7280.0":0.052,"7275.0":0.234,"7270.0":0.143,"7265.0":0.115,"7260.0":0.33,"7255.0":0.009,"7250.0":0.576,"7245.0":0.007,"7240.0":0.177,"7235.0":-0.008,"7230.0":0.045,"7225.0":0.572,"7220.0":0.028,"7215.0":0.02,"7210.0":-0.043,"7205.0":-0.011,"7200.0":0.357}}]}},"QQQ":{"2026-05-06":{"type":"0dte","label":"Wed May 06 (0DTE)","series":[{"t":"13:53","s":{"706.0":0.141,"705.0":0.215,"704.0":0.404,"703.0":0.047,"702.0":0.187,"701.0":0.258,"700.0":0.985,"699.0":0.831,"698.0":1.26,"697.0":0.823,"696.0":12.225,"695.0":14.457,"694.0":30.508,"693.0":23.594,"692.0":23.337,"691.0":15.117,"690.0":25.28,"689.0":12.099,"688.0":9.975,"687.0":5.099,"686.0":2.494,"685.0":5.995,"684.0":2.342,"683.0":2.845,"682.0":-0.063,"681.0":-0.919,"680.0":-4.407,"679.0":-0.364}},{"t":"13:54","s":{"706.0":0.148,"705.0":0.22,"704.0":0.411,"703.0":0.048,"702.0":0.189,"701.0":0.261,"700.0":0.985,"699.0":0.82,"698.0":1.206,"697.0":0.771,"696.0":11.307,"695.0":13.238,"694.0":28.422,"693.0":23.322,"692.0":24.491,"691.0":16.227,"690.0":27.062,"689.0":12.855,"688.0":10.556,"687.0":5.368,"686.0":2.614,"685.0":6.224,"684.0":2.443,"683.0":2.945,"682.0":-0.065,"681.0":-0.942,"680.0":-4.471,"679.0":-0.37}}]},"2026-05-07":{"type":"daily","label":"Thu May 07","series":[{"t":"13:53","s":{"705.0":0.394,"704.0":0.004,"703.0":0.026,"702.0":0.026,"701.0":0.247,"700.0":3.376,"699.0":0.279,"698.0":0.564,"697.0":0.756,"696.0":0.588,"695.0":3.58,"694.0":2.659,"693.0":2.648,"692.0":1.284,"691.0":2.446,"690.0":5.874,"689.0":1.822,"688.0":2.36,"687.0":0.805,"686.0":1.345,"685.0":1.75,"684.0":3.672,"683.0":7.618,"682.0":0.607,"681.0":-0.103,"680.0":-0.36,"679.0":1.36}},{"t":"13:54","s":{"705.0":0.385,"704.0":0.004,"703.0":0.025,"702.0":0.025,"701.0":0.241,"700.0":3.288,"699.0":0.273,"698.0":0.553,"697.0":0.744,"696.0":0.582,"695.0":3.561,"694.0":2.659,"693.0":2.657,"692.0":1.293,"691.0":2.474,"690.0":5.958,"689.0":1.85,"688.0":2.4,"687.0":0.82,"686.0":1.373,"685.0":1.785,"684.0":3.755,"683.0":7.78,"682.0":0.621,"681.0":-0.105,"680.0":-0.367,"679.0":1.388}}]},"2026-05-08":{"type":"weekly","label":"Fri May 08","series":[{"t":"13:53","s":{"706.0":0.762,"705.0":3.721,"704.0":0.032,"703.0":0.117,"702.0":0.689,"701.0":0.615,"700.0":9.702,"699.0":2.592,"698.0":2.111,"697.0":1.978,"696.0":4.441,"695.0":9.371,"694.0":3.322,"693.0":7.364,"692.0":3.257,"691.0":7.235,"690.0":11.171,"689.0":1.349,"688.0":2.307,"687.0":2.394,"686.0":1.823,"685.0":8.892,"684.0":1.476,"683.0":-2.371,"682.0":2.071,"681.0":-1.869,"680.0":5.654,"679.0":-0.488}},{"t":"13:54","s":{"706.0":0.744,"705.0":3.644,"704.0":0.031,"703.0":0.115,"702.0":0.68,"701.0":0.607,"700.0":9.586,"699.0":2.563,"698.0":2.094,"697.0":1.968,"696.0":4.43,"695.0":9.371,"694.0":3.33,"693.0":7.383,"692.0":3.274,"691.0":7.293,"690.0":11.265,"689.0":1.361,"688.0":2.336,"687.0":2.418,"686.0":1.848,"685.0":8.993,"684.0":1.494,"683.0":-2.401,"682.0":2.1,"681.0":-1.898,"680.0":5.692,"679.0":-0.494}}]},"2026-05-11":{"type":"daily","label":"Mon May 11","series":[{"t":"13:53","s":{"705.0":0.294,"700.0":1.929,"699.0":0.785,"698.0":0.464,"697.0":0.243,"696.0":0.987,"695.0":1.333,"694.0":0.476,"693.0":9.761,"692.0":0.845,"691.0":8.681,"690.0":0.076,"689.0":0.97,"688.0":0.484,"687.0":0.041,"686.0":0.491,"685.0":1.063,"684.0":-0.101,"683.0":0.151,"682.0":0.277,"681.0":-0.452,"680.0":-0.569,"679.0":-0.126}},{"t":"13:54","s":{"705.0":0.29,"700.0":1.915,"699.0":0.783,"698.0":0.461,"697.0":0.243,"696.0":0.987,"695.0":1.333,"694.0":0.476,"693.0":9.761,"692.0":0.848,"691.0":8.711,"690.0":0.076,"689.0":0.974,"688.0":0.486,"687.0":0.041,"686.0":0.495,"685.0":1.073,"684.0":-0.103,"683.0":0.147,"682.0":0.28,"681.0":-0.457,"680.0":-0.582,"679.0":-0.127}}]},"2026-05-12":{"type":"daily","label":"Tue May 12","series":[{"t":"13:53","s":{"705.0":0.386,"700.0":0.902,"699.0":0.212,"698.0":0.737,"697.0":0.159,"696.0":0.16,"695.0":0.41,"694.0":0.387,"693.0":0.413,"692.0":0.34,"691.0":0.233,"690.0":0.27,"689.0":0.257,"688.0":1.194,"687.0":1.719,"686.0":0.486,"685.0":0.917,"684.0":0.375,"683.0":0.298,"682.0":-0.349,"681.0":-0.238,"680.0":-0.058,"679.0":0.209}},{"t":"13:54","s":{"705.0":0.383,"700.0":0.899,"699.0":0.211,"698.0":0.735,"697.0":0.159,"696.0":0.16,"695.0":0.41,"694.0":0.389,"693.0":0.413,"692.0":0.341,"691.0":0.234,"690.0":0.272,"689.0":0.258,"688.0":1.199,"687.0":1.727,"686.0":0.488,"685.0":0.927,"684.0":0.379,"683.0":0.3,"682.0":-0.351,"681.0":-0.239,"680.0":-0.053,"679.0":0.211}}]},"2026-05-13":{"type":"daily","label":"Wed May 13","series":[{"t":"13:53","s":{"705.0":0.263,"700.0":0.834,"699.0":0.066,"698.0":0.24,"697.0":0.108,"696.0":0.33,"695.0":0.768,"694.0":0.24,"693.0":0.146,"692.0":0.057,"691.0":0.081,"690.0":0.605,"689.0":0.121,"688.0":0.055,"687.0":0.18,"686.0":0.167,"685.0":0.373,"684.0":0.224,"683.0":0.188,"682.0":0.457,"681.0":-0.78,"680.0":0.192,"679.0":-0.01}},{"t":"13:54","s":{"705.0":0.261,"700.0":0.834,"699.0":0.066,"698.0":0.24,"697.0":0.107,"696.0":0.33,"695.0":0.768,"694.0":0.24,"693.0":0.146,"692.0":0.057,"691.0":0.081,"690.0":0.607,"689.0":0.122,"688.0":0.056,"687.0":0.181,"686.0":0.168,"685.0":0.374,"684.0":0.225,"683.0":0.189,"682.0":0.46,"681.0":-0.785,"680.0":0.193,"679.0":-0.01}}]},"2026-05-14":{"type":"daily","label":"Thu May 14","series":[{"t":"13:53","s":{"705.0":0.085,"700.0":0.53,"699.0":0.142,"698.0":0.229,"697.0":0.184,"696.0":0.264,"695.0":0.5,"694.0":0.144,"693.0":0.116,"692.0":0.023,"691.0":0.056,"690.0":0.497,"689.0":0.126,"688.0":0.106,"687.0":0.251,"686.0":0.115,"685.0":0.344,"684.0":0.034,"683.0":-0.07,"682.0":0.176,"681.0":0.058,"680.0":0.096,"679.0":-0.051}},{"t":"13:54","s":{"705.0":0.085,"700.0":0.527,"699.0":0.142,"698.0":0.229,"697.0":0.184,"696.0":0.264,"695.0":0.5,"694.0":0.144,"693.0":0.116,"692.0":0.023,"691.0":0.057,"690.0":0.5,"689.0":0.126,"688.0":0.106,"687.0":0.253,"686.0":0.115,"685.0":0.346,"684.0":0.035,"683.0":-0.07,"682.0":0.177,"681.0":0.058,"680.0":0.094,"679.0":-0.052}}]},"2026-05-15":{"type":"monthly","label":"Fri May 15","series":[{"t":"13:53","s":{"706.0":0.402,"705.0":9.602,"704.0":0.406,"703.0":0.297,"702.0":0.387,"701.0":1.386,"700.0":17.592,"699.0":0.767,"698.0":1.141,"697.0":1.367,"696.0":0.931,"695.0":9.326,"694.0":0.781,"693.0":0.532,"692.0":1.23,"691.0":6.628,"690.0":13.905,"689.0":1.425,"688.0":6.896,"687.0":0.837,"686.0":0.508,"685.0":12.141,"684.0":1.335,"683.0":1.882,"682.0":2.684,"681.0":3.366,"680.0":8.609,"679.0":1.147}},{"t":"13:54","s":{"706.0":0.399,"705.0":9.603,"704.0":0.407,"703.0":0.297,"702.0":0.387,"701.0":1.386,"700.0":17.593,"699.0":0.767,"698.0":1.141,"697.0":1.374,"696.0":0.936,"695.0":9.326,"694.0":0.785,"693.0":0.532,"692.0":1.23,"691.0":6.664,"690.0":13.982,"689.0":1.433,"688.0":6.896,"687.0":0.842,"686.0":0.513,"685.0":12.216,"684.0":1.343,"683.0":1.894,"682.0":2.702,"681.0":3.389,"680.0":8.725,"679.0":1.156}}]},"2026-05-18":{"type":"daily","label":"Mon May 18","series":[{"t":"13:53","s":{"705.0":0.396,"700.0":1.058,"695.0":0.635,"690.0":1.859,"685.0":0.339,"680.0":-0.051}},{"t":"13:54","s":{"705.0":0.397,"700.0":1.058,"695.0":0.635,"690.0":1.87,"685.0":0.338,"680.0":-0.054}}]},"2026-05-19":{"type":"daily","label":"Tue May 19","series":[{"t":"13:53","s":{"705.0":0.42,"700.0":0.617,"695.0":0.323,"690.0":0.339,"685.0":0.148,"680.0":-0.358}},{"t":"13:54","s":{"705.0":0.417,"700.0":0.617,"695.0":0.323,"690.0":0.339,"685.0":0.15,"680.0":-0.358}}]}},"USO":{"2026-05-06":{"type":"0dte","label":"Wed May 06 (0DTE)","series":[{"t":"13:53","s":{"136.0":-0.692,"135.0":-3.005,"134.0":-0.976,"133.0":-2.686,"132.0":-0.417}},{"t":"13:54","s":{"136.0":-0.741,"135.0":-3.123,"134.0":-0.974,"133.0":-2.576,"132.0":-0.391}}]},"2026-05-08":{"type":"weekly","label":"Fri May 08","series":[{"t":"13:53","s":{"136.0":-0.104,"135.0":-1.922,"134.0":-0.045,"133.0":-0.093,"132.0":0.15}},{"t":"13:54","s":{"136.0":-0.104,"135.0":-1.925,"134.0":-0.044,"133.0":-0.093,"132.0":0.15}}]},"2026-05-13":{"type":"daily","label":"Wed May 13","series":[{"t":"13:53","s":{"136.0":-0.008,"135.0":-0.046,"134.0":-0.005,"133.0":-0.04,"132.0":0.043}},{"t":"13:54","s":{"136.0":-0.008,"135.0":-0.046,"134.0":-0.005,"133.0":-0.04,"132.0":0.043}}]},"2026-05-15":{"type":"monthly","label":"Fri May 15","series":[{"t":"13:53","s":{"136.0":0.025,"135.0":0.962,"134.0":-0.035,"133.0":-0.025,"132.0":0.016}},{"t":"13:54","s":{"136.0":0.026,"135.0":0.962,"134.0":-0.035,"133.0":-0.025,"132.0":0.016}}]},"2026-05-20":{"type":"daily","label":"Wed May 20","series":[{"t":"13:53","s":{"135.0":0.001,"132.0":-0.0}},{"t":"13:54","s":{"135.0":0.001,"132.0":-0.0}}]}},"GLD":{"2026-05-06":{"type":"0dte","label":"Wed May 06 (0DTE)","series":[{"t":"13:53","s":{"438.0":0.075,"437.0":0.047,"436.0":0.112,"435.0":0.288,"434.0":0.304,"433.0":0.485,"432.0":1.574,"431.0":2.49,"430.0":13.939,"429.0":2.474,"428.0":2.978,"427.0":0.485,"426.0":0.316,"425.0":1.394,"424.0":0.211,"423.0":0.164,"422.0":0.072}},{"t":"13:54","s":{"438.0":0.075,"437.0":0.048,"436.0":0.114,"435.0":0.292,"434.0":0.309,"433.0":0.495,"432.0":1.611,"431.0":2.539,"430.0":14.054,"429.0":2.448,"428.0":2.907,"427.0":0.473,"426.0":0.309,"425.0":1.373,"424.0":0.208,"423.0":0.162,"422.0":0.072}}]},"2026-05-08":{"type":"weekly","label":"Fri May 08","series":[{"t":"13:53","s":{"438.0":0.648,"437.0":0.972,"436.0":0.04,"435.0":1.716,"434.0":1.471,"433.0":3.97,"432.0":1.225,"431.0":1.388,"430.0":3.9,"429.0":-4.219,"428.0":1.268,"427.0":1.464,"426.0":4.885,"425.0":8.969,"424.0":2.067,"423.0":2.582,"422.0":2.043}},{"t":"13:54","s":{"438.0":0.646,"437.0":0.973,"436.0":0.04,"435.0":1.712,"434.0":1.468,"433.0":3.971,"432.0":1.225,"431.0":1.388,"430.0":3.909,"429.0":-4.217,"428.0":1.271,"427.0":1.468,"426.0":4.897,"425.0":8.993,"424.0":2.073,"423.0":2.591,"422.0":2.05}}]},"2026-05-11":{"type":"daily","label":"Mon May 11","series":[{"t":"13:53","s":{"438.0":0.03,"437.0":0.015,"436.0":0.068,"435.0":0.265,"434.0":0.106,"433.0":0.126,"432.0":0.157,"431.0":0.342,"430.0":0.337,"429.0":0.093,"428.0":0.188,"427.0":0.107,"426.0":0.098,"425.0":0.121,"424.0":0.059,"423.0":0.128,"422.0":-0.032}},{"t":"13:54","s":{"438.0":0.03,"437.0":0.015,"436.0":0.068,"435.0":0.265,"434.0":0.106,"433.0":0.126,"432.0":0.157,"431.0":0.342,"430.0":0.337,"429.0":0.093,"428.0":0.188,"427.0":0.107,"426.0":0.098,"425.0":0.121,"424.0":0.059,"423.0":0.128,"422.0":-0.032}}]},"2026-05-13":{"type":"daily","label":"Wed May 13","series":[{"t":"13:53","s":{"438.0":0.104,"437.0":0.057,"436.0":0.082,"435.0":0.146,"434.0":0.073,"433.0":0.012,"432.0":0.111,"431.0":0.088,"430.0":0.031,"429.0":0.133,"428.0":-0.099,"427.0":0.021,"426.0":0.064,"425.0":0.046,"424.0":-0.072,"423.0":-0.017,"422.0":-0.019}},{"t":"13:54","s":{"438.0":0.104,"437.0":0.057,"436.0":0.082,"435.0":0.146,"434.0":0.073,"433.0":0.012,"432.0":0.111,"431.0":0.088,"430.0":0.031,"429.0":0.133,"428.0":-0.099,"427.0":0.021,"426.0":0.064,"425.0":0.046,"424.0":-0.072,"423.0":-0.017,"422.0":-0.019}}]},"2026-05-15":{"type":"monthly","label":"Fri May 15","series":[{"t":"13:53","s":{"438.0":-0.034,"437.0":0.392,"436.0":0.421,"435.0":5.018,"434.0":0.309,"433.0":-0.047,"432.0":0.262,"431.0":0.07,"430.0":-2.965,"429.0":0.252,"428.0":-0.017,"427.0":-0.016,"426.0":0.119,"425.0":-15.983,"424.0":-0.012,"423.0":0.025,"422.0":-0.419}},{"t":"13:54","s":{"438.0":-0.034,"437.0":0.392,"436.0":0.421,"435.0":5.018,"434.0":0.309,"433.0":-0.047,"432.0":0.263,"431.0":0.07,"430.0":-2.933,"429.0":0.251,"428.0":-0.016,"427.0":-0.016,"426.0":0.119,"425.0":-15.916,"424.0":-0.011,"423.0":0.025,"422.0":-0.421}}]},"2026-05-18":{"type":"daily","label":"Mon May 18","series":[{"t":"13:53","s":{"438.0":0.021,"437.0":0.01,"436.0":0.002,"435.0":0.027,"434.0":0.005,"433.0":0.005,"432.0":0.016,"430.0":0.021,"429.0":0.001,"428.0":0.002,"427.0":-0.001,"426.0":0.009,"425.0":0.015,"424.0":0.006,"423.0":0.003,"422.0":0.128}},{"t":"13:54","s":{"438.0":0.021,"437.0":0.01,"436.0":0.002,"435.0":0.027,"434.0":0.005,"433.0":0.005,"432.0":0.016,"430.0":0.021,"429.0":0.001,"428.0":0.002,"427.0":-0.001,"426.0":0.009,"425.0":0.015,"424.0":0.006,"423.0":0.003,"422.0":0.128}}]},"2026-05-20":{"type":"daily","label":"Wed May 20","series":[{"t":"13:53","s":{"435.0":0.002,"429.0":0.005,"427.0":0.003,"425.0":0.002,"422.0":0.002}},{"t":"13:54","s":{"435.0":0.002,"429.0":0.005,"427.0":0.003,"425.0":0.002,"422.0":0.002}}]}}};
+var _selInst = "SPY";
+var _selExp  = "2026-05-06";
+var _liveChart = null;
+var _snapIdx = -1;   // -1 = latest
 
-function showInst(inst) {
-    _activeInst = inst;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.id === 'itab-' + inst));
-    document.querySelectorAll('.inst-section').forEach(el => {
-        el.style.display = (el.dataset.inst === inst) ? 'block' : 'none';
-    });
-}
+/* ── Render live chart ───────────────────────────────────────── */
+function renderLive() {
+    var instData = DATA[_selInst] || {};
+    var expData  = instData[_selExp];
+    var noData   = document.getElementById('live-no-data');
+    var sliderWrap = document.getElementById('live-slider-wrap');
 
-function showBkt(date, inst, bkt) {
-    ['0dte','daily','weekly','monthly'].forEach(function(b) {
-        var el = document.getElementById('hist-' + date + '-' + inst + '-' + b);
-        if (el) el.style.display = (b === bkt) ? 'block' : 'none';
-    });
-    // Update button styles for this card
-    var card = document.getElementById('card-' + date);
-    if (card) {
-        var sect = card.querySelector('[data-inst="' + inst + '"]');
-        if (sect) sect.querySelectorAll('.bkt-btn').forEach(function(btn) {
-            var isBkt = btn.dataset.bkt === bkt;
-            btn.classList.toggle('active', isBkt);
-        });
+    if (!expData || !expData.series || expData.series.length === 0) {
+        if (_liveChart) { _liveChart.destroy(); _liveChart = null; }
+        document.getElementById('live-chart-wrap').style.display = 'none';
+        sliderWrap.style.display = 'none';
+        noData.style.display = 'block';
+        return;
     }
+    noData.style.display = 'none';
+    document.getElementById('live-chart-wrap').style.display = 'block';
+
+    var series = expData.series;
+    var slider = document.getElementById('live-slider');
+    slider.max = series.length - 1;
+    if (_snapIdx < 0 || _snapIdx >= series.length) _snapIdx = series.length - 1;
+    slider.value = _snapIdx;
+    document.getElementById('live-slider-time').textContent = series[_snapIdx].t;
+    sliderWrap.style.display = series.length > 1 ? 'block' : 'none';
+
+    var snap = series[_snapIdx];
+    /* Sort strikes descending */
+    var keys  = Object.keys(snap.s).sort(function(a,b){return parseFloat(b)-parseFloat(a);});
+    var vals  = keys.map(function(k){return snap.s[k];});
+    var colors= vals.map(function(v){return v>=0?'#00cec9':'#e17055';});
+    var labels= keys.map(function(k){
+        var f=parseFloat(k); return f===Math.round(f)?String(Math.round(f)):k;
+    });
+    var h = Math.max(300, keys.length * 30 + 80);
+    document.getElementById('live-chart-wrap').style.height = h + 'px';
+
+    var cfg = {
+        type:'bar',
+        data:{labels:labels,datasets:[{
+            data:vals, backgroundColor:colors,
+            borderColor:'transparent', barThickness:16
+        }]},
+        options:{
+            indexAxis:'y', responsive:true, maintainAspectRatio:false,
+            plugins:{
+                legend:{display:false},
+                tooltip:{callbacks:{label:function(c){return (c.raw>=0?'+':'')+c.raw.toFixed(2)+'M';}}}
+            },
+            scales:{
+                x:{grid:{color:'rgba(255,255,255,0.07)'},
+                   ticks:{color:'#a0a0b0',callback:function(v){return v+'M';}},
+                   title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
+                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                   ticks:{color:'#e0e0e0',font:{size:11}}}
+            }
+        }
+    };
+    if (_liveChart) _liveChart.destroy();
+    _liveChart = new Chart(document.getElementById('live-chart'), cfg);
 }
 
-window.addEventListener('DOMContentLoaded', function() {
-    showInst('SPY');
-    
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPY-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 765", "SPY 760", "SPY 756", "SPY 755", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696"],
-                datasets:[{
-                    data:[0.014, 0.234, 0.007, 0.011, 0.057, 0.016, 0.015, 0.069, 0.062, 0.297, 0.131, 0.055, 0.899, 0.376, 0.67, 1.496, 2.14, 3.343, 10.196, 12.45, 69.352, 51.882, 59.105, 54.053, 90.555, 22.641, 37.321, 18.511, 6.804, 4.817, 8.384, 0.04, -1.102, -1.89, -4.843, -1.343, -0.81, -0.966, -0.642, -3.551, -0.704, -3.054, -3.203, -0.6, -4.998, -3.753, -0.385, -4.049, -0.996, -1.247, -0.189, -0.199, -0.244, -0.224, -0.94, -0.101, -0.214, -0.085, -0.073],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
+/* ── Controls ────────────────────────────────────────────────── */
+function selectInst(inst) {
+    _selInst = inst;
+    _snapIdx = -1;
+    document.querySelectorAll('#live-inst-bar .hinst-btn').forEach(function(b){
+        b.classList.toggle('active', b.textContent === inst);
+    });
+    renderLive();
+}
 
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPY-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 765", "SPY 760", "SPY 755", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696"],
-                datasets:[{
-                    data:[10.068, 13.472, 13.182, 1.009, 28.243, 1.02, 1.367, 1.006, 6.147, 23.897, 1.878, 9.436, 5.654, 5.789, 42.354, 11.274, 17.751, 20.583, 16.638, 42.663, 17.856, 17.284, 17.337, 18.453, 49.534, 12.632, 7.042, 6.335, 5.076, 38.111, -2.746, -6.679, -0.05, 0.728, -5.389, -0.864, -6.598, 0.357, -2.796, 6.142, -1.248, -2.234, -2.172, 0.294, -1.626, -1.974, -5.277, -1.481, -1.544, -5.241, -1.066, -1.111, -0.845, -0.67, -12.516, -5.123, -0.808, -1.737, -1.854],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
+function selectExp(exp) {
+    _selExp  = exp;
+    _snapIdx = -1;
+    document.querySelectorAll('#live-exp-tabs .hexp-btn').forEach(function(b){
+        b.classList.toggle('active', b.onclick && b.onclick.toString().indexOf('"'+exp+'"')>=0 ||
+            b.getAttribute('onclick').indexOf("'"+exp+"'")>=0);
+    });
+    renderLive();
+}
 
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPY-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 769", "SPY 768", "SPY 767", "SPY 766", "SPY 765", "SPY 764", "SPY 763", "SPY 762", "SPY 761", "SPY 760", "SPY 759", "SPY 758", "SPY 757", "SPY 756", "SPY 755", "SPY 754", "SPY 753", "SPY 752", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696"],
-                datasets:[{
-                    data:[0.073, 0.007, 0.047, 0.002, 4.885, 0.054, 0.001, 0.036, 0.055, 15.346, 0.002, 0.043, 0.036, 0.033, 30.289, 0.136, 0.063, 0.229, 0.245, 23.201, 2.904, 3.315, 2.94, 1.684, 16.09, 2.875, 5.807, 9.313, 8.901, 29.106, 10.873, 9.162, 16.176, 16.583, 54.645, 11.411, 57.319, 17.591, 19.687, 35.973, 9.825, 18.615, 9.31, 20.374, 21.163, 9.135, 36.919, 0.231, 0.42, 3.601, 1.069, 19.174, 10.074, 0.809, -3.116, -0.088, -1.685, -1.566, -1.568, -20.764, -3.075, -1.25, -2.149, -1.865, -7.893, -6.09, -1.554, -0.904, -1.522, -57.133, -2.554, -1.625, -1.975, -1.126],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPY-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 765", "SPY 760", "SPY 756", "SPY 755", "SPY 754", "SPY 753", "SPY 752", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696"],
-                datasets:[{
-                    data:[12.406, 16.219, 0.002, 16.33, 0.075, 0.094, 0.214, 0.324, 56.957, 9.911, 1.115, 2.23, 1.79, 38.768, 1.72, 3.144, 4.058, 2.079, 48.042, 3.73, 2.822, 4.883, 3.797, 34.756, 7.253, 4.439, 2.909, 16.512, 65.502, 2.945, 6.116, 4.948, 6.169, 23.307, 4.761, 3.205, 4.395, 4.106, 29.816, -1.65, 0.942, 0.665, -1.245, 3.391, 0.398, 1.669, 1.912, 4.833, -14.465, -0.947, 0.569, -0.23, -0.192, -3.743, -1.481, 0.957, 0.523, 0.435, -11.063, -1.139, -1.178, -0.468, -5.623],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPX-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7700", "SPX 7650", "SPX 7625", "SPX 7600", "SPX 7575", "SPX 7550", "SPX 7525", "SPX 7520", "SPX 7510", "SPX 7500", "SPX 7490", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7460", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985"],
-                datasets:[{
-                    data:[0.002, 0.004, 0.02, 0.083, 0.015, 0.014, 0.017, 0.004, 0.007, 0.061, 0.022, 0.017, 0.084, 0.071, 0.07, 0.23, 0.118, 0.031, 0.109, 1.836, 10.839, 0.081, 0.074, 0.198, 0.334, 4.402, 0.6, 1.439, 1.508, 6.141, 19.698, 13.034, 13.361, 44.944, 31.537, 490.565, 251.606, 117.721, 35.351, 28.73, 22.593, 18.32, 10.51, 10.224, 6.563, 12.733, 5.25, 2.516, 1.533, 4.73, 3.014, 2.756, -0.34, -0.669, 0.158, 0.001, -0.185, -0.241, -0.272, -0.185, -0.388, -0.848, -0.356, -0.435, -0.151, -0.419, -0.124, -0.222, -0.195, -0.174, -0.402, -0.278, -0.225, -0.107, -0.145, -0.5, -0.061, -0.146, -0.058, -0.148, -0.115, -0.127, -0.053, -0.081, -0.081, -0.276, -0.056, -0.066, -0.592, -0.252, -1.645, -0.241, -0.38, -0.494, -0.315, -3.861, -0.357, -0.541, -1.742, -0.296, -5.208, -0.299, -0.478, -2.222, -0.228, -2.957, 0.045, -0.172, -2.458],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPX-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7710", "SPX 7705", "SPX 7700", "SPX 7695", "SPX 7690", "SPX 7685", "SPX 7680", "SPX 7675", "SPX 7670", "SPX 7665", "SPX 7660", "SPX 7655", "SPX 7650", "SPX 7645", "SPX 7640", "SPX 7635", "SPX 7630", "SPX 7625", "SPX 7620", "SPX 7615", "SPX 7610", "SPX 7605", "SPX 7600", "SPX 7595", "SPX 7590", "SPX 7585", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7555", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985"],
-                datasets:[{
-                    data:[1.344, 0.001, 18.346, 0.001, 0.048, -0.002, 0.098, 6.855, 0.155, 0.001, 0.55, 0.001, 4.931, -0.001, 0.143, -0.003, 0.448, 3.079, 0.397, -0.001, 0.569, -0.0, 17.091, -0.005, 0.217, 0.001, 0.442, 14.373, 0.181, 0.001, 0.157, 0.002, 10.486, -0.004, 0.516, 0.002, 0.444, 5.473, 0.514, 0.067, 0.553, 0.359, 34.985, 0.303, 0.244, 0.035, 0.512, 10.201, 0.578, 0.006, 2.207, 0.242, 31.433, 0.239, 3.966, 0.22, 12.383, 15.888, 5.757, 0.689, 8.916, 1.324, 50.534, 4.547, 13.55, 5.598, 11.345, 29.462, 12.601, 5.093, 8.744, 6.603, 32.4, 4.271, 17.092, 8.718, 9.686, 22.086, 11.4, 2.904, 14.883, 10.317, 35.341, 2.561, 4.371, 1.765, 2.888, 11.093, 4.204, 0.422, 2.683, 0.756, 11.179, 0.001, 1.672, 0.412, 1.159, 6.129, 0.898, -0.042, 0.498, -0.283, 12.937, -0.265, -0.319, -0.937, 0.389, 0.082, -1.091, -0.772, -0.694, -0.633, 1.768, -0.609, -0.256, -0.27, -0.162, 0.201, -0.639, -0.363, -0.4, -0.232, 2.115, -0.362, -1.045, -0.419, -0.338, 0.433, -1.073, -0.472, -0.387, -0.444, -5.154, -0.458, -0.496, -0.186, -0.633, -1.611, -0.486, -0.235, 0.304, -0.222, -1.661, -0.253, -0.797, -0.209],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPX-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7710", "SPX 7705", "SPX 7700", "SPX 7695", "SPX 7690", "SPX 7685", "SPX 7680", "SPX 7675", "SPX 7670", "SPX 7665", "SPX 7660", "SPX 7655", "SPX 7650", "SPX 7645", "SPX 7640", "SPX 7635", "SPX 7630", "SPX 7625", "SPX 7620", "SPX 7615", "SPX 7610", "SPX 7600", "SPX 7595", "SPX 7590", "SPX 7585", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7555", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985"],
-                datasets:[{
-                    data:[0.037, 0.002, 2.201, 0.006, 1.119, 0.015, 0.891, 0.708, 0.025, 0.007, 0.064, 0.013, 3.86, 0.022, 0.923, 0.017, 0.295, 2.443, 1.062, 0.009, 0.896, 5.433, 0.041, 0.206, 0.071, 2.057, 2.606, -0.086, 0.074, 0.475, 0.109, 4.044, 0.378, 0.39, 0.128, 0.145, 4.773, 0.583, 0.261, 4.115, 0.237, 17.004, 0.206, 0.721, 0.095, 1.049, 5.833, 1.08, 0.661, 1.563, 0.179, 12.484, 0.567, 1.595, 0.761, 4.264, 8.132, 5.202, 0.718, 9.763, 1.392, 37.044, 2.217, 7.27, 1.333, 10.23, 11.485, 11.077, 6.93, 14.01, 3.163, 59.466, 3.466, 10.448, 3.835, 6.758, 16.786, 23.468, 2.988, 9.999, 10.267, 24.22, 3.326, 5.133, 1.85, 3.643, 7.413, 3.966, 1.168, 5.284, 0.725, 6.29, -1.387, 1.13, 1.498, 0.147, 1.752, 0.321, 0.441, 3.576, 0.363, 9.417, -0.34, 0.071, -0.486, 0.197, 0.085, -1.835, -0.309, -0.137, -0.277, -2.636, -0.139, -0.854, -0.119, -0.145, -1.479, -1.268, -0.436, -0.908, 0.264, -1.508, -0.569, -0.416, -0.227, -0.361, -0.387, -0.53, -0.292, -0.518, -0.246, -1.413, -0.327, -0.665, -0.198, -1.684, -0.483, -1.333, -0.162, -0.271, -0.364, -3.349, -0.103, 0.085, -0.166],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-SPX-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7710", "SPX 7700", "SPX 7690", "SPX 7680", "SPX 7675", "SPX 7670", "SPX 7660", "SPX 7650", "SPX 7640", "SPX 7630", "SPX 7625", "SPX 7620", "SPX 7610", "SPX 7600", "SPX 7590", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985"],
-                datasets:[{
-                    data:[0.026, 16.218, 0.028, 0.097, 3.813, 0.078, 0.25, 7.568, 0.149, 0.119, 2.913, 0.135, 0.225, 26.076, 0.207, 0.395, 6.713, 1.205, 0.002, 1.592, 8.295, 0.004, 0.501, -0.007, 0.621, 6.273, 1.165, 0.141, 3.763, 0.26, 38.949, 0.187, 0.826, 0.154, 1.442, 7.203, 1.105, 0.805, 1.454, 0.463, 21.143, 0.544, 1.987, 0.449, 1.658, 10.093, 1.715, 0.511, 2.592, 4.555, 52.124, 0.855, 2.226, 3.362, 2.672, 15.68, 8.086, 1.031, 8.35, 0.581, 39.09, 0.77, 2.232, 1.645, 2.74, 16.003, 1.766, 3.065, 3.67, 1.448, 41.11, 0.728, 1.988, 1.215, 1.579, 4.672, 0.255, 1.37, 0.957, 0.668, 16.318, 2.097, 2.305, 1.641, 0.522, 0.69, 1.25, -0.154, 1.877, -0.016, 18.624, 0.254, 0.998, 0.583, 0.675, 3.273, 0.477, -2.343, -0.248, -2.802, 15.559, -0.073, 0.395, -0.516, 4.927, 1.678, 0.341, 0.015, 0.437, -0.226, 10.633, -0.007, 1.74, -0.028, 1.336, 1.292, -0.067, 0.001, -0.354, 0.281, 3.909, -0.552, 0.036, -0.111, -0.08, 1.042, -0.351, 0.024, -0.255, 0.145, 0.702, -0.288, -0.364, -0.053],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-QQQ-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 725", "QQQ 720", "QQQ 715", "QQQ 710", "QQQ 708", "QQQ 707", "QQQ 706", "QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659"],
-                datasets:[{
-                    data:[0.05, 0.025, 0.457, 0.251, 0.253, 0.253, 0.194, 0.289, 0.554, 0.063, 0.253, 0.351, 1.337, 1.136, 1.712, 1.071, 15.262, 17.296, 34.284, 23.899, 21.358, 13.146, 21.636, 10.246, 8.379, 4.244, 2.08, 5.011, 1.976, 2.422, -0.054, -0.805, -3.835, -0.322, -0.719, -0.737, -0.897, -0.442, -0.287, -0.397, -0.781, -1.275, -0.479, -1.005, -0.342, -0.468, -0.201, -0.507, -0.894, -0.193, -0.19, -0.241, -0.316, -0.081],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-QQQ-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 725", "QQQ 720", "QQQ 715", "QQQ 710", "QQQ 708", "QQQ 707", "QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659"],
-                datasets:[{
-                    data:[6.35, 5.658, 4.622, 8.078, 0.006, 0.086, 7.432, 0.005, 0.027, 0.028, 0.263, 23.641, 1.841, 2.51, 1.854, 2.466, 28.639, 4.148, 13.155, 2.918, 11.469, 23.07, 3.451, 4.421, 3.195, 2.577, 10.66, 4.216, 7.871, 1.218, -1.47, 10.217, 1.51, -1.378, -0.763, 0.294, 6.005, -0.012, -0.238, 0.359, -0.361, 6.229, -0.093, -0.738, -0.662, -0.366, -0.057, -0.47, -1.239, -0.525, -0.547, 4.691, -0.478],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-QQQ-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 725", "QQQ 720", "QQQ 719", "QQQ 718", "QQQ 717", "QQQ 716", "QQQ 715", "QQQ 714", "QQQ 713", "QQQ 712", "QQQ 711", "QQQ 710", "QQQ 709", "QQQ 708", "QQQ 707", "QQQ 706", "QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659"],
-                datasets:[{
-                    data:[1.915, 4.042, 0.043, 0.001, 0.004, 0.024, 6.914, 0.025, 0.003, 0.0, 0.014, 9.923, 0.066, 0.616, 0.103, 0.804, 12.489, 0.034, 0.123, 0.718, 0.638, 21.415, 3.585, 2.355, 2.706, 4.939, 24.598, 3.615, 8.3, 3.914, 7.741, 18.894, 1.722, 4.348, 2.95, 2.4, 18.183, 2.203, -1.56, 2.872, -1.793, 10.271, -0.418, -0.602, -0.911, 2.162, 17.673, 0.12, -1.019, -0.319, -0.293, -1.884, 0.414, -0.952, 0.156, 0.449, -4.085, -0.302, 0.769, -1.497, -0.313, -20.208, -0.025],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-QQQ-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 725", "QQQ 720", "QQQ 716", "QQQ 715", "QQQ 714", "QQQ 713", "QQQ 712", "QQQ 711", "QQQ 710", "QQQ 709", "QQQ 708", "QQQ 707", "QQQ 706", "QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659"],
-                datasets:[{
-                    data:[5.651, 12.883, 0.012, 4.482, 0.083, 0.064, 0.208, 0.008, 21.144, 0.234, 0.055, 0.028, 0.404, 11.553, 0.409, 0.299, 0.39, 1.387, 32.704, 0.768, 1.142, 1.368, 0.932, 11.486, 0.777, 0.53, 1.218, 6.598, 26.467, 1.418, 6.823, 0.828, 0.504, 20.684, 1.319, 1.86, 2.65, 3.352, 15.194, 1.131, 1.405, 1.52, 2.839, 9.616, -0.928, -0.301, 1.461, 0.564, 11.191, 0.169, 0.626, 0.056, 0.464, 8.92, -1.76, -0.079, -0.15, -0.341, 11.201, -0.069],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-USO-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 139", "USO 138", "USO 137", "USO 136", "USO 135", "USO 134", "USO 133", "USO 132", "USO 131", "USO 130", "USO 129", "USO 128", "USO 127"],
-                datasets:[{
-                    data:[-0.166, -0.233, -0.177, -0.331, -1.891, -0.91, -3.636, -0.685, -0.426, -1.959, -0.013, -0.044, 0.016],
-                    backgroundColor:['#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-USO-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 139", "USO 138", "USO 137", "USO 136", "USO 135", "USO 134", "USO 133", "USO 132", "USO 131", "USO 130", "USO 129", "USO 128", "USO 127"],
-                datasets:[{
-                    data:[-0.084, 0.101, 0.016, -0.004, 0.046, -0.025, -0.057, 0.131, -0.077, 0.141, -0.015, -0.029, -0.006],
-                    backgroundColor:['#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-USO-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 139", "USO 138", "USO 137", "USO 136", "USO 135", "USO 134", "USO 133", "USO 132.5", "USO 132", "USO 131.5", "USO 131", "USO 130.5", "USO 130", "USO 129.5", "USO 129", "USO 128.5", "USO 128", "USO 127.5", "USO 127", "USO 126.5"],
-                datasets:[{
-                    data:[0.019, -0.357, 0.023, -0.132, -1.927, -0.057, -0.143, -0.005, 0.143, -0.004, -0.273, -0.015, -2.735, -0.018, -0.158, -0.011, -0.042, -0.021, 0.363, -0.005],
-                    backgroundColor:['#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-USO-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 139", "USO 138", "USO 137", "USO 136", "USO 135", "USO 134", "USO 133", "USO 132", "USO 131", "USO 130", "USO 129", "USO 128", "USO 127"],
-                datasets:[{
-                    data:[-0.502, 0.027, -0.033, 0.025, 0.417, -0.02, -0.26, -0.019, -0.084, -0.438, -0.024, -0.263, -0.166],
-                    backgroundColor:['#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-GLD-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 451", "GLD 450", "GLD 449", "GLD 448", "GLD 447", "GLD 446", "GLD 445", "GLD 444", "GLD 443", "GLD 442", "GLD 441", "GLD 440", "GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409"],
-                datasets:[{
-                    data:[0.028, 0.173, 0.038, 0.036, 0.017, 0.027, 0.085, 0.001, 0.001, 0.002, 0.004, 0.011, 0.047, 0.086, 0.057, 0.14, 0.369, 0.4, 0.655, 2.197, 3.575, 16.383, 1.934, 1.946, 0.317, 0.227, 1.112, 0.174, 0.138, 0.061, 0.073, 0.028, -0.004, -0.057, -0.075, 0.002, -0.064, -0.052, -0.015, -0.028, -0.02, -0.081, -0.004],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-GLD-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 451", "GLD 450", "GLD 449", "GLD 448", "GLD 447", "GLD 446", "GLD 445", "GLD 444", "GLD 443", "GLD 442", "GLD 441", "GLD 440", "GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409"],
-                datasets:[{
-                    data:[0.254, 17.315, 0.008, 0.008, 0.03, 0.03, 1.777, 0.053, 0.059, 0.066, 0.058, 7.431, 0.145, 0.119, 0.149, 0.118, 5.174, 0.236, 0.152, 0.307, 0.441, 3.127, 0.233, 0.118, 0.143, 0.201, 13.913, 0.03, 0.108, 0.097, 0.361, 7.147, -0.062, -0.195, -0.005, -0.05, -6.026, -0.038, 0.001, -0.062, -0.068, 0.124, -0.025],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-GLD-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 451", "GLD 450", "GLD 449", "GLD 448", "GLD 447", "GLD 446", "GLD 445", "GLD 444", "GLD 443", "GLD 442", "GLD 441", "GLD 440", "GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409"],
-                datasets:[{
-                    data:[0.155, 1.242, 0.498, 0.151, 0.382, 0.424, 0.957, 0.44, 0.016, 0.431, 0.427, 2.76, 0.51, 0.757, 1.114, 0.195, 2.609, 2.003, 4.216, 0.845, 0.897, 4.746, -3.957, 1.304, 1.428, 5.676, 11.364, 2.011, 2.957, 1.871, 2.003, -0.498, -1.691, 0.417, -0.392, 0.065, -3.507, -0.576, 0.182, -0.225, -0.146, -2.465, -0.271],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-06-GLD-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 451", "GLD 450", "GLD 449", "GLD 448", "GLD 447", "GLD 446", "GLD 445", "GLD 444", "GLD 443", "GLD 442", "GLD 441", "GLD 440", "GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409"],
-                datasets:[{
-                    data:[0.027, 8.07, 0.035, 0.18, 0.279, 0.191, 5.383, 0.167, 0.388, 0.397, 1.204, 6.461, 0.474, -0.035, 0.395, 0.425, 5.76, 0.311, -0.047, 0.262, 0.069, -3.447, 0.25, -0.015, -0.015, 0.117, -16.118, -0.011, 0.025, -0.409, -0.008, 7.985, 0.004, -0.057, 0.197, -0.249, -1.997, -0.067, -0.133, -0.043, -0.008, -9.667, -0.055],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPY-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 760", "SPY 755", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689"],
-                datasets:[{
-                    data:[0.065, 0.144, 0.049, 0.006, 0.028, 0.028, 0.036, 0.099, 0.028, 0.271, 0.03, 0.023, 0.526, 0.302, 0.065, 0.277, 0.283, 0.999, 2.435, 1.357, 0.795, 2.298, 6.95, 4.121, 11.208, 45.529, 56.708, 208.472, 117.465, 56.721, 68.02, 14.713, 1.731, 0.793, 4.122, -5.099, -2.629, -3.186, -3.195, -2.008, -2.066, -1.224, -6.37, -0.803, -1.516, -1.168, -0.724, -2.144, -2.827, -0.644, -0.73, -0.288, -1.665, -0.292, -0.393, -0.095, -0.188, -0.371, -0.159, -0.169, -0.202, -0.034, -0.267, -0.056],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPY-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 760", "SPY 755", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689"],
-                datasets:[{
-                    data:[10.642, 10.504, 0.828, 24.411, 0.621, 0.786, 0.61, 1.579, 18.98, 0.792, 2.093, 1.81, 1.609, 34.35, 3.662, 6.323, 6.267, 5.521, 21.157, 11.995, 5.876, 8.903, 9.339, 44.322, 13.926, 24.179, 13.934, 20.027, 54.417, 10.401, 12.081, 8.458, 7.786, 0.133, -2.761, -5.259, 0.728, -3.703, 9.057, -3.179, -2.931, -4.55, -1.29, -5.39, -3.94, -10.029, -3.347, -5.036, -7.685, -1.904, -1.898, -2.037, -1.222, -16.211, -13.724, -1.258, -2.125, -2.197, 0.179, -1.337, -1.439, -1.121, -1.673, -12.455, -0.682],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPY-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 760", "SPY 759", "SPY 758", "SPY 757", "SPY 756", "SPY 755", "SPY 754", "SPY 753", "SPY 752", "SPY 751", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689"],
-                datasets:[{
-                    data:[8.698, 0.002, 0.041, 0.024, 0.026, 22.304, 0.131, 0.058, 0.213, 0.236, 17.339, 1.64, 2.027, 2.105, 1.188, 11.365, 1.501, 3.987, 5.196, 5.01, 15.147, 4.429, 3.722, 5.392, 5.811, 17.751, 7.311, 7.323, 9.472, 8.459, 34.421, 7.386, 14.621, 11.252, 26.52, 53.827, 16.612, 74.889, 16.772, 4.954, 20.709, 4.951, 43.97, 6.478, 1.743, -1.201, 16.605, -0.444, -0.517, -2.25, -24.838, -4.569, -1.73, -3.33, -2.971, -1.279, -7.482, -2.915, -1.983, -2.499, -84.806, -4.627, -2.599, -2.002, -1.386, -6.268, -2.686, -0.4, -0.969, -1.427, -10.654, -1.017],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPY-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPY 760", "SPY 755", "SPY 750", "SPY 749", "SPY 748", "SPY 747", "SPY 746", "SPY 745", "SPY 744", "SPY 743", "SPY 742", "SPY 741", "SPY 740", "SPY 739", "SPY 738", "SPY 737", "SPY 736", "SPY 735", "SPY 734", "SPY 733", "SPY 732", "SPY 731", "SPY 730", "SPY 729", "SPY 728", "SPY 727", "SPY 726", "SPY 725", "SPY 724", "SPY 723", "SPY 722", "SPY 721", "SPY 720", "SPY 719", "SPY 718", "SPY 717", "SPY 716", "SPY 715", "SPY 714", "SPY 713", "SPY 712", "SPY 711", "SPY 710", "SPY 709", "SPY 708", "SPY 707", "SPY 706", "SPY 705", "SPY 704", "SPY 703", "SPY 702", "SPY 701", "SPY 700", "SPY 699", "SPY 698", "SPY 697", "SPY 696", "SPY 695", "SPY 694", "SPY 693", "SPY 692", "SPY 691", "SPY 690", "SPY 689"],
-                datasets:[{
-                    data:[14.523, 14.291, 48.026, 4.125, 0.511, 0.883, 0.673, 28.634, 0.808, 1.466, 1.701, 0.844, 28.657, 2.0, 1.592, 2.234, 2.756, 31.083, 6.199, 3.497, 2.194, 4.61, 62.686, 3.411, 6.771, 5.946, 6.43, 41.631, 4.509, 1.262, 5.645, 5.53, 42.25, -3.069, 1.684, 0.876, -1.275, 5.33, 0.936, 2.798, 3.747, 7.523, -14.954, -1.48, 1.079, -0.6, -0.205, -6.487, -2.221, 1.729, 0.85, 0.91, -9.82, -1.806, -1.896, -0.705, -1.325, -7.485, -0.118, -1.224, -8.796, -0.585, -38.233, -3.384],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPX-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7625", "SPX 7600", "SPX 7575", "SPX 7550", "SPX 7525", "SPX 7520", "SPX 7510", "SPX 7500", "SPX 7490", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7460", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910"],
-                datasets:[{
-                    data:[0.001, 0.003, 0.047, 0.099, 0.029, 0.007, 0.018, 0.024, 0.001, 0.002, 0.043, 0.009, 0.002, 0.053, 0.001, 0.003, 0.277, 0.004, 0.094, 0.018, 0.011, 2.405, 0.022, 0.394, 0.011, 0.113, 0.071, 0.2, 0.294, 0.291, 0.058, 1.049, 0.075, 6.947, 0.362, 2.227, 0.602, 0.382, 0.971, 0.568, 0.568, 1.12, 1.511, 3.192, 3.087, 14.495, 8.077, 36.717, 83.373, 131.894, 52.915, 33.316, 10.141, 8.638, 3.411, 4.527, 1.078, 0.637, 0.569, 0.3, 0.141, 0.052, 0.065, 0.004, -0.252, -0.145, -0.103, -0.191, -0.097, -0.091, -0.117, -0.28, -0.283, -0.423, -0.104, -0.082, -0.107, -0.094, -0.71, -0.611, -0.069, -0.109, -0.113, -0.299, -0.115, -0.1, -0.061, -0.115, -0.142, -0.09, -0.107, -0.084, -0.097, -0.285, -0.441, -0.91, -1.532, -0.352, -3.285, -0.862, -0.263, -1.099, -0.313, -5.61, -0.194, -1.015, -0.112, -0.452, -0.117, -0.337, -0.099, -0.149, -0.106, -0.337, -0.06, -0.575, -0.823, -0.056, -2.169, -0.145, -0.567, -0.855],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPX-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7630", "SPX 7625", "SPX 7620", "SPX 7615", "SPX 7610", "SPX 7605", "SPX 7600", "SPX 7595", "SPX 7590", "SPX 7585", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7555", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910"],
-                datasets:[{
-                    data:[0.388, 2.559, 0.308, -0.002, 0.44, -0.001, 13.159, -0.005, 0.191, 0.001, 0.239, 12.562, 0.154, 0.001, 0.129, 0.002, 8.552, -0.004, 0.46, 0.002, 0.394, 3.577, 0.203, 0.034, 0.49, 0.049, 27.761, 0.032, 0.163, 0.03, 0.403, 7.621, 0.253, 0.005, 2.017, 0.243, 24.409, 0.134, 1.12, 0.166, 9.244, 9.941, 1.486, 0.181, 1.95, 0.305, 38.128, 0.672, 3.113, 0.723, 4.968, 16.151, 3.009, 1.087, 3.573, 1.748, 19.422, 2.387, 11.958, 5.592, 8.23, 20.751, 10.943, 6.747, 20.088, 15.425, 52.185, 5.42, 8.599, 4.957, 14.979, 19.168, 12.059, 3.207, 9.795, 5.459, 19.304, 1.817, 4.95, 1.214, 3.996, 10.471, 2.61, 0.209, 1.57, 0.459, 16.092, -0.488, -0.832, -2.098, 0.311, 0.81, -1.996, -1.937, -1.979, -1.209, -0.725, -0.998, -0.28, -0.727, -0.445, -0.03, -1.575, -0.605, -0.733, -0.354, 1.75, -0.533, -2.042, -0.525, -0.785, 0.905, -1.993, -0.268, -0.712, -0.764, -6.149, -0.596, -1.093, -0.348, -0.957, -1.41, -1.144, -0.537, -0.975, -0.436, -1.976, -0.367, -0.921, -0.281, -0.821, -1.284, -0.661, -0.984, -2.416, -0.096, -2.441, -0.243, -0.469, -0.105, -0.421, -1.75, -0.458, -0.117, -0.417],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPX-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7630", "SPX 7625", "SPX 7620", "SPX 7615", "SPX 7610", "SPX 7600", "SPX 7595", "SPX 7590", "SPX 7585", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7555", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7535", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910"],
-                datasets:[{
-                    data:[0.166, 1.544, 0.706, 0.008, 0.566, 3.553, 0.02, 0.128, 0.045, 1.184, 1.662, -0.062, 0.05, 0.285, 0.076, 3.019, 0.258, 0.273, 0.083, 0.084, 3.35, 0.232, 0.153, 0.533, 0.174, 10.878, 0.158, 0.283, 0.075, 0.711, 4.511, 0.477, 0.147, 0.87, 0.101, 6.467, 0.181, 0.568, 0.206, 1.11, 3.703, 1.223, 0.355, 2.11, 0.322, 21.817, 0.592, 1.773, 0.308, 3.112, 6.072, 2.967, 0.702, 5.128, 1.134, 29.085, 1.688, 6.608, 2.634, 4.748, 14.277, 4.787, 2.387, 7.749, 10.373, 27.293, 3.805, 15.007, 2.649, 4.27, 11.01, 6.352, 2.083, 2.072, 1.29, 9.235, -2.731, 2.741, 2.783, 0.896, 2.913, 0.91, 0.791, 1.238, 0.677, 11.717, -0.694, 0.12, -0.852, 0.208, 0.558, -3.19, -0.518, 0.156, -0.433, -4.487, -0.12, -1.756, -0.289, -0.672, -1.71, -2.75, -1.369, -1.534, 0.252, -2.473, -1.435, -0.908, -0.425, -1.125, -0.986, -0.854, -0.345, -0.741, -0.494, -2.203, -0.723, -1.205, -0.367, -1.408, -0.536, -0.71, -0.367, -0.528, -0.866, -4.752, -0.168, 0.091, -0.343, -0.632, -0.713, -0.393, -0.109, -0.304, -0.091, -2.911, -0.215, -0.345, -0.14, -0.269, -0.68, -0.157, -0.092, 0.03],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-SPX-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["SPX 7630", "SPX 7625", "SPX 7620", "SPX 7610", "SPX 7600", "SPX 7590", "SPX 7580", "SPX 7575", "SPX 7570", "SPX 7565", "SPX 7560", "SPX 7550", "SPX 7545", "SPX 7540", "SPX 7530", "SPX 7525", "SPX 7520", "SPX 7515", "SPX 7510", "SPX 7505", "SPX 7500", "SPX 7495", "SPX 7490", "SPX 7485", "SPX 7480", "SPX 7475", "SPX 7470", "SPX 7465", "SPX 7460", "SPX 7455", "SPX 7450", "SPX 7445", "SPX 7440", "SPX 7435", "SPX 7430", "SPX 7425", "SPX 7420", "SPX 7415", "SPX 7410", "SPX 7405", "SPX 7400", "SPX 7395", "SPX 7390", "SPX 7385", "SPX 7380", "SPX 7375", "SPX 7370", "SPX 7365", "SPX 7360", "SPX 7355", "SPX 7350", "SPX 7345", "SPX 7340", "SPX 7335", "SPX 7330", "SPX 7325", "SPX 7320", "SPX 7315", "SPX 7310", "SPX 7305", "SPX 7300", "SPX 7295", "SPX 7290", "SPX 7285", "SPX 7280", "SPX 7275", "SPX 7270", "SPX 7265", "SPX 7260", "SPX 7255", "SPX 7250", "SPX 7245", "SPX 7240", "SPX 7235", "SPX 7230", "SPX 7225", "SPX 7220", "SPX 7215", "SPX 7210", "SPX 7205", "SPX 7200", "SPX 7195", "SPX 7190", "SPX 7185", "SPX 7180", "SPX 7175", "SPX 7170", "SPX 7165", "SPX 7160", "SPX 7155", "SPX 7150", "SPX 7145", "SPX 7140", "SPX 7135", "SPX 7130", "SPX 7125", "SPX 7120", "SPX 7115", "SPX 7110", "SPX 7105", "SPX 7100", "SPX 7095", "SPX 7090", "SPX 7085", "SPX 7080", "SPX 7075", "SPX 7070", "SPX 7065", "SPX 7060", "SPX 7055", "SPX 7050", "SPX 7045", "SPX 7040", "SPX 7035", "SPX 7030", "SPX 7025", "SPX 7020", "SPX 7015", "SPX 7010", "SPX 7005", "SPX 7000", "SPX 6995", "SPX 6990", "SPX 6985", "SPX 6980", "SPX 6975", "SPX 6970", "SPX 6965", "SPX 6960", "SPX 6955", "SPX 6950", "SPX 6945", "SPX 6940", "SPX 6935", "SPX 6930", "SPX 6925", "SPX 6920", "SPX 6915", "SPX 6910"],
-                datasets:[{
-                    data:[0.061, 2.664, 0.044, 0.186, 24.319, 0.126, 0.228, 6.254, 0.587, 0.001, 0.645, 7.532, 0.001, 0.226, 0.312, 5.192, 0.493, 0.051, 1.402, 0.084, 28.325, 0.039, 0.434, 0.059, 0.612, 5.411, 0.515, 0.37, 0.764, 0.233, 14.533, 0.306, 1.088, 0.184, 0.927, 7.458, 1.061, 0.332, 1.549, 3.114, 42.683, 0.575, 1.422, 1.834, 1.883, 12.885, 6.428, 0.813, 6.898, 0.536, 33.24, 0.683, 1.979, 1.397, 2.553, 15.514, 1.641, 3.071, 3.72, 1.522, 42.878, 0.811, 2.269, 0.815, 1.628, 5.904, 0.621, 1.715, 1.218, 0.856, 21.273, 2.444, 4.169, 2.736, 0.729, 0.357, 1.783, -0.168, 2.23, -0.001, 25.304, 0.394, 1.71, 0.873, 1.225, 4.773, 0.742, -2.004, -0.413, -3.793, 21.16, -0.083, 0.598, -0.8, 7.846, 1.708, 0.584, 0.006, 0.774, -0.262, 18.958, 0.066, 2.387, 0.055, 1.55, 1.86, -0.047, 0.04, -0.484, 0.492, 5.302, -0.101, 0.16, -0.122, -0.057, 1.329, -0.369, 0.06, -0.312, 0.236, 0.113, -0.526, -0.472, 0.014, -0.129, -0.305, -0.056, -0.004, -1.565, -0.039, -1.773, -0.735, 0.01, 0.018, -0.082, -0.854, -0.32, -0.063, 0.156],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-QQQ-0dte");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 715", "QQQ 710", "QQQ 705", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648"],
-                datasets:[{
-                    data:[0.04, 1.599, 0.69, 1.369, 0.053, 0.053, 0.003, 0.003, 0.003, 0.005, 0.007, 0.013, 0.047, 0.413, 0.567, 0.756, 1.746, 2.053, 16.478, 14.645, 25.979, 121.038, 12.809, 138.536, 19.564, 5.955, 4.436, 2.599, 5.723, 2.108, -0.316, -0.584, -0.685, -2.101, -1.134, -0.952, -0.556, -0.464, -0.489, -0.256, -0.352, -0.849, -0.784, -0.821, -0.176, -0.222, -0.529, -0.186, -0.306, -0.07, -0.07, -0.144, -0.084, -0.858, -0.07, -0.031],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-QQQ-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 715", "QQQ 710", "QQQ 705", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648"],
-                datasets:[{
-                    data:[3.314, 6.359, 5.24, 17.064, 0.721, 0.536, 0.707, 1.059, 24.544, 1.759, 1.781, 1.75, 1.911, 27.398, 2.744, 4.729, 4.993, 3.687, 22.053, 4.625, 19.555, 5.737, 4.026, 29.06, 8.066, 15.87, 2.239, 4.926, 17.139, 9.111, -0.279, 1.855, -1.328, 9.196, -0.546, -0.376, -1.407, -0.773, -0.161, -1.317, -2.398, -0.768, -1.119, 3.767, -0.752, -1.28, -1.074, -1.316, 10.887, -1.047, -0.46, -0.512, -0.558, 1.018, -0.601, -0.692],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-QQQ-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 716", "QQQ 715", "QQQ 714", "QQQ 713", "QQQ 712", "QQQ 711", "QQQ 710", "QQQ 709", "QQQ 708", "QQQ 705", "QQQ 704", "QQQ 703", "QQQ 702", "QQQ 701", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648"],
-                datasets:[{
-                    data:[0.023, 4.989, 0.025, 0.003, 0.0, 0.014, 8.027, 0.066, 0.032, 6.574, 0.0, 0.0, 0.001, 0.0, 12.061, 1.322, 0.633, 0.88, 1.584, 13.342, 1.416, 5.176, 2.259, 3.628, 16.33, 1.214, 2.7, 2.515, 1.986, 20.316, 2.344, 2.324, 4.932, 1.836, 22.32, 1.537, 1.958, -0.75, 6.207, 46.959, 1.529, -1.458, 0.878, 0.359, 1.385, 0.915, -2.189, 1.658, 2.603, -4.123, -0.533, 1.505, -1.608, -0.772, 2.06, -0.534, 0.101, -0.265, -0.366, 1.927, -1.694, -0.797, -0.232, -0.384, -7.096, -0.517, -0.452],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-QQQ-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["QQQ 715", "QQQ 710", "QQQ 705", "QQQ 700", "QQQ 699", "QQQ 698", "QQQ 697", "QQQ 696", "QQQ 695", "QQQ 694", "QQQ 693", "QQQ 692", "QQQ 691", "QQQ 690", "QQQ 689", "QQQ 688", "QQQ 687", "QQQ 686", "QQQ 685", "QQQ 684", "QQQ 683", "QQQ 682", "QQQ 681", "QQQ 680", "QQQ 679", "QQQ 678", "QQQ 677", "QQQ 676", "QQQ 675", "QQQ 674", "QQQ 673", "QQQ 672", "QQQ 671", "QQQ 670", "QQQ 669", "QQQ 668", "QQQ 667", "QQQ 666", "QQQ 665", "QQQ 664", "QQQ 663", "QQQ 662", "QQQ 661", "QQQ 660", "QQQ 659", "QQQ 658", "QQQ 657", "QQQ 656", "QQQ 655", "QQQ 654", "QQQ 653", "QQQ 652", "QQQ 651", "QQQ 650", "QQQ 649", "QQQ 648"],
-                datasets:[{
-                    data:[3.042, 15.703, 7.592, 26.268, 0.578, 0.573, 0.837, 0.645, 10.011, 0.731, 0.407, 0.787, 1.721, 27.326, 0.489, 6.972, 0.405, 0.393, 23.427, 1.571, 2.302, 3.753, 1.196, 35.265, 1.839, 2.581, 2.304, 4.152, 28.989, -2.421, -0.512, 2.196, 0.825, 14.936, 0.333, 0.939, 0.023, 0.757, 13.009, -2.737, -0.135, -0.14, -0.514, 19.252, -0.09, -0.185, 0.773, -1.998, 5.81, -0.197, -1.157, -1.126, -0.894, 2.944, -0.231, -0.156],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-USO-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 151", "USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137"],
-                datasets:[{
-                    data:[0.344, 3.204, 0.566, 0.632, 0.47, 0.74, 2.108, 0.89, 0.169, -0.725, -0.334, -3.121, -0.687, -0.224, -0.132],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-USO-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 151", "USO 150", "USO 149.5", "USO 149", "USO 148", "USO 147.5", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137"],
-                datasets:[{
-                    data:[0.701, 1.793, -0.012, 0.075, 0.102, 0.001, 0.126, 1.475, 1.203, -1.078, 0.975, 0.205, -0.031, -0.943, 0.017, -0.254, 0.039],
-                    backgroundColor:['#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-USO-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["USO 151", "USO 150", "USO 149", "USO 148", "USO 147", "USO 146", "USO 145", "USO 144", "USO 143", "USO 142", "USO 141", "USO 140", "USO 139", "USO 138", "USO 137"],
-                datasets:[{
-                    data:[0.045, 2.541, 0.038, 5.126, 0.129, 0.046, 3.609, 0.263, -0.004, 0.081, -0.072, 1.34, -0.448, 0.03, -0.025],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-GLD-daily");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400", "GLD 399", "GLD 398"],
-                datasets:[{
-                    data:[0.07, 0.052, 0.112, 0.036, 4.461, 0.149, 0.093, 0.216, 0.251, 2.991, 0.272, 0.533, 0.266, 0.297, 16.258, 0.358, 0.409, 0.5, 0.86, 9.599, 0.171, -0.308, -0.232, 0.423, -8.135, -0.762, -0.15, -0.558, -0.212, -0.601, -0.068, -0.211, -0.037, -0.098, 0.954, -0.332, -0.128, -0.108, -0.082, -2.372, -0.047, -0.025],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-GLD-weekly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400"],
-                datasets:[{
-                    data:[0.113, 0.181, 0.24, 0.077, 1.041, 0.75, 0.616, 0.042, -0.072, 2.238, -1.922, 0.698, 0.834, 4.682, 10.911, 2.236, 3.868, 2.601, 3.129, -0.33, -3.727, 0.61, -0.942, 0.414, -5.281, -1.302, -0.101, -0.539, -0.365, -5.106, -0.531, 0.064, -0.374, -0.465, -1.64, -0.15, -0.155, -0.089, -0.136, -3.673],
-                    backgroundColor:['#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#e17055','#00cec9','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
-
-    (function(){
-        var ctx = document.getElementById("hc-2026-05-05-GLD-monthly");
-        if (!ctx) return;
-        new Chart(ctx, {
-            type:'bar',
-            data:{
-                labels:["GLD 439", "GLD 438", "GLD 437", "GLD 436", "GLD 435", "GLD 434", "GLD 433", "GLD 432", "GLD 431", "GLD 430", "GLD 429", "GLD 428", "GLD 427", "GLD 426", "GLD 425", "GLD 424", "GLD 423", "GLD 422", "GLD 421", "GLD 420", "GLD 419", "GLD 418", "GLD 417", "GLD 416", "GLD 415", "GLD 414", "GLD 413", "GLD 412", "GLD 411", "GLD 410", "GLD 409", "GLD 408", "GLD 407", "GLD 406", "GLD 405", "GLD 404", "GLD 403", "GLD 402", "GLD 401", "GLD 400"],
-                datasets:[{
-                    data:[0.253, -0.026, 0.2, 0.238, 2.621, 0.146, -0.052, 0.104, 0.046, -2.601, 0.206, -0.064, -0.024, 0.1, -17.229, -0.014, -0.006, -0.404, -0.011, 7.962, -0.01, -0.092, 0.449, 1.013, -3.635, -0.114, -0.223, -0.067, -0.014, -17.526, -0.132, -0.086, -0.249, -0.145, -4.225, -0.44, -0.068, -0.027, -0.083, -10.283],
-                    backgroundColor:['#00cec9','#e17055','#00cec9','#00cec9','#00cec9','#00cec9','#e17055','#00cec9','#00cec9','#e17055','#00cec9','#e17055','#e17055','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#00cec9','#e17055','#e17055','#00cec9','#00cec9','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055','#e17055'],
-                    borderWidth:0,
-                    barThickness:20
-                }]
-            },
-            options:{
-                indexAxis:'y',
-                responsive:true,maintainAspectRatio:false,
-                plugins:{legend:{display:false},
-                    tooltip:{callbacks:{label:ctx=>ctx.raw.toFixed(2)+'M'}}},
-                scales:{
-                    x:{grid:{color:'rgba(255,255,255,0.07)'},
-                        ticks:{color:'#a0a0b0',callback:v=>v+'M'},
-                        title:{display:true,text:'Net GEX (M)',color:'#a0a0b0'}},
-                    y:{grid:{color:'rgba(255,255,255,0.04)'},
-                        ticks:{color:'#e0e0e0',font:{size:11}}}
-                }
-            }
-        });
-    })();
+document.getElementById('live-slider').addEventListener('input', function() {
+    _snapIdx = parseInt(this.value);
+    var series = ((DATA[_selInst]||{})[_selExp]||{}).series || [];
+    if (series[_snapIdx]) document.getElementById('live-slider-time').textContent = series[_snapIdx].t;
+    renderLive();
 });
+
+/* ── Past-day controls ───────────────────────────────────────── */
+function showDayInst(date, inst) {
+    var card = document.getElementById('hcard-'+date);
+    if (!card) return;
+    card.querySelectorAll('.hday-inst').forEach(function(el){el.style.display='none';});
+    var target = card.querySelector('[data-inst="'+inst+'"]');
+    if (target) target.style.display = 'block';
+    card.querySelectorAll('.hinst-btn').forEach(function(b){
+        b.classList.toggle('active', b.textContent===inst);
+    });
+}
+
+function showExp(date, inst, exp) {
+    var card = document.getElementById('hcard-'+date);
+    if (!card) return;
+    var instEl = card.querySelector('[data-inst="'+inst+'"]');
+    if (!instEl) return;
+    instEl.querySelectorAll('[id^="hexp-"]').forEach(function(el){el.style.display='none';});
+    var target = instEl.querySelector('#hexp-'+date+'-'+inst+'-'+exp.replace(/-/g,''));
+    if (target) target.style.display = 'block';
+    instEl.querySelectorAll('.hexp-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('onclick').indexOf("'"+exp+"'")>=0);
+    });
+}
+
+/* ── Init ────────────────────────────────────────────────────── */
+renderLive();
 </script>
 </body>
 </html>

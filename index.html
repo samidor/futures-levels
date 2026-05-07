@@ -159,7 +159,7 @@
 <nav class="topnav">
     <div class="nav-brand">Options <span>Exposure</span></div>
     <div class="nav-right">
-        <span class="nav-time">Last published: 2026-05-06 10:35</span>
+        <span class="nav-time">Last published: 2026-05-07 16:05</span>
         <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
 </nav>
@@ -170,6 +170,7 @@
     <div class="section">
         <div class="section-header">
             <span class="section-title">Options Greeks &mdash; Live</span>
+            <span class="section-sub">Real-time data via Massive API &nbsp;·&nbsp; Updates every 5 min</span>
         </div>
         <div class="grid">
             <a href="gex_delta.html" class="card">
@@ -179,12 +180,12 @@
                 <div class="card-desc">Gamma &amp; Delta exposure by strike, Charm, Vanna &mdash; intraday charts for SPY, SPX, QQQ, USO, GLD</div>
                 <span class="status live">&#9679; Live &mdash; 5-min snapshots</span>
             </a>
-            <a class="card" href="gex_history.html">
+            <div class="card disabled">
                 <div class="card-icon">&#128200;</div>
                 <div class="card-title">Historical GEX</div>
-                <div class="card-desc">GEX per expiry date with intraday time slider &mdash; see how gamma builds up day by day</div>
-                <span class="status live">&#9679; Updated every 5 min</span>
-            </a>
+                <div class="card-desc">Multi-day GEX wall history &mdash; see how gamma exposure evolved over the past week or month</div>
+                <span class="status soon">Coming soon</span>
+            </div>
             <div class="card disabled">
                 <div class="card-icon">&#128506;</div>
                 <div class="card-title">IV Term Structure</div>
@@ -204,6 +205,7 @@
     <div class="section">
         <div class="section-header">
             <span class="section-title">Key Levels &mdash; Futures</span>
+            <span class="section-sub">OI-based support &amp; resistance &nbsp;·&nbsp; Updated pre-market daily</span>
         </div>
         <div class="grid">
             
@@ -211,25 +213,25 @@
                 <div class="card-icon">&#128200;</div>
                 <div class="card-title">ES (S&P 500 E-mini)</div>
                 <div class="card-desc">OI-based support &amp; resistance, max pain, dark pool prints</div>
-                <span class="status live">Updated 2026-05-06 10:33</span>
+                <span class="status live">Updated 2026-05-07 10:35</span>
             </a>
             <a href="nq_levels_report.html" class="card">
                 <div class="card-icon">&#128201;</div>
                 <div class="card-title">NQ (Nasdaq 100 E-mini)</div>
                 <div class="card-desc">OI-based support &amp; resistance, max pain, dark pool prints</div>
-                <span class="status live">Updated 2026-05-06 10:34</span>
+                <span class="status live">Updated 2026-05-07 16:05</span>
             </a>
             <a href="cl_levels_report.html" class="card">
                 <div class="card-icon">&#9981;</div>
                 <div class="card-title">CL (Crude Oil)</div>
                 <div class="card-desc">OI-based support &amp; resistance, max pain, dark pool prints</div>
-                <span class="status live">Updated 2026-05-06 10:34</span>
+                <span class="status live">Updated 2026-05-07 16:05</span>
             </a>
             <a href="gc_levels_report.html" class="card">
                 <div class="card-icon">&#129351;</div>
                 <div class="card-title">GC (Gold)</div>
                 <div class="card-desc">OI-based support &amp; resistance, max pain, dark pool prints</div>
-                <span class="status live">Updated 2026-05-06 10:35</span>
+                <span class="status live">Updated 2026-05-07 16:05</span>
             </a>
         </div>
     </div>
@@ -237,6 +239,7 @@
 </div>
 
 <div class="footer">
+    Data: Massive API (real-time Greeks) &nbsp;·&nbsp; CBOE, Barchart, ChartExchange (levels)<br>
     &copy; Options Exposure &mdash; Subscriber access only
 </div>
 

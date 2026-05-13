@@ -159,7 +159,7 @@
 <nav class="topnav">
     <div class="nav-brand">Options <span>Exposure</span></div>
     <div class="nav-right">
-        <span class="nav-time">Last published: 2026-05-13 23:33</span>
+        <span class="nav-time">Last published: 2026-05-13 23:38</span>
         <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
 </nav>
@@ -281,10 +281,14 @@
 <script>
     function logout() {
         sessionStorage.removeItem('auth');
+        sessionStorage.removeItem('devMode');
         location.replace('login.html');
     }
-    // Show dev section when ?dev=1 is in the URL
+    // Dev mode: ?dev=1 in URL activates it; stored in sessionStorage so it persists across pages
     if (new URLSearchParams(window.location.search).get('dev') === '1') {
+        sessionStorage.setItem('devMode', '1');
+    }
+    if (sessionStorage.getItem('devMode') === '1') {
         var ds = document.getElementById('dev-section');
         if (ds) ds.style.display = '';
     }

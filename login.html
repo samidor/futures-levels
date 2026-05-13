@@ -192,6 +192,10 @@
 
     // Preserve query params (e.g. ?dev=1) through the login redirect
     var _qs = window.location.search || '';
+    // Store dev mode in sessionStorage so it survives the redirect chain
+    if (new URLSearchParams(_qs).get('dev') === '1') {
+        sessionStorage.setItem('devMode', '1');
+    }
 
     // Already logged in? Go straight to hub
     if (sessionStorage.getItem('auth') === 'ok') {

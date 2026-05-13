@@ -190,9 +190,12 @@
         'ecedbd311178e31971bfd4530307ddacad6bf739e259f4e9ed8dfcd474bff27e',  // suraa198
     ];
 
+    // Preserve query params (e.g. ?dev=1) through the login redirect
+    var _qs = window.location.search || '';
+
     // Already logged in? Go straight to hub
     if (sessionStorage.getItem('auth') === 'ok') {
-        location.replace('index.html');
+        location.replace('index.html' + _qs);
     }
 
     async function sha256(str) {
@@ -210,7 +213,7 @@
 
         if (HASHES.includes(hash)) {
             sessionStorage.setItem('auth', 'ok');
-            location.replace('index.html');
+            location.replace('index.html' + _qs);
         } else {
             const card = document.getElementById('loginCard');
             document.getElementById('errMsg').style.display = 'block';

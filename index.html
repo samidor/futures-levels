@@ -159,7 +159,7 @@
 <nav class="topnav">
     <div class="nav-brand">Options <span>Exposure</span></div>
     <div class="nav-right">
-        <span class="nav-time">Last published: 2026-05-13 22:43</span>
+        <span class="nav-time">Last published: 2026-05-13 23:25</span>
         <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
 </nav>
@@ -198,6 +198,24 @@
                 <div class="card-desc">Unusual volume &amp; large prints across all US options tickers &mdash; real-time unusual activity alerts</div>
                 <span class="status soon">Coming soon</span>
             </div>
+        </div>
+    </div>
+
+    <!-- ── Dev Section (hidden unless ?dev=1) ──────────────────────────── -->
+    <div class="section" id="dev-section" style="display:none;">
+        <div class="section-header">
+            <span class="section-title">Dev Lab</span>
+            <span class="section-sub" style="color:#fd79a8;">Internal only &nbsp;&middot;&nbsp; Not visible to customers</span>
+        </div>
+        <div class="grid">
+            
+            <a href="volume_gex_report.html" class="card">
+                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
+                <div class="card-icon">&#128293;</div>
+                <div class="card-title">Volume GEX</div>
+                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
+                <span class="status live">Updated 2026-05-13 23:22</span>
+            </a>
         </div>
     </div>
 
@@ -264,6 +282,11 @@
     function logout() {
         sessionStorage.removeItem('auth');
         location.replace('login.html');
+    }
+    // Show dev section when ?dev=1 is in the URL
+    if (new URLSearchParams(window.location.search).get('dev') === '1') {
+        var ds = document.getElementById('dev-section');
+        if (ds) ds.style.display = '';
     }
 </script>
 

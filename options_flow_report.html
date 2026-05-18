@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options Flow &mdash; SPY Premium Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg:     #1a1a2e;
+            --bg2:    #16213e;
+            --bg3:    #0f3460;
+            --text:   #e0e0e0;
+            --text2:  #a0a0b0;
+            --green:  #00b894;
+            --red:    #e17055;
+            --yellow: #fdcb6e;
+            --blue:   #74b9ff;
+            --border: #2d3436;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--bg2), var(--bg3));
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+        .header h1 { font-size: 1.6em; font-weight: 700; margin-bottom: 4px; }
+        .header h1 .badge {
+            display: inline-block; font-size: 0.45em;
+            background: rgba(0,184,148,0.2); color: var(--green);
+            padding: 3px 10px; border-radius: 6px;
+            vertical-align: middle; margin-left: 10px;
+        }
+        .header .subtitle { color: var(--text2); font-size: 0.9em; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px; margin-bottom: 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px; padding: 14px 18px;
+        }
+        .card .label {
+            font-size: 0.75em; color: var(--text2);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .card .value {
+            font-size: 1.25em; font-weight: 700;
+            font-family: 'Consolas', monospace; margin-top: 2px;
+        }
+        .flow-pos { color: var(--green); }
+        .flow-neg { color: var(--red); }
+        .flow-neutral { color: var(--yellow); }
+
+        .chart-section {
+            background: var(--bg2);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+        .chart-section h2 {
+            font-size: 1em; font-weight: 600;
+            margin-bottom: 12px; color: var(--text2);
+        }
+        .chart-frame {
+            position: relative; height: 420px;
+            margin-bottom: 16px;
+        }
+        .chart-frame-sm {
+            position: relative; height: 160px;
+        }
+
+        .toggle-bar {
+            display: flex; gap: 4px; margin-bottom: 16px;
+        }
+        .toggle-btn {
+            background: transparent; color: var(--text2); border: 1px solid var(--border);
+            padding: 6px 20px; font-size: 0.88em; font-weight: 600;
+            cursor: pointer; border-radius: 6px;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .toggle-btn:hover { color: var(--text); border-color: var(--text2); }
+        .toggle-btn.active {
+            color: var(--green); border-color: var(--green);
+            background: rgba(0,184,148,0.1);
+        }
+
+        .footer {
+            text-align: center; padding: 16px;
+            color: var(--text2); font-size: 0.82em;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 16px; }
+            .chart-frame { height: 340px; }
+            .chart-frame-sm { height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Options Flow <span class="badge">SPY</span></h1>
+    <div class="subtitle">2026-05-16 &bull; Cumulative Premium by Call / Put &bull; SPY $739.17 &bull; 2026-05-16 16:50 ET</div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="label">Call Premium</div>
+        <div class="value flow-pos">$1.07B</div>
+    </div>
+    <div class="card">
+        <div class="label">Put Premium</div>
+        <div class="value flow-neg">$1.54B</div>
+    </div>
+    <div class="card">
+        <div class="label">Net Premium</div>
+        <div class="value flow-neg">$-474.4M</div>
+    </div>
+    <div class="card">
+        <div class="label">Call/Put Ratio</div>
+        <div class="value flow-neutral">0.69</div>
+    </div>
+    <div class="card">
+        <div class="label">Total Volume</div>
+        <div class="value" style="color:var(--blue)">10,330,173</div>
+    </div>
+    <div class="card">
+        <div class="label">Snapshots</div>
+        <div class="value" style="color:var(--text2)">1</div>
+    </div>
+</div>
+
+<div class="toggle-bar">
+    <button class="toggle-btn active" onclick="switchMode('all', this)">All Expiries</button>
+    <button class="toggle-btn" onclick="switchMode('0dte', this)">0DTE Only</button>
+</div>
+
+<div class="chart-section">
+    <h2>Cumulative Premium Flow &amp; SPY Price</h2>
+    <div class="chart-frame">
+        <canvas id="flowChart"></canvas>
+    </div>
+</div>
+
+<div class="chart-section">
+    <h2>Net Premium (Call &minus; Put)</h2>
+    <div class="chart-frame" style="height:280px;">
+        <canvas id="netChart"></canvas>
+    </div>
+</div>
+
+<div class="chart-section">
+    <h2>Momentum (Net Premium Change per Interval)</h2>
+    <div class="chart-frame-sm">
+        <canvas id="momChart"></canvas>
+    </div>
+</div>
+
+<div class="footer">
+    Data: CBOE delayed quotes &bull; Premium = Volume &times; Mid(Bid,Ask) &times; 100<br>
+    Snapshots every 5 min during market hours &bull; Resets daily at open
+</div>
+
+<script>
+var _data = {
+    labels: ["16:50"],
+    spots: [739.17],
+    all: { call: [1065.24], put: [1539.64], net: [-474.4], mom: [0] },
+    "0dte": { call: [0.0], put: [0.0], net: [0.0], mom: [0] },
+    prev: { labels: [], net: [] }
+};
+var _mode = 'all';
+var _charts = {};
+
+function fmtM(v) {
+    if (v == null) return '';
+    return (v >= 0 ? '+' : '') + v.toFixed(1) + 'M';
+}
+
+function buildFlowChart() {
+    var d = _data[_mode];
+    if (_charts.flow) _charts.flow.destroy();
+    _charts.flow = new Chart(document.getElementById('flowChart'), {
+        type: 'line',
+        data: {
+            labels: _data.labels,
+            datasets: [
+                {
+                    label: 'Call Premium ($M)',
+                    data: d.call,
+                    borderColor: '#00b894',
+                    backgroundColor: 'rgba(0,184,148,0.08)',
+                    borderWidth: 2.5, pointRadius: 0, tension: 0.3,
+                    fill: true, yAxisID: 'yL'
+                },
+                {
+                    label: 'Put Premium ($M)',
+                    data: d.put,
+                    borderColor: '#e17055',
+                    backgroundColor: 'rgba(225,112,85,0.08)',
+                    borderWidth: 2.5, pointRadius: 0, tension: 0.3,
+                    fill: true, yAxisID: 'yL'
+                },
+                {
+                    label: 'SPY Price',
+                    data: _data.spots,
+                    borderColor: 'rgba(255,255,255,0.7)',
+                    borderWidth: 1.5, pointRadius: 0, tension: 0.3,
+                    fill: false, yAxisID: 'yR', borderDash: [3,2]
+                }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 20, padding: 16 } },
+                tooltip: {
+                    backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+                    borderColor: '#2d3436', borderWidth: 1,
+                    callbacks: {
+                        label: function(ctx) {
+                            if (ctx.datasetIndex === 2) return 'SPY: $' + ctx.parsed.y.toFixed(2);
+                            return ctx.dataset.label + ': $' + ctx.parsed.y.toFixed(1) + 'M';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#a0a0b0', maxTicksLimit: 20, font: { size: 10 } },
+                       grid: { color: 'rgba(255,255,255,0.04)' } },
+                yL: {
+                    position: 'left',
+                    title: { display: true, text: 'Cumulative Premium ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    ticks: { color: '#a0a0b0', font: { size: 10 },
+                              callback: function(v) { return '$' + v.toFixed(0) + 'M'; } },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
+                },
+                yR: {
+                    position: 'right',
+                    title: { display: true, text: 'SPY Price', color: 'rgba(255,255,255,0.5)', font: { size: 10, weight: '600' } },
+                    ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 },
+                              callback: function(v) { return '$' + v.toFixed(0); } },
+                    grid: { drawOnChartArea: false }
+                }
+            }
+        }
+    });
+}
+
+function buildNetChart() {
+    var d = _data[_mode];
+    if (_charts.net) _charts.net.destroy();
+
+    var posData = d.net.map(function(v) { return v >= 0 ? v : null; });
+    var negData = d.net.map(function(v) { return v < 0 ? v : null; });
+
+    var datasets = [
+        {
+            label: 'Net Positive', data: posData,
+            borderColor: '#00b894', backgroundColor: 'rgba(0,184,148,0.25)',
+            borderWidth: 2, pointRadius: 0, tension: 0.3,
+            fill: true, yAxisID: 'yL', spanGaps: false
+        },
+        {
+            label: 'Net Negative', data: negData,
+            borderColor: '#e17055', backgroundColor: 'rgba(225,112,85,0.25)',
+            borderWidth: 2, pointRadius: 0, tension: 0.3,
+            fill: true, yAxisID: 'yL', spanGaps: false
+        },
+        {
+            label: 'SPY Price', data: _data.spots,
+            borderColor: 'rgba(255,255,255,0.6)',
+            borderWidth: 1.5, pointRadius: 0, tension: 0.3,
+            fill: false, yAxisID: 'yR', borderDash: [3,2]
+        }
+    ];
+
+    // Add previous day comparison if available and mode is 'all'
+    if (_mode === 'all' && _data.prev.net.length > 0) {
+        datasets.push({
+            label: 'Prev Day Net', data: _data.prev.net,
+            borderColor: 'rgba(116,185,255,0.35)',
+            borderWidth: 1.5, pointRadius: 0, tension: 0.3,
+            fill: false, yAxisID: 'yL', borderDash: [6,4]
+        });
+    }
+
+    _charts.net = new Chart(document.getElementById('netChart'), {
+        type: 'line',
+        data: { labels: _data.labels, datasets: datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 16, padding: 14 } },
+                tooltip: {
+                    backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+                    borderColor: '#2d3436', borderWidth: 1,
+                    callbacks: {
+                        label: function(ctx) {
+                            if (ctx.parsed.y == null) return null;
+                            if (ctx.dataset.label === 'SPY Price') return 'SPY: $' + ctx.parsed.y.toFixed(2);
+                            return ctx.dataset.label + ': $' + fmtM(ctx.parsed.y);
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#a0a0b0', maxTicksLimit: 20, font: { size: 10 } },
+                       grid: { color: 'rgba(255,255,255,0.04)' } },
+                yL: {
+                    position: 'left',
+                    title: { display: true, text: 'Net Premium ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    ticks: { color: '#a0a0b0', font: { size: 10 },
+                              callback: function(v) { return fmtM(v); } },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
+                },
+                yR: {
+                    position: 'right',
+                    ticks: { color: 'rgba(255,255,255,0.4)', font: { size: 10 },
+                              callback: function(v) { return '$' + v.toFixed(0); } },
+                    grid: { drawOnChartArea: false }
+                }
+            }
+        }
+    });
+}
+
+function buildMomChart() {
+    var d = _data[_mode];
+    if (_charts.mom) _charts.mom.destroy();
+    var colors = d.mom.map(function(v) { return v >= 0 ? '#00b894' : '#e17055'; });
+    _charts.mom = new Chart(document.getElementById('momChart'), {
+        type: 'bar',
+        data: {
+            labels: _data.labels,
+            datasets: [{
+                label: 'Momentum',
+                data: d.mom,
+                backgroundColor: colors,
+                borderWidth: 0,
+                barPercentage: 0.9,
+                categoryPercentage: 0.95
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+                    callbacks: {
+                        label: function(ctx) { return 'Net Δ: $' + fmtM(ctx.parsed.y); }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#a0a0b0', maxTicksLimit: 20, font: { size: 9 } },
+                       grid: { color: 'rgba(255,255,255,0.03)' } },
+                y: {
+                    ticks: { color: '#a0a0b0', font: { size: 9 },
+                              callback: function(v) { return fmtM(v); } },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                }
+            }
+        }
+    });
+}
+
+function switchMode(mode, btn) {
+    _mode = mode;
+    document.querySelectorAll('.toggle-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    buildFlowChart();
+    buildNetChart();
+    buildMomChart();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    buildFlowChart();
+    buildNetChart();
+    buildMomChart();
+});
+</script>
+
+</body>
+</html>

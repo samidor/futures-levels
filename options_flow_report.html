@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Options Flow &mdash; SPY Premium Tracker</title>
+    <title>Options Flow &mdash; Delta-Weighted Premium Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -32,7 +32,7 @@
             background: linear-gradient(135deg, var(--bg2), var(--bg3));
             border-radius: 12px;
             padding: 24px 32px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             border: 1px solid var(--border);
         }
         .header h1 { font-size: 1.6em; font-weight: 700; margin-bottom: 4px; }
@@ -44,21 +44,38 @@
         }
         .header .subtitle { color: var(--text2); font-size: 0.9em; }
 
+        .instrument-block {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .instrument-block:last-child { border-bottom: none; }
+        .inst-header {
+            margin-bottom: 16px;
+        }
+        .inst-header h2 {
+            font-size: 1.3em; font-weight: 700;
+        }
+        .spot-badge {
+            font-size: 0.6em; color: var(--text2);
+            font-weight: 400; margin-left: 8px;
+        }
+
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-            gap: 12px; margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+            gap: 10px; margin-bottom: 16px;
         }
         .card {
             background: rgba(255,255,255,0.04);
-            border-radius: 8px; padding: 14px 18px;
+            border-radius: 8px; padding: 12px 16px;
         }
         .card .label {
-            font-size: 0.75em; color: var(--text2);
+            font-size: 0.72em; color: var(--text2);
             text-transform: uppercase; letter-spacing: 0.5px;
         }
         .card .value {
-            font-size: 1.25em; font-weight: 700;
+            font-size: 1.15em; font-weight: 700;
             font-family: 'Consolas', monospace; margin-top: 2px;
         }
         .flow-pos { color: var(--green); }
@@ -69,27 +86,30 @@
             background: var(--bg2);
             border-radius: 12px;
             border: 1px solid var(--border);
-            padding: 20px 24px;
-            margin-bottom: 20px;
-        }
-        .chart-section h2 {
-            font-size: 1em; font-weight: 600;
-            margin-bottom: 12px; color: var(--text2);
-        }
-        .chart-frame {
-            position: relative; height: 420px;
+            padding: 18px 22px;
             margin-bottom: 16px;
         }
+        .chart-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 10px; color: var(--text2);
+        }
+        .chart-frame {
+            position: relative; height: 380px;
+        }
         .chart-frame-sm {
-            position: relative; height: 160px;
+            position: relative; height: 140px;
         }
 
         .toggle-bar {
             display: flex; gap: 4px; margin-bottom: 16px;
+            flex-wrap: wrap; align-items: center;
+        }
+        .toggle-spacer {
+            width: 20px;
         }
         .toggle-btn {
             background: transparent; color: var(--text2); border: 1px solid var(--border);
-            padding: 6px 20px; font-size: 0.88em; font-weight: 600;
+            padding: 5px 16px; font-size: 0.82em; font-weight: 600;
             cursor: pointer; border-radius: 6px;
             font-family: inherit; transition: all 0.15s;
         }
@@ -107,85 +127,20 @@
         @media (max-width: 768px) {
             body { padding: 10px; }
             .header { padding: 16px; }
-            .chart-frame { height: 340px; }
-            .chart-frame-sm { height: 120px; }
+            .chart-frame { height: 300px; }
+            .chart-frame-sm { height: 110px; }
         }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Options Flow <span class="badge">SPY</span></h1>
-    <div class="subtitle">2026-05-19 &bull; Cumulative Premium by Call / Put &bull; SPY $733.93 &bull; 2026-05-19 15:57 ET</div>
-</div>
-
-<div class="cards">
-    <div class="card">
-        <div class="label">Call Premium</div>
-        <div class="value flow-pos">$875.6M</div>
-    </div>
-    <div class="card">
-        <div class="label">Put Premium</div>
-        <div class="value flow-neg">$968.2M</div>
-    </div>
-    <div class="card">
-        <div class="label">Net Premium</div>
-        <div class="value flow-neg">$-92.7M</div>
-    </div>
-    <div class="card">
-        <div class="label">Call/Put Ratio</div>
-        <div class="value flow-neutral">0.90</div>
-    </div>
-    <div class="card">
-        <div class="label">Total Volume</div>
-        <div class="value" style="color:var(--blue)">10,301,038</div>
-    </div>
-    <div class="card">
-        <div class="label">Snapshots</div>
-        <div class="value" style="color:var(--text2)">63</div>
-    </div>
-</div>
-
-<div class="toggle-bar">
-    <button class="toggle-btn active" onclick="switchMode('all', this)">All Expiries</button>
-    <button class="toggle-btn" onclick="switchMode('0dte', this)">0DTE Only</button>
-</div>
-
-<div class="chart-section">
-    <h2>Cumulative Premium Flow &amp; SPY Price</h2>
-    <div class="chart-frame">
-        <canvas id="flowChart"></canvas>
-    </div>
-</div>
-
-<div class="chart-section">
-    <h2>Net Premium (Call &minus; Put)</h2>
-    <div class="chart-frame" style="height:280px;">
-        <canvas id="netChart"></canvas>
-    </div>
-</div>
-
-<div class="chart-section">
-    <h2>Momentum (Net Premium Change per Interval)</h2>
-    <div class="chart-frame-sm">
-        <canvas id="momChart"></canvas>
-    </div>
-</div>
-
-<div class="footer">
-    Data: CBOE delayed quotes &bull; Premium = Volume &times; Mid(Bid,Ask) &times; 100<br>
-    Snapshots every 5 min during market hours &bull; Resets daily at open
+    <h1>Options Flow <span class="badge">DELTA-WEIGHTED</span></h1>
+    <div class="subtitle">2026-05-20 &bull; &Delta; &times; Volume &times; VWAP &times; 100 &bull; Real-time via Massive API &bull; 2026-05-20 09:58 ET</div>
 </div>
 
 <script>
-var _data = {
-    labels: ["09:41", "09:47", "09:53", "09:59", "10:05", "10:11", "10:17", "10:23", "10:29", "10:35", "10:40", "10:46", "10:52", "10:58", "11:04", "11:10", "11:16", "11:22", "11:28", "11:34", "11:40", "11:46", "11:52", "11:58", "12:04", "12:10", "12:17", "12:23", "12:29", "12:35", "12:41", "12:47", "12:53", "12:59", "13:05", "13:12", "13:18", "13:24", "13:30", "13:36", "13:42", "13:48", "13:54", "14:00", "14:06", "14:13", "14:19", "14:25", "14:31", "14:37", "14:43", "14:49", "14:55", "15:01", "15:08", "15:14", "15:20", "15:26", "15:32", "15:38", "15:44", "15:51", "15:57"],
-    spots: [734.34, 734.53, 735.3, 733.74, 735.08, 735.81, 734.63, 733.86, 733.75, 732.82, 732.31, 732.56, 732.72, 733.31, 731.61, 732.02, 733.09, 733.2, 733.4, 733.71, 731.78, 732.64, 732.86, 733.48, 733.74, 733.15, 733.48, 733.16, 732.6, 733.67, 734.25, 734.79, 734.64, 735.31, 735.42, 736.01, 736.06, 736.48, 736.9, 737.33, 736.87, 737.19, 736.9, 737.09, 736.46, 736.53, 737.01, 737.14, 737.01, 736.47, 736.17, 736.03, 735.65, 735.65, 735.5, 734.46, 734.55, 735.34, 735.55, 734.75, 734.62, 734.27, 733.93],
-    all: { call: [1460.36, 5.94, 37.45, 56.32, 101.62, 150.85, 155.99, 167.8, 211.71, 211.63, 216.53, 242.81, 265.55, 308.36, 271.35, 303.12, 364.13, 388.5, 417.0, 442.28, 373.73, 422.27, 447.7, 501.93, 534.17, 501.98, 528.5, 513.24, 487.01, 571.1, 629.86, 798.91, 794.14, 882.59, 909.01, 1007.07, 1030.05, 1120.64, 1200.4, 1297.12, 1228.98, 1304.45, 1255.9, 1289.93, 1189.14, 1202.06, 1291.09, 1316.84, 1298.15, 1202.07, 1161.91, 1139.17, 1080.34, 1083.59, 1066.4, 935.52, 944.02, 1051.79, 1094.74, 971.53, 954.97, 914.99, 875.58], put: [826.84, 10.45, 43.59, 92.31, 106.87, 113.08, 160.28, 212.35, 248.43, 317.34, 377.74, 386.43, 405.53, 385.38, 521.46, 511.95, 448.28, 466.84, 465.19, 450.71, 628.89, 557.73, 546.84, 505.74, 499.81, 554.83, 530.74, 566.26, 627.12, 540.33, 504.93, 475.89, 494.95, 452.86, 453.14, 429.3, 438.69, 429.86, 415.79, 413.21, 441.99, 438.44, 468.76, 464.63, 518.79, 517.95, 548.04, 545.72, 551.67, 596.95, 638.45, 664.29, 705.76, 702.77, 717.91, 867.65, 861.38, 745.26, 718.28, 825.52, 851.54, 912.92, 968.24], net: [633.52, -4.51, -6.14, -35.99, -5.25, 37.77, -4.29, -44.55, -36.72, -105.71, -161.21, -143.62, -139.98, -77.02, -250.11, -208.83, -84.15, -78.34, -48.19, -8.43, -255.16, -135.46, -99.14, -3.81, 34.36, -52.85, -2.24, -53.02, -140.11, 30.77, 124.93, 323.02, 299.19, 429.73, 455.87, 577.77, 591.36, 690.78, 784.61, 883.91, 786.99, 866.01, 787.14, 825.3, 670.35, 684.11, 743.05, 771.12, 746.48, 605.12, 523.46, 474.88, 374.58, 380.82, 348.49, 67.87, 82.64, 306.53, 376.46, 146.01, 103.43, 2.07, -92.66], mom: [0, -638.03, -1.63, -29.85, 30.74, 43.02, -42.06, -40.26, 7.83, -68.99, -55.5, 17.59, 3.64, 62.96, -173.09, 41.28, 124.68, 5.81, 30.15, 39.76, -246.73, 119.7, 36.32, 95.33, 38.17, -87.21, 50.61, -50.78, -87.09, 170.88, 94.16, 198.09, -23.83, 130.54, 26.14, 121.9, 13.59, 99.42, 93.83, 99.3, -96.92, 79.02, -78.87, 38.16, -154.95, 13.76, 58.94, 28.07, -24.64, -141.36, -81.66, -48.58, -100.3, 6.24, -32.33, -280.62, 14.77, 223.89, 69.93, -230.45, -42.58, -101.36, -94.73] },
-    "0dte": { call: [137.49, 1.96, 15.64, 22.59, 48.2, 75.93, 63.5, 63.78, 70.26, 63.16, 61.49, 70.79, 80.56, 97.13, 66.29, 79.58, 109.22, 118.16, 131.37, 143.31, 89.64, 115.98, 125.56, 157.28, 176.8, 150.24, 163.16, 149.91, 127.89, 181.25, 219.67, 265.91, 255.72, 315.04, 324.98, 392.58, 401.23, 456.17, 509.46, 578.99, 510.16, 560.88, 518.08, 540.57, 460.18, 466.03, 531.97, 546.8, 527.0, 449.18, 410.87, 385.33, 337.12, 335.88, 317.84, 220.22, 223.33, 295.0, 317.78, 223.22, 207.0, 172.7, 141.31], put: [81.46, 4.62, 17.77, 42.15, 44.75, 43.42, 70.82, 103.62, 120.28, 160.3, 187.96, 180.86, 181.1, 157.48, 250.3, 227.15, 174.04, 172.82, 168.36, 153.74, 280.8, 222.92, 209.32, 174.34, 167.44, 204.38, 179.65, 203.52, 245.0, 178.87, 150.12, 126.76, 134.48, 103.62, 101.22, 84.98, 83.67, 74.14, 62.99, 59.73, 72.05, 65.84, 71.23, 67.67, 92.42, 90.19, 75.16, 70.71, 70.67, 93.12, 112.68, 117.7, 141.99, 138.78, 146.32, 246.36, 237.29, 153.3, 131.03, 196.56, 208.46, 244.18, 274.76], net: [56.03, -2.66, -2.13, -19.56, 3.45, 32.51, -7.32, -39.84, -50.02, -97.14, -126.47, -110.07, -100.54, -60.35, -184.01, -147.57, -64.82, -54.66, -36.99, -10.43, -191.16, -106.94, -83.76, -17.06, 9.36, -54.14, -16.49, -53.61, -117.11, 2.38, 69.55, 139.15, 121.24, 211.42, 223.76, 307.6, 317.56, 382.03, 446.47, 519.26, 438.11, 495.04, 446.85, 472.9, 367.76, 375.84, 456.81, 476.09, 456.33, 356.06, 298.19, 267.63, 195.13, 197.1, 171.52, -26.14, -13.96, 141.7, 186.75, 26.66, -1.46, -71.48, -133.45], mom: [0, -58.69, 0.53, -17.43, 23.01, 29.06, -39.83, -32.52, -10.18, -47.12, -29.33, 16.4, 9.53, 40.19, -123.66, 36.44, 82.75, 10.16, 17.67, 26.56, -180.73, 84.22, 23.18, 66.7, 26.42, -63.5, 37.65, -37.12, -63.5, 119.49, 67.17, 69.6, -17.91, 90.18, 12.34, 83.84, 9.96, 64.47, 64.44, 72.79, -81.15, 56.93, -48.19, 26.05, -105.14, 8.08, 80.97, 19.28, -19.76, -100.27, -57.87, -30.56, -72.5, 1.97, -25.58, -197.66, 12.18, 155.66, 45.05, -160.09, -28.12, -70.02, -61.97] },
-    prev: { labels: ["09:34", "09:40", "09:46", "09:52", "09:58", "10:04", "10:10", "10:16", "10:23", "10:29", "10:35", "10:41", "10:47", "10:53", "10:59", "11:05", "11:11", "11:18", "11:24", "11:30", "11:36", "11:42", "11:48", "11:54", "12:00", "12:06", "12:12", "12:19", "12:25", "12:31", "12:37", "12:43", "12:49", "12:55", "13:02", "13:08", "13:14", "13:20", "13:26", "13:32", "13:38", "13:45", "13:51", "13:57", "14:03", "14:09", "14:15", "14:22", "14:28", "14:34", "14:40", "14:46", "14:52", "14:59", "15:05", "15:11", "15:17", "15:24", "15:30", "15:36", "15:42", "15:48", "15:55"], net: [-84.18, -84.18, 1.66, -3.38, -12.07, 8.38, 93.83, 67.43, 66.84, 107.77, 127.77, 122.57, 32.83, -69.73, -43.98, -137.87, -65.62, -133.57, -178.53, -194.38, -313.42, -264.42, -351.42, -223.29, -327.27, -292.88, -248.28, -351.29, -346.28, -122.73, 47.72, -428.44, -292.29, -310.53, -369.01, -185.61, 16.13, -9.52, 131.86, 116.89, 17.63, 114.33, -15.3, 31.66, 8.6, 59.31, 65.05, -195.06, -273.44, -505.29, -567.71, -442.1, -522.6, -591.39, -615.98, -711.16, 28.72, -165.13, -55.44, -26.71, -235.56, 30.81, 263.61] }
-};
-var _mode = 'all';
+var _instruments = {};
 var _charts = {};
 
 function fmtM(v) {
@@ -193,34 +148,39 @@ function fmtM(v) {
     return (v >= 0 ? '+' : '') + v.toFixed(1) + 'M';
 }
 
-function buildFlowChart() {
-    var d = _data[_mode];
-    if (_charts.flow) _charts.flow.destroy();
-    _charts.flow = new Chart(document.getElementById('flowChart'), {
+function _d(uid) {
+    var inst = _instruments[uid];
+    return inst[inst.mode][inst.metric];
+}
+
+function buildFlowChart(uid) {
+    var inst = _instruments[uid];
+    var d = _d(uid);
+    var cid = 'flow-' + uid;
+    if (_charts[cid]) _charts[cid].destroy();
+    var metricLabel = inst.metric === 'delta' ? 'Delta Flow' : 'Premium';
+    _charts[cid] = new Chart(document.getElementById(cid), {
         type: 'line',
         data: {
-            labels: _data.labels,
+            labels: inst.labels,
             datasets: [
                 {
-                    label: 'Call Premium ($M)',
-                    data: d.call,
-                    borderColor: '#00b894',
+                    label: 'Call ' + metricLabel + ' ($M)',
+                    data: d.call, borderColor: '#00b894',
                     backgroundColor: 'rgba(0,184,148,0.08)',
                     borderWidth: 2.5, pointRadius: 0, tension: 0.3,
                     fill: true, yAxisID: 'yL'
                 },
                 {
-                    label: 'Put Premium ($M)',
-                    data: d.put,
-                    borderColor: '#e17055',
+                    label: 'Put ' + metricLabel + ' ($M)',
+                    data: d.put, borderColor: '#e17055',
                     backgroundColor: 'rgba(225,112,85,0.08)',
                     borderWidth: 2.5, pointRadius: 0, tension: 0.3,
                     fill: true, yAxisID: 'yL'
                 },
                 {
-                    label: 'SPY Price',
-                    data: _data.spots,
-                    borderColor: 'rgba(255,255,255,0.7)',
+                    label: 'Price',
+                    data: inst.spots, borderColor: 'rgba(255,255,255,0.7)',
                     borderWidth: 1.5, pointRadius: 0, tension: 0.3,
                     fill: false, yAxisID: 'yR', borderDash: [3,2]
                 }
@@ -230,13 +190,13 @@ function buildFlowChart() {
             responsive: true, maintainAspectRatio: false, animation: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 20, padding: 16 } },
+                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 20, padding: 14 } },
                 tooltip: {
                     backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
                     borderColor: '#2d3436', borderWidth: 1,
                     callbacks: {
                         label: function(ctx) {
-                            if (ctx.datasetIndex === 2) return 'SPY: $' + ctx.parsed.y.toFixed(2);
+                            if (ctx.datasetIndex === 2) return 'Price: $' + ctx.parsed.y.toFixed(2);
                             return ctx.dataset.label + ': $' + ctx.parsed.y.toFixed(1) + 'M';
                         }
                     }
@@ -247,14 +207,13 @@ function buildFlowChart() {
                        grid: { color: 'rgba(255,255,255,0.04)' } },
                 yL: {
                     position: 'left',
-                    title: { display: true, text: 'Cumulative Premium ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    title: { display: true, text: metricLabel + ' ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
                     ticks: { color: '#a0a0b0', font: { size: 10 },
                               callback: function(v) { return '$' + v.toFixed(0) + 'M'; } },
                     grid: { color: 'rgba(255,255,255,0.06)' }
                 },
                 yR: {
                     position: 'right',
-                    title: { display: true, text: 'SPY Price', color: 'rgba(255,255,255,0.5)', font: { size: 10, weight: '600' } },
                     ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 },
                               callback: function(v) { return '$' + v.toFixed(0); } },
                     grid: { drawOnChartArea: false }
@@ -264,47 +223,45 @@ function buildFlowChart() {
     });
 }
 
-function buildNetChart() {
-    var d = _data[_mode];
-    if (_charts.net) _charts.net.destroy();
-
+function buildNetChart(uid) {
+    var inst = _instruments[uid];
+    var d = _d(uid);
+    var cid = 'net-' + uid;
+    if (_charts[cid]) _charts[cid].destroy();
+    var metricLabel = inst.metric === 'delta' ? 'Net Delta Flow' : 'Net Premium';
     var posData = d.net.map(function(v) { return v >= 0 ? v : null; });
     var negData = d.net.map(function(v) { return v < 0 ? v : null; });
-
     var datasets = [
         {
-            label: 'Net Positive', data: posData,
+            label: 'Positive', data: posData,
             borderColor: '#00b894', backgroundColor: 'rgba(0,184,148,0.25)',
             borderWidth: 2, pointRadius: 0, tension: 0.3,
             fill: true, yAxisID: 'yL', spanGaps: false
         },
         {
-            label: 'Net Negative', data: negData,
+            label: 'Negative', data: negData,
             borderColor: '#e17055', backgroundColor: 'rgba(225,112,85,0.25)',
             borderWidth: 2, pointRadius: 0, tension: 0.3,
             fill: true, yAxisID: 'yL', spanGaps: false
         },
         {
-            label: 'SPY Price', data: _data.spots,
+            label: 'Price', data: inst.spots,
             borderColor: 'rgba(255,255,255,0.6)',
             borderWidth: 1.5, pointRadius: 0, tension: 0.3,
             fill: false, yAxisID: 'yR', borderDash: [3,2]
         }
     ];
-
-    // Add previous day comparison if available and mode is 'all'
-    if (_mode === 'all' && _data.prev.net.length > 0) {
+    if (inst.mode === 'all' && inst.prev.net.length > 0) {
         datasets.push({
-            label: 'Prev Day Net', data: _data.prev.net,
+            label: 'Prev Day', data: inst.prev.net,
             borderColor: 'rgba(116,185,255,0.35)',
             borderWidth: 1.5, pointRadius: 0, tension: 0.3,
             fill: false, yAxisID: 'yL', borderDash: [6,4]
         });
     }
-
-    _charts.net = new Chart(document.getElementById('netChart'), {
+    _charts[cid] = new Chart(document.getElementById(cid), {
         type: 'line',
-        data: { labels: _data.labels, datasets: datasets },
+        data: { labels: inst.labels, datasets: datasets },
         options: {
             responsive: true, maintainAspectRatio: false, animation: false,
             interaction: { mode: 'index', intersect: false },
@@ -316,8 +273,8 @@ function buildNetChart() {
                     callbacks: {
                         label: function(ctx) {
                             if (ctx.parsed.y == null) return null;
-                            if (ctx.dataset.label === 'SPY Price') return 'SPY: $' + ctx.parsed.y.toFixed(2);
-                            return ctx.dataset.label + ': $' + fmtM(ctx.parsed.y);
+                            if (ctx.dataset.label === 'Price') return 'Price: $' + ctx.parsed.y.toFixed(2);
+                            return metricLabel + ': $' + fmtM(ctx.parsed.y);
                         }
                     }
                 }
@@ -327,7 +284,7 @@ function buildNetChart() {
                        grid: { color: 'rgba(255,255,255,0.04)' } },
                 yL: {
                     position: 'left',
-                    title: { display: true, text: 'Net Premium ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    title: { display: true, text: metricLabel + ' ($M)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
                     ticks: { color: '#a0a0b0', font: { size: 10 },
                               callback: function(v) { return fmtM(v); } },
                     grid: { color: 'rgba(255,255,255,0.06)' }
@@ -343,21 +300,20 @@ function buildNetChart() {
     });
 }
 
-function buildMomChart() {
-    var d = _data[_mode];
-    if (_charts.mom) _charts.mom.destroy();
+function buildMomChart(uid) {
+    var d = _d(uid);
+    var cid = 'mom-' + uid;
+    if (_charts[cid]) _charts[cid].destroy();
+    var inst = _instruments[uid];
     var colors = d.mom.map(function(v) { return v >= 0 ? '#00b894' : '#e17055'; });
-    _charts.mom = new Chart(document.getElementById('momChart'), {
+    _charts[cid] = new Chart(document.getElementById(cid), {
         type: 'bar',
         data: {
-            labels: _data.labels,
+            labels: inst.labels,
             datasets: [{
-                label: 'Momentum',
-                data: d.mom,
-                backgroundColor: colors,
-                borderWidth: 0,
-                barPercentage: 0.9,
-                categoryPercentage: 0.95
+                label: 'Momentum', data: d.mom,
+                backgroundColor: colors, borderWidth: 0,
+                barPercentage: 0.9, categoryPercentage: 0.95
             }]
         },
         options: {
@@ -384,21 +340,198 @@ function buildMomChart() {
     });
 }
 
-function switchMode(mode, btn) {
-    _mode = mode;
-    document.querySelectorAll('.toggle-btn').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    buildFlowChart();
-    buildNetChart();
-    buildMomChart();
+function rebuildAll(uid) {
+    buildFlowChart(uid);
+    buildNetChart(uid);
+    buildMomChart(uid);
+}
+
+function switchMode(uid, mode, btn) {
+    _instruments[uid].mode = mode;
+    var block = document.getElementById('block-' + uid);
+    var btns = block.querySelectorAll('.toggle-bar button');
+    btns[0].classList.toggle('active', mode === 'all');
+    btns[1].classList.toggle('active', mode === '0dte');
+    rebuildAll(uid);
+}
+
+function switchMetric(uid, metric, btn) {
+    _instruments[uid].metric = metric;
+    var block = document.getElementById('block-' + uid);
+    var btns = block.querySelectorAll('.toggle-bar button');
+    btns[3].classList.toggle('active', metric === 'delta');
+    btns[4].classList.toggle('active', metric === 'raw');
+    rebuildAll(uid);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    buildFlowChart();
-    buildNetChart();
-    buildMomChart();
+    for (var uid in _instruments) {
+        rebuildAll(uid);
+    }
 });
 </script>
+
+
+    <div class="instrument-block" id="block-sp500">
+        <div class="inst-header">
+            <h2>S&P 500 <span class="spot-badge">$735.40</span></h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="label">Call Delta Flow</div>
+                <div class="value flow-pos">$106.0M</div>
+            </div>
+            <div class="card">
+                <div class="label">Put Delta Flow</div>
+                <div class="value flow-neg">$90.0M</div>
+            </div>
+            <div class="card">
+                <div class="label">Net Delta Flow</div>
+                <div class="value flow-pos">$15.9M</div>
+            </div>
+            <div class="card">
+                <div class="label">Call/Put Ratio</div>
+                <div class="value flow-neutral">1.18</div>
+            </div>
+            <div class="card">
+                <div class="label">Total Volume</div>
+                <div class="value" style="color:var(--blue)">831,340</div>
+            </div>
+            <div class="card">
+                <div class="label">Snapshots</div>
+                <div class="value" style="color:var(--text2)">5</div>
+            </div>
+        </div>
+
+        <div class="toggle-bar">
+            <button class="toggle-btn active" onclick="switchMode('sp500', 'all', this)">All Expiries</button>
+            <button class="toggle-btn" onclick="switchMode('sp500', '0dte', this)">0DTE Only</button>
+            <span class="toggle-spacer"></span>
+            <button class="toggle-btn active" onclick="switchMetric('sp500', 'delta', this)">Delta Flow</button>
+            <button class="toggle-btn" onclick="switchMetric('sp500', 'raw', this)">Raw Premium</button>
+        </div>
+
+        <div class="chart-section">
+            <h3>Cumulative Flow &amp; Price</h3>
+            <div class="chart-frame"><canvas id="flow-sp500"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Net Flow (Call &minus; Put)</h3>
+            <div class="chart-frame" style="height:280px;"><canvas id="net-sp500"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Momentum (Net Flow Change per Interval)</h3>
+            <div class="chart-frame-sm"><canvas id="mom-sp500"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+    _instruments['sp500'] = {
+        labels: ["09:33", "09:39", "09:45", "09:51", "09:57"],
+        spots: [736.21, 736.3, 735.8, 735.31, 735.4],
+        mode: 'all', metric: 'delta',
+        all: {
+            raw:   { call: [10387.59, 10414.46, 0.0, 78.25, 195.04], put: [8007.75, 7988.18, 0.0, 111.1, 236.45], net: [2379.84, 2426.28, 0.0, -32.85, -41.41],
+                      mom: [0, 34.57, -3285.16, -2.33, 18.26] },
+            delta: { call: [7386.59, 7409.4, 0.0, 39.74, 105.95], put: [4136.0, 4124.24, 0.0, 42.07, 90.02], net: [3250.59, 3285.16, 0.0, -2.33, 15.93],
+                      mom: [0, 34.57, -3285.16, -2.33, 18.26] }
+        },
+        "0dte": {
+            raw:   { call: [354.49, 358.19, 0.0, 35.79, 77.1], put: [221.61, 217.95, 0.0, 39.78, 86.4], net: [132.88, 140.24, 0.0, -3.99, -9.3],
+                      mom: [0, 7.06, -108.1, -2.06, 0.79] },
+            delta: { call: [212.66, 217.05, 0.0, 17.4, 39.36], put: [111.62, 108.95, 0.0, 19.46, 40.63], net: [101.04, 108.1, 0.0, -2.06, -1.27],
+                      mom: [0, 7.06, -108.1, -2.06, 0.79] }
+        },
+        prev: { labels: [], net: [] }
+    };
+    </script>
+
+    <div class="instrument-block" id="block-nasdaq">
+        <div class="inst-header">
+            <h2>Nasdaq 100 <span class="spot-badge">$706.55</span></h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="label">Call Delta Flow</div>
+                <div class="value flow-pos">$40.7M</div>
+            </div>
+            <div class="card">
+                <div class="label">Put Delta Flow</div>
+                <div class="value flow-neg">$16.3M</div>
+            </div>
+            <div class="card">
+                <div class="label">Net Delta Flow</div>
+                <div class="value flow-pos">$24.4M</div>
+            </div>
+            <div class="card">
+                <div class="label">Call/Put Ratio</div>
+                <div class="value flow-neutral">2.50</div>
+            </div>
+            <div class="card">
+                <div class="label">Total Volume</div>
+                <div class="value" style="color:var(--blue)">372,521</div>
+            </div>
+            <div class="card">
+                <div class="label">Snapshots</div>
+                <div class="value" style="color:var(--text2)">5</div>
+            </div>
+        </div>
+
+        <div class="toggle-bar">
+            <button class="toggle-btn active" onclick="switchMode('nasdaq', 'all', this)">All Expiries</button>
+            <button class="toggle-btn" onclick="switchMode('nasdaq', '0dte', this)">0DTE Only</button>
+            <span class="toggle-spacer"></span>
+            <button class="toggle-btn active" onclick="switchMetric('nasdaq', 'delta', this)">Delta Flow</button>
+            <button class="toggle-btn" onclick="switchMetric('nasdaq', 'raw', this)">Raw Premium</button>
+        </div>
+
+        <div class="chart-section">
+            <h3>Cumulative Flow &amp; Price</h3>
+            <div class="chart-frame"><canvas id="flow-nasdaq"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Net Flow (Call &minus; Put)</h3>
+            <div class="chart-frame" style="height:280px;"><canvas id="net-nasdaq"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Momentum (Net Flow Change per Interval)</h3>
+            <div class="chart-frame-sm"><canvas id="mom-nasdaq"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+    _instruments['nasdaq'] = {
+        labels: ["09:33", "09:39", "09:45", "09:51", "09:57"],
+        spots: [705.9, 706.33, 705.06, 706.72, 706.55],
+        mode: 'all', metric: 'delta',
+        all: {
+            raw:   { call: [1038.61, 1038.61, 0.0, 30.06, 71.7], put: [806.55, 806.54, 0.0, 15.42, 40.35], net: [232.06, 232.07, 0.0, 14.64, 31.35],
+                      mom: [0, -12.18, -373.52, 9.03, 15.39] },
+            delta: { call: [700.22, 682.01, 0.0, 15.56, 40.68], put: [314.52, 308.49, 0.0, 6.53, 16.26], net: [385.7, 373.52, 0.0, 9.03, 24.42],
+                      mom: [0, -12.18, -373.52, 9.03, 15.39] }
+        },
+        "0dte": {
+            raw:   { call: [107.76, 107.76, 0.0, 13.62, 30.33], put: [107.41, 107.41, 0.0, 4.71, 13.73], net: [0.35, 0.35, 0.0, 8.91, 16.6],
+                      mom: [0, 3.04, -39.34, 4.74, 5.13] },
+            delta: { call: [74.3, 75.73, 0.0, 6.79, 15.7], put: [38.0, 36.39, 0.0, 2.05, 5.83], net: [36.3, 39.34, 0.0, 4.74, 9.87],
+                      mom: [0, 3.04, -39.34, 4.74, 5.13] }
+        },
+        prev: { labels: [], net: [] }
+    };
+    </script>
+
+
+<div class="footer">
+    Data: Massive API (real-time) with CBOE fallback &bull;
+    Flow = |&Delta;| &times; Volume &times; VWAP &times; 100<br>
+    Snapshots every 5 min during market hours &bull; Resets daily at open
+</div>
 
 </body>
 </html>

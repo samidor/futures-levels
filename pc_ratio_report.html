@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Put/Call Ratio &mdash; Intraday Volume Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg:     #1a1a2e;
+            --bg2:    #16213e;
+            --bg3:    #0f3460;
+            --text:   #e0e0e0;
+            --text2:  #a0a0b0;
+            --green:  #00b894;
+            --red:    #e17055;
+            --yellow: #fdcb6e;
+            --blue:   #74b9ff;
+            --border: #2d3436;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--bg2), var(--bg3));
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        .header h1 { font-size: 1.6em; font-weight: 700; margin-bottom: 4px; }
+        .header h1 .badge {
+            display: inline-block; font-size: 0.45em;
+            background: rgba(253,203,110,0.2); color: var(--yellow);
+            padding: 3px 10px; border-radius: 6px;
+            vertical-align: middle; margin-left: 10px;
+        }
+        .header .subtitle { color: var(--text2); font-size: 0.9em; }
+
+        .instrument-block {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .instrument-block:last-child { border-bottom: none; }
+        .inst-header { margin-bottom: 16px; }
+        .inst-header h2 { font-size: 1.3em; font-weight: 700; }
+        .spot-badge {
+            font-size: 0.6em; color: var(--text2);
+            font-weight: 400; margin-left: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+            gap: 10px; margin-bottom: 16px;
+        }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px; padding: 12px 16px;
+        }
+        .card .label {
+            font-size: 0.72em; color: var(--text2);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .card .value {
+            font-size: 1.15em; font-weight: 700;
+            font-family: 'Consolas', monospace; margin-top: 2px;
+        }
+        .card .regime {
+            font-size: 0.6em; font-weight: 400;
+            opacity: 0.8; margin-left: 4px;
+        }
+        .pc-bullish { color: var(--green); }
+        .pc-bearish { color: var(--red); }
+        .pc-neutral { color: var(--yellow); }
+
+        .chart-section {
+            background: var(--bg2);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 18px 22px;
+            margin-bottom: 16px;
+        }
+        .chart-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 10px; color: var(--text2);
+        }
+        .chart-frame {
+            position: relative; height: 380px;
+        }
+
+        .toggle-bar {
+            display: flex; gap: 4px; margin-bottom: 16px;
+            flex-wrap: wrap; align-items: center;
+        }
+        .toggle-btn {
+            background: transparent; color: var(--text2); border: 1px solid var(--border);
+            padding: 5px 16px; font-size: 0.82em; font-weight: 600;
+            cursor: pointer; border-radius: 6px;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .toggle-btn:hover { color: var(--text); border-color: var(--text2); }
+        .toggle-btn.active {
+            color: var(--green); border-color: var(--green);
+            background: rgba(0,184,148,0.1);
+        }
+
+        .footer {
+            text-align: center; padding: 16px;
+            color: var(--text2); font-size: 0.82em;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 16px; }
+            .chart-frame { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Put/Call Ratio <span class="badge">INTRADAY</span></h1>
+    <div class="subtitle">2026-05-21 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-05-21 10:02 ET</div>
+</div>
+
+<script>
+var _instruments = {};
+var _charts = {};
+
+function _d(uid) {
+    var inst = _instruments[uid];
+    return inst[inst.mode];
+}
+
+function buildPCChart(uid) {
+    var inst = _instruments[uid];
+    var d = _d(uid);
+    var cid = 'pc-' + uid;
+    if (_charts[cid]) _charts[cid].destroy();
+
+    /* Color the ratio line based on latest value: green if <1, red if >1 */
+    var lastPC = d.pc.length > 0 ? d.pc[d.pc.length - 1] : 1.0;
+    var lineColor = lastPC > 1.0 ? '#e17055' : lastPC < 1.0 ? '#00b894' : '#fdcb6e';
+    var fillColor = lastPC > 1.0 ? 'rgba(225,112,85,0.1)' : lastPC < 1.0 ? 'rgba(0,184,148,0.1)' : 'rgba(253,203,110,0.1)';
+
+    var datasets = [
+        {
+            label: 'P/C Ratio',
+            data: d.pc, borderColor: lineColor,
+            backgroundColor: fillColor,
+            borderWidth: 2.5, pointRadius: 0, tension: 0.3,
+            fill: true, yAxisID: 'yL'
+        },
+        {
+            label: 'Price',
+            data: inst.spots, borderColor: 'rgba(255,255,255,0.7)',
+            borderWidth: 1.5, pointRadius: 0, tension: 0.3,
+            fill: false, yAxisID: 'yR', borderDash: [3,2]
+        }
+    ];
+
+    /* Reference line at P/C = 1.0 (neutral) */
+    var neutralLine = new Array(inst.labels.length).fill(1.0);
+    datasets.push({
+        label: 'Neutral (1.0)',
+        data: neutralLine, borderColor: 'rgba(253,203,110,0.5)',
+        borderWidth: 1, pointRadius: 0, borderDash: [6,4],
+        fill: false, yAxisID: 'yL'
+    });
+
+    /* Previous day overlay */
+    if (inst.mode === 'all' && inst.prev.pc.length > 0) {
+        datasets.push({
+            label: 'Prev Day',
+            data: inst.prev.pc,
+            borderColor: 'rgba(116,185,255,0.35)',
+            borderWidth: 1.5, pointRadius: 0, tension: 0.3,
+            fill: false, yAxisID: 'yL', borderDash: [6,4]
+        });
+    }
+
+    _charts[cid] = new Chart(document.getElementById(cid), {
+        type: 'line',
+        data: { labels: inst.labels, datasets: datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 20, padding: 14 } },
+                tooltip: {
+                    backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+                    borderColor: '#2d3436', borderWidth: 1,
+                    callbacks: {
+                        label: function(ctx) {
+                            if (ctx.dataset.label === 'Price') return 'Price: $' + ctx.parsed.y.toFixed(2);
+                            if (ctx.dataset.label === 'Neutral (1.0)') return null;
+                            return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(3);
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#a0a0b0', maxTicksLimit: 20, font: { size: 10 } },
+                       grid: { color: 'rgba(255,255,255,0.04)' } },
+                yL: {
+                    position: 'left',
+                    title: { display: true, text: 'Put/Call Ratio', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    ticks: { color: '#a0a0b0', font: { size: 10 },
+                              callback: function(v) { return v.toFixed(2); } },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
+                },
+                yR: {
+                    position: 'right',
+                    ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 },
+                              callback: function(v) { return '$' + v.toFixed(0); } },
+                    grid: { drawOnChartArea: false }
+                }
+            }
+        }
+    });
+}
+
+function buildVolChart(uid) {
+    var inst = _instruments[uid];
+    var d = _d(uid);
+    var cid = 'vol-' + uid;
+    if (_charts[cid]) _charts[cid].destroy();
+
+    /* Scale volumes to millions for display */
+    var cvM = d.cvol.map(function(v) { return +(v / 1e6).toFixed(3); });
+    var pvM = d.pvol.map(function(v) { return +(v / 1e6).toFixed(3); });
+
+    _charts[cid] = new Chart(document.getElementById(cid), {
+        type: 'bar',
+        data: {
+            labels: inst.labels,
+            datasets: [
+                {
+                    label: 'Call Volume (M)',
+                    data: cvM, backgroundColor: 'rgba(0,184,148,0.6)',
+                    borderColor: '#00b894', borderWidth: 1,
+                    barPercentage: 0.8, categoryPercentage: 0.9
+                },
+                {
+                    label: 'Put Volume (M)',
+                    data: pvM, backgroundColor: 'rgba(225,112,85,0.6)',
+                    borderColor: '#e17055', borderWidth: 1,
+                    barPercentage: 0.8, categoryPercentage: 0.9
+                }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { color: '#a0a0b0', font: { size: 11 }, boxWidth: 16, padding: 14 } },
+                tooltip: {
+                    backgroundColor: '#0f3460', titleColor: '#e0e0e0', bodyColor: '#a0a0b0',
+                    borderColor: '#2d3436', borderWidth: 1,
+                    callbacks: {
+                        label: function(ctx) {
+                            return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(3) + 'M';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#a0a0b0', maxTicksLimit: 20, font: { size: 10 } },
+                       grid: { color: 'rgba(255,255,255,0.04)' } },
+                y: {
+                    title: { display: true, text: 'Volume (Millions)', color: '#a0a0b0', font: { size: 10, weight: '600' } },
+                    ticks: { color: '#a0a0b0', font: { size: 10 },
+                              callback: function(v) { return v.toFixed(1) + 'M'; } },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
+                }
+            }
+        }
+    });
+}
+
+function rebuildAll(uid) {
+    buildPCChart(uid);
+    buildVolChart(uid);
+}
+
+function switchMode(uid, mode, btn) {
+    _instruments[uid].mode = mode;
+    var block = document.getElementById('block-' + uid);
+    var btns = block.querySelectorAll('.toggle-bar button');
+    btns[0].classList.toggle('active', mode === 'all');
+    btns[1].classList.toggle('active', mode === '0dte');
+    rebuildAll(uid);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    for (var uid in _instruments) {
+        rebuildAll(uid);
+    }
+});
+</script>
+
+
+    <div class="instrument-block" id="block-sp500">
+        <div class="inst-header">
+            <h2>S&P 500 <span class="spot-badge">$738.48</span></h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="label">P/C Ratio</div>
+                <div class="value pc-bullish">0.901 <span class="regime">Bullish</span></div>
+            </div>
+            <div class="card">
+                <div class="label">Total Call Vol</div>
+                <div class="value pc-bullish">4.75M</div>
+            </div>
+            <div class="card">
+                <div class="label">Total Put Vol</div>
+                <div class="value pc-bearish">4.28M</div>
+            </div>
+            <div class="card">
+                <div class="label">Snapshots</div>
+                <div class="value" style="color:var(--text2)">11</div>
+            </div>
+        </div>
+
+        <div class="toggle-bar">
+            <button class="toggle-btn active" onclick="switchMode('sp500', 'all', this)">All Expiries</button>
+            <button class="toggle-btn" onclick="switchMode('sp500', '0dte', this)">0DTE Only</button>
+        </div>
+
+        <div class="chart-section">
+            <h3>Put/Call Ratio &amp; Price</h3>
+            <div class="chart-frame"><canvas id="pc-sp500"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Call vs Put Volume</h3>
+            <div class="chart-frame" style="height:280px;"><canvas id="vol-sp500"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+    _instruments['sp500'] = {
+        labels: ["00:47", "01:38", "02:29", "03:21", "04:12", "05:04", "05:57", "06:49", "07:47", "08:40", "09:25"],
+        spots: [741.25, 741.25, 741.25, 741.25, 741.25, 741.4, 742.15, 739.02, 739.64, 738.78, 738.48],
+        mode: 'all',
+        all:  { pc: [0.9316, 0.9316, 0.9311, 0.9316, 0.9316, 0.9316, 0.9316, 0.9316, 0.9316, 0.9316, 0.9014], cvol: [6937347, 6937347, 6949297, 6937347, 6937347, 6937347, 6937347, 6937347, 6937347, 6937347, 4753193], pvol: [6462507, 6462507, 6470474, 6462507, 6462507, 6462507, 6462507, 6462507, 6462507, 6462507, 4284407] },
+        "0dte": { pc: [0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8798, 0.8682], cvol: [784413, 784413, 784681, 784413, 784413, 784413, 784413, 784413, 784413, 784413, 620628], pvol: [690105, 690105, 690325, 690105, 690105, 690105, 690105, 690105, 690105, 690105, 538852] },
+        prev: { labels: ["18:27", "19:20", "20:13", "21:09", "22:07", "23:01", "23:55"], pc: [0.9316, 0.9316, 0.9316, 0.9316, 0.9316, 0.9316, 0.9316] }
+    };
+    </script>
+
+    <div class="instrument-block" id="block-nasdaq">
+        <div class="inst-header">
+            <h2>Nasdaq 100 <span class="spot-badge">$709.31</span></h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="label">P/C Ratio</div>
+                <div class="value pc-bearish">1.228 <span class="regime">Bearish</span></div>
+            </div>
+            <div class="card">
+                <div class="label">Total Call Vol</div>
+                <div class="value pc-bullish">206.2K</div>
+            </div>
+            <div class="card">
+                <div class="label">Total Put Vol</div>
+                <div class="value pc-bearish">253.3K</div>
+            </div>
+            <div class="card">
+                <div class="label">Snapshots</div>
+                <div class="value" style="color:var(--text2)">11</div>
+            </div>
+        </div>
+
+        <div class="toggle-bar">
+            <button class="toggle-btn active" onclick="switchMode('nasdaq', 'all', this)">All Expiries</button>
+            <button class="toggle-btn" onclick="switchMode('nasdaq', '0dte', this)">0DTE Only</button>
+        </div>
+
+        <div class="chart-section">
+            <h3>Put/Call Ratio &amp; Price</h3>
+            <div class="chart-frame"><canvas id="pc-nasdaq"></canvas></div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Call vs Put Volume</h3>
+            <div class="chart-frame" style="height:280px;"><canvas id="vol-nasdaq"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+    _instruments['nasdaq'] = {
+        labels: ["00:47", "01:38", "02:29", "03:21", "04:12", "05:04", "05:57", "06:49", "07:47", "08:40", "09:25"],
+        spots: [708.25, 708.25, 708.25, 708.25, 708.25, 712.8, 712.86, 710.09, 709.82, 709.45, 709.31],
+        mode: 'all',
+        all:  { pc: [1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.2285], cvol: [2324249, 2324249, 2324249, 2324249, 2324249, 2324249, 2324249, 2324249, 2324249, 2324249, 206179], pvol: [2625168, 2625168, 2625168, 2625168, 2625168, 2625168, 2625168, 2625168, 2625168, 2625168, 253286] },
+        "0dte": { pc: [1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.3749, 1.0361], cvol: [262431, 262431, 262431, 262431, 262431, 262431, 262431, 262431, 262431, 262431, 147345], pvol: [360808, 360808, 360808, 360808, 360808, 360808, 360808, 360808, 360808, 360808, 152658] },
+        prev: { labels: ["18:27", "19:20", "20:13", "21:09", "22:07", "23:01", "23:55"], pc: [1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295, 1.1295] }
+    };
+    </script>
+
+
+<div class="footer">
+    Data: Massive API (real-time) with CBOE fallback &bull;
+    P/C Ratio = Put Volume &divide; Call Volume &bull;
+    &gt;1.0 Bearish &bull; &lt;1.0 Bullish<br>
+    Snapshots every 5 min during market hours &bull; Resets daily at open
+</div>
+
+</body>
+</html>

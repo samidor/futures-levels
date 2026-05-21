@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IV Term Structure</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0e1117; --card-bg: #161b22; --text: #c9d1d9; --border: #30363d;
+            --accent: #58a6ff; --green: #3fb950; --red: #f85149;
+            --text2: #8b949e; --yellow: #d29922;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        .header h1 {
+            font-size: 1.6em; font-weight: 700; margin-bottom: 4px;
+        }
+        .header h1 .badge {
+            display: inline-block; font-size: 0.45em;
+            background: rgba(88,166,255,0.15); color: var(--accent);
+            padding: 3px 10px; border-radius: 6px;
+            vertical-align: middle; margin-left: 10px;
+        }
+        .header .subtitle { color: var(--text2); font-size: 0.9em; }
+
+        .toggle-bar {
+            display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .toggle-btn {
+            background: transparent; color: var(--text2); border: 1px solid var(--border);
+            padding: 6px 20px; font-size: 0.85em; font-weight: 600;
+            cursor: pointer; border-radius: 6px;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .toggle-btn:hover { color: var(--text); border-color: var(--text2); }
+        .toggle-btn.active {
+            color: var(--accent); border-color: var(--accent);
+            background: rgba(88,166,255,0.1);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 10px; margin-bottom: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px; padding: 14px 18px;
+        }
+        .card .label {
+            font-size: 0.72em; color: var(--text2);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .card .value {
+            font-size: 1.2em; font-weight: 700;
+            font-family: 'Consolas', monospace; margin-top: 2px;
+        }
+        .flag-backwardation { color: var(--red); }
+        .flag-contango { color: var(--green); }
+        .val-accent { color: var(--accent); }
+        .val-yellow { color: var(--yellow); }
+
+        .chart-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+        .chart-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 12px; color: var(--text2);
+        }
+        .chart-frame {
+            position: relative; height: 400px;
+        }
+
+        .table-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .table-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 12px; color: var(--text2);
+        }
+        table {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        th {
+            text-align: left; padding: 8px 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text2); font-weight: 600;
+            cursor: pointer; user-select: none;
+            white-space: nowrap;
+        }
+        th:hover { color: var(--accent); }
+        th .sort-arrow { font-size: 0.7em; margin-left: 4px; }
+        td {
+            padding: 6px 12px;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Consolas', monospace;
+        }
+        tr:hover td { background: rgba(88,166,255,0.04); }
+
+        .instrument-block { display: none; }
+        .instrument-block.active { display: block; }
+
+        .footer {
+            text-align: center; padding: 16px;
+            color: var(--text2); font-size: 0.82em;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 16px; }
+            .chart-frame { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>IV Term Structure <span class="badge">ATM IMPLIED VOL</span></h1>
+    <div class="subtitle">2026-05-21 &bull; ATM = &plusmn;2% of spot &bull; 2026-05-21 10:31 ET</div>
+</div>
+
+<div class="toggle-bar">
+    <button class="toggle-btn active" onclick="switchInstrument('sp500', this)">S&P 500</button>
+<button class="toggle-btn" onclick="switchInstrument('nasdaq', this)">Nasdaq 100</button>
+
+</div>
+
+<script>
+var _tsData = {};
+var _chart = null;
+var _currentInst = null;
+var _sortCol = 'dte';
+var _sortAsc = true;
+
+
+    _tsData['sp500'] = {
+        label: 'S&P 500',
+        spot: 738.26,
+        ts: '10:02',
+        dte: [0, 1, 5, 6, 7, 8, 11, 12, 13, 14, 15, 22, 28, 36, 40, 42, 57, 71, 92, 102],
+        expLabels: ["2026-05-21", "2026-05-22", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-12", "2026-06-18", "2026-06-26", "2026-06-30", "2026-07-02", "2026-07-17", "2026-07-31", "2026-08-21", "2026-08-31"],
+        callIV: [26.98, 19.02, 12.86, 13.25, 13.55, 13.96, 13.24, 13.46, 13.74, 13.84, 14.28, 14.65, 14.81, 14.94, 14.78, 15.0, 15.33, 15.66, 16.07, 16.14],
+        putIV: [29.51, 19.3, 13.0, 13.33, 13.59, 14.03, 13.26, 13.46, 13.68, 14.13, 14.27, 14.7, 14.8, 15.04, 14.91, 15.12, 15.39, 15.68, 16.11, 16.19],
+        avgIV: [28.25, 19.16, 12.93, 13.29, 13.57, 14.0, 13.25, 13.46, 13.71, 13.98, 14.28, 14.67, 14.81, 14.99, 14.85, 15.06, 15.36, 15.67, 16.09, 16.17],
+        prevDte: [0, 1, 5, 6, 7, 8, 11, 12, 13, 15, 22, 28, 36, 40, 57, 71, 92, 102, 120, 132],
+        prevAvgIV: [19.31, 17.89, 13.21, 13.58, 13.88, 14.31, 13.62, 13.85, 14.31, 14.63, 14.97, 15.14, 15.07, 14.98, 15.52, 15.84, 16.24, 16.3, 16.62, 16.71],
+        nearIV: 28.25,
+        farIV: 16.17,
+        spread: 12.08,
+        flag: 'BACKWARDATION',
+        flagCls: 'flag-backwardation',
+        nearDTE: 0,
+        farDTE: 102,
+        numExp: 20,
+        expirations: [{"exp": "2026-05-21", "dte": 0, "atm_call_iv": 0.269823, "atm_put_iv": 0.29509, "atm_iv": 0.282456}, {"exp": "2026-05-22", "dte": 1, "atm_call_iv": 0.19024, "atm_put_iv": 0.193021, "atm_iv": 0.191631}, {"exp": "2026-05-26", "dte": 5, "atm_call_iv": 0.128563, "atm_put_iv": 0.129967, "atm_iv": 0.129265}, {"exp": "2026-05-27", "dte": 6, "atm_call_iv": 0.132527, "atm_put_iv": 0.1333, "atm_iv": 0.132913}, {"exp": "2026-05-28", "dte": 7, "atm_call_iv": 0.135517, "atm_put_iv": 0.135877, "atm_iv": 0.135697}, {"exp": "2026-05-29", "dte": 8, "atm_call_iv": 0.139593, "atm_put_iv": 0.140327, "atm_iv": 0.13996}, {"exp": "2026-06-01", "dte": 11, "atm_call_iv": 0.1324, "atm_put_iv": 0.132637, "atm_iv": 0.132518}, {"exp": "2026-06-02", "dte": 12, "atm_call_iv": 0.134633, "atm_put_iv": 0.134563, "atm_iv": 0.134598}, {"exp": "2026-06-03", "dte": 13, "atm_call_iv": 0.137403, "atm_put_iv": 0.136783, "atm_iv": 0.137093}, {"exp": "2026-06-04", "dte": 14, "atm_call_iv": 0.138383, "atm_put_iv": 0.1413, "atm_iv": 0.139842}, {"exp": "2026-06-05", "dte": 15, "atm_call_iv": 0.142803, "atm_put_iv": 0.142727, "atm_iv": 0.142765}, {"exp": "2026-06-12", "dte": 22, "atm_call_iv": 0.146483, "atm_put_iv": 0.14701, "atm_iv": 0.146747}, {"exp": "2026-06-18", "dte": 28, "atm_call_iv": 0.148117, "atm_put_iv": 0.14802, "atm_iv": 0.148068}, {"exp": "2026-06-26", "dte": 36, "atm_call_iv": 0.14941, "atm_put_iv": 0.150447, "atm_iv": 0.149928}, {"exp": "2026-06-30", "dte": 40, "atm_call_iv": 0.147847, "atm_put_iv": 0.149077, "atm_iv": 0.148462}, {"exp": "2026-07-02", "dte": 42, "atm_call_iv": 0.150004, "atm_put_iv": 0.151211, "atm_iv": 0.150607}, {"exp": "2026-07-17", "dte": 57, "atm_call_iv": 0.153343, "atm_put_iv": 0.1539, "atm_iv": 0.153622}, {"exp": "2026-07-31", "dte": 71, "atm_call_iv": 0.15659, "atm_put_iv": 0.156841, "atm_iv": 0.156716}, {"exp": "2026-08-21", "dte": 92, "atm_call_iv": 0.160733, "atm_put_iv": 0.161083, "atm_iv": 0.160908}, {"exp": "2026-08-31", "dte": 102, "atm_call_iv": 0.16145, "atm_put_iv": 0.161867, "atm_iv": 0.161658}]
+    };
+
+    _tsData['nasdaq'] = {
+        label: 'Nasdaq 100',
+        spot: 709.07,
+        ts: '10:02',
+        dte: [0, 1, 5, 6, 7, 8, 11, 12, 13, 14, 15, 22, 28, 36, 40, 42, 57, 71, 92, 120],
+        expLabels: ["2026-05-21", "2026-05-22", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-12", "2026-06-18", "2026-06-26", "2026-06-30", "2026-07-02", "2026-07-17", "2026-07-31", "2026-08-21", "2026-09-18"],
+        callIV: [37.47, 27.33, 18.13, 19.17, 19.75, 20.64, 19.47, 19.75, 20.49, 21.3, 21.04, 21.16, 21.37, 21.29, 21.05, 21.45, 21.51, 21.95, 22.27, 22.61],
+        putIV: [36.41, 27.21, 18.45, 19.1, 19.7, 20.51, 19.29, 19.7, 20.13, 20.59, 21.05, 21.2, 21.36, 21.24, 21.05, 21.23, 21.43, 21.88, 22.24, 22.62],
+        avgIV: [36.94, 27.27, 18.29, 19.13, 19.73, 20.58, 19.38, 19.72, 20.31, 20.94, 21.05, 21.18, 21.36, 21.27, 21.05, 21.34, 21.47, 21.91, 22.26, 22.61],
+        prevDte: [0, 1, 5, 6, 7, 8, 11, 12, 13, 15, 22, 28, 36, 40, 57, 71, 92, 120, 132, 148],
+        prevAvgIV: [29.29, 27.29, 20.17, 20.67, 21.2, 22.02, 20.8, 20.68, 21.05, 21.79, 22.05, 21.91, 21.82, 21.64, 21.89, 22.32, 22.46, 22.85, 22.78, 23.04],
+        nearIV: 36.94,
+        farIV: 22.61,
+        spread: 14.33,
+        flag: 'BACKWARDATION',
+        flagCls: 'flag-backwardation',
+        nearDTE: 0,
+        farDTE: 120,
+        numExp: 20,
+        expirations: [{"exp": "2026-05-21", "dte": 0, "atm_call_iv": 0.374738, "atm_put_iv": 0.364079, "atm_iv": 0.369409}, {"exp": "2026-05-22", "dte": 1, "atm_call_iv": 0.273297, "atm_put_iv": 0.272103, "atm_iv": 0.2727}, {"exp": "2026-05-26", "dte": 5, "atm_call_iv": 0.181328, "atm_put_iv": 0.184452, "atm_iv": 0.18289}, {"exp": "2026-05-27", "dte": 6, "atm_call_iv": 0.191666, "atm_put_iv": 0.190979, "atm_iv": 0.191322}, {"exp": "2026-05-28", "dte": 7, "atm_call_iv": 0.197472, "atm_put_iv": 0.197041, "atm_iv": 0.197257}, {"exp": "2026-05-29", "dte": 8, "atm_call_iv": 0.206372, "atm_put_iv": 0.205134, "atm_iv": 0.205753}, {"exp": "2026-06-01", "dte": 11, "atm_call_iv": 0.194717, "atm_put_iv": 0.192928, "atm_iv": 0.193822}, {"exp": "2026-06-02", "dte": 12, "atm_call_iv": 0.197479, "atm_put_iv": 0.196976, "atm_iv": 0.197228}, {"exp": "2026-06-03", "dte": 13, "atm_call_iv": 0.204903, "atm_put_iv": 0.201286, "atm_iv": 0.203095}, {"exp": "2026-06-04", "dte": 14, "atm_call_iv": 0.21295, "atm_put_iv": 0.205933, "atm_iv": 0.209442}, {"exp": "2026-06-05", "dte": 15, "atm_call_iv": 0.210403, "atm_put_iv": 0.210534, "atm_iv": 0.210469}, {"exp": "2026-06-12", "dte": 22, "atm_call_iv": 0.211597, "atm_put_iv": 0.212007, "atm_iv": 0.211802}, {"exp": "2026-06-18", "dte": 28, "atm_call_iv": 0.21371, "atm_put_iv": 0.213586, "atm_iv": 0.213648}, {"exp": "2026-06-26", "dte": 36, "atm_call_iv": 0.212893, "atm_put_iv": 0.212414, "atm_iv": 0.212653}, {"exp": "2026-06-30", "dte": 40, "atm_call_iv": 0.210486, "atm_put_iv": 0.210538, "atm_iv": 0.210512}, {"exp": "2026-07-02", "dte": 42, "atm_call_iv": 0.214519, "atm_put_iv": 0.212311, "atm_iv": 0.213415}, {"exp": "2026-07-17", "dte": 57, "atm_call_iv": 0.215124, "atm_put_iv": 0.214348, "atm_iv": 0.214736}, {"exp": "2026-07-31", "dte": 71, "atm_call_iv": 0.21951, "atm_put_iv": 0.218766, "atm_iv": 0.219138}, {"exp": "2026-08-21", "dte": 92, "atm_call_iv": 0.22275, "atm_put_iv": 0.222433, "atm_iv": 0.222592}, {"exp": "2026-09-18", "dte": 120, "atm_call_iv": 0.226067, "atm_put_iv": 0.226167, "atm_iv": 0.226117}]
+    };
+
+
+function switchInstrument(key, btn) {
+    // Toggle buttons
+    document.querySelectorAll('.toggle-bar .toggle-btn').forEach(function(b) {
+        b.classList.remove('active');
+    });
+    if (btn) btn.classList.add('active');
+
+    // Toggle blocks
+    document.querySelectorAll('.instrument-block').forEach(function(b) {
+        b.classList.remove('active');
+    });
+    var block = document.getElementById('block-' + key);
+    if (block) block.classList.add('active');
+
+    _currentInst = key;
+    buildChart(key);
+}
+
+function buildChart(key) {
+    var d = _tsData[key];
+    if (!d) return;
+
+    var canvas = document.getElementById('chart-' + key);
+    if (!canvas) return;
+
+    // Destroy existing chart on this canvas
+    var existing = Chart.getChart(canvas);
+    if (existing) existing.destroy();
+
+    var datasets = [
+        {
+            label: 'Call IV (%)',
+            data: d.callIV,
+            borderColor: '#3fb950',
+            backgroundColor: 'rgba(63,185,80,0.08)',
+            borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6,
+            tension: 0.3, fill: false
+        },
+        {
+            label: 'Put IV (%)',
+            data: d.putIV,
+            borderColor: '#f85149',
+            backgroundColor: 'rgba(248,81,73,0.08)',
+            borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6,
+            tension: 0.3, fill: false
+        },
+        {
+            label: 'Average IV (%)',
+            data: d.avgIV,
+            borderColor: '#58a6ff',
+            backgroundColor: 'rgba(88,166,255,0.1)',
+            borderWidth: 3, pointRadius: 4, pointHoverRadius: 6,
+            tension: 0.3, fill: true
+        }
+    ];
+
+    if (d.prevAvgIV && d.prevAvgIV.length > 0) {
+        // Map previous snapshot data to current DTE labels
+        var prevMap = {};
+        for (var i = 0; i < d.prevDte.length; i++) {
+            prevMap[d.prevDte[i]] = d.prevAvgIV[i];
+        }
+        var mappedPrev = d.dte.map(function(dte) {
+            return prevMap[dte] !== undefined ? prevMap[dte] : null;
+        });
+        datasets.push({
+            label: 'Previous Snapshot',
+            data: mappedPrev,
+            borderColor: 'rgba(139,148,158,0.5)',
+            borderWidth: 2, pointRadius: 0,
+            tension: 0.3, fill: false,
+            borderDash: [6, 4]
+        });
+    }
+
+    new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: d.dte,
+            datasets: datasets
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8b949e', font: { size: 11 }, boxWidth: 20, padding: 14 }
+                },
+                tooltip: {
+                    backgroundColor: '#161b22', titleColor: '#c9d1d9', bodyColor: '#8b949e',
+                    borderColor: '#30363d', borderWidth: 1,
+                    callbacks: {
+                        title: function(items) {
+                            var idx = items[0].dataIndex;
+                            return d.expLabels[idx] + ' (' + d.dte[idx] + ' DTE)';
+                        },
+                        label: function(ctx) {
+                            if (ctx.parsed.y == null) return null;
+                            return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'Days to Expiry (DTE)', color: '#8b949e', font: { size: 11, weight: '600' } },
+                    ticks: { color: '#8b949e', font: { size: 10 } },
+                    grid: { color: 'rgba(255,255,255,0.04)' }
+                },
+                y: {
+                    title: { display: true, text: 'ATM IV (%)', color: '#8b949e', font: { size: 11, weight: '600' } },
+                    ticks: {
+                        color: '#8b949e', font: { size: 10 },
+                        callback: function(v) { return v.toFixed(1) + '%'; }
+                    },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
+                }
+            }
+        }
+    });
+}
+
+function sortTable(key, col) {
+    if (_sortCol === col) {
+        _sortAsc = !_sortAsc;
+    } else {
+        _sortCol = col;
+        _sortAsc = true;
+    }
+    renderTable(key);
+}
+
+function renderTable(key) {
+    var d = _tsData[key];
+    if (!d) return;
+
+    var tbody = document.getElementById('tbody-' + key);
+    if (!tbody) return;
+
+    var rows = d.expirations.slice();
+    rows.sort(function(a, b) {
+        var va = a[_sortCol], vb = b[_sortCol];
+        if (typeof va === 'string') return _sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+        return _sortAsc ? (va - vb) : (vb - va);
+    });
+
+    var html = '';
+    for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        html += '<tr>' +
+            '<td>' + r.exp + '</td>' +
+            '<td>' + r.dte + '</td>' +
+            '<td>' + (r.atm_call_iv * 100).toFixed(2) + '%</td>' +
+            '<td>' + (r.atm_put_iv * 100).toFixed(2) + '%</td>' +
+            '<td style="color:var(--accent)">' + (r.atm_iv * 100).toFixed(2) + '%</td>' +
+            '</tr>';
+    }
+    tbody.innerHTML = html;
+
+    // Update sort arrows
+    var table = tbody.closest('table');
+    table.querySelectorAll('th .sort-arrow').forEach(function(el) {
+        el.textContent = '';
+    });
+    var activeHeader = table.querySelector('th[data-col="' + _sortCol + '"] .sort-arrow');
+    if (activeHeader) {
+        activeHeader.textContent = _sortAsc ? ' \u25B2' : ' \u25BC';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Activate first instrument
+    var first = Object.keys(_tsData)[0];
+    if (first) {
+        switchInstrument(first, document.querySelector('.toggle-btn'));
+        renderTable(first);
+    }
+});
+</script>
+
+
+<div class="instrument-block active" id="block-sp500">
+
+    <div class="cards">
+        <div class="card">
+            <div class="label">Spot Price</div>
+            <div class="value val-accent">$738.26</div>
+        </div>
+        <div class="card">
+            <div class="label">Near IV (0d)</div>
+            <div class="value val-yellow">28.25%</div>
+        </div>
+        <div class="card">
+            <div class="label">Far IV (102d)</div>
+            <div class="value val-yellow">16.17%</div>
+        </div>
+        <div class="card">
+            <div class="label">IV Spread</div>
+            <div class="value flag-backwardation">+12.08%</div>
+        </div>
+        <div class="card">
+            <div class="label">Structure</div>
+            <div class="value flag-backwardation">BACKWARDATION</div>
+        </div>
+        <div class="card">
+            <div class="label">Expirations</div>
+            <div class="value" style="color:var(--text2)">20</div>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>ATM IV Term Structure &mdash; S&P 500</h3>
+        <div class="chart-frame"><canvas id="chart-sp500"></canvas></div>
+    </div>
+
+    <div class="table-section">
+        <h3>Expiration Detail</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th data-col="exp" onclick="sortTable('sp500', 'exp')">Expiration <span class="sort-arrow"></span></th>
+                    <th data-col="dte" onclick="sortTable('sp500', 'dte')">DTE <span class="sort-arrow"></span></th>
+                    <th data-col="atm_call_iv" onclick="sortTable('sp500', 'atm_call_iv')">Call IV <span class="sort-arrow"></span></th>
+                    <th data-col="atm_put_iv" onclick="sortTable('sp500', 'atm_put_iv')">Put IV <span class="sort-arrow"></span></th>
+                    <th data-col="atm_iv" onclick="sortTable('sp500', 'atm_iv')">Avg IV <span class="sort-arrow"></span></th>
+                </tr>
+            </thead>
+            <tbody id="tbody-sp500">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="instrument-block" id="block-nasdaq">
+
+    <div class="cards">
+        <div class="card">
+            <div class="label">Spot Price</div>
+            <div class="value val-accent">$709.07</div>
+        </div>
+        <div class="card">
+            <div class="label">Near IV (0d)</div>
+            <div class="value val-yellow">36.94%</div>
+        </div>
+        <div class="card">
+            <div class="label">Far IV (120d)</div>
+            <div class="value val-yellow">22.61%</div>
+        </div>
+        <div class="card">
+            <div class="label">IV Spread</div>
+            <div class="value flag-backwardation">+14.33%</div>
+        </div>
+        <div class="card">
+            <div class="label">Structure</div>
+            <div class="value flag-backwardation">BACKWARDATION</div>
+        </div>
+        <div class="card">
+            <div class="label">Expirations</div>
+            <div class="value" style="color:var(--text2)">20</div>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3>ATM IV Term Structure &mdash; Nasdaq 100</h3>
+        <div class="chart-frame"><canvas id="chart-nasdaq"></canvas></div>
+    </div>
+
+    <div class="table-section">
+        <h3>Expiration Detail</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th data-col="exp" onclick="sortTable('nasdaq', 'exp')">Expiration <span class="sort-arrow"></span></th>
+                    <th data-col="dte" onclick="sortTable('nasdaq', 'dte')">DTE <span class="sort-arrow"></span></th>
+                    <th data-col="atm_call_iv" onclick="sortTable('nasdaq', 'atm_call_iv')">Call IV <span class="sort-arrow"></span></th>
+                    <th data-col="atm_put_iv" onclick="sortTable('nasdaq', 'atm_put_iv')">Put IV <span class="sort-arrow"></span></th>
+                    <th data-col="atm_iv" onclick="sortTable('nasdaq', 'atm_iv')">Avg IV <span class="sort-arrow"></span></th>
+                </tr>
+            </thead>
+            <tbody id="tbody-nasdaq">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    Data: chain_cache / Massive API / CBOE delayed quotes &bull;
+    ATM = strikes within &plusmn;2% of spot &bull; Min 3 ATM options per expiration<br>
+    Snapshots every 5 min during market hours &bull; Max 2 snapshots/day retained
+</div>
+
+<script>
+// Render tables for all instruments on load
+document.addEventListener('DOMContentLoaded', function() {
+    for (var key in _tsData) {
+        renderTable(key);
+    }
+});
+</script>
+
+</body>
+</html>

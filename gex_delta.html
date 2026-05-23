@@ -220,7 +220,7 @@
     <div class="header">
         <h1>Options Exposure — GEX / DEX / Greeks</h1>
         <div class="subtitle">Real-time snapshots every 5 min &nbsp;|&nbsp; <a href="gex_history.html" style="color:#74b9ff;text-decoration:none">📅 GEX History</a></div>
-        <div class="subtitle">Current: <b>2026-05-22 22:50</b> &nbsp;|&nbsp; Previous: <b>2026-05-22 22:20</b></div>
+        <div class="subtitle">Current: <b>2026-05-22 23:05</b> &nbsp;|&nbsp; Previous: <b>2026-05-22 22:35</b></div>
     </div>
 
     <div class="tabs">
@@ -248,7 +248,7 @@
         <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="ctrl-bar"><div class="metric-bar"><button data-mbt="QQQ" data-m="gex" class="metric-btn active" onclick="switchMetric('QQQ','gex')">GEX</button><button data-mbt="QQQ" data-m="dex" class="metric-btn" onclick="switchMetric('QQQ','dex')">DEX</button><button data-mbt="QQQ" data-m="charm" class="metric-btn" onclick="switchMetric('QQQ','charm')">Charm</button><button data-mbt="QQQ" data-m="vanna" class="metric-btn" onclick="switchMetric('QQQ','vanna')">Vanna</button></div><div class="expiry-toggle" id="expiry-toggle-QQQ"><button class="exp-btn active" data-expb="QQQ" data-exp="all" onclick="setExpiry('QQQ','all')">All Expiries</button><button class="exp-btn" data-expb="QQQ" data-exp="0dte" onclick="setExpiry('QQQ','0dte')">0DTE</button></div><div id="strike-ctrl-QQQ" style="display:flex;gap:10px;align-items:center"><select class="strike-count-sel" id="strike-count-QQQ" onchange="setStrikeCount('QQQ',this.value==='all'?Infinity:+this.value)"><option value="10">10 strikes</option><option value="20">20 strikes</option><option value="30" selected>30 strikes</option><option value="50">50 strikes</option><option value="all">All</option></select><div data-ddw="QQQ" class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="QQQ" onclick="toggleViewMenu('QQQ')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-QQQ"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('QQQ','change')">By Change</div><div class="ts-menu-item" onclick="setView('QQQ','strike')">By Strike</div><div class="ts-menu-item" onclick="setView('QQQ','time')">By Time</div><div class="ts-menu-item" onclick="setView('QQQ','level')">By Level</div></div></div></div></div><div id="metric-QQQ-gex"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all" style="display:block"><div id="view-QQQ-gex-change" class="view-panel-QQQ-gex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-gex" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','gex','10m','')">10m</button><button data-tfb="QQQ-gex" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','gex','20m','')">20m</button><button data-tfb="QQQ-gex" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','gex','30m','')">30m</button></div><div id="tf-QQQ-gex-10m"  style="height:2896px"><canvas id="chart-QQQ-gex-d10"></canvas></div><div id="tf-QQQ-gex-20m" style="display:none;height:2896px"><canvas id="chart-QQQ-gex-d20"></canvas></div><div id="tf-QQQ-gex-30m" style="display:none;height:2896px"><canvas id="chart-QQQ-gex-d30"></canvas></div></div><div id="view-QQQ-gex-strike" class="view-panel-QQQ-gex" style="display:block"><div style="height:2896px"><canvas id="chart-QQQ-gex-net"></canvas></div></div><div id="view-QQQ-gex-time" style="display:none"><div style="height:420px"><canvas id="chart-QQQ-gex-ts"></canvas></div></div><div id="view-QQQ-gex-level" class="view-panel-QQQ-gex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-gex-price" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-gex-level"></canvas></div></div></div></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div id="view-QQQ-gex-change-0" class="view-panel-QQQ-gex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-gex-0" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','gex','10m','-0')">10m</button><button data-tfb="QQQ-gex-0" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','gex','20m','-0')">20m</button><button data-tfb="QQQ-gex-0" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','gex','30m','-0')">30m</button></div><div id="tf-QQQ-gex-0-10m"  style="height:2864px"><canvas id="chart-QQQ-gex-d10-0"></canvas></div><div id="tf-QQQ-gex-0-20m" style="display:none;height:2864px"><canvas id="chart-QQQ-gex-d20-0"></canvas></div><div id="tf-QQQ-gex-0-30m" style="display:none;height:2864px"><canvas id="chart-QQQ-gex-d30-0"></canvas></div></div><div id="view-QQQ-gex-strike-0" class="view-panel-QQQ-gex" style="display:block"><div style="height:2864px"><canvas id="chart-QQQ-gex-net-0"></canvas></div></div><div id="view-QQQ-gex-level-0" class="view-panel-QQQ-gex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-gex-price-0" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-gex-level-0"></canvas></div></div></div></div></div></div><div id="metric-QQQ-dex" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all" style="display:block"><div id="view-QQQ-dex-change" class="view-panel-QQQ-dex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-dex" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','dex','10m','')">10m</button><button data-tfb="QQQ-dex" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','dex','20m','')">20m</button><button data-tfb="QQQ-dex" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','dex','30m','')">30m</button></div><div id="tf-QQQ-dex-10m"  style="height:2896px"><canvas id="chart-QQQ-dex-d10"></canvas></div><div id="tf-QQQ-dex-20m" style="display:none;height:2896px"><canvas id="chart-QQQ-dex-d20"></canvas></div><div id="tf-QQQ-dex-30m" style="display:none;height:2896px"><canvas id="chart-QQQ-dex-d30"></canvas></div></div><div id="view-QQQ-dex-strike" class="view-panel-QQQ-dex" style="display:block"><div style="height:2896px"><canvas id="chart-QQQ-dex-net"></canvas></div></div><div id="view-QQQ-dex-time" style="display:none"><div style="height:420px"><canvas id="chart-QQQ-dex-ts"></canvas></div></div><div id="view-QQQ-dex-level" class="view-panel-QQQ-dex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-dex-price" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-dex-level"></canvas></div></div></div></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div id="view-QQQ-dex-change-0" class="view-panel-QQQ-dex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-dex-0" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','dex','10m','-0')">10m</button><button data-tfb="QQQ-dex-0" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','dex','20m','-0')">20m</button><button data-tfb="QQQ-dex-0" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','dex','30m','-0')">30m</button></div><div id="tf-QQQ-dex-0-10m"  style="height:2864px"><canvas id="chart-QQQ-dex-d10-0"></canvas></div><div id="tf-QQQ-dex-0-20m" style="display:none;height:2864px"><canvas id="chart-QQQ-dex-d20-0"></canvas></div><div id="tf-QQQ-dex-0-30m" style="display:none;height:2864px"><canvas id="chart-QQQ-dex-d30-0"></canvas></div></div><div id="view-QQQ-dex-strike-0" class="view-panel-QQQ-dex" style="display:block"><div style="height:2864px"><canvas id="chart-QQQ-dex-net-0"></canvas></div></div><div id="view-QQQ-dex-level-0" class="view-panel-QQQ-dex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-dex-price-0" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-dex-level-0"></canvas></div></div></div></div></div></div><div id="metric-QQQ-charm" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all"><div style="position:relative;height:420px"><canvas id="chart-QQQ-charm"></canvas></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div style="position:relative;height:420px"><canvas id="chart-QQQ-charm-0"></canvas></div></div></div><div id="metric-QQQ-vanna" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all"><div style="position:relative;height:420px"><canvas id="chart-QQQ-vanna"></canvas></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div style="position:relative;height:420px"><canvas id="chart-QQQ-vanna-0"></canvas></div></div></div></div>
 
     <div class="footer">
-        Generated: 2026-05-22 22:50
+        Generated: 2026-05-22 23:05
         &nbsp;|&nbsp; Next check in: <span id="refresh-countdown">1:00</span>
     </div>
 </div>
@@ -907,183 +907,183 @@
 
     new Chart(document.getElementById("chart-SPY-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"760",data:[77.862, 77.892, 77.864, 77.85, 77.824, 77.808, 77.809, 77.777, 77.77, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942],
+            label:"760",data:[77.862, 77.892, 77.864, 77.85, 77.824, 77.808, 77.809, 77.777, 77.77, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942, 77.942],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"759",data:[7.456, 7.459, 7.456, 7.455, 7.452, 7.451, 7.451, 7.448, 7.447, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463],
+            label:"759",data:[7.456, 7.459, 7.456, 7.455, 7.452, 7.451, 7.451, 7.448, 7.447, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463, 7.463],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"758",data:[9.238, 9.241, 9.238, 9.236, 9.233, 9.232, 9.232, 9.228, 9.227, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247],
+            label:"758",data:[9.238, 9.241, 9.238, 9.236, 9.233, 9.232, 9.232, 9.228, 9.227, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247, 9.247],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"757",data:[14.125, 14.13, 14.125, 14.122, 14.118, 14.115, 14.115, 14.109, 14.108, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139],
+            label:"757",data:[14.125, 14.13, 14.125, 14.122, 14.118, 14.115, 14.115, 14.109, 14.108, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139, 14.139],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"756",data:[16.087, 16.093, 16.087, 16.084, 16.079, 16.076, 16.076, 16.069, 16.068, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103],
+            label:"756",data:[16.087, 16.093, 16.087, 16.084, 16.079, 16.076, 16.076, 16.069, 16.068, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103, 16.103],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"755",data:[144.643, 144.697, 144.647, 144.619, 144.571, 144.542, 144.544, 144.483, 144.472, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79],
+            label:"755",data:[144.643, 144.697, 144.647, 144.619, 144.571, 144.542, 144.544, 144.483, 144.472, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79, 144.79],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"754",data:[16.533, 16.539, 16.533, 16.53, 16.524, 16.521, 16.521, 16.514, 16.513, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549],
+            label:"754",data:[16.533, 16.539, 16.533, 16.53, 16.524, 16.521, 16.521, 16.514, 16.513, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549, 16.549],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"753",data:[31.018, 31.03, 31.019, 31.013, 31.003, 30.996, 30.997, 30.984, 30.981, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05],
+            label:"753",data:[31.018, 31.03, 31.019, 31.013, 31.003, 30.996, 30.997, 30.984, 30.981, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05, 31.05],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"752",data:[51.803, 51.823, 51.805, 51.795, 51.778, 51.767, 51.768, 51.746, 51.742, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856],
+            label:"752",data:[51.803, 51.823, 51.805, 51.795, 51.778, 51.767, 51.768, 51.746, 51.742, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856, 51.856],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"751",data:[34.857, 34.87, 34.858, 34.852, 34.84, 34.833, 34.833, 34.819, 34.816, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893],
+            label:"751",data:[34.857, 34.87, 34.858, 34.852, 34.84, 34.833, 34.833, 34.819, 34.816, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893, 34.893],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"750",data:[227.862, 227.948, 227.868, 227.825, 227.749, 227.703, 227.706, 227.611, 227.593, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095],
+            label:"750",data:[227.862, 227.948, 227.868, 227.825, 227.749, 227.703, 227.706, 227.611, 227.593, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095, 228.095],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"749",data:[63.322, 63.346, 63.324, 63.312, 63.29, 63.278, 63.279, 63.252, 63.247, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387],
+            label:"749",data:[63.322, 63.346, 63.324, 63.312, 63.29, 63.278, 63.279, 63.252, 63.247, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387, 63.387],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"748",data:[71.971, 71.998, 71.973, 71.96, 71.936, 71.921, 71.922, 71.892, 71.886, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045],
+            label:"748",data:[71.971, 71.998, 71.973, 71.96, 71.936, 71.921, 71.922, 71.892, 71.886, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045, 72.045],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747",data:[105.909, 105.949, 105.912, 105.892, 105.857, 105.835, 105.837, 105.793, 105.784, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017],
+            label:"747",data:[105.909, 105.949, 105.912, 105.892, 105.857, 105.835, 105.837, 105.793, 105.784, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017, 106.017],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"746",data:[389.625, 389.771, 389.635, 389.562, 389.431, 389.353, 389.358, 389.196, 389.165, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022],
+            label:"746",data:[389.625, 389.771, 389.635, 389.562, 389.431, 389.353, 389.358, 389.196, 389.165, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022, 390.022],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"745",data:[845.037, 845.355, 845.06, 844.901, 844.618, 844.448, 844.459, 844.107, 844.039, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9],
+            label:"745",data:[845.037, 845.355, 845.06, 844.901, 844.618, 844.448, 844.459, 844.107, 844.039, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9, 845.9],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"744",data:[35.928, 35.941, 35.929, 35.922, 35.91, 35.903, 35.903, 35.888, 35.885, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964],
+            label:"744",data:[35.928, 35.941, 35.929, 35.922, 35.91, 35.903, 35.903, 35.888, 35.885, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964, 35.964],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"743",data:[46.726, 46.744, 46.727, 46.719, 46.703, 46.694, 46.694, 46.675, 46.671, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774],
+            label:"743",data:[46.726, 46.744, 46.727, 46.719, 46.703, 46.694, 46.694, 46.675, 46.671, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774, 46.774],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742",data:[16.761, 16.768, 16.762, 16.759, 16.753, 16.75, 16.75, 16.743, 16.741, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778],
+            label:"742",data:[16.761, 16.768, 16.762, 16.759, 16.753, 16.75, 16.75, 16.743, 16.741, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778, 16.778],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"741",data:[6.406, 6.408, 6.406, 6.405, 6.403, 6.401, 6.402, 6.399, 6.398, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412],
+            label:"741",data:[6.406, 6.408, 6.406, 6.405, 6.403, 6.401, 6.402, 6.399, 6.398, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412, 6.412],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"740",data:[90.701, 90.736, 90.704, 90.687, 90.656, 90.638, 90.639, 90.602, 90.594, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794],
+            label:"740",data:[90.701, 90.736, 90.704, 90.687, 90.656, 90.638, 90.639, 90.602, 90.594, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794, 90.794],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"739",data:[5.492, 5.495, 5.493, 5.492, 5.49, 5.489, 5.489, 5.486, 5.486, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498],
+            label:"739",data:[5.492, 5.495, 5.493, 5.492, 5.49, 5.489, 5.489, 5.486, 5.486, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498, 5.498],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"738",data:[-35.989, -36.002, -35.99, -35.983, -35.971, -35.964, -35.964, -35.949, -35.946, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026],
+            label:"738",data:[-35.989, -36.002, -35.99, -35.983, -35.971, -35.964, -35.964, -35.949, -35.946, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026, -36.026],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737",data:[-14.237, -14.242, -14.237, -14.234, -14.23, -14.227, -14.227, -14.221, -14.22, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251],
+            label:"737",data:[-14.237, -14.242, -14.237, -14.234, -14.23, -14.227, -14.227, -14.221, -14.22, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251, -14.251],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"736",data:[-6.897, -6.899, -6.897, -6.896, -6.893, -6.892, -6.892, -6.889, -6.889, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904],
+            label:"736",data:[-6.897, -6.899, -6.897, -6.896, -6.893, -6.892, -6.892, -6.889, -6.889, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904, -6.904],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"735",data:[-58.601, -58.623, -58.603, -58.592, -58.572, -58.56, -58.561, -58.537, -58.532, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661],
+            label:"735",data:[-58.601, -58.623, -58.603, -58.592, -58.572, -58.56, -58.561, -58.537, -58.532, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661, -58.661],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[-7.815, -7.818, -7.816, -7.814, -7.812, -7.81, -7.81, -7.807, -7.806, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823],
+            label:"734",data:[-7.815, -7.818, -7.816, -7.814, -7.812, -7.81, -7.81, -7.807, -7.806, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823, -7.823],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[14.86, 14.866, 14.861, 14.858, 14.853, 14.85, 14.85, 14.844, 14.843, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876],
+            label:"733",data:[14.86, 14.866, 14.861, 14.858, 14.853, 14.85, 14.85, 14.844, 14.843, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876, 14.876],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[-5.014, -5.016, -5.014, -5.013, -5.012, -5.011, -5.011, -5.009, -5.008, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019],
+            label:"732",data:[-5.014, -5.016, -5.014, -5.013, -5.012, -5.011, -5.011, -5.009, -5.008, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019, -5.019],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[-6.202, -6.204, -6.202, -6.201, -6.199, -6.197, -6.197, -6.195, -6.194, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208],
+            label:"731",data:[-6.202, -6.204, -6.202, -6.201, -6.199, -6.197, -6.197, -6.195, -6.194, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208, -6.208],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1634,183 +1634,183 @@
 
     new Chart(document.getElementById("chart-SPY-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"760",data:[4.525, 4.56, 4.527, 4.509, 4.478, 4.459, 4.46, 4.422, 4.415, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623],
+            label:"760",data:[4.525, 4.56, 4.527, 4.509, 4.478, 4.459, 4.46, 4.422, 4.415, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623, 4.623],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"759",data:[0.206, 0.21, 0.207, 0.205, 0.202, 0.201, 0.201, 0.198, 0.197, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215],
+            label:"759",data:[0.206, 0.21, 0.207, 0.205, 0.202, 0.201, 0.201, 0.198, 0.197, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"758",data:[0.252, 0.256, 0.252, 0.25, 0.247, 0.245, 0.245, 0.241, 0.24, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263],
+            label:"758",data:[0.252, 0.256, 0.252, 0.25, 0.247, 0.245, 0.245, 0.241, 0.24, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263, 0.263],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"757",data:[0.254, 0.26, 0.254, 0.252, 0.247, 0.244, 0.245, 0.239, 0.238, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269],
+            label:"757",data:[0.254, 0.26, 0.254, 0.252, 0.247, 0.244, 0.245, 0.239, 0.238, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269, 0.269],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"756",data:[0.383, 0.39, 0.384, 0.381, 0.375, 0.371, 0.372, 0.365, 0.363, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402],
+            label:"756",data:[0.383, 0.39, 0.384, 0.381, 0.375, 0.371, 0.372, 0.365, 0.363, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402, 0.402],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"755",data:[5.893, 5.956, 5.898, 5.867, 5.811, 5.778, 5.78, 5.712, 5.699, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066],
+            label:"755",data:[5.893, 5.956, 5.898, 5.867, 5.811, 5.778, 5.78, 5.712, 5.699, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066, 6.066],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"754",data:[0.379, 0.386, 0.379, 0.376, 0.37, 0.367, 0.367, 0.36, 0.358, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398],
+            label:"754",data:[0.379, 0.386, 0.379, 0.376, 0.37, 0.367, 0.367, 0.36, 0.358, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398, 0.398],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"753",data:[0.587, 0.602, 0.588, 0.581, 0.568, 0.561, 0.562, 0.546, 0.543, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627],
+            label:"753",data:[0.587, 0.602, 0.588, 0.581, 0.568, 0.561, 0.562, 0.546, 0.543, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627, 0.627],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"752",data:[0.705, 0.727, 0.706, 0.696, 0.676, 0.665, 0.666, 0.643, 0.638, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766],
+            label:"752",data:[0.705, 0.727, 0.706, 0.696, 0.676, 0.665, 0.666, 0.643, 0.638, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"751",data:[0.706, 0.722, 0.707, 0.699, 0.685, 0.676, 0.677, 0.66, 0.656, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751],
+            label:"751",data:[0.706, 0.722, 0.707, 0.699, 0.685, 0.676, 0.677, 0.66, 0.656, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751, 0.751],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"750",data:[9.523, 9.627, 9.531, 9.479, 9.387, 9.332, 9.336, 9.223, 9.202, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806],
+            label:"750",data:[9.523, 9.627, 9.531, 9.479, 9.387, 9.332, 9.336, 9.223, 9.202, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806, 9.806],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"749",data:[0.868, 0.893, 0.87, 0.858, 0.837, 0.824, 0.825, 0.799, 0.794, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935],
+            label:"749",data:[0.868, 0.893, 0.87, 0.858, 0.837, 0.824, 0.825, 0.799, 0.794, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935, 0.935],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"748",data:[0.737, 0.763, 0.738, 0.725, 0.702, 0.688, 0.689, 0.66, 0.655, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808],
+            label:"748",data:[0.737, 0.763, 0.738, 0.725, 0.702, 0.688, 0.689, 0.66, 0.655, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808, 0.808],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747",data:[0.649, 0.677, 0.651, 0.636, 0.611, 0.596, 0.597, 0.567, 0.561, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727],
+            label:"747",data:[0.649, 0.677, 0.651, 0.636, 0.611, 0.596, 0.597, 0.567, 0.561, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727, 0.727],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"746",data:[0.767, 0.803, 0.769, 0.751, 0.72, 0.701, 0.702, 0.663, 0.655, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864],
+            label:"746",data:[0.767, 0.803, 0.769, 0.751, 0.72, 0.701, 0.702, 0.663, 0.655, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864, 0.864],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"745",data:[7.029, 7.157, 7.038, 6.975, 6.861, 6.792, 6.797, 6.656, 6.629, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375],
+            label:"745",data:[7.029, 7.157, 7.038, 6.975, 6.861, 6.792, 6.797, 6.656, 6.629, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375, 7.375],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"744",data:[0.57, 0.597, 0.572, 0.558, 0.534, 0.519, 0.52, 0.49, 0.484, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643],
+            label:"744",data:[0.57, 0.597, 0.572, 0.558, 0.534, 0.519, 0.52, 0.49, 0.484, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643, 0.643],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"743",data:[0.353, 0.376, 0.355, 0.344, 0.323, 0.311, 0.312, 0.287, 0.282, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414],
+            label:"743",data:[0.353, 0.376, 0.355, 0.344, 0.323, 0.311, 0.312, 0.287, 0.282, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414, 0.414],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742",data:[0.286, 0.31, 0.288, 0.275, 0.254, 0.241, 0.241, 0.214, 0.209, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351],
+            label:"742",data:[0.286, 0.31, 0.288, 0.275, 0.254, 0.241, 0.241, 0.214, 0.209, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351, 0.351],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"741",data:[0.579, 0.601, 0.581, 0.57, 0.551, 0.539, 0.54, 0.516, 0.511, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637],
+            label:"741",data:[0.579, 0.601, 0.581, 0.57, 0.551, 0.539, 0.54, 0.516, 0.511, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637, 0.637],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"740",data:[5.678, 5.768, 5.684, 5.639, 5.558, 5.509, 5.512, 5.41, 5.391, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922],
+            label:"740",data:[5.678, 5.768, 5.684, 5.639, 5.558, 5.509, 5.512, 5.41, 5.391, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922, 5.922],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"739",data:[0.428, 0.447, 0.429, 0.419, 0.402, 0.391, 0.392, 0.37, 0.365, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48],
+            label:"739",data:[0.428, 0.447, 0.429, 0.419, 0.402, 0.391, 0.392, 0.37, 0.365, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48, 0.48],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"738",data:[-0.729, -0.698, -0.726, -0.742, -0.77, -0.787, -0.786, -0.821, -0.828, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646],
+            label:"738",data:[-0.729, -0.698, -0.726, -0.742, -0.77, -0.787, -0.786, -0.821, -0.828, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646, -0.646],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737",data:[-0.165, -0.148, -0.164, -0.172, -0.188, -0.197, -0.197, -0.217, -0.22, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118],
+            label:"737",data:[-0.165, -0.148, -0.164, -0.172, -0.188, -0.197, -0.197, -0.217, -0.22, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118, -0.118],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"736",data:[0.204, 0.221, 0.206, 0.197, 0.182, 0.173, 0.173, 0.154, 0.151, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249],
+            label:"736",data:[0.204, 0.221, 0.206, 0.197, 0.182, 0.173, 0.173, 0.154, 0.151, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"735",data:[1.525, 1.594, 1.53, 1.496, 1.433, 1.396, 1.398, 1.32, 1.304, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71],
+            label:"735",data:[1.525, 1.594, 1.53, 1.496, 1.433, 1.396, 1.398, 1.32, 1.304, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71, 1.71],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[0.551, 0.568, 0.552, 0.543, 0.528, 0.519, 0.519, 0.5, 0.496, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596],
+            label:"734",data:[0.551, 0.568, 0.552, 0.543, 0.528, 0.519, 0.519, 0.5, 0.496, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596, 0.596],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[1.596, 1.62, 1.598, 1.586, 1.564, 1.551, 1.552, 1.525, 1.52, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659],
+            label:"733",data:[1.596, 1.62, 1.598, 1.586, 1.564, 1.551, 1.552, 1.525, 1.52, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659, 1.659],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[0.349, 0.361, 0.349, 0.343, 0.333, 0.326, 0.326, 0.313, 0.31, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381],
+            label:"732",data:[0.349, 0.361, 0.349, 0.343, 0.333, 0.326, 0.326, 0.313, 0.31, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381, 0.381],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[0.302, 0.311, 0.303, 0.298, 0.29, 0.286, 0.286, 0.276, 0.274, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325],
+            label:"731",data:[0.302, 0.311, 0.303, 0.298, 0.29, 0.286, 0.286, 0.276, 0.274, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325, 0.325],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -3739,375 +3739,375 @@
         values:   [0.029, 3.157, 0.059, 2.703, 3.537, 0.122, 0.305, 9.655, 0.278, 0.176, 1.901, 1.049, 1.06, 26.816, 0.815, 0.003, 0.504, 4.051, 0.26, 0.007, 0.313, 0.006, 16.12, 0.003, 0.41, 0.002, 0.489, 11.427, 0.532, 0.013, 1.312, 0.176, 43.106, 0.178, 0.791, 0.121, 1.807, 6.845, 1.403, 0.115, 1.413, 1.789, 25.07, 0.189, 1.357, 0.261, 1.667, 11.79, 1.665, 0.188, 3.199, 0.279, 53.019, 0.282, 2.468, 0.537, 3.796, 20.269, 2.821, 0.553, 3.045, 1.282, 43.214, 1.42, 7.39, 1.861, 5.426, 18.736, 6.97, 2.059, 7.574, 6.715, 91.505, 3.993, 5.979, 4.054, 16.244, 31.445, 13.617, 6.326, 10.673, 6.208, 45.698, 4.731, 16.494, 5.539, 11.513, 31.53, 16.977, 5.579, 20.936, 4.945, 115.038, 4.229, 4.164, 2.844, 6.601, 1139.222, 10.636, 3.4, 9.61, 6.744, 57.087, 4.953, 2.092, 3.567, 20.81, 13.496, 12.406, 0.283, 7.201, 1.012, 35.569, -0.19, -3.321, -0.392, -1.277, 3.749, 1.197, -3.385, -0.66, -4.712, -5.791, -1.587, 0.168, -1.261, -2.42, 5.568, 0.268, -1.391, 2.951, -1.069, 0.714, -0.862, -2.751, -0.88, -3.114, -4.52, -0.919, -0.952, -2.257, -1.074, -1.436, -0.713, -2.448, -0.774, -3.979, -3.193, -1.907, -0.879, 1.364, -0.724, -16.464, -1.225, -0.863, -0.597, -1.228, -6.637, -1.746, -1.353, -1.492, -1.401, -7.477, -1.584, -0.794, -0.747, -0.518, -6.373, -1.138, -2.327, -0.872, 0.007, -18.371, -0.543, -0.158, -0.368, 0.126, -3.001, -0.608, -0.326, -0.755, -0.392, -4.336, -0.603, -0.602, -0.756, -0.682, -2.627, -1.222, -0.328, -0.151, -0.5, -17.008, -0.329, -0.693, -0.645, -0.765, -2.41, -0.887, -0.81, -1.125, -0.283],
         colors:   ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
         prevVals:  [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.817,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
-        prev2Vals: [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.818,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
+        prev2Vals: [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.817,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
         atmIdx:    97,
         spotIdx:   97,
         painIdx:   192,
         prevSlice:      [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.817,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
-        prev2Slice:     [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.818,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
+        prev2Slice:     [0.029,3.157,0.059,2.703,3.537,0.122,0.305,9.655,0.278,0.176,1.901,1.049,1.06,26.817,0.815,0.003,0.504,4.051,0.26,0.007,0.313,0.006,16.12,0.003,0.41,0.002,0.489,11.427,0.532,0.013,1.312,0.176,43.106,0.178,0.791,0.121,1.807,6.845,1.403,0.115,1.413,1.789,25.07,0.189,1.357,0.261,1.667,11.79,1.665,0.188,3.199,0.279,53.019,0.282,2.468,0.537,3.796,20.269,2.821,0.553,3.045,1.282,43.214,1.42,7.39,1.861,5.426,18.736,6.97,2.059,7.574,6.715,91.505,3.993,5.979,4.054,16.244,31.445,13.617,6.326,10.673,6.208,45.698,4.731,16.494,5.539,11.513,31.53,16.977,5.579,20.936,4.945,115.038,4.229,4.164,2.844,6.601,1139.222,10.636,3.4,9.61,6.744,57.087,4.953,2.092,3.567,20.81,13.496,12.406,0.283,7.201,1.012,35.569,-0.19,-3.321,-0.392,-1.277,3.749,1.197,-3.385,-0.66,-4.712,-5.791,-1.587,0.168,-1.261,-2.42,5.568,0.268,-1.391,2.951,-1.069,0.714,-0.862,-2.751,-0.88,-3.114,-4.52,-0.919,-0.952,-2.257,-1.074,-1.436,-0.713,-2.448,-0.774,-3.979,-3.193,-1.907,-0.879,1.364,-0.724,-16.464,-1.225,-0.863,-0.597,-1.228,-6.637,-1.746,-1.353,-1.492,-1.401,-7.477,-1.584,-0.794,-0.747,-0.518,-6.373,-1.138,-2.327,-0.872,0.007,-18.371,-0.543,-0.158,-0.368,0.126,-3.001,-0.608,-0.326,-0.755,-0.392,-4.336,-0.603,-0.602,-0.756,-0.682,-2.627,-1.222,-0.328,-0.151,-0.5,-17.008,-0.329,-0.693,-0.645,-0.765,-2.41,-0.887,-0.81,-1.125,-0.283],
         spotIdxSliced:  97,
         painIdxSliced:  192,
     };
 
     new Chart(document.getElementById("chart-SPX-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"7620",data:[6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97],
+            label:"7620",data:[6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97, 6.97],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7615",data:[2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059],
+            label:"7615",data:[2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059, 2.059],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7610",data:[7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574],
+            label:"7610",data:[7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574, 7.574],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7605",data:[6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715],
+            label:"7605",data:[6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715, 6.715],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7600",data:[91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505],
+            label:"7600",data:[91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505, 91.505],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7595",data:[3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993],
+            label:"7595",data:[3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993, 3.993],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7590",data:[5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979],
+            label:"7590",data:[5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979, 5.979],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7585",data:[4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054],
+            label:"7585",data:[4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054, 4.054],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7580",data:[16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244],
+            label:"7580",data:[16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244, 16.244],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7575",data:[31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445],
+            label:"7575",data:[31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445, 31.445],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7570",data:[13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617],
+            label:"7570",data:[13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617, 13.617],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7565",data:[6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326],
+            label:"7565",data:[6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326, 6.326],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7560",data:[10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673],
+            label:"7560",data:[10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673, 10.673],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7555",data:[6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208],
+            label:"7555",data:[6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208, 6.208],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7550",data:[45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698],
+            label:"7550",data:[45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698, 45.698],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7545",data:[4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731],
+            label:"7545",data:[4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731, 4.731],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7540",data:[16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494],
+            label:"7540",data:[16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494, 16.494],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7535",data:[5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539],
+            label:"7535",data:[5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539, 5.539],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7530",data:[11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513],
+            label:"7530",data:[11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513, 11.513],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7525",data:[31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53],
+            label:"7525",data:[31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53, 31.53],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7520",data:[16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977],
+            label:"7520",data:[16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977, 16.977],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7515",data:[5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579],
+            label:"7515",data:[5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579, 5.579],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7510",data:[20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936],
+            label:"7510",data:[20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936, 20.936],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7505",data:[4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945],
+            label:"7505",data:[4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945, 4.945],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7500",data:[115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038],
+            label:"7500",data:[115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038, 115.038],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7495",data:[4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229],
+            label:"7495",data:[4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229, 4.229],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7490",data:[4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164],
+            label:"7490",data:[4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164, 4.164],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7485",data:[2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844],
+            label:"7485",data:[2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844, 2.844],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7480",data:[6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601],
+            label:"7480",data:[6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601, 6.601],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7475",data:[1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222],
+            label:"7475",data:[1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222, 1139.222],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7470",data:[10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636],
+            label:"7470",data:[10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636, 10.636],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7465",data:[3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4],
+            label:"7465",data:[3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4, 3.4],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7460",data:[9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61],
+            label:"7460",data:[9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61, 9.61],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7455",data:[6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744],
+            label:"7455",data:[6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744, 6.744],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7450",data:[57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087],
+            label:"7450",data:[57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087, 57.087],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7445",data:[4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953],
+            label:"7445",data:[4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953, 4.953],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7440",data:[2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092],
+            label:"7440",data:[2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092, 2.092],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7435",data:[3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567],
+            label:"7435",data:[3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567, 3.567],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7430",data:[20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81],
+            label:"7430",data:[20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81, 20.81],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7425",data:[13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496],
+            label:"7425",data:[13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496, 13.496],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7420",data:[12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406],
+            label:"7420",data:[12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406, 12.406],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7415",data:[0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283],
+            label:"7415",data:[0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283, 0.283],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7410",data:[7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201],
+            label:"7410",data:[7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201, 7.201],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7405",data:[1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012],
+            label:"7405",data:[1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012, 1.012],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7400",data:[35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569],
+            label:"7400",data:[35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569, 35.569],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7395",data:[-0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19],
+            label:"7395",data:[-0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19, -0.19],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7390",data:[-3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321],
+            label:"7390",data:[-3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321, -3.321],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7385",data:[-0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392],
+            label:"7385",data:[-0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392, -0.392],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7380",data:[-1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277],
+            label:"7380",data:[-1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277, -1.277],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7375",data:[3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749],
+            label:"7375",data:[3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749, 3.749],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7370",data:[1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197],
+            label:"7370",data:[1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197, 1.197],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7365",data:[-3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385],
+            label:"7365",data:[-3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385, -3.385],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7360",data:[-0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66],
+            label:"7360",data:[-0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66, -0.66],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7355",data:[-4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712],
+            label:"7355",data:[-4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712, -4.712],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7350",data:[-5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791],
+            label:"7350",data:[-5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791, -5.791],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[-1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587],
+            label:"7345",data:[-1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587, -1.587],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168],
+            label:"7340",data:[0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168, 0.168],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[-1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261],
+            label:"7335",data:[-1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261, -1.261],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[-2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42],
+            label:"7330",data:[-2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42, -2.42],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568],
+            label:"7325",data:[5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568, 5.568],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -4658,363 +4658,363 @@
 
     new Chart(document.getElementById("chart-SPX-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"7620",data:[0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106],
+            label:"7620",data:[0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106, 0.106],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7615",data:[0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032],
+            label:"7615",data:[0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7610",data:[0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182],
+            label:"7610",data:[0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182, 0.182],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7605",data:[0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074],
+            label:"7605",data:[0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074, 0.074],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7600",data:[4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668],
+            label:"7600",data:[4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668, 4.668],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7595",data:[0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053],
+            label:"7595",data:[0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7590",data:[0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109],
+            label:"7590",data:[0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109, 0.109],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7585",data:[0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056],
+            label:"7585",data:[0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056, 0.056],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7580",data:[0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26],
+            label:"7580",data:[0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7575",data:[1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277],
+            label:"7575",data:[1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277, 1.277],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7570",data:[0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185],
+            label:"7570",data:[0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185, 0.185],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7565",data:[0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075],
+            label:"7565",data:[0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7560",data:[0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202],
+            label:"7560",data:[0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202, 0.202],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7555",data:[0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076],
+            label:"7555",data:[0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076, 0.076],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7550",data:[1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947],
+            label:"7550",data:[1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947, 1.947],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7545",data:[0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081],
+            label:"7545",data:[0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081, 0.081],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7540",data:[0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331],
+            label:"7540",data:[0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7535",data:[0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063],
+            label:"7535",data:[0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063, 0.063],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7530",data:[0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16],
+            label:"7530",data:[0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7525",data:[1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449],
+            label:"7525",data:[1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449, 1.449],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7520",data:[0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275],
+            label:"7520",data:[0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275, 0.275],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7515",data:[0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061],
+            label:"7515",data:[0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061, 0.061],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7510",data:[0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415],
+            label:"7510",data:[0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415, 0.415],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7505",data:[0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293],
+            label:"7505",data:[0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293, 0.293],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7500",data:[7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288],
+            label:"7500",data:[7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288, 7.288],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7495",data:[0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171],
+            label:"7495",data:[0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171, 0.171],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7490",data:[0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272],
+            label:"7490",data:[0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272, 0.272],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7485",data:[0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159],
+            label:"7485",data:[0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159, 0.159],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7480",data:[0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291],
+            label:"7480",data:[0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291, 0.291],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7475",data:[1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755],
+            label:"7475",data:[1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755, 1.755],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7470",data:[0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227],
+            label:"7470",data:[0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227, 0.227],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7465",data:[0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105],
+            label:"7465",data:[0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105, 0.105],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7460",data:[0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565],
+            label:"7460",data:[0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565, 0.565],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7455",data:[0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161],
+            label:"7455",data:[0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161, 0.161],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7450",data:[4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206],
+            label:"7450",data:[4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206, 4.206],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7445",data:[0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164],
+            label:"7445",data:[0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164, 0.164],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7440",data:[0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224],
+            label:"7440",data:[0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224, 0.224],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7435",data:[0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242],
+            label:"7435",data:[0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242, 0.242],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7430",data:[1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325],
+            label:"7430",data:[1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325, 1.325],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7425",data:[1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439],
+            label:"7425",data:[1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439, 1.439],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7420",data:[0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766],
+            label:"7420",data:[0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766, 0.766],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7415",data:[0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265],
+            label:"7415",data:[0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265, 0.265],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7410",data:[0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582],
+            label:"7410",data:[0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582, 0.582],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7405",data:[0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253],
+            label:"7405",data:[0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253, 0.253],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7400",data:[7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221],
+            label:"7400",data:[7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221, 7.221],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7395",data:[0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215],
+            label:"7395",data:[0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215, 0.215],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7390",data:[0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247],
+            label:"7390",data:[0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247, 0.247],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7385",data:[0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149],
+            label:"7385",data:[0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149, 0.149],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7380",data:[0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255],
+            label:"7380",data:[0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255, 0.255],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7375",data:[1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875],
+            label:"7375",data:[1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875, 1.875],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7370",data:[0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545],
+            label:"7370",data:[0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545, 0.545],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7365",data:[0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203],
+            label:"7365",data:[0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203, 0.203],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7360",data:[0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394],
+            label:"7360",data:[0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394, 0.394],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7355",data:[0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055],
+            label:"7355",data:[0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055, 0.055],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7350",data:[2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452],
+            label:"7350",data:[2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452, 2.452],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06],
+            label:"7345",data:[0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512],
+            label:"7340",data:[0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512, 0.512],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054],
+            label:"7335",data:[0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206],
+            label:"7330",data:[0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206, 0.206],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765],
+            label:"7325",data:[1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765, 1.765],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -6955,171 +6955,171 @@
 
     new Chart(document.getElementById("chart-QQQ-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"729",data:[8.368, 8.375, 8.37, 8.37, 8.36, 8.359, 8.357, 8.35, 8.344, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337],
+            label:"729",data:[8.368, 8.375, 8.37, 8.37, 8.36, 8.359, 8.357, 8.35, 8.344, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337, 8.337],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[10.181, 10.189, 10.183, 10.183, 10.171, 10.17, 10.167, 10.159, 10.152, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144],
+            label:"728",data:[10.181, 10.189, 10.183, 10.183, 10.171, 10.17, 10.167, 10.159, 10.152, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144, 10.144],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[4.845, 4.851, 4.846, 4.846, 4.836, 4.835, 4.832, 4.825, 4.819, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812],
+            label:"727",data:[4.845, 4.851, 4.846, 4.846, 4.836, 4.835, 4.832, 4.825, 4.819, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812, 4.812],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[5.405, 5.413, 5.407, 5.407, 5.395, 5.393, 5.39, 5.381, 5.373, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365],
+            label:"726",data:[5.405, 5.413, 5.407, 5.407, 5.395, 5.393, 5.39, 5.381, 5.373, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365, 5.365],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[55.996, 56.044, 56.007, 56.004, 55.931, 55.922, 55.902, 55.848, 55.799, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746],
+            label:"725",data:[55.996, 56.044, 56.007, 56.004, 55.931, 55.922, 55.902, 55.848, 55.799, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746, 55.746],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[17.455, 17.47, 17.459, 17.458, 17.435, 17.432, 17.425, 17.408, 17.392, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375],
+            label:"724",data:[17.455, 17.47, 17.459, 17.458, 17.435, 17.432, 17.425, 17.408, 17.392, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375, 17.375],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[7.271, 7.284, 7.274, 7.274, 7.255, 7.252, 7.247, 7.233, 7.219, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205],
+            label:"723",data:[7.271, 7.284, 7.274, 7.274, 7.255, 7.252, 7.247, 7.233, 7.219, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205, 7.205],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[27.928, 28.006, 27.947, 27.942, 27.819, 27.803, 27.768, 27.67, 27.58, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479],
+            label:"722",data:[27.928, 28.006, 27.947, 27.942, 27.819, 27.803, 27.768, 27.67, 27.58, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479, 27.479],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[8.843, 8.847, 8.844, 8.844, 8.837, 8.837, 8.835, 8.831, 8.827, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823],
+            label:"721",data:[8.843, 8.847, 8.844, 8.844, 8.837, 8.837, 8.835, 8.831, 8.827, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823, 8.823],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[71.144, 71.177, 71.152, 71.15, 71.101, 71.095, 71.082, 71.048, 71.017, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984],
+            label:"720",data:[71.144, 71.177, 71.152, 71.15, 71.101, 71.095, 71.082, 71.048, 71.017, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984, 70.984],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[36.182, 36.199, 36.186, 36.185, 36.16, 36.157, 36.151, 36.133, 36.117, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101],
+            label:"719",data:[36.182, 36.199, 36.186, 36.185, 36.16, 36.157, 36.151, 36.133, 36.117, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101, 36.101],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[176.342, 176.423, 176.362, 176.357, 176.237, 176.222, 176.19, 176.104, 176.027, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946],
+            label:"718",data:[176.342, 176.423, 176.362, 176.357, 176.237, 176.222, 176.19, 176.104, 176.027, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946, 175.946],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[66.18, 66.21, 66.187, 66.186, 66.14, 66.135, 66.123, 66.09, 66.062, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031],
+            label:"717",data:[66.18, 66.21, 66.187, 66.186, 66.14, 66.135, 66.123, 66.09, 66.062, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031, 66.031],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[8.067, 8.071, 8.068, 8.068, 8.062, 8.061, 8.06, 8.056, 8.053, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049],
+            label:"716",data:[8.067, 8.071, 8.068, 8.068, 8.062, 8.061, 8.06, 8.056, 8.053, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049, 8.049],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[9.247, 9.252, 9.248, 9.248, 9.242, 9.241, 9.239, 9.235, 9.231, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227],
+            label:"715",data:[9.247, 9.252, 9.248, 9.248, 9.242, 9.241, 9.239, 9.235, 9.231, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227, 9.227],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[1.568, 1.569, 1.568, 1.568, 1.567, 1.567, 1.567, 1.566, 1.565, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564],
+            label:"714",data:[1.568, 1.569, 1.568, 1.568, 1.567, 1.567, 1.567, 1.566, 1.565, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564, 1.564],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[0.998, 0.999, 0.998, 0.998, 0.997, 0.997, 0.997, 0.997, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996],
+            label:"713",data:[0.998, 0.999, 0.998, 0.998, 0.997, 0.997, 0.997, 0.997, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996, 0.996],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-1.408, -1.408, -1.408, -1.408, -1.407, -1.407, -1.407, -1.406, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405],
+            label:"712",data:[-1.408, -1.408, -1.408, -1.408, -1.407, -1.407, -1.407, -1.406, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405, -1.405],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[1.711, 1.712, 1.711, 1.711, 1.71, 1.71, 1.709, 1.709, 1.708, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707],
+            label:"711",data:[1.711, 1.712, 1.711, 1.711, 1.71, 1.71, 1.709, 1.709, 1.708, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707, 1.707],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[-1.092, -1.093, -1.092, -1.092, -1.092, -1.091, -1.091, -1.091, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09],
+            label:"710",data:[-1.092, -1.093, -1.092, -1.092, -1.092, -1.091, -1.091, -1.091, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09, -1.09],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347],
+            label:"709",data:[0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.348, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347, 0.347],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[-0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002],
+            label:"708",data:[-0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002, -0.002],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[-1.644, -1.645, -1.644, -1.644, -1.643, -1.643, -1.642, -1.642, -1.641, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64],
+            label:"707",data:[-1.644, -1.645, -1.644, -1.644, -1.643, -1.643, -1.642, -1.642, -1.641, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64, -1.64],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[-1.741, -1.742, -1.742, -1.742, -1.74, -1.74, -1.74, -1.739, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738],
+            label:"706",data:[-1.741, -1.742, -1.742, -1.742, -1.74, -1.74, -1.74, -1.739, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738, -1.738],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[-9.154, -9.158, -9.155, -9.155, -9.149, -9.148, -9.146, -9.142, -9.138, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133],
+            label:"705",data:[-9.154, -9.158, -9.155, -9.155, -9.149, -9.148, -9.146, -9.142, -9.138, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133, -9.133],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-5.698, -5.701, -5.699, -5.698, -5.695, -5.694, -5.693, -5.69, -5.688, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685],
+            label:"704",data:[-5.698, -5.701, -5.699, -5.698, -5.695, -5.694, -5.693, -5.69, -5.688, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685, -5.685],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"703",data:[-1.557, -1.558, -1.557, -1.557, -1.556, -1.556, -1.556, -1.555, -1.554, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553],
+            label:"703",data:[-1.557, -1.558, -1.557, -1.557, -1.556, -1.556, -1.556, -1.555, -1.554, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553, -1.553],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"702",data:[-0.439, -0.439, -0.439, -0.439, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438],
+            label:"702",data:[-0.439, -0.439, -0.439, -0.439, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438, -0.438],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -7670,171 +7670,171 @@
 
     new Chart(document.getElementById("chart-QQQ-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50"], datasets: [
+        data: { labels: ["18:04", "18:19", "18:34", "18:49", "19:04", "19:19", "19:34", "19:49", "20:04", "20:19", "20:34", "20:50", "21:05", "21:20", "21:35", "21:50", "22:05", "22:20", "22:35", "22:50", "23:05"], datasets: [
         {
-            label:"729",data:[0.201, 0.206, 0.202, 0.202, 0.195, 0.194, 0.192, 0.187, 0.183, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179],
+            label:"729",data:[0.201, 0.206, 0.202, 0.202, 0.195, 0.194, 0.192, 0.187, 0.183, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179, 0.179],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[0.287, 0.292, 0.288, 0.288, 0.279, 0.278, 0.276, 0.27, 0.266, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26],
+            label:"728",data:[0.287, 0.292, 0.288, 0.288, 0.279, 0.278, 0.276, 0.27, 0.266, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26, 0.26],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[0.137, 0.141, 0.138, 0.138, 0.133, 0.132, 0.131, 0.127, 0.124, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121],
+            label:"727",data:[0.137, 0.141, 0.138, 0.138, 0.133, 0.132, 0.131, 0.127, 0.124, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121, 0.121],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[0.164, 0.168, 0.165, 0.165, 0.16, 0.159, 0.157, 0.154, 0.15, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147],
+            label:"726",data:[0.164, 0.168, 0.165, 0.165, 0.16, 0.159, 0.157, 0.154, 0.15, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[3.219, 3.251, 3.227, 3.225, 3.178, 3.173, 3.161, 3.128, 3.099, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069],
+            label:"725",data:[3.219, 3.251, 3.227, 3.225, 3.178, 3.173, 3.161, 3.128, 3.099, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069, 3.069],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[0.314, 0.323, 0.316, 0.316, 0.302, 0.3, 0.297, 0.287, 0.279, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27],
+            label:"724",data:[0.314, 0.323, 0.316, 0.316, 0.302, 0.3, 0.297, 0.287, 0.279, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[0.157, 0.162, 0.158, 0.158, 0.151, 0.15, 0.148, 0.143, 0.139, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134],
+            label:"723",data:[0.157, 0.162, 0.158, 0.158, 0.151, 0.15, 0.148, 0.143, 0.139, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134, 0.134],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"722",data:[0.617, 0.631, 0.62, 0.62, 0.599, 0.596, 0.591, 0.576, 0.563, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55],
+            label:"722",data:[0.617, 0.631, 0.62, 0.62, 0.599, 0.596, 0.591, 0.576, 0.563, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"721",data:[0.399, 0.407, 0.401, 0.4, 0.387, 0.386, 0.382, 0.373, 0.365, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357],
+            label:"721",data:[0.399, 0.407, 0.401, 0.4, 0.387, 0.386, 0.382, 0.373, 0.365, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357, 0.357],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"720",data:[2.923, 2.971, 2.934, 2.931, 2.859, 2.85, 2.831, 2.78, 2.735, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687],
+            label:"720",data:[2.923, 2.971, 2.934, 2.931, 2.859, 2.85, 2.831, 2.78, 2.735, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687, 2.687],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"719",data:[0.336, 0.348, 0.339, 0.338, 0.32, 0.317, 0.313, 0.299, 0.288, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276],
+            label:"719",data:[0.336, 0.348, 0.339, 0.338, 0.32, 0.317, 0.313, 0.299, 0.288, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276, 0.276],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"718",data:[0.325, 0.343, 0.329, 0.328, 0.302, 0.298, 0.291, 0.273, 0.257, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24],
+            label:"718",data:[0.325, 0.343, 0.329, 0.328, 0.302, 0.298, 0.291, 0.273, 0.257, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"717",data:[0.313, 0.328, 0.317, 0.316, 0.293, 0.291, 0.285, 0.269, 0.254, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239],
+            label:"717",data:[0.313, 0.328, 0.317, 0.316, 0.293, 0.291, 0.285, 0.269, 0.254, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239, 0.239],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"716",data:[0.276, 0.291, 0.28, 0.279, 0.257, 0.254, 0.249, 0.233, 0.219, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204],
+            label:"716",data:[0.276, 0.291, 0.28, 0.279, 0.257, 0.254, 0.249, 0.233, 0.219, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204, 0.204],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"715",data:[1.664, 1.714, 1.676, 1.673, 1.598, 1.589, 1.569, 1.515, 1.468, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417],
+            label:"715",data:[1.664, 1.714, 1.676, 1.673, 1.598, 1.589, 1.569, 1.515, 1.468, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417, 1.417],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"714",data:[0.082, 0.092, 0.084, 0.084, 0.069, 0.067, 0.063, 0.052, 0.042, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032],
+            label:"714",data:[0.082, 0.092, 0.084, 0.084, 0.069, 0.067, 0.063, 0.052, 0.042, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[0.333, 0.344, 0.335, 0.335, 0.318, 0.316, 0.311, 0.299, 0.288, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277],
+            label:"713",data:[0.333, 0.344, 0.335, 0.335, 0.318, 0.316, 0.311, 0.299, 0.288, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277, 0.277],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[0.414, 0.426, 0.417, 0.416, 0.398, 0.396, 0.392, 0.379, 0.367, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355],
+            label:"712",data:[0.414, 0.426, 0.417, 0.416, 0.398, 0.396, 0.392, 0.379, 0.367, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355, 0.355],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[0.523, 0.537, 0.526, 0.525, 0.504, 0.501, 0.495, 0.48, 0.466, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452],
+            label:"711",data:[0.523, 0.537, 0.526, 0.525, 0.504, 0.501, 0.495, 0.48, 0.466, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452, 0.452],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[3.564, 3.622, 3.578, 3.574, 3.488, 3.478, 3.455, 3.393, 3.337, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278],
+            label:"710",data:[3.564, 3.622, 3.578, 3.574, 3.488, 3.478, 3.455, 3.393, 3.337, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278, 3.278],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[0.294, 0.303, 0.296, 0.296, 0.282, 0.281, 0.277, 0.267, 0.258, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249],
+            label:"709",data:[0.294, 0.303, 0.296, 0.296, 0.282, 0.281, 0.277, 0.267, 0.258, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249, 0.249],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[0.207, 0.215, 0.209, 0.208, 0.196, 0.194, 0.191, 0.182, 0.174, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166],
+            label:"708",data:[0.207, 0.215, 0.209, 0.208, 0.196, 0.194, 0.191, 0.182, 0.174, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166, 0.166],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[0.178, 0.188, 0.181, 0.18, 0.166, 0.165, 0.161, 0.151, 0.142, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132],
+            label:"707",data:[0.178, 0.188, 0.181, 0.18, 0.166, 0.165, 0.161, 0.151, 0.142, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132, 0.132],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[0.081, 0.087, 0.082, 0.082, 0.073, 0.072, 0.07, 0.063, 0.057, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051],
+            label:"706",data:[0.081, 0.087, 0.082, 0.082, 0.073, 0.072, 0.07, 0.063, 0.057, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051, 0.051],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[1.131, 1.179, 1.143, 1.14, 1.069, 1.06, 1.041, 0.99, 0.944, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895],
+            label:"705",data:[1.131, 1.179, 1.143, 1.14, 1.069, 1.06, 1.041, 0.99, 0.944, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895, 0.895],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-0.009, -0.001, -0.007, -0.008, -0.019, -0.02, -0.023, -0.032, -0.039, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047],
+            label:"704",data:[-0.009, -0.001, -0.007, -0.008, -0.019, -0.02, -0.023, -0.032, -0.039, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047, -0.047],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"703",data:[0.041, 0.045, 0.042, 0.042, 0.035, 0.034, 0.032, 0.027, 0.022, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017],
+            label:"703",data:[0.041, 0.045, 0.042, 0.042, 0.035, 0.034, 0.032, 0.027, 0.022, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017, 0.017],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"702",data:[0.173, 0.18, 0.175, 0.175, 0.165, 0.164, 0.161, 0.154, 0.148, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141],
+            label:"702",data:[0.173, 0.18, 0.175, 0.175, 0.165, 0.164, 0.161, 0.154, 0.148, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141, 0.141],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -9419,7 +9419,7 @@
         switchTab(activeInst);
 
         // Smart polling: check gex_version.json every 60s, reload only when new data exists
-        var _pageVersion = '2026-05-22 22:50';
+        var _pageVersion = '2026-05-22 23:05';
         var _pollInterval = 60;          // seconds between polls
         var _pollCountdown = _pollInterval;
         var _cdEl = document.getElementById('refresh-countdown');

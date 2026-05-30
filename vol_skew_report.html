@@ -152,7 +152,7 @@
 
 <div class="header">
     <h1>Volatility Skew <span class="badge">25&Delta; RISK REVERSAL</span></h1>
-    <div class="subtitle">2026-05-29 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-05-29 19:54 ET</div>
+    <div class="subtitle">2026-05-29 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-05-29 20:00 ET</div>
 </div>
 
 <div class="inst-toggle">
@@ -748,29 +748,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'sp500';
-        var labels = ["14:35", "14:42", "14:49", "14:56", "15:04", "15:11", "15:18", "15:25", "15:32", "15:39"];
+        var labels = ["14:42", "14:49", "14:56", "15:04", "15:11", "15:18", "15:25", "15:32", "15:39"];
         var spot = 755.63;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [0.0353, -0.0254, -0.0008, 0.0154, 0.1088, 0.1094, 0.1991, 0.2771, 0.046, 0.5488],
+                label: '0DTE', data: [-0.0254, -0.0008, 0.0154, 0.1088, 0.1094, 0.1991, 0.2771, 0.046, 0.5488],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null],
+                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0356, 0.0348, 0.0365, 0.0347, 0.037, 0.0357, 0.0365, 0.0363, 0.0363, 0.0353],
+                label: 'Monthly', data: [0.0348, 0.0365, 0.0347, 0.037, 0.0357, 0.0365, 0.0363, 0.0363, 0.0353],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [0.029105, 0.00081, 0.012102, 0.019942, 0.063757, 0.064611, 0.106377, 0.142923, 0.034812, 0.269213],
+                label: 'All (Weighted)', data: [0.00081, 0.012102, 0.019942, 0.063757, 0.064611, 0.106377, 0.142923, 0.034812, 0.269213],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }
@@ -938,17 +938,17 @@ document.addEventListener('click', function(e) {
 <div class="inst-container" data-inst="nasdaq" style="display:none;">
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$737.99</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$737.94</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">Risk Reversal (All)</div>
-                <div class="value skew-green">+3.4352</div>
+                <div class="value skew-green">+3.4350</div>
             </div>
             <div class="card">
                 <div class="label">RR Change (vs Prev Day)</div>
-                <div class="value skew-green">↑ +0.1665</div>
+                <div class="value skew-green">↑ +0.1663</div>
             </div>
             <div class="card">
                 <div class="label">0DTE RR</div>
@@ -1012,12 +1012,12 @@ document.addEventListener('click', function(e) {
         </tr><tr>
             <td>260603</td>
             <td>5</td>
-            <td>730.0</td>
-            <td>0.1790</td>
-            <td>747.0</td>
-            <td>0.1555</td>
-            <td class="skew-green">+0.0235</td>
-            <td class="skew-red">-0.0015</td>
+            <td>729.0</td>
+            <td>0.1694</td>
+            <td>746.0</td>
+            <td>0.1501</td>
+            <td class="skew-green">+0.0193</td>
+            <td class="skew-red">-0.0057</td>
         </tr><tr>
             <td>260604</td>
             <td>6</td>
@@ -1104,10 +1104,10 @@ document.addEventListener('click', function(e) {
             <td>34</td>
             <td>710.0</td>
             <td>0.2259</td>
-            <td>772.0</td>
-            <td>0.1876</td>
-            <td class="skew-green">+0.0383</td>
-            <td class="skew-green">+0.0026</td>
+            <td>771.0</td>
+            <td>0.1878</td>
+            <td class="skew-green">+0.0381</td>
+            <td class="skew-green">+0.0024</td>
         </tr><tr>
             <td>260717</td>
             <td>49</td>
@@ -1192,12 +1192,12 @@ document.addEventListener('click', function(e) {
         </tr><tr>
             <td>270115</td>
             <td>231</td>
-            <td>680.0</td>
-            <td>0.2618</td>
+            <td>675.0</td>
+            <td>0.2634</td>
             <td>865.0</td>
             <td>0.2121</td>
-            <td class="skew-green">+0.0497</td>
-            <td class="skew-red">-0.0028</td>
+            <td class="skew-green">+0.0513</td>
+            <td class="skew-red">-0.0012</td>
         </tr><tr>
             <td>270319</td>
             <td>294</td>
@@ -1279,29 +1279,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'nasdaq';
-        var labels = ["14:35", "14:42", "14:49", "14:56", "15:04", "15:11", "15:18", "15:25", "15:32", "15:39"];
-        var spot = 737.99;
+        var labels = ["14:42", "14:49", "14:56", "15:04", "15:11", "15:18", "15:25", "15:32", "15:39"];
+        var spot = 737.94;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [0.0466, 0.0256, 0.0318, 0.0293, 0.0391, 0.0506, 0.0766, 0.0368, 0.0511, -0.0389],
+                label: '0DTE', data: [0.0256, 0.0318, 0.0293, 0.0391, 0.0506, 0.0766, 0.0368, 0.0511, -0.0389],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null],
+                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0374, 0.0371, 0.036, 0.0372, 0.0377, 0.0378, 0.0382, 0.0375, 0.0384, 0.038],
+                label: 'Monthly', data: [0.0371, 0.036, 0.0372, 0.0377, 0.0378, 0.0382, 0.0375, 0.0384, 0.038],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [0.03722, 0.026016, 0.029322, 0.027931, 0.033247, 0.040593, 0.05409, 0.033018, 0.040624, -0.008455],
+                label: 'All (Weighted)', data: [0.026016, 0.029322, 0.027931, 0.033247, 0.040593, 0.05409, 0.033018, 0.040624, -0.008455],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }

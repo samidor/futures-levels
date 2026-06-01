@@ -129,7 +129,7 @@
 
 <div class="header">
     <h1>Put/Call Ratio <span class="badge">INTRADAY</span></h1>
-    <div class="subtitle">2026-06-01 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-01 10:33 ET</div>
+    <div class="subtitle">2026-06-01 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-01 10:40 ET</div>
 </div>
 
 <script>
@@ -311,25 +311,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$756.36</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$756.46</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.016 <span class="regime">Bearish</span></div>
+                <div class="value pc-bearish">1.019 <span class="regime">Bearish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">1.19M</div>
+                <div class="value pc-bullish">1.30M</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">1.21M</div>
+                <div class="value pc-bearish">1.32M</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">9</div>
+                <div class="value" style="color:var(--text2)">10</div>
             </div>
         </div>
 
@@ -351,36 +351,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:32"],
-        spots: [755.81, 755.11, 755.87, 756.12, 756.39, 755.88, 755.73, 756.37, 756.36],
+        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:32", "10:39"],
+        spots: [755.81, 755.11, 755.87, 756.12, 756.39, 755.88, 755.73, 756.37, 756.36, 756.46],
         mode: 'all',
-        all:  { pc: [0.9336, 0.0, 1.0651, 1.0045, 1.0367, 1.0962, 1.1222, 1.0617, 1.0157], cvol: [3066014, 0, 203547, 412339, 566616, 703957, 847410, 1008451, 1192214], pvol: [2862353, 0, 216802, 414183, 587387, 771702, 950988, 1070711, 1210943] },
-        "0dte": { pc: [0.9705, 0.0, 1.0476, 0.9473, 0.9388, 1.0172, 1.0277, 0.9719, 0.9659], cvol: [787180, 0, 139911, 288743, 394591, 493583, 609558, 732258, 828678], pvol: [763920, 0, 146570, 273528, 370445, 502087, 626414, 711667, 800396] },
+        all:  { pc: [0.9336, 0.0, 1.0651, 1.0045, 1.0367, 1.0962, 1.1222, 1.0617, 1.0157, 1.0191], cvol: [3066014, 0, 203547, 412339, 566616, 703957, 847410, 1008451, 1192214, 1295534], pvol: [2862353, 0, 216802, 414183, 587387, 771702, 950988, 1070711, 1210943, 1320317] },
+        "0dte": { pc: [0.9705, 0.0, 1.0476, 0.9473, 0.9388, 1.0172, 1.0277, 0.9719, 0.9659, 0.9554], cvol: [787180, 0, 139911, 288743, 394591, 493583, 609558, 732258, 828678, 903994], pvol: [763920, 0, 146570, 273528, 370445, 502087, 626414, 711667, 800396, 863667] },
         prev: { labels: [], pc: [] }
     };
     </script>
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$738.00</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$738.59</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.179 <span class="regime">Bearish</span></div>
+                <div class="value pc-bearish">1.161 <span class="regime">Bearish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">541.3K</div>
+                <div class="value pc-bullish">597.7K</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">638.1K</div>
+                <div class="value pc-bearish">694.1K</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">9</div>
+                <div class="value" style="color:var(--text2)">10</div>
             </div>
         </div>
 
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:32"],
-        spots: [736.82, 736.38, 739.44, 739.32, 739.17, 737.27, 736.4, 737.62, 738.0],
+        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:32", "10:39"],
+        spots: [736.82, 736.38, 739.44, 739.32, 739.17, 737.27, 736.4, 737.62, 738.0, 738.59],
         mode: 'all',
-        all:  { pc: [1.2586, 0.0, 0.9793, 1.0541, 1.117, 1.2729, 1.2714, 1.1928, 1.1788], cvol: [979798, 0, 104612, 188916, 256728, 328481, 405956, 489680, 541322], pvol: [1233148, 0, 102450, 199142, 286774, 418139, 516132, 584070, 638113] },
-        "0dte": { pc: [1.1777, 0.0, 0.9574, 0.9813, 1.0296, 1.1765, 1.1815, 1.1036, 1.0939], cvol: [331325, 0, 71132, 133765, 181911, 236065, 295279, 359758, 396611], pvol: [390187, 0, 68102, 131261, 187302, 277726, 348860, 397035, 433853] },
+        all:  { pc: [1.2586, 0.0, 0.9793, 1.0541, 1.117, 1.2729, 1.2714, 1.1928, 1.1788, 1.1614], cvol: [979798, 0, 104612, 188916, 256728, 328481, 405956, 489680, 541322, 597654], pvol: [1233148, 0, 102450, 199142, 286774, 418139, 516132, 584070, 638113, 694110] },
+        "0dte": { pc: [1.1777, 0.0, 0.9574, 0.9813, 1.0296, 1.1765, 1.1815, 1.1036, 1.0939, 1.0687], cvol: [331325, 0, 71132, 133765, 181911, 236065, 295279, 359758, 396611, 440203], pvol: [390187, 0, 68102, 131261, 187302, 277726, 348860, 397035, 433853, 470454] },
         prev: { labels: [], pc: [] }
     };
     </script>

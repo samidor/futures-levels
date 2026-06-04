@@ -159,7 +159,7 @@
 <nav class="topnav">
     <div class="nav-brand">Options <span>Exposure</span></div>
     <div class="nav-right">
-        <span class="nav-time">Last published: 2026-06-04 10:08</span>
+        <span class="nav-time">Last published: 2026-06-04 15:48</span>
         <button class="btn-logout" onclick="logout()">Sign out</button>
     </div>
 </nav>
@@ -186,77 +186,30 @@
                 <div class="card-desc">Multi-day GEX wall history &mdash; see how gamma exposure evolved over the past week or month</div>
                 <span class="status soon">Coming soon</span>
             </div>
-            <div class="card disabled">
-                <div class="card-icon">&#128506;</div>
-                <div class="card-title">IV Term Structure</div>
-                <div class="card-desc">Implied volatility across expirations &mdash; spot event pricing, vol skew and term structure curves</div>
-                <span class="status soon">Coming soon</span>
-            </div>
-            <div class="card disabled">
-                <div class="card-icon">&#128202;</div>
-                <div class="card-title">Options Flow</div>
-                <div class="card-desc">Unusual volume &amp; large prints across all US options tickers &mdash; real-time unusual activity alerts</div>
-                <span class="status soon">Coming soon</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── Dev Section (hidden unless ?dev=1) ──────────────────────────── -->
-    <div class="section" id="dev-section" style="display:none;">
-        <div class="section-header">
-            <span class="section-title">Dev Lab</span>
-            <span class="section-sub" style="color:#fd79a8;">Internal only &nbsp;&middot;&nbsp; Not visible to customers</span>
-        </div>
-        <div class="grid">
             
-            <a href="volume_gex_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
-                <div class="card-icon">&#128293;</div>
-                <div class="card-title">Volume GEX</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
-            </a>
             <a href="options_flow_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
                 <div class="card-icon">&#128176;</div>
                 <div class="card-title">Options Flow</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
+                <div class="card-desc">Unusual volume &amp; large prints across all US options tickers &mdash; real-time unusual activity alerts</div>
                 <span class="status live">Updated 2026-05-20 15:58</span>
             </a>
-            <a href="pc_ratio_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
-                <div class="card-icon">&#9878;</div>
-                <div class="card-title">Put/Call Ratio</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
-            </a>
-            <a href="unusual_volume_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
-                <div class="card-icon">&#128680;</div>
-                <div class="card-title">Unusual Volume</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
-            </a>
             <a href="iv_term_structure_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
                 <div class="card-icon">&#128200;</div>
                 <div class="card-title">IV Term Structure</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
+                <div class="card-desc">Implied volatility across expirations &mdash; spot event pricing, vol skew and term structure curves</div>
+                <span class="status live">Updated 2026-06-04 14:31</span>
             </a>
-            <a href="oi_change_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
-                <div class="card-icon">&#128203;</div>
-                <div class="card-title">OI Change</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
+            <a href="unusual_volume_report.html" class="card">
+                <div class="card-icon">&#128680;</div>
+                <div class="card-title">Unusual Volume</div>
+                <div class="card-desc">Stocks with abnormally high options volume relative to open interest &mdash; early positioning signals</div>
+                <span class="status live">Updated 2026-06-04 14:31</span>
             </a>
             <a href="vol_skew_report.html" class="card">
-                <div class="card-badge" style="background:rgba(253,121,168,0.15);color:#fd79a8;">DEV</div>
                 <div class="card-icon">&#9878;</div>
                 <div class="card-title">Vol Skew (Risk Reversal)</div>
-                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
-                <span class="status live">Updated 2026-06-04 09:49</span>
+                <div class="card-desc">Put-call implied volatility skew across strikes &mdash; market fear and hedging demand gauge</div>
+                <span class="status live">Updated 2026-06-04 14:31</span>
             </a>
         </div>
     </div>
@@ -274,6 +227,25 @@
                 <div class="card-title">GEX by Expiry</div>
                 <div class="card-desc">Net &amp; Absolute GEX by expiry type: 0DTE, Weekly, Monthly, Aggregated</div>
                 <span class="status live">Updated 2026-06-04 10:07</span>
+            </a>
+            
+            <a href="volume_gex_report.html" class="card">
+                <div class="card-icon">&#128293;</div>
+                <div class="card-title">Volume GEX</div>
+                <div class="card-desc">Intraday Gamma Exposure weighted by option volume &mdash; real-time positioning changes</div>
+                <span class="status live">Updated 2026-06-04 15:43</span>
+            </a>
+            <a href="pc_ratio_report.html" class="card">
+                <div class="card-icon">&#9878;</div>
+                <div class="card-title">Put/Call Ratio</div>
+                <div class="card-desc">Aggregate put/call ratio by volume and open interest &mdash; sentiment and positioning indicator</div>
+                <span class="status live">Updated 2026-06-04 09:49</span>
+            </a>
+            <a href="oi_change_report.html" class="card">
+                <div class="card-icon">&#128203;</div>
+                <div class="card-title">OI Change</div>
+                <div class="card-desc">Day-over-day open interest changes by strike &mdash; new position buildup and unwinding</div>
+                <span class="status live">Updated 2026-06-04 14:31</span>
             </a>
         </div>
     </div>
@@ -323,16 +295,7 @@
 <script>
     function logout() {
         sessionStorage.removeItem('auth');
-        sessionStorage.removeItem('devMode');
         location.replace('login.html');
-    }
-    // Dev mode: ?dev=1 in URL activates it; stored in sessionStorage so it persists across pages
-    if (new URLSearchParams(window.location.search).get('dev') === '1') {
-        sessionStorage.setItem('devMode', '1');
-    }
-    if (sessionStorage.getItem('devMode') === '1') {
-        var ds = document.getElementById('dev-section');
-        if (ds) ds.style.display = '';
     }
 </script>
 

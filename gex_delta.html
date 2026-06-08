@@ -220,7 +220,7 @@
     <div class="header">
         <h1>Options Exposure — GEX / DEX / Greeks</h1>
         <div class="subtitle">Real-time snapshots every 5 min &nbsp;|&nbsp; <a href="gex_history.html" style="color:#74b9ff;text-decoration:none">📅 GEX History</a></div>
-        <div class="subtitle">Current: <b>2026-06-07 19:52</b> &nbsp;|&nbsp; Previous: <b>2026-06-07 19:39</b></div>
+        <div class="subtitle">Current: <b>2026-06-07 19:59</b> &nbsp;|&nbsp; Previous: <b>2026-06-07 19:46</b></div>
     </div>
 
     <div class="tabs">
@@ -248,7 +248,7 @@
         <div class="chart-wrap" id="wrap-QQQ" style="display:none"><div class="ctrl-bar"><div class="metric-bar"><button data-mbt="QQQ" data-m="gex" class="metric-btn active" onclick="switchMetric('QQQ','gex')">GEX</button><button data-mbt="QQQ" data-m="dex" class="metric-btn" onclick="switchMetric('QQQ','dex')">DEX</button><button data-mbt="QQQ" data-m="charm" class="metric-btn" onclick="switchMetric('QQQ','charm')">Charm</button><button data-mbt="QQQ" data-m="vanna" class="metric-btn" onclick="switchMetric('QQQ','vanna')">Vanna</button></div><div class="expiry-toggle" id="expiry-toggle-QQQ"><button class="exp-btn active" data-expb="QQQ" data-exp="all" onclick="setExpiry('QQQ','all')">All Expiries</button><button class="exp-btn" data-expb="QQQ" data-exp="0dte" onclick="setExpiry('QQQ','0dte')">0DTE</button></div><div id="strike-ctrl-QQQ" style="display:flex;gap:10px;align-items:center"><select class="strike-count-sel" id="strike-count-QQQ" onchange="setStrikeCount('QQQ',this.value==='all'?Infinity:+this.value)"><option value="10">10 strikes</option><option value="20">20 strikes</option><option value="30" selected>30 strikes</option><option value="50">50 strikes</option><option value="all">All</option></select><div data-ddw="QQQ" class="ts-dropdown-wrap"><button class="ts-dropdown-btn" data-view-btn="QQQ" onclick="toggleViewMenu('QQQ')">By Strike &#9662;</button><div class="ts-menu" id="view-menu-QQQ"><div class="ts-menu-title">Chart Type</div><div class="ts-menu-sub">Select the view to display</div><div class="ts-menu-item" onclick="setView('QQQ','change')">By Change</div><div class="ts-menu-item" onclick="setView('QQQ','strike')">By Strike</div><div class="ts-menu-item" onclick="setView('QQQ','time')">By Time</div><div class="ts-menu-item" onclick="setView('QQQ','level')">By Level</div></div></div></div></div><div id="metric-QQQ-gex"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all" style="display:block"><div id="view-QQQ-gex-change" class="view-panel-QQQ-gex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-gex" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','gex','10m','')">10m</button><button data-tfb="QQQ-gex" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','gex','20m','')">20m</button><button data-tfb="QQQ-gex" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','gex','30m','')">30m</button></div><div id="tf-QQQ-gex-10m"  style="height:3408px"><canvas id="chart-QQQ-gex-d10"></canvas></div><div id="tf-QQQ-gex-20m" style="display:none;height:3408px"><canvas id="chart-QQQ-gex-d20"></canvas></div><div id="tf-QQQ-gex-30m" style="display:none;height:3408px"><canvas id="chart-QQQ-gex-d30"></canvas></div></div><div id="view-QQQ-gex-strike" class="view-panel-QQQ-gex" style="display:block"><div style="height:3408px"><canvas id="chart-QQQ-gex-net"></canvas></div></div><div id="view-QQQ-gex-time" style="display:none"><div style="height:420px"><canvas id="chart-QQQ-gex-ts"></canvas></div></div><div id="view-QQQ-gex-level" class="view-panel-QQQ-gex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-gex-price" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-gex-level"></canvas></div></div></div></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div id="view-QQQ-gex-change-0" class="view-panel-QQQ-gex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-gex-0" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','gex','10m','-0')">10m</button><button data-tfb="QQQ-gex-0" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','gex','20m','-0')">20m</button><button data-tfb="QQQ-gex-0" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','gex','30m','-0')">30m</button></div><div id="tf-QQQ-gex-0-10m"  style="height:400px"><canvas id="chart-QQQ-gex-d10-0"></canvas></div><div id="tf-QQQ-gex-0-20m" style="display:none;height:400px"><canvas id="chart-QQQ-gex-d20-0"></canvas></div><div id="tf-QQQ-gex-0-30m" style="display:none;height:400px"><canvas id="chart-QQQ-gex-d30-0"></canvas></div></div><div id="view-QQQ-gex-strike-0" class="view-panel-QQQ-gex" style="display:block"><div style="height:400px"><canvas id="chart-QQQ-gex-net-0"></canvas></div></div><div id="view-QQQ-gex-level-0" class="view-panel-QQQ-gex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-gex-price-0" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-gex-level-0"></canvas></div></div></div></div></div></div><div id="metric-QQQ-dex" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all" style="display:block"><div id="view-QQQ-dex-change" class="view-panel-QQQ-dex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-dex" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','dex','10m','')">10m</button><button data-tfb="QQQ-dex" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','dex','20m','')">20m</button><button data-tfb="QQQ-dex" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','dex','30m','')">30m</button></div><div id="tf-QQQ-dex-10m"  style="height:3408px"><canvas id="chart-QQQ-dex-d10"></canvas></div><div id="tf-QQQ-dex-20m" style="display:none;height:3408px"><canvas id="chart-QQQ-dex-d20"></canvas></div><div id="tf-QQQ-dex-30m" style="display:none;height:3408px"><canvas id="chart-QQQ-dex-d30"></canvas></div></div><div id="view-QQQ-dex-strike" class="view-panel-QQQ-dex" style="display:block"><div style="height:3408px"><canvas id="chart-QQQ-dex-net"></canvas></div></div><div id="view-QQQ-dex-time" style="display:none"><div style="height:420px"><canvas id="chart-QQQ-dex-ts"></canvas></div></div><div id="view-QQQ-dex-level" class="view-panel-QQQ-dex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-dex-price" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-dex-level"></canvas></div></div></div></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div id="view-QQQ-dex-change-0" class="view-panel-QQQ-dex" style="display:none"><div class="tf-bar"><button data-tfb="QQQ-dex-0" data-tf="10m" class="tf-btn active" onclick="setTf('QQQ','dex','10m','-0')">10m</button><button data-tfb="QQQ-dex-0" data-tf="20m" class="tf-btn" onclick="setTf('QQQ','dex','20m','-0')">20m</button><button data-tfb="QQQ-dex-0" data-tf="30m" class="tf-btn" onclick="setTf('QQQ','dex','30m','-0')">30m</button></div><div id="tf-QQQ-dex-0-10m"  style="height:400px"><canvas id="chart-QQQ-dex-d10-0"></canvas></div><div id="tf-QQQ-dex-0-20m" style="display:none;height:400px"><canvas id="chart-QQQ-dex-d20-0"></canvas></div><div id="tf-QQQ-dex-0-30m" style="display:none;height:400px"><canvas id="chart-QQQ-dex-d30-0"></canvas></div></div><div id="view-QQQ-dex-strike-0" class="view-panel-QQQ-dex" style="display:block"><div style="height:400px"><canvas id="chart-QQQ-dex-net-0"></canvas></div></div><div id="view-QQQ-dex-level-0" class="view-panel-QQQ-dex" style="display:none"><div class="level-row"><div class="level-price" id="echart-QQQ-dex-price-0" style="height:520px"></div><div class="level-gex"><div style="position:relative;height:520px"><canvas id="chart-QQQ-dex-level-0"></canvas></div></div></div></div></div></div><div id="metric-QQQ-charm" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all"><div style="position:relative;height:420px"><canvas id="chart-QQQ-charm"></canvas></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div style="position:relative;height:420px"><canvas id="chart-QQQ-charm-0"></canvas></div></div></div><div id="metric-QQQ-vanna" style="display:none"><div class="expiry-layer" data-exp-layer="QQQ" data-exp="all"><div style="position:relative;height:420px"><canvas id="chart-QQQ-vanna"></canvas></div></div><div class="expiry-layer" data-exp-layer="QQQ" data-exp="0dte" style="display:none"><div style="position:relative;height:420px"><canvas id="chart-QQQ-vanna-0"></canvas></div></div></div></div>
 
     <div class="footer">
-        Generated: 2026-06-07 19:52
+        Generated: 2026-06-07 19:59
         &nbsp;|&nbsp; Next check in: <span id="refresh-countdown">1:00</span>
     </div>
 </div>
@@ -907,201 +907,201 @@
 
     new Chart(document.getElementById("chart-SPY-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"752",data:[-5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964],
+            label:"752",data:[-5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964, -5.964],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"751",data:[-0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005],
+            label:"751",data:[-0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005, -0.005],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"750",data:[-6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477],
+            label:"750",data:[-6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477, -6.477],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"749",data:[-5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829],
+            label:"749",data:[-5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829, -5.829],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"748",data:[-11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277],
+            label:"748",data:[-11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277, -11.277],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747.5",data:[-0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157],
+            label:"747.5",data:[-0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157, -0.157],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747",data:[-10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034],
+            label:"747",data:[-10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034, -10.034],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"746",data:[-7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731],
+            label:"746",data:[-7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731, -7.731],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"745",data:[-67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628],
+            label:"745",data:[-67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628, -67.628],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"744",data:[-25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92],
+            label:"744",data:[-25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92, -25.92],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"743",data:[-19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407],
+            label:"743",data:[-19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407, -19.407],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742.5",data:[-0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304],
+            label:"742.5",data:[-0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304, -0.304],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742",data:[-25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42],
+            label:"742",data:[-25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42, -25.42],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"741",data:[-4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17],
+            label:"741",data:[-4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17, -4.17],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"740",data:[-92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581],
+            label:"740",data:[-92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581, -92.581],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"739",data:[-6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728],
+            label:"739",data:[-6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728, -6.728],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"738",data:[-27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269],
+            label:"738",data:[-27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269, -27.269],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737.5",data:[-0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271],
+            label:"737.5",data:[-0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271, -0.271],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737",data:[-14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107],
+            label:"737",data:[-14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107, -14.107],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"736",data:[-12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951],
+            label:"736",data:[-12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951, -12.951],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"735",data:[-95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853],
+            label:"735",data:[-95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853, -95.853],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[-1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672],
+            label:"734",data:[-1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672, -1.672],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[-47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807],
+            label:"733",data:[-47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807, -47.807],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[-10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124],
+            label:"732",data:[-10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124, -10.124],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[-10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864],
+            label:"731",data:[-10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864, -10.864],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[-84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254],
+            label:"730",data:[-84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254, -84.254],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[-16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828],
+            label:"729",data:[-16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828, -16.828],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[-12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822],
+            label:"728",data:[-12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822, -12.822],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[-12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049],
+            label:"727",data:[-12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049, -12.049],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[-6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595],
+            label:"726",data:[-6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595, -6.595],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[-37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022],
+            label:"725",data:[-37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022, -37.022],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[-1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794],
+            label:"724",data:[-1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794, -1.794],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[-7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228],
+            label:"723",data:[-7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228, -7.228],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -1667,201 +1667,201 @@
 
     new Chart(document.getElementById("chart-SPY-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"752",data:[-1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002],
+            label:"752",data:[-1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002, -1.002],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"751",data:[-0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445],
+            label:"751",data:[-0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445, -0.445],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"750",data:[-1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153],
+            label:"750",data:[-1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153, -1.153],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"749",data:[-0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75],
+            label:"749",data:[-0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75, -0.75],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"748",data:[-1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07],
+            label:"748",data:[-1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07, -1.07],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747.5",data:[-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01],
+            label:"747.5",data:[-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"747",data:[-0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864],
+            label:"747",data:[-0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864, -0.864],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"746",data:[-0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58],
+            label:"746",data:[-0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58, -0.58],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"745",data:[-2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996],
+            label:"745",data:[-2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996, -2.996],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"744",data:[-1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237],
+            label:"744",data:[-1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237, -1.237],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"743",data:[-0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883],
+            label:"743",data:[-0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883, -0.883],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742.5",data:[-0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018],
+            label:"742.5",data:[-0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018, -0.018],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"742",data:[-1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334],
+            label:"742",data:[-1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334, -1.334],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"741",data:[-0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189],
+            label:"741",data:[-0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189, -0.189],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"740",data:[-3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837],
+            label:"740",data:[-3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837, -3.837],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"739",data:[-0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213],
+            label:"739",data:[-0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213, -0.213],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"738",data:[-0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926],
+            label:"738",data:[-0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926, -0.926],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737.5",data:[-0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015],
+            label:"737.5",data:[-0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"737",data:[-0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442],
+            label:"737",data:[-0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442, -0.442],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"736",data:[-0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378],
+            label:"736",data:[-0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378, -0.378],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"735",data:[-2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969],
+            label:"735",data:[-2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969, -2.969],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"734",data:[0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197],
+            label:"734",data:[0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197, 0.197],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"733",data:[-1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318],
+            label:"733",data:[-1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318, -1.318],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"732",data:[-0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016],
+            label:"732",data:[-0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016, -0.016],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"731",data:[-0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237],
+            label:"731",data:[-0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237, -0.237],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"730",data:[0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09],
+            label:"730",data:[0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"729",data:[-0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427],
+            label:"729",data:[-0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427, -0.427],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"728",data:[-0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148],
+            label:"728",data:[-0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148, -0.148],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"727",data:[-0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224],
+            label:"727",data:[-0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224, -0.224],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"726",data:[-0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025],
+            label:"726",data:[-0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"725",data:[1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187],
+            label:"725",data:[1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187, 1.187],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"724",data:[0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305],
+            label:"724",data:[0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305, 0.305],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"723",data:[-0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113],
+            label:"723",data:[-0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113, -0.113],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -3677,369 +3677,369 @@
         values:   [22.151, 0.019, 0.669, 0.014, 0.401, 3.707, 0.322, 0.022, 0.401, 0.082, 14.839, 0.048, 0.477, 0.035, 1.276, 7.296, 2.119, 0.08, 0.902, 0.485, 36.202, 2.052, 0.825, 0.311, 1.025, 6.111, 1.614, 0.34, 1.187, 0.798, 18.241, 0.442, 1.737, 0.316, 1.82, 9.019, 1.941, 1.465, 3.522, 3.11, 34.168, 0.756, 1.322, 0.719, 2.527, 12.598, 1.939, 0.884, 1.901, 0.829, 25.348, 0.648, 2.567, 0.486, 2.351, 8.219, 1.754, 1.363, 2.298, 1.026, 32.203, 0.257, -0.204, 0.027, 0.343, 13.693, 0.324, 0.2, 0.546, -1.22, 10.985, -0.641, 0.904, -0.705, -1.938, 9.847, 0.987, -0.796, -1.54, -1.283, 17.454, -4.743, -4.315, -2.333, -4.133, 5.736, -5.465, -4.384, -4.13, -2.322, -1.942, -2.646, -4.885, -2.404, 9.352, -4.083, -6.794, -3.004, -3.852, -4.572, -13.921, -9.908, -9.169, -22.845, -9.116, -22.306, -7.843, -3.615, -1.554, -7.428, -20.589, -5.381, -6.333, -11.839, -4.315, -0.784, -2.371, -2.835, -1.286, -1.998, -38.715, -2.303, -3.448, -2.134, -3.986, -8.83, -2.997, -1.163, -3.316, -4.667, -5.67, -4.913, -2.449, -1.449, -3.409, -11.965, -7.073, -1.733, -1.013, -1.27, -31.093, -1.381, -4.222, -1.393, -3.298, -9.582, -2.226, -0.35, -1.868, -0.345, -12.104, -0.598, -1.024, -1.172, -0.929, -8.824, -0.666, -2.661, -1.648, -0.526, -28.567, -0.796, -1.059, -1.201, 0.103, -3.948, -0.79, -0.201, -0.677, -0.448, -6.922, -0.925, -0.9, -0.757, -1.085, -3.517, -1.425, -0.371, -0.11, -0.901, -23.762, -0.558, -0.884, -0.811, -1.01, -5.441, -0.752, -1.387, -0.412, -0.209, -8.367, -0.36, -0.671, -0.436, -0.318, -3.338, -0.475, -0.521, 0.177, -0.807, -10.538, 0.962, -0.676, -0.205, -0.437, -2.964, -0.702],
         colors:   ['#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#00cec9', '#e17055', '#00cec9', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#00cec9', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#00cec9', '#e17055', '#e17055', '#e17055', '#e17055', '#e17055'],
         prevVals:  [22.151,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
-        prev2Vals: [22.152,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
+        prev2Vals: [22.151,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
         atmIdx:    103,
         spotIdx:   103,
         painIdx:   180,
         prevSlice:      [22.151,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
-        prev2Slice:     [22.152,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
+        prev2Slice:     [22.151,0.019,0.669,0.014,0.401,3.707,0.322,0.022,0.401,0.082,14.839,0.048,0.477,0.035,1.276,7.296,2.119,0.08,0.902,0.485,36.202,2.052,0.825,0.311,1.025,6.111,1.614,0.34,1.187,0.798,18.241,0.442,1.737,0.316,1.82,9.019,1.941,1.465,3.522,3.11,34.168,0.756,1.322,0.719,2.527,12.598,1.939,0.884,1.901,0.829,25.348,0.648,2.567,0.486,2.351,8.219,1.754,1.363,2.298,1.026,32.203,0.257,-0.204,0.027,0.343,13.693,0.324,0.2,0.546,-1.22,10.985,-0.641,0.904,-0.705,-1.938,9.847,0.987,-0.796,-1.54,-1.283,17.454,-4.743,-4.315,-2.333,-4.133,5.736,-5.465,-4.384,-4.13,-2.322,-1.942,-2.646,-4.885,-2.404,9.352,-4.083,-6.794,-3.004,-3.852,-4.572,-13.921,-9.908,-9.169,-22.845,-9.116,-22.306,-7.843,-3.615,-1.554,-7.428,-20.589,-5.381,-6.333,-11.839,-4.315,-0.784,-2.371,-2.835,-1.286,-1.998,-38.715,-2.303,-3.448,-2.134,-3.986,-8.83,-2.997,-1.163,-3.316,-4.667,-5.67,-4.913,-2.449,-1.449,-3.409,-11.965,-7.073,-1.733,-1.013,-1.27,-31.093,-1.381,-4.222,-1.393,-3.298,-9.582,-2.226,-0.35,-1.868,-0.345,-12.104,-0.598,-1.024,-1.172,-0.929,-8.824,-0.666,-2.661,-1.648,-0.526,-28.567,-0.796,-1.059,-1.201,0.103,-3.948,-0.79,-0.201,-0.677,-0.448,-6.922,-0.925,-0.9,-0.757,-1.085,-3.517,-1.425,-0.371,-0.11,-0.901,-23.762,-0.558,-0.884,-0.811,-1.01,-5.441,-0.752,-1.387,-0.412,-0.209,-8.367,-0.36,-0.671,-0.436,-0.318,-3.338,-0.475,-0.521,0.177,-0.807,-10.538,0.962,-0.676,-0.205,-0.437,-2.964,-0.702],
         spotIdxSliced:  103,
         painIdxSliced:  180,
     };
 
     new Chart(document.getElementById("chart-SPX-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"7530",data:[-1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938],
+            label:"7530",data:[-1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938, -1.938],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7525",data:[9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847],
+            label:"7525",data:[9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847, 9.847],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7520",data:[0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987],
+            label:"7520",data:[0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987, 0.987],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7515",data:[-0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796],
+            label:"7515",data:[-0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796, -0.796],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7510",data:[-1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54],
+            label:"7510",data:[-1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54, -1.54],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7505",data:[-1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283],
+            label:"7505",data:[-1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283, -1.283],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7500",data:[17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454],
+            label:"7500",data:[17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454, 17.454],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7495",data:[-4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743],
+            label:"7495",data:[-4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743, -4.743],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7490",data:[-4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315],
+            label:"7490",data:[-4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7485",data:[-2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333],
+            label:"7485",data:[-2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333, -2.333],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7480",data:[-4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133],
+            label:"7480",data:[-4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133, -4.133],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7475",data:[5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736],
+            label:"7475",data:[5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736, 5.736],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7470",data:[-5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465],
+            label:"7470",data:[-5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465, -5.465],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7465",data:[-4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384],
+            label:"7465",data:[-4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384, -4.384],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7460",data:[-4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13],
+            label:"7460",data:[-4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13, -4.13],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7455",data:[-2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322],
+            label:"7455",data:[-2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322, -2.322],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7450",data:[-1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942],
+            label:"7450",data:[-1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942, -1.942],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7445",data:[-2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646],
+            label:"7445",data:[-2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646, -2.646],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7440",data:[-4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885],
+            label:"7440",data:[-4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885, -4.885],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7435",data:[-2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404],
+            label:"7435",data:[-2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404, -2.404],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7430",data:[9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352],
+            label:"7430",data:[9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352, 9.352],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7425",data:[-4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083],
+            label:"7425",data:[-4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083, -4.083],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7420",data:[-6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794],
+            label:"7420",data:[-6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794, -6.794],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7415",data:[-3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004],
+            label:"7415",data:[-3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004, -3.004],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7410",data:[-3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852],
+            label:"7410",data:[-3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852, -3.852],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7405",data:[-4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572],
+            label:"7405",data:[-4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572, -4.572],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7400",data:[-13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921],
+            label:"7400",data:[-13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921, -13.921],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7395",data:[-9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908],
+            label:"7395",data:[-9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908, -9.908],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7390",data:[-9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169],
+            label:"7390",data:[-9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169, -9.169],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7385",data:[-22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845],
+            label:"7385",data:[-22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845, -22.845],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7380",data:[-9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116],
+            label:"7380",data:[-9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116, -9.116],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7375",data:[-22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306],
+            label:"7375",data:[-22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306, -22.306],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7370",data:[-7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843],
+            label:"7370",data:[-7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843, -7.843],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7365",data:[-3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615],
+            label:"7365",data:[-3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615, -3.615],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7360",data:[-1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554],
+            label:"7360",data:[-1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554, -1.554],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7355",data:[-7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428],
+            label:"7355",data:[-7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428, -7.428],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7350",data:[-20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589],
+            label:"7350",data:[-20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589, -20.589],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[-5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381],
+            label:"7345",data:[-5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381, -5.381],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[-6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333],
+            label:"7340",data:[-6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333, -6.333],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[-11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839],
+            label:"7335",data:[-11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839, -11.839],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[-4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315],
+            label:"7330",data:[-4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315, -4.315],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[-0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784],
+            label:"7325",data:[-0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784, -0.784],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[-2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371],
+            label:"7320",data:[-2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371, -2.371],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[-2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835],
+            label:"7315",data:[-2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835, -2.835],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[-1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286],
+            label:"7310",data:[-1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286, -1.286],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[-1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998],
+            label:"7305",data:[-1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998, -1.998],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[-38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715],
+            label:"7300",data:[-38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715, -38.715],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[-2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303],
+            label:"7295",data:[-2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303, -2.303],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[-3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448],
+            label:"7290",data:[-3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448, -3.448],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[-2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134],
+            label:"7285",data:[-2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134, -2.134],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[-3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986],
+            label:"7280",data:[-3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986, -3.986],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[-8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83],
+            label:"7275",data:[-8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83, -8.83],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[-2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997],
+            label:"7270",data:[-2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997, -2.997],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[-1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163],
+            label:"7265",data:[-1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163, -1.163],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[-3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316],
+            label:"7260",data:[-3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316, -3.316],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[-4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667],
+            label:"7255",data:[-4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667, -4.667],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[-5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67],
+            label:"7250",data:[-5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67, -5.67],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[-4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913],
+            label:"7245",data:[-4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913, -4.913],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[-2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449],
+            label:"7240",data:[-2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449, -2.449],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -4605,357 +4605,357 @@
 
     new Chart(document.getElementById("chart-SPX-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"7530",data:[-0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677],
+            label:"7530",data:[-0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677, -0.677],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7525",data:[-0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233],
+            label:"7525",data:[-0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7520",data:[-0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307],
+            label:"7520",data:[-0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307, -0.307],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7515",data:[-0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396],
+            label:"7515",data:[-0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396, -0.396],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7510",data:[-0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401],
+            label:"7510",data:[-0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401, -0.401],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7505",data:[-0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322],
+            label:"7505",data:[-0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322, -0.322],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7500",data:[0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189],
+            label:"7500",data:[0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189, 0.189],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7495",data:[-0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51],
+            label:"7495",data:[-0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51, -0.51],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7490",data:[-0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467],
+            label:"7490",data:[-0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467, -0.467],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7485",data:[-0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214],
+            label:"7485",data:[-0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214, -0.214],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7480",data:[-0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4],
+            label:"7480",data:[-0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4, -0.4],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7475",data:[0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211],
+            label:"7475",data:[0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211, 0.211],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7470",data:[-0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441],
+            label:"7470",data:[-0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441, -0.441],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7465",data:[-0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301],
+            label:"7465",data:[-0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301, -0.301],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7460",data:[-0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218],
+            label:"7460",data:[-0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218, -0.218],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7455",data:[-0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201],
+            label:"7455",data:[-0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201, -0.201],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7450",data:[0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199],
+            label:"7450",data:[0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199, 0.199],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7445",data:[-0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233],
+            label:"7445",data:[-0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233, -0.233],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7440",data:[-0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316],
+            label:"7440",data:[-0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316, -0.316],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7435",data:[-0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191],
+            label:"7435",data:[-0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7430",data:[0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397],
+            label:"7430",data:[0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397, 0.397],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7425",data:[-0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074],
+            label:"7425",data:[-0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074, -0.074],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7420",data:[-0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305],
+            label:"7420",data:[-0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305, -0.305],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7415",data:[-0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168],
+            label:"7415",data:[-0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168, -0.168],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7410",data:[-0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163],
+            label:"7410",data:[-0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163, -0.163],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7405",data:[-0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136],
+            label:"7405",data:[-0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136, -0.136],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7400",data:[1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39],
+            label:"7400",data:[1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7395",data:[-0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258],
+            label:"7395",data:[-0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258, -0.258],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7390",data:[-0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313],
+            label:"7390",data:[-0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313, -0.313],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7385",data:[-0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466],
+            label:"7385",data:[-0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466, -0.466],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7380",data:[-0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247],
+            label:"7380",data:[-0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247, -0.247],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7375",data:[0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094],
+            label:"7375",data:[0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7370",data:[-0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085],
+            label:"7370",data:[-0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085, -0.085],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7365",data:[-0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035],
+            label:"7365",data:[-0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035, -0.035],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7360",data:[0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102],
+            label:"7360",data:[0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7355",data:[-0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162],
+            label:"7355",data:[-0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162, -0.162],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7350",data:[0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595],
+            label:"7350",data:[0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595, 0.595],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7345",data:[-0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067],
+            label:"7345",data:[-0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067, -0.067],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7340",data:[-0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071],
+            label:"7340",data:[-0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7335",data:[-0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15],
+            label:"7335",data:[-0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15, -0.15],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7330",data:[-0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031],
+            label:"7330",data:[-0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031, -0.031],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7325",data:[0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919],
+            label:"7325",data:[0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919, 0.919],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7320",data:[0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084],
+            label:"7320",data:[0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7315",data:[-0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015],
+            label:"7315",data:[-0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015, -0.015],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7310",data:[0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147],
+            label:"7310",data:[0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147, 0.147],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7305",data:[-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01],
+            label:"7305",data:[-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7300",data:[0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87],
+            label:"7300",data:[0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87, 0.87],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7295",data:[0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045],
+            label:"7295",data:[0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7290",data:[0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066],
+            label:"7290",data:[0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066, 0.066],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7285",data:[0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069],
+            label:"7285",data:[0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069, 0.069],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7280",data:[0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167],
+            label:"7280",data:[0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167, 0.167],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7275",data:[0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304],
+            label:"7275",data:[0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304, 0.304],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7270",data:[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+            label:"7270",data:[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7265",data:[0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
+            label:"7265",data:[0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7260",data:[0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021],
+            label:"7260",data:[0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7255",data:[0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03],
+            label:"7255",data:[0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7250",data:[2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046],
+            label:"7250",data:[2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046, 2.046],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7245",data:[0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025],
+            label:"7245",data:[0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"7240",data:[0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053],
+            label:"7240",data:[0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -6783,171 +6783,171 @@
 
     new Chart(document.getElementById("chart-QQQ-gex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"714",data:[-2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376],
+            label:"714",data:[-2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376, -2.376],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[-3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456],
+            label:"713",data:[-3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456, -3.456],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52],
+            label:"712",data:[-6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52, -6.52],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[-1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963],
+            label:"711",data:[-1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963, -1.963],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[-9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619],
+            label:"710",data:[-9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619, -9.619],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[-2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289],
+            label:"709",data:[-2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289, -2.289],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[-5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158],
+            label:"708",data:[-5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158, -5.158],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[-3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877],
+            label:"707",data:[-3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877, -3.877],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[-3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285],
+            label:"706",data:[-3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285, -3.285],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[-46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155],
+            label:"705",data:[-46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155, -46.155],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021],
+            label:"704",data:[-8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021, -8.021],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"703",data:[-5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271],
+            label:"703",data:[-5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271, -5.271],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"702",data:[-3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222],
+            label:"702",data:[-3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222, -3.222],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"701",data:[-2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211],
+            label:"701",data:[-2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211, -2.211],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"700",data:[-56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875],
+            label:"700",data:[-56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875, -56.875],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"699",data:[-3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776],
+            label:"699",data:[-3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776, -3.776],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"698",data:[-2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628],
+            label:"698",data:[-2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628, -2.628],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"697",data:[-3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681],
+            label:"697",data:[-3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681, -3.681],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"696",data:[-3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308],
+            label:"696",data:[-3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308, -3.308],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"695",data:[-5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413],
+            label:"695",data:[-5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413, -5.413],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"694",data:[-2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422],
+            label:"694",data:[-2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422, -2.422],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"693",data:[-1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81],
+            label:"693",data:[-1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81, -1.81],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"692",data:[-11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271],
+            label:"692",data:[-11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271, -11.271],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"691",data:[-1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171],
+            label:"691",data:[-1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171, -1.171],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"690",data:[-14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243],
+            label:"690",data:[-14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243, -14.243],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"689",data:[-1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544],
+            label:"689",data:[-1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544, -1.544],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"688",data:[-6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928],
+            label:"688",data:[-6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928, -6.928],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"687",data:[-1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642],
+            label:"687",data:[-1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642, -1.642],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -7513,171 +7513,171 @@
 
     new Chart(document.getElementById("chart-QQQ-dex-ts"), {
         type: 'line',
-        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52"], datasets: [
+        data: { labels: ["18:04", "18:10", "18:17", "18:24", "18:31", "18:38", "18:44", "18:51", "18:58", "19:05", "19:12", "19:18", "19:25", "19:32", "19:39", "19:46", "19:52", "19:59"], datasets: [
         {
-            label:"714",data:[-0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262],
+            label:"714",data:[-0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262, -0.262],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"713",data:[-0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306],
+            label:"713",data:[-0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306, -0.306],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"712",data:[-0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495],
+            label:"712",data:[-0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495, -0.495],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"711",data:[-0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195],
+            label:"711",data:[-0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195, -0.195],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"710",data:[0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01],
+            label:"710",data:[0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"709",data:[-0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17],
+            label:"709",data:[-0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17, -0.17],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"708",data:[-0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37],
+            label:"708",data:[-0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37, -0.37],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"707",data:[-0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309],
+            label:"707",data:[-0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309, -0.309],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"706",data:[-0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215],
+            label:"706",data:[-0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215, -0.215],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"705",data:[-3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301],
+            label:"705",data:[-3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301, -3.301],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"704",data:[-0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486],
+            label:"704",data:[-0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486, -0.486],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"703",data:[-0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368],
+            label:"703",data:[-0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368, -0.368],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"702",data:[-0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203],
+            label:"702",data:[-0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203, -0.203],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"701",data:[-0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129],
+            label:"701",data:[-0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129, -0.129],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"700",data:[-3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989],
+            label:"700",data:[-3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989, -3.989],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"699",data:[-0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191],
+            label:"699",data:[-0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191, -0.191],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"698",data:[-0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178],
+            label:"698",data:[-0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178, -0.178],
             borderColor:"#74b9ff",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"697",data:[-0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228],
+            label:"697",data:[-0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228, -0.228],
             borderColor:"#e17055",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"696",data:[-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1],
+            label:"696",data:[-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1],
             borderColor:"#00cec9",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"695",data:[0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27],
+            label:"695",data:[0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27, 0.27],
             borderColor:"#6c5ce7",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"694",data:[-0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11],
+            label:"694",data:[-0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11, -0.11],
             borderColor:"#00b894",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"693",data:[-0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095],
+            label:"693",data:[-0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095, -0.095],
             borderColor:"#d63031",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"692",data:[-0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662],
+            label:"692",data:[-0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662, -0.662],
             borderColor:"#636e72",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"691",data:[-0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06],
+            label:"691",data:[-0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06, -0.06],
             borderColor:"#fab1a0",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"690",data:[1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526],
+            label:"690",data:[1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526, 1.526],
             borderColor:"#a29bfe",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"689",data:[-0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071],
+            label:"689",data:[-0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071, -0.071],
             borderColor:"#fd79a8",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"688",data:[-0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411],
+            label:"688",data:[-0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411, -0.411],
             borderColor:"#55efc4",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
         },
         {
-            label:"687",data:[-0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077],
+            label:"687",data:[-0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077, -0.077],
             borderColor:"#fdcb6e",
             backgroundColor:"transparent",tension:0.3,
             pointRadius:2,borderWidth:1.5,spanGaps:true,hidden:true
@@ -9149,7 +9149,7 @@
         switchTab(activeInst);
 
         // Smart polling: check gex_version.json every 60s, reload only when new data exists
-        var _pageVersion = '2026-06-07 19:52';
+        var _pageVersion = '2026-06-07 19:59';
         var _pollInterval = 60;          // seconds between polls
         var _pollCountdown = _pollInterval;
         var _cdEl = document.getElementById('refresh-countdown');

@@ -136,7 +136,7 @@
 
 <div class="header">
     <h1>Options Flow <span class="badge">DELTA-WEIGHTED</span></h1>
-    <div class="subtitle">2026-06-08 &bull; &Delta; &times; Volume &times; VWAP &times; 100 &bull; Real-time via Massive API &bull; 2026-06-08 09:33 ET</div>
+    <div class="subtitle">2026-06-08 &bull; &Delta; &times; Volume &times; VWAP &times; 100 &bull; Real-time via Massive API &bull; 2026-06-08 09:40 ET</div>
 </div>
 
 <script>
@@ -409,33 +409,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$743.74</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$744.34</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">Call Delta Flow</div>
-                <div class="value flow-pos">$5.87B</div>
+                <div class="value flow-pos">$6.16B</div>
             </div>
             <div class="card">
                 <div class="label">Put Delta Flow</div>
-                <div class="value flow-neg">$6.69B</div>
+                <div class="value flow-neg">$6.49B</div>
             </div>
             <div class="card">
                 <div class="label">Net Delta Flow</div>
-                <div class="value flow-neg">$-817.1M</div>
+                <div class="value flow-neg">$-330.8M</div>
             </div>
             <div class="card">
                 <div class="label">Call/Put Ratio</div>
-                <div class="value flow-neutral">0.88</div>
+                <div class="value flow-neutral">0.95</div>
             </div>
             <div class="card">
                 <div class="label">Total Volume</div>
-                <div class="value" style="color:var(--blue)">8,572,259</div>
+                <div class="value" style="color:var(--blue)">8,575,389</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -465,16 +465,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:32"],
-        spots: [743.74],
+        labels: ["09:32", "09:39"],
+        spots: [743.74, 744.34],
         mode: 'all', metric: 'delta',
         all: {
-            raw:   { call: [10756.04], put: [12287.26], net: [-1531.22] },
-            delta: { call: [5868.55], put: [6685.61], net: [-817.06] }
+            raw:   { call: [10756.04, 11230.56], put: [12287.26, 12041.39], net: [-1531.22, -810.83] },
+            delta: { call: [5868.55, 6161.05], put: [6685.61, 6491.89], net: [-817.06, -330.84] }
         },
         "0dte": {
-            raw:   { call: [344.79], put: [1145.21], net: [-800.42] },
-            delta: { call: [178.28], put: [744.54], net: [-566.26] }
+            raw:   { call: [344.79, 368.77], put: [1145.21, 1090.83], net: [-800.42, -722.06] },
+            delta: { call: [178.28, 188.46], put: [744.54, 684.29], net: [-566.26, -495.83] }
         },
         prev: { labels: [], net: [] }
     };
@@ -482,25 +482,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$718.84</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$719.10</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">Call Delta Flow</div>
-                <div class="value flow-pos">$569.7M</div>
+                <div class="value flow-pos">$571.8M</div>
             </div>
             <div class="card">
                 <div class="label">Put Delta Flow</div>
-                <div class="value flow-neg">$1.33B</div>
+                <div class="value flow-neg">$1.31B</div>
             </div>
             <div class="card">
                 <div class="label">Net Delta Flow</div>
-                <div class="value flow-neg">$-755.8M</div>
+                <div class="value flow-neg">$-741.0M</div>
             </div>
             <div class="card">
                 <div class="label">Call/Put Ratio</div>
-                <div class="value flow-neutral">0.43</div>
+                <div class="value flow-neutral">0.44</div>
             </div>
             <div class="card">
                 <div class="label">Total Volume</div>
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -538,16 +538,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:32"],
-        spots: [718.84],
+        labels: ["09:32", "09:39"],
+        spots: [718.84, 719.1],
         mode: 'all', metric: 'delta',
         all: {
-            raw:   { call: [1025.13], put: [3277.56], net: [-2252.43] },
-            delta: { call: [569.68], put: [1325.52], net: [-755.84] }
+            raw:   { call: [1025.13, 1025.13], put: [3277.56, 3277.56], net: [-2252.43, -2252.43] },
+            delta: { call: [569.68, 571.77], put: [1325.52, 1312.82], net: [-755.84, -741.05] }
         },
         "0dte": {
-            raw:   { call: [65.78], put: [807.77], net: [-741.99] },
-            delta: { call: [46.09], put: [374.63], net: [-328.54] }
+            raw:   { call: [65.78, 65.78], put: [807.77, 807.77], net: [-741.99, -741.99] },
+            delta: { call: [46.09, 46.58], put: [374.63, 368.69], net: [-328.54, -322.11] }
         },
         prev: { labels: [], net: [] }
     };

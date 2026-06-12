@@ -152,7 +152,7 @@
 
 <div class="header">
     <h1>Volatility Skew <span class="badge">25&Delta; RISK REVERSAL</span></h1>
-    <div class="subtitle">2026-06-11 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-06-11 23:54 ET</div>
+    <div class="subtitle">2026-06-11 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-06-12 00:00 ET</div>
 </div>
 
 <div class="inst-toggle">
@@ -739,29 +739,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'sp500';
-        var labels = ["20:33", "20:40", "20:47", "20:53", "21:00", "21:07", "21:14", "21:21", "21:28", "21:35", "21:41", "21:48", "21:55", "22:02", "22:09", "22:16", "22:23", "22:30", "22:36", "22:43", "22:50", "22:57", "23:05", "23:11", "23:18", "23:25", "23:31", "23:38", "23:45", "23:52"];
+        var labels = ["20:40", "20:47", "20:53", "21:00", "21:07", "21:14", "21:21", "21:28", "21:35", "21:41", "21:48", "21:55", "22:02", "22:09", "22:16", "22:23", "22:30", "22:36", "22:43", "22:50", "22:57", "23:05", "23:11", "23:18", "23:25", "23:31", "23:38", "23:45", "23:52", "23:59"];
         var spot = 737.76;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1063],
+                label: '0DTE', data: [8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1065, 8.1063, 8.1063],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [0.0502, 0.0524, 0.0603, 0.0452, 0.0448, 0.0444, 0.0438, 0.0418, 0.0435, 0.04, 0.0358, 0.035, 0.0351, 0.0358, 0.0503, 0.0441, 0.0495, 0.0493, 0.0498, 0.0508, 0.0513, 0.0501, 0.0514, 0.0533, 0.053, 0.0523, 0.0371, 0.037, 0.0365, 0.0394],
+                label: 'Weekly', data: [0.0524, 0.0603, 0.0452, 0.0448, 0.0444, 0.0438, 0.0418, 0.0435, 0.04, 0.0358, 0.035, 0.0351, 0.0358, 0.0503, 0.0441, 0.0495, 0.0493, 0.0498, 0.0508, 0.0513, 0.0501, 0.0514, 0.0533, 0.053, 0.0523, 0.0371, 0.037, 0.0365, 0.0394, 0.0394],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0462, 0.0469, 0.0488, 0.0486, 0.0484, 0.0485, 0.0483, 0.0485, 0.0487, 0.0484, 0.0485, 0.0484, 0.0483, 0.0484, 0.0472, 0.0469, 0.0468, 0.0468, 0.0469, 0.0469, 0.0468, 0.0467, 0.0465, 0.0468, 0.0469, 0.0465, 0.0465, 0.047, 0.0468, 0.0467],
+                label: 'Monthly', data: [0.0469, 0.0488, 0.0486, 0.0484, 0.0485, 0.0483, 0.0485, 0.0487, 0.0484, 0.0485, 0.0484, 0.0483, 0.0484, 0.0472, 0.0469, 0.0468, 0.0468, 0.0469, 0.0469, 0.0468, 0.0467, 0.0465, 0.0468, 0.0469, 0.0465, 0.0465, 0.047, 0.0468, 0.0467, 0.0467],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [3.341293, 3.342096, 3.343697, 3.340477, 3.340445, 3.34044, 3.340261, 3.339774, 3.340131, 3.339457, 3.338453, 3.33823, 3.338183, 3.338361, 3.341534, 3.339908, 3.341022, 3.341149, 3.341205, 3.341388, 3.341463, 3.34122, 3.34147, 3.341916, 3.34188, 3.34158, 3.338499, 3.338287, 3.338205, 3.338562],
+                label: 'All (Weighted)', data: [3.342096, 3.343697, 3.340477, 3.340445, 3.34044, 3.340261, 3.339774, 3.340131, 3.339457, 3.338453, 3.33823, 3.338183, 3.338361, 3.341534, 3.339908, 3.341022, 3.341149, 3.341205, 3.341388, 3.341463, 3.34122, 3.34147, 3.341916, 3.34188, 3.34158, 3.338499, 3.338287, 3.338205, 3.338562, 3.338562],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }
@@ -935,19 +935,19 @@ document.addEventListener('click', function(e) {
         <div class="cards">
             <div class="card">
                 <div class="label">Risk Reversal (All)</div>
-                <div class="value skew-green">+2.0800</div>
+                <div class="value skew-green">+0.0412</div>
             </div>
             <div class="card">
                 <div class="label">RR Change (vs Prev Day)</div>
-                <div class="value skew-red">↓ -1.3398</div>
+                <div class="value skew-red">↓ -3.3786</div>
             </div>
             <div class="card">
                 <div class="label">0DTE RR</div>
-                <div class="value skew-green">+4.4923</div>
+                <div class="value skew-green">+0.0344</div>
             </div>
             <div class="card">
                 <div class="label">Monthly RR</div>
-                <div class="value skew-green">+0.0566</div>
+                <div class="value skew-green">+0.0564</div>
             </div>
         </div>
 
@@ -974,224 +974,215 @@ document.addEventListener('click', function(e) {
                         </tr>
                     </thead>
                     <tbody><tr>
-            <td>260611</td>
-            <td>0</td>
-            <td>630.0</td>
-            <td>7.6733</td>
-            <td>755.0</td>
-            <td>3.1810</td>
-            <td class="skew-green">+4.4923</td>
-            <td class="skew-green">+4.4439</td>
-        </tr><tr>
             <td>260612</td>
-            <td>1</td>
+            <td>0</td>
             <td>713.0</td>
-            <td>0.3886</td>
+            <td>0.3883</td>
             <td>726.0</td>
-            <td>0.3548</td>
-            <td class="skew-green">+0.0338</td>
-            <td class="skew-red">-0.0105</td>
+            <td>0.3539</td>
+            <td class="skew-green">+0.0344</td>
+            <td class="skew-red">-0.0099</td>
         </tr><tr>
             <td>260615</td>
-            <td>4</td>
+            <td>3</td>
             <td>708.0</td>
-            <td>0.2884</td>
+            <td>0.2876</td>
             <td>731.0</td>
-            <td>0.2552</td>
-            <td class="skew-green">+0.0332</td>
-            <td class="skew-red">-0.0206</td>
+            <td>0.2553</td>
+            <td class="skew-green">+0.0323</td>
+            <td class="skew-red">-0.0215</td>
         </tr><tr>
             <td>260616</td>
-            <td>5</td>
+            <td>4</td>
             <td>705.0</td>
-            <td>0.3104</td>
+            <td>0.3097</td>
             <td>733.0</td>
-            <td>0.2656</td>
-            <td class="skew-green">+0.0448</td>
-            <td class="skew-red">-0.0218</td>
+            <td>0.2662</td>
+            <td class="skew-green">+0.0435</td>
+            <td class="skew-red">-0.0231</td>
         </tr><tr>
             <td>260617</td>
-            <td>6</td>
-            <td>701.0</td>
-            <td>0.3452</td>
+            <td>5</td>
+            <td>702.0</td>
+            <td>0.3413</td>
             <td>736.0</td>
-            <td>0.2838</td>
-            <td class="skew-green">+0.0614</td>
-            <td class="skew-red">-0.0047</td>
+            <td>0.2844</td>
+            <td class="skew-green">+0.0569</td>
+            <td class="skew-red">-0.0092</td>
         </tr><tr>
             <td>260618</td>
-            <td>7</td>
+            <td>6</td>
             <td>699.0</td>
-            <td>0.3530</td>
+            <td>0.3536</td>
             <td>739.0</td>
-            <td>0.2914</td>
-            <td class="skew-green">+0.0616</td>
-            <td class="skew-red">-0.0142</td>
+            <td>0.2907</td>
+            <td class="skew-green">+0.0629</td>
+            <td class="skew-red">-0.0129</td>
         </tr><tr>
             <td>260622</td>
-            <td>11</td>
+            <td>10</td>
             <td>695.0</td>
-            <td>0.3103</td>
+            <td>0.3109</td>
             <td>742.0</td>
-            <td>0.2542</td>
-            <td class="skew-green">+0.0561</td>
-            <td class="skew-red">-0.0118</td>
+            <td>0.2537</td>
+            <td class="skew-green">+0.0572</td>
+            <td class="skew-red">-0.0107</td>
         </tr><tr>
             <td>260623</td>
-            <td>12</td>
+            <td>11</td>
             <td>695.0</td>
-            <td>0.3129</td>
-            <td>744.0</td>
-            <td>0.2645</td>
-            <td class="skew-green">+0.0484</td>
-            <td class="skew-red">-0.0166</td>
+            <td>0.3131</td>
+            <td>743.0</td>
+            <td>0.2574</td>
+            <td class="skew-green">+0.0557</td>
+            <td class="skew-red">-0.0093</td>
         </tr><tr>
             <td>260624</td>
-            <td>13</td>
+            <td>12</td>
             <td>695.0</td>
-            <td>0.3163</td>
+            <td>0.3167</td>
             <td>745.0</td>
-            <td>0.2614</td>
-            <td class="skew-green">+0.0549</td>
+            <td>0.2611</td>
+            <td class="skew-green">+0.0556</td>
             <td class="skew-neutral">N/A</td>
         </tr><tr>
             <td>260626</td>
-            <td>15</td>
-            <td>693.0</td>
-            <td>0.3192</td>
+            <td>14</td>
+            <td>692.0</td>
+            <td>0.3206</td>
             <td>748.0</td>
-            <td>0.2721</td>
-            <td class="skew-green">+0.0471</td>
-            <td class="skew-red">-0.0246</td>
+            <td>0.2716</td>
+            <td class="skew-green">+0.0490</td>
+            <td class="skew-red">-0.0227</td>
         </tr><tr>
             <td>260630</td>
-            <td>19</td>
+            <td>18</td>
             <td>690.0</td>
-            <td>0.3123</td>
+            <td>0.3124</td>
             <td>751.0</td>
-            <td>0.2599</td>
-            <td class="skew-green">+0.0524</td>
-            <td class="skew-red">-0.0168</td>
+            <td>0.2597</td>
+            <td class="skew-green">+0.0527</td>
+            <td class="skew-red">-0.0165</td>
         </tr><tr>
             <td>260702</td>
-            <td>21</td>
+            <td>20</td>
             <td>688.0</td>
-            <td>0.3180</td>
+            <td>0.3181</td>
             <td>753.0</td>
-            <td>0.2590</td>
-            <td class="skew-green">+0.0590</td>
-            <td class="skew-red">-0.0126</td>
+            <td>0.2589</td>
+            <td class="skew-green">+0.0592</td>
+            <td class="skew-red">-0.0124</td>
         </tr><tr>
             <td>260710</td>
-            <td>29</td>
+            <td>28</td>
             <td>685.0</td>
-            <td>0.3036</td>
+            <td>0.3033</td>
             <td>758.0</td>
             <td>0.2464</td>
-            <td class="skew-green">+0.0572</td>
-            <td class="skew-red">-0.0121</td>
+            <td class="skew-green">+0.0569</td>
+            <td class="skew-red">-0.0124</td>
         </tr><tr>
             <td>260717</td>
-            <td>36</td>
+            <td>35</td>
             <td>682.0</td>
-            <td>0.2980</td>
+            <td>0.2979</td>
             <td>763.0</td>
-            <td>0.2414</td>
-            <td class="skew-green">+0.0566</td>
-            <td class="skew-red">-0.0160</td>
-        </tr><tr>
-            <td>260724</td>
-            <td>43</td>
-            <td>680.0</td>
-            <td>0.2966</td>
-            <td>767.0</td>
-            <td>0.2394</td>
-            <td class="skew-green">+0.0572</td>
-            <td class="skew-red">-0.0105</td>
-        </tr><tr>
-            <td>260731</td>
-            <td>50</td>
-            <td>678.0</td>
-            <td>0.2937</td>
-            <td>772.0</td>
-            <td>0.2401</td>
-            <td class="skew-green">+0.0536</td>
+            <td>0.2415</td>
+            <td class="skew-green">+0.0564</td>
             <td class="skew-red">-0.0162</td>
         </tr><tr>
+            <td>260724</td>
+            <td>42</td>
+            <td>680.0</td>
+            <td>0.2964</td>
+            <td>767.0</td>
+            <td>0.2393</td>
+            <td class="skew-green">+0.0571</td>
+            <td class="skew-red">-0.0106</td>
+        </tr><tr>
+            <td>260731</td>
+            <td>49</td>
+            <td>678.0</td>
+            <td>0.2940</td>
+            <td>772.0</td>
+            <td>0.2398</td>
+            <td class="skew-green">+0.0542</td>
+            <td class="skew-red">-0.0156</td>
+        </tr><tr>
             <td>260821</td>
-            <td>71</td>
+            <td>70</td>
             <td>670.0</td>
-            <td>0.2933</td>
+            <td>0.2934</td>
             <td>785.0</td>
-            <td>0.2349</td>
+            <td>0.2350</td>
             <td class="skew-green">+0.0584</td>
             <td class="skew-red">-0.0122</td>
         </tr><tr>
             <td>260831</td>
-            <td>81</td>
+            <td>80</td>
             <td>670.0</td>
-            <td>0.2907</td>
+            <td>0.2905</td>
             <td>790.0</td>
-            <td>0.2321</td>
-            <td class="skew-green">+0.0586</td>
-            <td class="skew-red">-0.0095</td>
+            <td>0.2322</td>
+            <td class="skew-green">+0.0583</td>
+            <td class="skew-red">-0.0098</td>
         </tr><tr>
             <td>260918</td>
-            <td>99</td>
+            <td>98</td>
             <td>665.0</td>
-            <td>0.2925</td>
+            <td>0.2926</td>
             <td>800.0</td>
-            <td>0.2341</td>
-            <td class="skew-green">+0.0584</td>
-            <td class="skew-red">-0.0104</td>
+            <td>0.2340</td>
+            <td class="skew-green">+0.0586</td>
+            <td class="skew-red">-0.0102</td>
         </tr><tr>
             <td>260930</td>
-            <td>111</td>
+            <td>110</td>
             <td>665.0</td>
             <td>0.2885</td>
             <td>805.0</td>
-            <td>0.2326</td>
-            <td class="skew-green">+0.0559</td>
-            <td class="skew-red">-0.0107</td>
+            <td>0.2325</td>
+            <td class="skew-green">+0.0560</td>
+            <td class="skew-red">-0.0106</td>
         </tr><tr>
             <td>261016</td>
-            <td>127</td>
+            <td>126</td>
             <td>660.0</td>
-            <td>0.2933</td>
+            <td>0.2931</td>
             <td>810.0</td>
             <td>0.2328</td>
-            <td class="skew-green">+0.0605</td>
-            <td class="skew-red">-0.0082</td>
+            <td class="skew-green">+0.0603</td>
+            <td class="skew-red">-0.0084</td>
         </tr><tr>
             <td>261218</td>
-            <td>190</td>
+            <td>189</td>
             <td>655.0</td>
-            <td>0.2899</td>
+            <td>0.2904</td>
             <td>840.0</td>
-            <td>0.2324</td>
-            <td class="skew-green">+0.0575</td>
-            <td class="skew-red">-0.0096</td>
+            <td>0.2323</td>
+            <td class="skew-green">+0.0581</td>
+            <td class="skew-red">-0.0090</td>
         </tr><tr>
             <td>261231</td>
-            <td>203</td>
+            <td>202</td>
             <td>655.0</td>
-            <td>0.2890</td>
+            <td>0.2892</td>
             <td>845.0</td>
-            <td>0.2330</td>
-            <td class="skew-green">+0.0560</td>
-            <td class="skew-red">-0.0114</td>
+            <td>0.2329</td>
+            <td class="skew-green">+0.0563</td>
+            <td class="skew-red">-0.0111</td>
         </tr><tr>
             <td>270115</td>
-            <td>218</td>
+            <td>217</td>
             <td>655.0</td>
-            <td>0.2856</td>
+            <td>0.2857</td>
             <td>850.0</td>
-            <td>0.2285</td>
+            <td>0.2286</td>
             <td class="skew-green">+0.0571</td>
             <td class="skew-red">-0.0077</td>
         </tr><tr>
             <td>270319</td>
-            <td>281</td>
+            <td>280</td>
             <td>655.0</td>
             <td>0.2835</td>
             <td>875.0</td>
@@ -1200,16 +1191,16 @@ document.addEventListener('click', function(e) {
             <td class="skew-red">-0.0112</td>
         </tr><tr>
             <td>270331</td>
-            <td>293</td>
+            <td>292</td>
             <td>650.0</td>
-            <td>0.2885</td>
+            <td>0.2884</td>
             <td>880.0</td>
-            <td>0.2298</td>
-            <td class="skew-green">+0.0587</td>
-            <td class="skew-green">+0.0075</td>
+            <td>0.2300</td>
+            <td class="skew-green">+0.0584</td>
+            <td class="skew-green">+0.0072</td>
         </tr><tr>
             <td>270617</td>
-            <td>371</td>
+            <td>370</td>
             <td>650.0</td>
             <td>0.2837</td>
             <td>910.0</td>
@@ -1218,49 +1209,49 @@ document.addEventListener('click', function(e) {
             <td class="skew-red">-0.0058</td>
         </tr><tr>
             <td>270917</td>
-            <td>463</td>
+            <td>462</td>
             <td>655.0</td>
-            <td>0.2806</td>
+            <td>0.2805</td>
             <td>945.0</td>
-            <td>0.2285</td>
-            <td class="skew-green">+0.0521</td>
-            <td class="skew-red">-0.0065</td>
+            <td>0.2288</td>
+            <td class="skew-green">+0.0517</td>
+            <td class="skew-red">-0.0069</td>
         </tr><tr>
             <td>271217</td>
-            <td>554</td>
+            <td>553</td>
             <td>655.0</td>
             <td>0.2796</td>
             <td>980.0</td>
-            <td>0.2289</td>
-            <td class="skew-green">+0.0507</td>
-            <td class="skew-red">-0.0070</td>
+            <td>0.2290</td>
+            <td class="skew-green">+0.0506</td>
+            <td class="skew-red">-0.0071</td>
         </tr><tr>
             <td>280121</td>
-            <td>589</td>
+            <td>588</td>
             <td>655.0</td>
-            <td>0.2851</td>
+            <td>0.2850</td>
             <td>990.0</td>
-            <td>0.2251</td>
-            <td class="skew-green">+0.0600</td>
-            <td class="skew-green">+0.0053</td>
+            <td>0.2252</td>
+            <td class="skew-green">+0.0598</td>
+            <td class="skew-green">+0.0051</td>
         </tr><tr>
             <td>280616</td>
-            <td>736</td>
+            <td>735</td>
             <td>665.0</td>
-            <td>0.2818</td>
+            <td>0.2815</td>
             <td>1060.0</td>
-            <td>0.2338</td>
-            <td class="skew-green">+0.0480</td>
-            <td class="skew-red">-0.0118</td>
+            <td>0.2341</td>
+            <td class="skew-green">+0.0474</td>
+            <td class="skew-red">-0.0124</td>
         </tr><tr>
             <td>281215</td>
-            <td>918</td>
+            <td>917</td>
             <td>675.0</td>
-            <td>0.2717</td>
+            <td>0.2714</td>
             <td>1105.0</td>
-            <td>0.2213</td>
-            <td class="skew-green">+0.0504</td>
-            <td class="skew-red">-0.0082</td>
+            <td>0.2215</td>
+            <td class="skew-green">+0.0499</td>
+            <td class="skew-red">-0.0087</td>
         </tr></tbody>
                 </table>
             </div>
@@ -1270,29 +1261,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'nasdaq';
-        var labels = ["20:33", "20:40", "20:47", "20:53", "21:00", "21:07", "21:14", "21:21", "21:28", "21:35", "21:41", "21:48", "21:55", "22:02", "22:09", "22:16", "22:23", "22:30", "22:36", "22:43", "22:50", "22:57", "23:05", "23:11", "23:18", "23:25", "23:31", "23:38", "23:45", "23:52"];
+        var labels = ["20:40", "20:47", "20:53", "21:00", "21:07", "21:14", "21:21", "21:28", "21:35", "21:41", "21:48", "21:55", "22:02", "22:09", "22:16", "22:23", "22:30", "22:36", "22:43", "22:50", "22:57", "23:05", "23:11", "23:18", "23:25", "23:31", "23:38", "23:45", "23:52", "23:59"];
         var spot = 719.38;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923],
+                label: '0DTE', data: [4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 4.4923, 0.0344],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338],
+                label: 'Weekly', data: [0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, 0.0338, null],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566],
+                label: 'Monthly', data: [0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0566, 0.0564],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [2.080853, 2.080853, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981],
+                label: 'All (Weighted)', data: [2.080853, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080776, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.080282, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981, 2.079981, 0.041202],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }

@@ -143,7 +143,7 @@
 
 <div class="header">
     <h1>IV Term Structure <span class="badge">ATM IMPLIED VOL</span></h1>
-    <div class="subtitle">2026-06-16 &bull; ATM = &plusmn;2% of spot &bull; 2026-06-16 14:16 ET</div>
+    <div class="subtitle">2026-06-16 &bull; ATM = &plusmn;2% of spot &bull; 2026-06-16 14:23 ET</div>
 </div>
 
 <div class="toggle-bar">
@@ -162,46 +162,46 @@ var _sortAsc = true;
 
     _tsData['sp500'] = {
         label: 'S&P 500',
-        spot: 752.1,
-        ts: '14:14',
+        spot: 751.97,
+        ts: '14:21',
         dte: [0, 1, 2, 6, 7, 8, 9, 10, 13, 14, 16, 24, 31, 38, 45, 66, 76, 94, 106, 122],
         expLabels: ["2026-06-16", "2026-06-17", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-02", "2026-07-10", "2026-07-17", "2026-07-24", "2026-07-31", "2026-08-21", "2026-08-31", "2026-09-18", "2026-09-30", "2026-10-16"],
-        callIV: [25.2, 17.4, 16.06, 11.81, 12.0, 12.28, 12.43, 12.57, 12.06, 12.33, 12.86, 12.87, 13.2, 13.44, 13.9, 14.45, 14.63, 15.14, 15.3, 15.74],
-        putIV: [30.61, 17.64, 16.27, 11.74, 11.94, 12.28, 12.39, 12.54, 12.06, 12.32, 12.88, 12.89, 13.16, 13.41, 13.87, 14.41, 14.6, 15.14, 15.29, 15.69],
-        avgIV: [27.91, 17.52, 16.16, 11.78, 11.97, 12.28, 12.41, 12.56, 12.06, 12.32, 12.87, 12.88, 13.18, 13.42, 13.89, 14.43, 14.62, 15.14, 15.29, 15.71],
+        callIV: [32.07, 17.84, 16.58, 12.05, 12.22, 12.47, 12.6, 12.7, 12.2, 12.43, 12.95, 12.95, 13.25, 13.5, 13.97, 14.5, 14.66, 15.19, 15.32, 15.74],
+        putIV: [27.17, 17.54, 16.25, 11.86, 12.08, 12.28, 12.56, 12.68, 12.12, 12.36, 12.92, 12.93, 13.24, 13.48, 13.93, 14.47, 14.66, 15.19, 15.31, 15.69],
+        avgIV: [29.62, 17.69, 16.41, 11.95, 12.15, 12.37, 12.58, 12.69, 12.16, 12.39, 12.93, 12.94, 13.25, 13.49, 13.95, 14.48, 14.66, 15.19, 15.31, 15.72],
         prevDte: [0, 1, 2, 6, 7, 8, 9, 10, 13, 14, 16, 24, 31, 38, 45, 66, 76, 94, 106, 122],
-        prevAvgIV: [28.56, 17.48, 15.5, 11.92, 12.08, 12.31, 12.47, 12.6, 12.07, 12.34, 12.85, 12.88, 13.17, 13.41, 13.87, 14.41, 14.58, 15.12, 15.27, 15.67],
-        nearIV: 27.91,
-        farIV: 15.71,
-        spread: 12.20,
+        prevAvgIV: [27.91, 17.52, 16.16, 11.78, 11.97, 12.28, 12.41, 12.56, 12.06, 12.32, 12.87, 12.88, 13.18, 13.42, 13.89, 14.43, 14.62, 15.14, 15.29, 15.71],
+        nearIV: 29.62,
+        farIV: 15.72,
+        spread: 13.90,
         flag: 'BACKWARDATION',
         flagCls: 'flag-backwardation',
         nearDTE: 0,
         farDTE: 122,
         numExp: 20,
-        expirations: [{"exp": "2026-06-16", "dte": 0, "atm_call_iv": 0.252029, "atm_put_iv": 0.306137, "atm_iv": 0.279083}, {"exp": "2026-06-17", "dte": 1, "atm_call_iv": 0.173963, "atm_put_iv": 0.176393, "atm_iv": 0.175178}, {"exp": "2026-06-18", "dte": 2, "atm_call_iv": 0.16057, "atm_put_iv": 0.162678, "atm_iv": 0.161624}, {"exp": "2026-06-22", "dte": 6, "atm_call_iv": 0.118114, "atm_put_iv": 0.117447, "atm_iv": 0.11778}, {"exp": "2026-06-23", "dte": 7, "atm_call_iv": 0.11996, "atm_put_iv": 0.119353, "atm_iv": 0.119657}, {"exp": "2026-06-24", "dte": 8, "atm_call_iv": 0.122803, "atm_put_iv": 0.12275, "atm_iv": 0.122777}, {"exp": "2026-06-25", "dte": 9, "atm_call_iv": 0.124347, "atm_put_iv": 0.123923, "atm_iv": 0.124135}, {"exp": "2026-06-26", "dte": 10, "atm_call_iv": 0.125723, "atm_put_iv": 0.125443, "atm_iv": 0.125583}, {"exp": "2026-06-29", "dte": 13, "atm_call_iv": 0.120597, "atm_put_iv": 0.120637, "atm_iv": 0.120617}, {"exp": "2026-06-30", "dte": 14, "atm_call_iv": 0.123267, "atm_put_iv": 0.12321, "atm_iv": 0.123238}, {"exp": "2026-07-02", "dte": 16, "atm_call_iv": 0.128607, "atm_put_iv": 0.12877, "atm_iv": 0.128688}, {"exp": "2026-07-10", "dte": 24, "atm_call_iv": 0.128686, "atm_put_iv": 0.128875, "atm_iv": 0.128781}, {"exp": "2026-07-17", "dte": 31, "atm_call_iv": 0.132023, "atm_put_iv": 0.13163, "atm_iv": 0.131827}, {"exp": "2026-07-24", "dte": 38, "atm_call_iv": 0.13438, "atm_put_iv": 0.13411, "atm_iv": 0.134245}, {"exp": "2026-07-31", "dte": 45, "atm_call_iv": 0.139017, "atm_put_iv": 0.138747, "atm_iv": 0.138882}, {"exp": "2026-08-21", "dte": 66, "atm_call_iv": 0.14448, "atm_put_iv": 0.144137, "atm_iv": 0.144308}, {"exp": "2026-08-31", "dte": 76, "atm_call_iv": 0.146303, "atm_put_iv": 0.146033, "atm_iv": 0.146168}, {"exp": "2026-09-18", "dte": 94, "atm_call_iv": 0.151414, "atm_put_iv": 0.151393, "atm_iv": 0.151403}, {"exp": "2026-09-30", "dte": 106, "atm_call_iv": 0.152983, "atm_put_iv": 0.1529, "atm_iv": 0.152942}, {"exp": "2026-10-16", "dte": 122, "atm_call_iv": 0.157383, "atm_put_iv": 0.156867, "atm_iv": 0.157125}]
+        expirations: [{"exp": "2026-06-16", "dte": 0, "atm_call_iv": 0.320652, "atm_put_iv": 0.271729, "atm_iv": 0.29619}, {"exp": "2026-06-17", "dte": 1, "atm_call_iv": 0.178413, "atm_put_iv": 0.175414, "atm_iv": 0.176913}, {"exp": "2026-06-18", "dte": 2, "atm_call_iv": 0.165761, "atm_put_iv": 0.162521, "atm_iv": 0.164141}, {"exp": "2026-06-22", "dte": 6, "atm_call_iv": 0.120513, "atm_put_iv": 0.118577, "atm_iv": 0.119545}, {"exp": "2026-06-23", "dte": 7, "atm_call_iv": 0.122229, "atm_put_iv": 0.120755, "atm_iv": 0.121492}, {"exp": "2026-06-24", "dte": 8, "atm_call_iv": 0.124681, "atm_put_iv": 0.12278, "atm_iv": 0.12373}, {"exp": "2026-06-25", "dte": 9, "atm_call_iv": 0.126006, "atm_put_iv": 0.125552, "atm_iv": 0.125779}, {"exp": "2026-06-26", "dte": 10, "atm_call_iv": 0.126955, "atm_put_iv": 0.12681, "atm_iv": 0.126882}, {"exp": "2026-06-29", "dte": 13, "atm_call_iv": 0.121952, "atm_put_iv": 0.121226, "atm_iv": 0.121589}, {"exp": "2026-06-30", "dte": 14, "atm_call_iv": 0.124252, "atm_put_iv": 0.123577, "atm_iv": 0.123915}, {"exp": "2026-07-02", "dte": 16, "atm_call_iv": 0.129487, "atm_put_iv": 0.12919, "atm_iv": 0.129339}, {"exp": "2026-07-10", "dte": 24, "atm_call_iv": 0.129535, "atm_put_iv": 0.129305, "atm_iv": 0.12942}, {"exp": "2026-07-17", "dte": 31, "atm_call_iv": 0.132548, "atm_put_iv": 0.132397, "atm_iv": 0.132473}, {"exp": "2026-07-24", "dte": 38, "atm_call_iv": 0.134984, "atm_put_iv": 0.134842, "atm_iv": 0.134913}, {"exp": "2026-07-31", "dte": 45, "atm_call_iv": 0.139665, "atm_put_iv": 0.139319, "atm_iv": 0.139492}, {"exp": "2026-08-21", "dte": 66, "atm_call_iv": 0.145, "atm_put_iv": 0.144674, "atm_iv": 0.144837}, {"exp": "2026-08-31", "dte": 76, "atm_call_iv": 0.146561, "atm_put_iv": 0.146603, "atm_iv": 0.146582}, {"exp": "2026-09-18", "dte": 94, "atm_call_iv": 0.151883, "atm_put_iv": 0.15187, "atm_iv": 0.151877}, {"exp": "2026-09-30", "dte": 106, "atm_call_iv": 0.153183, "atm_put_iv": 0.153067, "atm_iv": 0.153125}, {"exp": "2026-10-16", "dte": 122, "atm_call_iv": 0.157433, "atm_put_iv": 0.156933, "atm_iv": 0.157183}]
     };
 
     _tsData['nasdaq'] = {
         label: 'Nasdaq 100',
-        spot: 734.0,
-        ts: '14:14',
+        spot: 733.94,
+        ts: '14:21',
         dte: [0, 1, 2, 6, 7, 8, 9, 10, 13, 14, 16, 24, 31, 38, 45, 66, 76, 94, 106, 122],
         expLabels: ["2026-06-16", "2026-06-17", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-02", "2026-07-10", "2026-07-17", "2026-07-24", "2026-07-31", "2026-08-21", "2026-08-31", "2026-09-18", "2026-09-30", "2026-10-16"],
-        callIV: [38.6, 30.65, 28.85, 21.28, 22.09, 23.08, 23.62, 23.97, 22.6, 23.07, 23.62, 22.96, 23.03, 23.14, 23.44, 23.83, 23.9, 24.45, 24.59, 24.96],
-        putIV: [39.56, 29.54, 28.69, 21.23, 22.15, 23.09, 23.65, 23.97, 22.61, 23.14, 23.63, 22.96, 23.02, 23.12, 23.44, 23.83, 23.91, 24.46, 24.54, 24.92],
-        avgIV: [39.08, 30.1, 28.77, 21.26, 22.12, 23.09, 23.64, 23.97, 22.6, 23.11, 23.63, 22.96, 23.02, 23.13, 23.44, 23.83, 23.91, 24.45, 24.57, 24.94],
+        callIV: [39.31, 30.64, 28.98, 21.31, 22.14, 23.1, 23.68, 23.99, 22.59, 23.06, 23.63, 22.95, 22.97, 23.06, 23.37, 23.79, 23.88, 24.4, 24.54, 24.91],
+        putIV: [34.84, 29.9, 28.78, 21.18, 22.09, 23.04, 23.61, 23.88, 22.54, 23.06, 23.55, 22.9, 22.95, 23.05, 23.34, 23.77, 23.87, 24.4, 24.49, 24.86],
+        avgIV: [37.07, 30.27, 28.88, 21.24, 22.11, 23.07, 23.65, 23.93, 22.56, 23.06, 23.59, 22.92, 22.96, 23.05, 23.36, 23.78, 23.87, 24.4, 24.51, 24.88],
         prevDte: [0, 1, 2, 6, 7, 8, 9, 10, 13, 14, 16, 24, 31, 38, 45, 66, 76, 94, 106, 122],
-        prevAvgIV: [37.06, 29.79, 28.6, 21.11, 22.05, 22.99, 23.68, 23.94, 22.59, 23.12, 23.6, 22.95, 23.01, 23.11, 23.42, 23.84, 23.9, 24.47, 24.6, 24.98],
-        nearIV: 39.08,
-        farIV: 24.94,
-        spread: 14.14,
+        prevAvgIV: [39.08, 30.1, 28.77, 21.26, 22.12, 23.09, 23.64, 23.97, 22.6, 23.11, 23.63, 22.96, 23.02, 23.13, 23.44, 23.83, 23.91, 24.45, 24.57, 24.94],
+        nearIV: 37.07,
+        farIV: 24.88,
+        spread: 12.19,
         flag: 'BACKWARDATION',
         flagCls: 'flag-backwardation',
         nearDTE: 0,
         farDTE: 122,
         numExp: 20,
-        expirations: [{"exp": "2026-06-16", "dte": 0, "atm_call_iv": 0.386, "atm_put_iv": 0.395648, "atm_iv": 0.390824}, {"exp": "2026-06-17", "dte": 1, "atm_call_iv": 0.306517, "atm_put_iv": 0.295441, "atm_iv": 0.300979}, {"exp": "2026-06-18", "dte": 2, "atm_call_iv": 0.288469, "atm_put_iv": 0.286921, "atm_iv": 0.287695}, {"exp": "2026-06-22", "dte": 6, "atm_call_iv": 0.212786, "atm_put_iv": 0.212345, "atm_iv": 0.212566}, {"exp": "2026-06-23", "dte": 7, "atm_call_iv": 0.22091, "atm_put_iv": 0.221514, "atm_iv": 0.221212}, {"exp": "2026-06-24", "dte": 8, "atm_call_iv": 0.230834, "atm_put_iv": 0.230941, "atm_iv": 0.230888}, {"exp": "2026-06-25", "dte": 9, "atm_call_iv": 0.236228, "atm_put_iv": 0.236507, "atm_iv": 0.236367}, {"exp": "2026-06-26", "dte": 10, "atm_call_iv": 0.239734, "atm_put_iv": 0.239721, "atm_iv": 0.239728}, {"exp": "2026-06-29", "dte": 13, "atm_call_iv": 0.226003, "atm_put_iv": 0.226086, "atm_iv": 0.226045}, {"exp": "2026-06-30", "dte": 14, "atm_call_iv": 0.230745, "atm_put_iv": 0.231366, "atm_iv": 0.231055}, {"exp": "2026-07-02", "dte": 16, "atm_call_iv": 0.236214, "atm_put_iv": 0.236317, "atm_iv": 0.236266}, {"exp": "2026-07-10", "dte": 24, "atm_call_iv": 0.229609, "atm_put_iv": 0.229609, "atm_iv": 0.229609}, {"exp": "2026-07-17", "dte": 31, "atm_call_iv": 0.230293, "atm_put_iv": 0.230166, "atm_iv": 0.230229}, {"exp": "2026-07-24", "dte": 38, "atm_call_iv": 0.231366, "atm_put_iv": 0.231241, "atm_iv": 0.231303}, {"exp": "2026-07-31", "dte": 45, "atm_call_iv": 0.234379, "atm_put_iv": 0.234352, "atm_iv": 0.234366}, {"exp": "2026-08-21", "dte": 66, "atm_call_iv": 0.238333, "atm_put_iv": 0.2383, "atm_iv": 0.238317}, {"exp": "2026-08-31", "dte": 76, "atm_call_iv": 0.239041, "atm_put_iv": 0.239131, "atm_iv": 0.239086}, {"exp": "2026-09-18", "dte": 94, "atm_call_iv": 0.24445, "atm_put_iv": 0.244617, "atm_iv": 0.244533}, {"exp": "2026-09-30", "dte": 106, "atm_call_iv": 0.245867, "atm_put_iv": 0.245433, "atm_iv": 0.24565}, {"exp": "2026-10-16", "dte": 122, "atm_call_iv": 0.249633, "atm_put_iv": 0.249233, "atm_iv": 0.249433}]
+        expirations: [{"exp": "2026-06-16", "dte": 0, "atm_call_iv": 0.393064, "atm_put_iv": 0.34839, "atm_iv": 0.370727}, {"exp": "2026-06-17", "dte": 1, "atm_call_iv": 0.306421, "atm_put_iv": 0.299021, "atm_iv": 0.302721}, {"exp": "2026-06-18", "dte": 2, "atm_call_iv": 0.289834, "atm_put_iv": 0.2878, "atm_iv": 0.288817}, {"exp": "2026-06-22", "dte": 6, "atm_call_iv": 0.213072, "atm_put_iv": 0.21181, "atm_iv": 0.212441}, {"exp": "2026-06-23", "dte": 7, "atm_call_iv": 0.221421, "atm_put_iv": 0.220855, "atm_iv": 0.221138}, {"exp": "2026-06-24", "dte": 8, "atm_call_iv": 0.230993, "atm_put_iv": 0.230355, "atm_iv": 0.230674}, {"exp": "2026-06-25", "dte": 9, "atm_call_iv": 0.236831, "atm_put_iv": 0.236141, "atm_iv": 0.236486}, {"exp": "2026-06-26", "dte": 10, "atm_call_iv": 0.239879, "atm_put_iv": 0.238772, "atm_iv": 0.239326}, {"exp": "2026-06-29", "dte": 13, "atm_call_iv": 0.225862, "atm_put_iv": 0.225397, "atm_iv": 0.225629}, {"exp": "2026-06-30", "dte": 14, "atm_call_iv": 0.230638, "atm_put_iv": 0.230597, "atm_iv": 0.230617}, {"exp": "2026-07-02", "dte": 16, "atm_call_iv": 0.236259, "atm_put_iv": 0.235472, "atm_iv": 0.235866}, {"exp": "2026-07-10", "dte": 24, "atm_call_iv": 0.229471, "atm_put_iv": 0.229, "atm_iv": 0.229235}, {"exp": "2026-07-17", "dte": 31, "atm_call_iv": 0.2297, "atm_put_iv": 0.229452, "atm_iv": 0.229576}, {"exp": "2026-07-24", "dte": 38, "atm_call_iv": 0.230621, "atm_put_iv": 0.230459, "atm_iv": 0.23054}, {"exp": "2026-07-31", "dte": 45, "atm_call_iv": 0.233738, "atm_put_iv": 0.233431, "atm_iv": 0.233584}, {"exp": "2026-08-21", "dte": 66, "atm_call_iv": 0.237917, "atm_put_iv": 0.237717, "atm_iv": 0.237817}, {"exp": "2026-08-31", "dte": 76, "atm_call_iv": 0.238779, "atm_put_iv": 0.23869, "atm_iv": 0.238734}, {"exp": "2026-09-18", "dte": 94, "atm_call_iv": 0.24405, "atm_put_iv": 0.243983, "atm_iv": 0.244017}, {"exp": "2026-09-30", "dte": 106, "atm_call_iv": 0.245383, "atm_put_iv": 0.244867, "atm_iv": 0.245125}, {"exp": "2026-10-16", "dte": 122, "atm_call_iv": 0.249083, "atm_put_iv": 0.248567, "atm_iv": 0.248825}]
     };
 
 
@@ -392,19 +392,19 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="cards">
         <div class="card">
             <div class="label">Spot Price</div>
-            <div class="value val-accent">$752.10</div>
+            <div class="value val-accent">$751.97</div>
         </div>
         <div class="card">
             <div class="label">Near IV (0d)</div>
-            <div class="value val-yellow">27.91%</div>
+            <div class="value val-yellow">29.62%</div>
         </div>
         <div class="card">
             <div class="label">Far IV (122d)</div>
-            <div class="value val-yellow">15.71%</div>
+            <div class="value val-yellow">15.72%</div>
         </div>
         <div class="card">
             <div class="label">IV Spread</div>
-            <div class="value flag-backwardation">+12.20%</div>
+            <div class="value flag-backwardation">+13.90%</div>
         </div>
         <div class="card">
             <div class="label">Structure</div>
@@ -445,19 +445,19 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="cards">
         <div class="card">
             <div class="label">Spot Price</div>
-            <div class="value val-accent">$734.00</div>
+            <div class="value val-accent">$733.94</div>
         </div>
         <div class="card">
             <div class="label">Near IV (0d)</div>
-            <div class="value val-yellow">39.08%</div>
+            <div class="value val-yellow">37.07%</div>
         </div>
         <div class="card">
             <div class="label">Far IV (122d)</div>
-            <div class="value val-yellow">24.94%</div>
+            <div class="value val-yellow">24.88%</div>
         </div>
         <div class="card">
             <div class="label">IV Spread</div>
-            <div class="value flag-backwardation">+14.14%</div>
+            <div class="value flag-backwardation">+12.19%</div>
         </div>
         <div class="card">
             <div class="label">Structure</div>

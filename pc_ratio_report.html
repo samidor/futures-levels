@@ -129,7 +129,7 @@
 
 <div class="header">
     <h1>Put/Call Ratio <span class="badge">INTRADAY</span></h1>
-    <div class="subtitle">2026-06-26 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-26 09:38 ET</div>
+    <div class="subtitle">2026-06-26 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-26 09:45 ET</div>
 </div>
 
 <script>
@@ -311,25 +311,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$728.71</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$728.93</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.252 <span class="regime">Bearish</span></div>
+                <div class="value pc-bullish">0.000 <span class="regime">Bullish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">8.63M</div>
+                <div class="value pc-bullish">0</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">10.81M</div>
+                <div class="value pc-bearish">0</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -351,36 +351,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:36"],
-        spots: [728.71],
+        labels: ["09:36", "09:43"],
+        spots: [728.71, 728.93],
         mode: 'all',
-        all:  { pc: [1.2516], cvol: [8633632], pvol: [10805879] },
-        "0dte": { pc: [1.1722], cvol: [1108164], pvol: [1299010] },
+        all:  { pc: [1.2516, 0.0], cvol: [8633632, 0], pvol: [10805879, 0] },
+        "0dte": { pc: [1.1722, 0.0], cvol: [1108164, 0], pvol: [1299010, 0] },
         prev: { labels: ["09:35", "09:42", "09:49", "09:56", "10:03", "10:10", "10:17", "10:24", "10:31", "10:38", "10:45", "10:52", "11:00", "11:07", "11:14", "11:21", "11:28", "11:35", "11:42", "11:49", "11:56", "12:03", "12:10", "12:17", "12:25", "12:32", "12:39", "12:46", "12:53", "13:00", "13:07", "13:14", "13:21", "13:29", "13:36", "13:43", "13:50", "13:57", "14:04", "14:11", "14:18", "14:26", "14:33", "14:40", "14:47", "14:54", "15:01", "15:08", "15:16", "15:23", "15:30", "15:37", "15:44", "15:51", "15:58"], pc: [1.2219, 0.0, 1.152, 1.4591, 1.4348, 1.3785, 1.3236, 1.2337, 1.2356, 1.2077, 1.225, 1.2192, 1.2395, 1.239, 1.2387, 1.2343, 1.2582, 1.2777, 1.2724, 1.2749, 1.2779, 1.2735, 1.2743, 1.2745, 1.2706, 1.2635, 1.2696, 1.2712, 1.2718, 1.2799, 1.272, 1.2685, 1.2645, 1.2566, 1.2543, 1.2502, 1.2537, 1.2524, 1.2563, 1.2519, 1.2567, 1.2579, 1.26, 1.2589, 1.2554, 1.2588, 1.2629, 1.2626, 1.2615, 1.2654, 1.2666, 1.2682, 1.2635, 1.2635, 1.2623] }
     };
     </script>
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$705.79</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$706.34</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.097 <span class="regime">Bearish</span></div>
+                <div class="value pc-bullish">0.000 <span class="regime">Bullish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">4.13M</div>
+                <div class="value pc-bullish">0</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">4.53M</div>
+                <div class="value pc-bearish">0</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:36"],
-        spots: [705.79],
+        labels: ["09:36", "09:43"],
+        spots: [705.79, 706.34],
         mode: 'all',
-        all:  { pc: [1.097], cvol: [4131133], pvol: [4532045] },
-        "0dte": { pc: [1.1343], cvol: [588711], pvol: [667788] },
+        all:  { pc: [1.097, 0.0], cvol: [4131133, 0], pvol: [4532045, 0] },
+        "0dte": { pc: [1.1343, 0.0], cvol: [588711, 0], pvol: [667788, 0] },
         prev: { labels: ["09:35", "09:42", "09:49", "09:56", "10:03", "10:10", "10:17", "10:24", "10:31", "10:38", "10:45", "10:52", "11:00", "11:07", "11:14", "11:21", "11:28", "11:35", "11:42", "11:49", "11:56", "12:03", "12:10", "12:17", "12:25", "12:32", "12:39", "12:46", "12:53", "13:00", "13:07", "13:14", "13:21", "13:29", "13:36", "13:43", "13:50", "13:57", "14:04", "14:11", "14:18", "14:26", "14:33", "14:40", "14:47", "14:54", "15:01", "15:08", "15:16", "15:23", "15:30", "15:37", "15:44", "15:51", "15:58"], pc: [1.2066, 0.0, 1.1767, 1.2745, 1.2846, 1.2682, 1.1596, 1.063, 1.0585, 1.0358, 1.0336, 1.0188, 1.0276, 1.0184, 1.0209, 1.0165, 1.0269, 1.0289, 1.0533, 1.062, 1.0621, 1.0608, 1.0631, 1.0645, 1.0519, 1.0487, 1.0562, 1.0554, 1.0618, 1.0707, 1.0671, 1.0691, 1.0732, 1.0701, 1.0708, 1.0675, 1.0693, 1.0696, 1.0751, 1.069, 1.0763, 1.0767, 1.0784, 1.0826, 1.0832, 1.0769, 1.0757, 1.0712, 1.0735, 1.0779, 1.0828, 1.0889, 1.0929, 1.0946, 1.096] }
     };
     </script>

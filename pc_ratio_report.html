@@ -129,7 +129,7 @@
 
 <div class="header">
     <h1>Put/Call Ratio <span class="badge">INTRADAY</span></h1>
-    <div class="subtitle">2026-06-29 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-29 09:38 ET</div>
+    <div class="subtitle">2026-06-29 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-29 09:45 ET</div>
 </div>
 
 <script>
@@ -311,25 +311,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$737.20</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$736.62</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.452 <span class="regime">Bearish</span></div>
+                <div class="value pc-bullish">0.000 <span class="regime">Bullish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">2.07M</div>
+                <div class="value pc-bullish">0</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">3.00M</div>
+                <div class="value pc-bearish">0</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -351,36 +351,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:36"],
-        spots: [737.2],
+        labels: ["09:36", "09:43"],
+        spots: [737.2, 736.62],
         mode: 'all',
-        all:  { pc: [1.4521], cvol: [2066579], pvol: [3000906] },
-        "0dte": { pc: [1.183], cvol: [785874], pvol: [929662] },
+        all:  { pc: [1.4521, 0.0], cvol: [2066579, 0], pvol: [3000906, 0] },
+        "0dte": { pc: [1.183, 0.0], cvol: [785874, 0], pvol: [929662, 0] },
         prev: { labels: [], pc: [] }
     };
     </script>
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$714.94</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$713.19</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.196 <span class="regime">Bearish</span></div>
+                <div class="value pc-bearish">1.821 <span class="regime">Bearish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">885.7K</div>
+                <div class="value pc-bullish">1.6K</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">1.06M</div>
+                <div class="value pc-bearish">3.0K</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">1</div>
+                <div class="value" style="color:var(--text2)">2</div>
             </div>
         </div>
 
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:36"],
-        spots: [714.94],
+        labels: ["09:36", "09:43"],
+        spots: [714.94, 713.19],
         mode: 'all',
-        all:  { pc: [1.1958], cvol: [885676], pvol: [1059092] },
-        "0dte": { pc: [1.3445], cvol: [287480], pvol: [386531] },
+        all:  { pc: [1.1958, 1.8209], cvol: [885676, 1625], pvol: [1059092, 2959] },
+        "0dte": { pc: [1.3445, 0.744], cvol: [287480, 953], pvol: [386531, 709] },
         prev: { labels: [], pc: [] }
     };
     </script>

@@ -129,7 +129,7 @@
 
 <div class="header">
     <h1>Put/Call Ratio <span class="badge">INTRADAY</span></h1>
-    <div class="subtitle">2026-06-29 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-29 10:13 ET</div>
+    <div class="subtitle">2026-06-29 &bull; Put Vol &divide; Call Vol &bull; Real-time via Massive API &bull; 2026-06-29 10:20 ET</div>
 </div>
 
 <script>
@@ -311,25 +311,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$737.44</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$736.15</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.081 <span class="regime">Bearish</span></div>
+                <div class="value pc-bearish">1.133 <span class="regime">Bearish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">1.06M</div>
+                <div class="value pc-bullish">1.28M</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">1.14M</div>
+                <div class="value pc-bearish">1.45M</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">6</div>
+                <div class="value" style="color:var(--text2)">7</div>
             </div>
         </div>
 
@@ -351,36 +351,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:36", "09:43", "09:50", "09:58", "10:05", "10:12"],
-        spots: [737.2, 736.62, 737.99, 738.49, 738.46, 737.44],
+        labels: ["09:36", "09:43", "09:50", "09:58", "10:05", "10:12", "10:19"],
+        spots: [737.2, 736.62, 737.99, 738.49, 738.46, 737.44, 736.15],
         mode: 'all',
-        all:  { pc: [1.4521, 0.0, 1.0694, 1.0313, 1.0117, 1.0814], cvol: [2066579, 0, 323137, 558106, 823883, 1058082], pvol: [3000906, 0, 345577, 575567, 833511, 1144173] },
-        "0dte": { pc: [1.183, 0.0, 0.7937, 0.8, 0.7911, 0.914], cvol: [785874, 0, 230399, 404994, 610883, 787317], pvol: [929662, 0, 182864, 324005, 483297, 719586] },
+        all:  { pc: [1.4521, 0.0, 1.0694, 1.0313, 1.0117, 1.0814, 1.1332], cvol: [2066579, 0, 323137, 558106, 823883, 1058082, 1278829], pvol: [3000906, 0, 345577, 575567, 833511, 1144173, 1449175] },
+        "0dte": { pc: [1.183, 0.0, 0.7937, 0.8, 0.7911, 0.914, 0.9721], cvol: [785874, 0, 230399, 404994, 610883, 787317, 960247], pvol: [929662, 0, 182864, 324005, 483297, 719586, 933479] },
         prev: { labels: [], pc: [] }
     };
     </script>
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$713.05</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$711.03</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">P/C Ratio</div>
-                <div class="value pc-bearish">1.088 <span class="regime">Bearish</span></div>
+                <div class="value pc-bearish">1.127 <span class="regime">Bearish</span></div>
             </div>
             <div class="card">
                 <div class="label">Total Call Vol</div>
-                <div class="value pc-bullish">487.9K</div>
+                <div class="value pc-bullish">582.0K</div>
             </div>
             <div class="card">
                 <div class="label">Total Put Vol</div>
-                <div class="value pc-bearish">530.6K</div>
+                <div class="value pc-bearish">656.2K</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">6</div>
+                <div class="value" style="color:var(--text2)">7</div>
             </div>
         </div>
 
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:36", "09:43", "09:50", "09:58", "10:05", "10:12"],
-        spots: [714.94, 713.19, 714.25, 716.71, 718.13, 713.05],
+        labels: ["09:36", "09:43", "09:50", "09:58", "10:05", "10:12", "10:19"],
+        spots: [714.94, 713.19, 714.25, 716.71, 718.13, 713.05, 711.03],
         mode: 'all',
-        all:  { pc: [1.1958, 1.8209, 1.0208, 1.0494, 1.0825, 1.0876], cvol: [885676, 1625, 123980, 230676, 355172, 487903], pvol: [1059092, 2959, 126553, 242076, 384464, 530630] },
-        "0dte": { pc: [1.3445, 0.744, 0.8345, 0.7945, 0.8528, 0.9692], cvol: [287480, 953, 96180, 179002, 274532, 356076], pvol: [386531, 709, 80265, 142223, 234128, 345092] },
+        all:  { pc: [1.1958, 1.8209, 1.0208, 1.0494, 1.0825, 1.0876, 1.1275], cvol: [885676, 1625, 123980, 230676, 355172, 487903, 582042], pvol: [1059092, 2959, 126553, 242076, 384464, 530630, 656250] },
+        "0dte": { pc: [1.3445, 0.744, 0.8345, 0.7945, 0.8528, 0.9692, 1.0261], cvol: [287480, 953, 96180, 179002, 274532, 356076, 431299], pvol: [386531, 709, 80265, 142223, 234128, 345092, 442549] },
         prev: { labels: [], pc: [] }
     };
     </script>

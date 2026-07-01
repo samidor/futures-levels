@@ -136,7 +136,7 @@
 
 <div class="header">
     <h1>Options Flow <span class="badge">DELTA-WEIGHTED</span></h1>
-    <div class="subtitle">2026-07-01 &bull; &Delta; &times; Volume &times; VWAP &times; 100 &bull; Real-time via Massive API &bull; 2026-07-01 10:06 ET</div>
+    <div class="subtitle">2026-07-01 &bull; &Delta; &times; Volume &times; VWAP &times; 100 &bull; Real-time via Massive API &bull; 2026-07-01 10:13 ET</div>
 </div>
 
 <script>
@@ -409,33 +409,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$743.77</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$744.76</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">Call Delta Flow</div>
-                <div class="value flow-pos">$312.8M</div>
+                <div class="value flow-pos">$497.9M</div>
             </div>
             <div class="card">
                 <div class="label">Put Delta Flow</div>
-                <div class="value flow-neg">$157.1M</div>
+                <div class="value flow-neg">$190.8M</div>
             </div>
             <div class="card">
                 <div class="label">Net Delta Flow</div>
-                <div class="value flow-pos">$155.6M</div>
+                <div class="value flow-pos">$307.1M</div>
             </div>
             <div class="card">
                 <div class="label">Call/Put Ratio</div>
-                <div class="value flow-neutral">1.99</div>
+                <div class="value flow-neutral">2.61</div>
             </div>
             <div class="card">
                 <div class="label">Total Volume</div>
-                <div class="value" style="color:var(--blue)">1,350,862</div>
+                <div class="value" style="color:var(--blue)">1,793,901</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">5</div>
+                <div class="value" style="color:var(--text2)">6</div>
             </div>
         </div>
 
@@ -465,16 +465,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['sp500'] = {
-        labels: ["09:36", "09:43", "09:50", "09:57", "10:04"],
-        spots: [745.32, 745.02, 742.75, 743.22, 743.77],
+        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11"],
+        spots: [745.32, 745.02, 742.75, 743.22, 743.77, 744.76],
         mode: 'all', metric: 'delta',
         all: {
-            raw:   { call: [13396.79, 0.0, 144.52, 348.13, 505.59], put: [6395.56, 0.0, 168.73, 308.81, 399.89], net: [7001.23, 0.0, -24.21, 39.32, 105.7] },
-            delta: { call: [10324.13, 0.0, 94.96, 224.9, 312.76], put: [2952.95, 0.0, 73.21, 121.35, 157.15], net: [7371.18, 0.0, 21.75, 103.55, 155.61] }
+            raw:   { call: [13396.79, 0.0, 144.52, 348.13, 505.59, 789.27], put: [6395.56, 0.0, 168.73, 308.81, 399.89, 501.37], net: [7001.23, 0.0, -24.21, 39.32, 105.7, 287.9] },
+            delta: { call: [10324.13, 0.0, 94.96, 224.9, 312.76, 497.88], put: [2952.95, 0.0, 73.21, 121.35, 157.15, 190.79], net: [7371.18, 0.0, 21.75, 103.55, 155.61, 307.09] }
         },
         "0dte": {
-            raw:   { call: [281.73, 0.0, 36.37, 87.72, 134.72], put: [210.38, 0.0, 79.67, 92.97, 111.91], net: [71.35, 0.0, -43.3, -5.25, 22.81] },
-            delta: { call: [172.2, 0.0, 16.26, 43.81, 69.87], put: [101.0, 0.0, 39.76, 44.46, 53.31], net: [71.2, 0.0, -23.5, -0.65, 16.56] }
+            raw:   { call: [281.73, 0.0, 36.37, 87.72, 134.72, 206.33], put: [210.38, 0.0, 79.67, 92.97, 111.91, 109.42], net: [71.35, 0.0, -43.3, -5.25, 22.81, 96.91] },
+            delta: { call: [172.2, 0.0, 16.26, 43.81, 69.87, 113.83], put: [101.0, 0.0, 39.76, 44.46, 53.31, 50.31], net: [71.2, 0.0, -23.5, -0.65, 16.56, 63.52] }
         },
         prev: { labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:33", "10:40", "10:47", "10:54", "11:01", "11:08", "11:15", "11:22", "11:29", "11:36", "11:43", "11:51", "11:58", "12:05", "12:12", "12:19", "12:26", "12:33", "12:40", "12:47", "12:55", "13:02", "13:09", "13:16", "13:23", "13:30", "13:37", "13:45", "13:52", "13:59", "14:06", "14:13", "14:20", "14:28", "14:35", "14:42", "14:49", "14:56", "15:03", "15:11", "15:18", "15:25", "15:32", "15:39", "15:46", "15:54"], net: [4597.7, 0.0, 45.66, 46.57, 102.57, 234.99, 339.51, 269.81, 286.15, 370.65, 584.41, 461.88, 492.43, 341.25, 549.44, 717.27, 1012.26, 1283.96, 1486.04, 1397.77, 1476.8, 1736.27, 2044.83, 2076.62, 2444.8, 2575.42, 2595.51, 2636.61, 2957.75, 3108.16, 3475.47, 3421.35, 4287.8, 4095.24, 4110.03, 3958.39, 3962.25, 4239.08, 4235.01, 4282.62, 4316.39, 4566.33, 5059.86, 4861.5, 4802.16, 4960.35, 5310.11, 7742.21, 7919.81, 7996.63, 8570.31, 8502.38, 8261.34, 7741.32] }
     };
@@ -482,33 +482,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$728.95</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$729.47</span></h2>
         </div>
 
         <div class="cards">
             <div class="card">
                 <div class="label">Call Delta Flow</div>
-                <div class="value flow-pos">$93.6M</div>
+                <div class="value flow-pos">$149.6M</div>
             </div>
             <div class="card">
                 <div class="label">Put Delta Flow</div>
-                <div class="value flow-neg">$52.7M</div>
+                <div class="value flow-neg">$57.9M</div>
             </div>
             <div class="card">
                 <div class="label">Net Delta Flow</div>
-                <div class="value flow-pos">$40.9M</div>
+                <div class="value flow-pos">$91.7M</div>
             </div>
             <div class="card">
                 <div class="label">Call/Put Ratio</div>
-                <div class="value flow-neutral">1.78</div>
+                <div class="value flow-neutral">2.58</div>
             </div>
             <div class="card">
                 <div class="label">Total Volume</div>
-                <div class="value" style="color:var(--blue)">744,774</div>
+                <div class="value" style="color:var(--blue)">928,792</div>
             </div>
             <div class="card">
                 <div class="label">Snapshots</div>
-                <div class="value" style="color:var(--text2)">5</div>
+                <div class="value" style="color:var(--text2)">6</div>
             </div>
         </div>
 
@@ -538,16 +538,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script>
     _instruments['nasdaq'] = {
-        labels: ["09:36", "09:43", "09:50", "09:57", "10:04"],
-        spots: [730.2, 728.81, 726.5, 727.71, 728.95],
+        labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11"],
+        spots: [730.2, 728.81, 726.5, 727.71, 728.95, 729.47],
         mode: 'all', metric: 'delta',
         all: {
-            raw:   { call: [1535.01, 0.0, 43.33, 114.28, 183.46], put: [859.97, 0.0, 75.0, 107.69, 126.2], net: [675.04, 0.0, -31.67, 6.59, 57.26] },
-            delta: { call: [746.88, 0.0, 20.89, 53.83, 93.59], put: [415.0, 0.0, 37.36, 48.35, 52.72], net: [331.88, 0.0, -16.47, 5.48, 40.87] }
+            raw:   { call: [1535.01, 0.0, 43.33, 114.28, 183.46, 301.02], put: [859.97, 0.0, 75.0, 107.69, 126.2, 140.68], net: [675.04, 0.0, -31.67, 6.59, 57.26, 160.34] },
+            delta: { call: [746.88, 0.0, 20.89, 53.83, 93.59, 149.62], put: [415.0, 0.0, 37.36, 48.35, 52.72, 57.89], net: [331.88, 0.0, -16.47, 5.48, 40.87, 91.73] }
         },
         "0dte": {
-            raw:   { call: [155.24, 0.0, 9.73, 26.59, 51.75], put: [63.84, 0.0, 28.57, 32.83, 32.79], net: [91.4, 0.0, -18.84, -6.24, 18.96] },
-            delta: { call: [76.7, 0.0, 4.39, 13.29, 27.24], put: [40.42, 0.0, 16.11, 17.14, 16.11], net: [36.28, 0.0, -11.72, -3.85, 11.13] }
+            raw:   { call: [155.24, 0.0, 9.73, 26.59, 51.75, 63.62], put: [63.84, 0.0, 28.57, 32.83, 32.79, 33.08], net: [91.4, 0.0, -18.84, -6.24, 18.96, 30.54] },
+            delta: { call: [76.7, 0.0, 4.39, 13.29, 27.24, 34.43], put: [40.42, 0.0, 16.11, 17.14, 16.11, 15.85], net: [36.28, 0.0, -11.72, -3.85, 11.13, 18.58] }
         },
         prev: { labels: ["09:36", "09:43", "09:50", "09:57", "10:04", "10:11", "10:18", "10:25", "10:33", "10:40", "10:47", "10:54", "11:01", "11:08", "11:15", "11:22", "11:29", "11:36", "11:43", "11:51", "11:58", "12:05", "12:12", "12:19", "12:26", "12:33", "12:40", "12:47", "12:55", "13:02", "13:09", "13:16", "13:23", "13:30", "13:37", "13:45", "13:52", "13:59", "14:06", "14:13", "14:20", "14:28", "14:35", "14:42", "14:49", "14:56", "15:03", "15:11", "15:18", "15:25", "15:32", "15:39", "15:46", "15:54"], net: [1058.94, 0.0, 27.82, 33.11, 33.47, 105.15, 162.06, 161.02, 216.35, 258.97, 296.09, 277.78, 229.2, 189.48, 223.66, 267.12, 287.38, 272.03, 297.11, 303.38, 324.15, 337.32, 397.73, 411.03, 421.55, 438.18, 438.02, 384.69, 437.53, 503.95, 533.89, 547.1, 608.05, 564.29, 556.82, 548.37, 564.58, 625.32, 556.44, 574.37, 541.63, 584.78, 632.38, 617.27, 632.52, 669.68, 734.97, 690.38, 754.07, 853.97, 909.03, 753.44, 732.02, 777.83] }
     };

@@ -152,7 +152,7 @@
 
 <div class="header">
     <h1>Volatility Skew <span class="badge">25&Delta; RISK REVERSAL</span></h1>
-    <div class="subtitle">2026-07-01 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-07-01 19:32 ET</div>
+    <div class="subtitle">2026-07-01 &bull; RR = 25&Delta; Put IV &minus; 25&Delta; Call IV &bull; 2026-07-01 19:39 ET</div>
 </div>
 
 <div class="inst-toggle">
@@ -200,7 +200,7 @@ document.addEventListener('click', function(e) {
 <div class="inst-container" data-inst="sp500">
     <div class="instrument-block" id="block-sp500">
         <div class="inst-header">
-            <h2>S&P 500 <span class="spot-badge">$745.20</span></h2>
+            <h2>S&P 500 <span class="spot-badge">$745.21</span></h2>
         </div>
 
         <div class="cards">
@@ -526,7 +526,7 @@ document.addEventListener('click', function(e) {
         </tr><tr>
             <td>260918</td>
             <td>79</td>
-            <td>716.0</td>
+            <td>7190.0</td>
             <td>0.1749</td>
             <td>7890.0</td>
             <td>0.1266</td>
@@ -757,29 +757,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'sp500';
-        var labels = ["14:18", "14:25", "14:32", "14:39", "14:46", "14:54", "15:01", "15:08", "15:15", "15:22", "15:29", "15:36", "15:43"];
-        var spot = 745.2;
+        var labels = ["14:25", "14:32", "14:39", "14:46", "14:54", "15:01", "15:08", "15:15", "15:22", "15:29", "15:36", "15:43"];
+        var spot = 745.21;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [0.0581, 0.0687, 0.0885, 0.0551, 0.0673, 0.0471, 0.0967, 0.0199, -0.0386, -0.0279, -0.1947, -0.6315, 1.4804],
+                label: '0DTE', data: [0.0687, 0.0885, 0.0551, 0.0673, 0.0471, 0.0967, 0.0199, -0.0386, -0.0279, -0.1947, -0.6315, 1.4804],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null, null, null, null],
+                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null, null, null],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0372, 0.0346, 0.037, 0.037, 0.0325, 0.0327, 0.0325, 0.0359, 0.0327, 0.0371, 0.0349, 0.0345, 0.0363],
+                label: 'Monthly', data: [0.0346, 0.037, 0.037, 0.0325, 0.0327, 0.0325, 0.0359, 0.0327, 0.0371, 0.0349, 0.0345, 0.0363],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [0.042069, 0.045881, 0.05419, 0.040262, 0.046162, 0.037366, 0.057676, 0.026607, 0.0026, 0.00668, -0.062857, -0.243211, 0.627692],
+                label: 'All (Weighted)', data: [0.045881, 0.05419, 0.040262, 0.046162, 0.037366, 0.057676, 0.026607, 0.0026, 0.00668, -0.062857, -0.243211, 0.627692],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }
@@ -947,7 +947,7 @@ document.addEventListener('click', function(e) {
 <div class="inst-container" data-inst="nasdaq" style="display:none;">
     <div class="instrument-block" id="block-nasdaq">
         <div class="inst-header">
-            <h2>Nasdaq 100 <span class="spot-badge">$724.83</span></h2>
+            <h2>Nasdaq 100 <span class="spot-badge">$724.87</span></h2>
         </div>
 
         <div class="cards">
@@ -1261,29 +1261,29 @@ document.addEventListener('click', function(e) {
     <script>
     (function() {
         var uid = 'nasdaq';
-        var labels = ["14:18", "14:25", "14:32", "14:39", "14:46", "14:54", "15:01", "15:08", "15:15", "15:22", "15:29", "15:36", "15:43"];
-        var spot = 724.83;
+        var labels = ["14:25", "14:32", "14:39", "14:46", "14:54", "15:01", "15:08", "15:15", "15:22", "15:29", "15:36", "15:43"];
+        var spot = 724.87;
 
         // Intraday RR chart
         var rrCtx = document.getElementById('rr-' + uid);
         var datasets = [
             {
-                label: '0DTE', data: [0.0675, 0.0594, 0.1319, 0.1242, 0.1498, 0.1582, 0.1613, 0.1228, 0.1408, 0.0934, 0.0498, 0.0574, 0.1475],
+                label: '0DTE', data: [0.0594, 0.1319, 0.1242, 0.1498, 0.1582, 0.1613, 0.1228, 0.1408, 0.0934, 0.0498, 0.0574, 0.1475],
                 borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null, null, null, null],
+                label: 'Weekly', data: [null, null, null, null, null, null, null, null, null, null, null, null],
                 borderColor: '#d29922', backgroundColor: 'rgba(210,153,34,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'Monthly', data: [0.0614, 0.0604, 0.0617, 0.0614, 0.0616, 0.062, 0.0616, 0.0617, 0.0614, 0.0611, 0.0617, 0.0602, 0.0614],
+                label: 'Monthly', data: [0.0604, 0.0617, 0.0614, 0.0616, 0.062, 0.0616, 0.0617, 0.0614, 0.0611, 0.0617, 0.0602, 0.0614],
                 borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,0.08)',
                 borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true
             },
             {
-                label: 'All (Weighted)', data: [0.057286, 0.055067, 0.089226, 0.086256, 0.097281, 0.102017, 0.10398, 0.085188, 0.094112, 0.070417, 0.04826, 0.052416, 0.094073],
+                label: 'All (Weighted)', data: [0.055067, 0.089226, 0.086256, 0.097281, 0.102017, 0.10398, 0.085188, 0.094112, 0.070417, 0.04826, 0.052416, 0.094073],
                 borderColor: '#3fb950', backgroundColor: 'rgba(63,185,80,0.08)',
                 borderWidth: 2.5, pointRadius: 0, tension: 0.3, spanGaps: true
             }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CL Key Levels - 2026-07-01 10:06</title>
+    <title>CL Key Levels - 2026-07-01 11:40</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -326,6 +326,76 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 }
 
 /* Exposure Analytics Section */
+.bias-banner {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--accent);
+}
+.bias-verdict {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    gap: 6px;
+}
+.bias-arrow {
+    font-size: 2.2em;
+    line-height: 1;
+}
+.bias-arrow-bull { color: var(--green); }
+.bias-arrow-bear { color: var(--red); }
+.bias-arrow-side { color: var(--yellow); }
+.bias-arrow-neutral { color: var(--text2); }
+.bias-label {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+.bias-conf {
+    font-size: 0.75em;
+    color: var(--text2);
+}
+.bias-factors {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.bias-factor {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82em;
+    line-height: 1.4;
+}
+.bias-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+.bias-dot-bull { background: var(--green); }
+.bias-dot-bear { background: var(--red); }
+.bias-dot-side { background: var(--yellow); }
+.bias-dot-neut { background: var(--text2); }
+.bias-factor-name {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+.bias-factor-reason {
+    color: var(--text2);
+}
+@media (max-width: 768px) {
+    .bias-banner { flex-direction: column; align-items: center; text-align: center; }
+    .bias-factor { font-size: 0.78em; }
+}
 .analytics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -511,12 +581,12 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>CL Futures Key Levels</h1>
-    <div class="subtitle">2026-07-01 10:06 &bull; CLQ26 &bull; 0DTE + Weekly</div>
+    <div class="subtitle">2026-07-01 11:40 &bull; CLQ26 &bull; 0DTE + Weekly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">CL Last</div>
-            <div class="value">69.33</div>
-            <div class="change down">-0.17</div>
+            <div class="value">68.46</div>
+            <div class="change down">-1.04</div>
         </div>
         <div class="price-box">
             <div class="label">CL Prev Close</div>
@@ -643,7 +713,42 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
-        <div class="analytics-grid"><div class="analytics-card">
+        <div class="bias-banner">
+        <div class="bias-verdict">
+            <div class="bias-arrow bias-arrow-bear">&#9660;</div>
+            <div class="bias-label" style="color: var(--red)">Mildly Bearish</div>
+            <div class="bias-conf">Confidence: 28%</div>
+        </div>
+        <div class="bias-factors"><div class="bias-factor">
+            <span class="bias-dot bias-dot-bull"></span>
+            <span class="bias-factor-name">P/C OI Ratio:</span>
+            <span class="bias-factor-reason">P/C ratio 1.34 — elevated put hedging acts as a floor of support (contrarian bullish)</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-bear"></span>
+            <span class="bias-factor-name">VEX (Vanna):</span>
+            <span class="bias-factor-reason">Negative vanna — IV drop forces dealers to sell, amplifying declines</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-bear"></span>
+            <span class="bias-factor-name">CHEX (Charm):</span>
+            <span class="bias-factor-reason">Negative charm — time decay forces dealers to sell into the close</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-bull"></span>
+            <span class="bias-factor-name">Dealer Cushion:</span>
+            <span class="bias-factor-reason">Put wall 6.0% below — downside cushioned by dealer hedging</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-side"></span>
+            <span class="bias-factor-name">Pin Risk:</span>
+            <span class="bias-factor-reason">Pin risk 51 (Moderate) — some gravitational pull toward high-OI strikes</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-neut"></span>
+            <span class="bias-factor-name">Dealer Alignment:</span>
+            <span class="bias-factor-reason">Levels diverging (4.1%) — conflicting signals, directional move more likely</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-side"></span>
+            <span class="bias-factor-name">Gamma Acceleration:</span>
+            <span class="bias-factor-reason">Gamma acceleration 2.7x — elevated short-dated gamma, some intraday amplification</span>
+        </div></div>
+    </div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">Expected Move (1-Day) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The market-implied price range for the current session, derived from ATM implied volatility. About 68% of sessions close within this range (1 standard deviation). A breach suggests unusual volatility or a catalyst-driven move.</span></span></div>
             <div class="a-value">&plusmn;1.42 pts</div>
             <div class="a-detail">&plusmn;2.03% &bull; ATM IV: 38.9%</div>
@@ -664,11 +769,11 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="a-badge a-badge-red">Diverging</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">VEX (Vanna Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Vanna Exposure — measures how dealer delta shifts when implied volatility moves. Positive VEX: an IV drop forces dealers to buy (supporting rallies). Negative VEX: an IV drop forces dealers to sell (amplifying declines). Dominates around earnings and FOMC events.</span></span></div>
-            <div class="a-value">-16.30M</div>
+            <div class="a-value">-16.29M</div>
             <span class="a-badge a-badge-red">IV Drop -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">CHEX (Charm Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Charm Exposure — measures how dealer delta changes purely from the passage of time. Positive CHEX: time decay forces dealers to buy (upward pressure into close). Negative CHEX: time decay forces dealers to sell (downward drift into close). Strongest on Thursday/Friday of expiration weeks.</span></span></div>
-            <div class="a-value">-94.14M</div>
+            <div class="a-value">-94.11M</div>
             <span class="a-badge a-badge-red">Time Decay -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">Dealer Cushion <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Distance from the current price to the nearest major options wall (highest call OI above or put OI below). Tight (<0.3%) = price is right at a wall, expect strong reaction. Normal (0.3–1.0%) = standard buffer zone. Wide (>1.0%) = plenty of room before the next dealer-defended level.</span></span></div>
@@ -681,7 +786,7 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="a-badge a-badge-yellow">Elevated</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">OI-Weighted DTE <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The average days-to-expiration of all open contracts, weighted by open interest. Short (<10 days) = market is gamma-sensitive, rapid theta decay, sharp intraday moves. Long (>45 days) = vega/vanna-dominated, slower dynamics, more sensitive to IV changes.</span></span></div>
-            <div class="a-value">131.3 days</div>
+            <div class="a-value">131.2 days</div>
             <span class="a-badge a-badge-blue">Vega-Dominated</span>
         </div><div class="analytics-card">
             <div class="a-label">OI Concentration (HHI) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The Herfindahl-Hirschman Index measures how concentrated open interest is across strikes. Concentrated (>0.05) = OI is clustered in a few dominant strikes, creating strong pin/magnet effects. Moderate (0.01–0.05) = a few meaningful strikes. Dispersed (<0.01) = OI is spread evenly, weak pinning.</span></span></div>

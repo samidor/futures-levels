@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — Options Exposure</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMJ343XKJV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WMJ343XKJV');
+    </script>
+    <style>
+        :root {
+            --bg:     #1a1a2e;
+            --bg2:    #16213e;
+            --bg3:    #0f3460;
+            --text:   #e0e0e0;
+            --text2:  #a0a0b0;
+            --accent: #e94560;
+            --border: #2d3436;
+            --green:  #00b894;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-wrap {
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            font-size: 3em;
+            margin-bottom: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo p {
+            color: var(--text2);
+            font-size: 0.9em;
+            margin-top: 6px;
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 36px 32px;
+        }
+
+        .card h2 {
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.82em;
+            color: var(--text2);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .field input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 14px;
+            color: var(--text);
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .field input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.15s;
+        }
+
+        .btn:hover { opacity: 0.88; }
+        .btn:active { opacity: 0.75; }
+
+        .error {
+            display: none;
+            color: var(--accent);
+            font-size: 0.85em;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%       { transform: translateX(-6px); }
+            40%       { transform: translateX(6px); }
+            60%       { transform: translateX(-4px); }
+            80%       { transform: translateX(4px); }
+        }
+
+        .shake { animation: shake 0.35s ease; }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            color: var(--text2);
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-wrap">
+    <div class="logo">
+        <div class="logo-icon">📊</div>
+        <h1>Options Exposure</h1>
+        <p>Real-time GEX &nbsp;·&nbsp; DEX &nbsp;·&nbsp; Greeks</p>
+    </div>
+
+    <div class="card" id="loginCard">
+        <h2>Sign in to continue</h2>
+        <form id="loginForm" autocomplete="off">
+            <div class="field">
+                <label>Password</label>
+                <input type="password" id="pw" placeholder="Enter your password" autofocus>
+            </div>
+            <button type="submit" class="btn">Sign In &rarr;</button>
+            <div class="error" id="errMsg">Incorrect password &mdash; please try again.</div>
+        </form>
+    </div>
+
+    <div class="footer-note">
+        Access restricted to subscribers &nbsp;·&nbsp; Contact me for access
+    </div>
+</div>
+
+<script>
+    // One SHA-256 hash per subscriber — add/remove as needed.
+    // Generate a hash: python -c "import hashlib; print(hashlib.sha256(b'PASSWORD').hexdigest())"
+    //
+    // Subscriber 1 (you) — password: options2026
+    const HASHES = [
+        '1b75147287f9587f1d3752ab5360619783b4071de0952ed2b0aeca8e20183112',  // you
+        '4e49d1b00f986bc3dbda86e3eac729249bc1a48532d7275e5a902d3ae4d8e284',  // TraderCat .Ed
+        '807e0a9d67f1d0984b6fa5a047f1f7f1377ae40181e7447059692a33f0567673',  // spare 1
+        '0d697c788d67bfb6ff74d745df0d9493a97c8e0cec0d246fa64ea03422d9ef39',  // spare 2
+        '351920bc81f4f1050dff3db5ba7f1796e6843783986a49bb93c1dd869e302f75',  // spare 3
+        '6a032494e3556b7055801cc19547979b10eb54bb3338bba83b5510a9455acb99',  // spare 4
+        'bf2ff06675da6489761f8f54efb0fa99b00749c2fd8ea13a622385a2d21f5df9',  // spare 5
+        '89d98952d444060cc81ebcaa9ec342720442e707cd1c82921c1de7715e3f02a0',  // spare 6
+        '30a34cb17df2e08870f72919b592dd0a68af07f85c19767fcc557bf1487594b3',  // spare 7
+        '352f6a35c4b37b73ba810960295caeaee15b47d792d985ab45a4827b078851e1',  // spare 8
+        'd91128756ee8afb7e5998a5001ccedd8edb194a674e5bb5151015e18dc5a6628',  // spare 9
+        'ca573c13c548660c209f6218309429cd2901ea111c009f38972aacba38e49d5d',  // spare 10
+        '671d32c5e4e56a5fd01270e612ed0167144ad3f274ede167b9868604b1472112',  // spare 11
+        '19d1c1c5c65cadec0cad1a47ee2f60de68ef129c9fb5cb3be7b2b199d1abe095',  // spare 12
+        '0821f0f585faa9714a9b586f0ca2f907c55ac332e7006dd087523da742e5eed0',  // spare 13
+        '65fb4db14b516f37e770706a659add3a534360fb6494427f37ad820f2565bb26',  // spare 14
+        'd98d836e0ceb91c8792e8078bfa697188623c680d9bc3efd0ba207b009b59451',  // spare 15
+        '3e4ff05177d882868810b4cea95d001c686f5a81e10befc087cec36cd75455da',  // spare 16
+        '2bc57f5323e8b69e17b4993901d885a67c8c4accfbd1d01eea6e7f6941777d44',  // spare 17
+        '9d599c40307684ae2d609c80beb385d299190aac949bbb06cc9f0a13d8f9b9a8',  // spare 18
+        '82b349b85736dcb1ff8f2f43709b294d6826541f023f81e212d134eb0677ac03',  // spare 19
+        '8ea09dac686cf34fadfb4a247e2d301374dfc97011058011662eee8c4b24924d',  // spare 20
+    ];
+
+    // Preserve query params (e.g. ?dev=1) through the login redirect
+    var _qs = window.location.search || '';
+    // Store dev mode in sessionStorage so it survives the redirect chain
+    if (new URLSearchParams(_qs).get('dev') === '1') {
+        sessionStorage.setItem('devMode', '1');
+    }
+
+    // Already logged in? Go straight to hub
+    if (sessionStorage.getItem('auth') === 'ok') {
+        location.replace('index.html' + _qs);
+    }
+
+    async function sha256(str) {
+        const buf  = await crypto.subtle.digest('SHA-256',
+                         new TextEncoder().encode(str));
+        return Array.from(new Uint8Array(buf))
+                    .map(b => b.toString(16).padStart(2, '0'))
+                    .join('');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const pw   = document.getElementById('pw').value;
+        const hash = await sha256(pw);
+
+        if (HASHES.includes(hash)) {
+            sessionStorage.setItem('auth', 'ok');
+            location.replace('index.html' + _qs);
+        } else {
+            const card = document.getElementById('loginCard');
+            document.getElementById('errMsg').style.display = 'block';
+            card.classList.remove('shake');
+            void card.offsetWidth;          // force reflow to restart animation
+            card.classList.add('shake');
+            document.getElementById('pw').value = '';
+            document.getElementById('pw').focus();
+        }
+    });
+</script>
+
+</body>
+</html>

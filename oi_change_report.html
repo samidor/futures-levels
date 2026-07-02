@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OI Change &mdash; Day-over-Day Open Interest Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0e1117; --card-bg: #161b22; --text: #c9d1d9; --border: #30363d;
+            --accent: #58a6ff; --green: #3fb950; --red: #f85149;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        .header h1 { font-size: 1.6em; font-weight: 700; margin-bottom: 4px; }
+        .header h1 .badge {
+            display: inline-block; font-size: 0.45em;
+            background: rgba(88,166,255,0.15); color: var(--accent);
+            padding: 3px 10px; border-radius: 6px;
+            vertical-align: middle; margin-left: 10px;
+        }
+        .header .subtitle { color: #8b949e; font-size: 0.9em; }
+
+        .toggle-bar {
+            display: flex; gap: 6px; margin-bottom: 20px;
+            flex-wrap: wrap; align-items: center;
+        }
+        .toggle-btn {
+            background: transparent; color: #8b949e; border: 1px solid var(--border);
+            padding: 6px 18px; font-size: 0.85em; font-weight: 600;
+            cursor: pointer; border-radius: 6px;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .toggle-btn:hover { color: var(--text); border-color: #8b949e; }
+        .toggle-btn.active {
+            color: var(--accent); border-color: var(--accent);
+            background: rgba(88,166,255,0.1);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px; margin-bottom: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px; padding: 14px 18px;
+        }
+        .card .label {
+            font-size: 0.72em; color: #8b949e;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .card .value {
+            font-size: 1.15em; font-weight: 700;
+            font-family: 'Consolas', monospace; margin-top: 3px;
+        }
+        .val-pos { color: var(--green); }
+        .val-neg { color: var(--red); }
+        .val-neutral { color: var(--accent); }
+
+        .chart-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+        .chart-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 12px; color: #8b949e;
+        }
+        .chart-frame {
+            position: relative; height: 500px;
+        }
+
+        .table-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .table-section h3 {
+            font-size: 0.9em; font-weight: 600;
+            margin-bottom: 12px; color: #8b949e;
+        }
+        table {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.82em; font-family: 'Consolas', monospace;
+        }
+        th {
+            text-align: right; padding: 8px 12px;
+            border-bottom: 2px solid var(--border);
+            color: #8b949e; font-size: 0.85em;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            cursor: pointer; user-select: none;
+            white-space: nowrap;
+        }
+        th:hover { color: var(--accent); }
+        th.sorted-asc::after { content: ' \25B2'; font-size: 0.7em; }
+        th.sorted-desc::after { content: ' \25BC'; font-size: 0.7em; }
+        td {
+            text-align: right; padding: 6px 12px;
+            border-bottom: 1px solid rgba(48,54,61,0.5);
+        }
+        tr:hover { background: rgba(88,166,255,0.05); }
+        .chg-pos { color: var(--green); }
+        .chg-neg { color: var(--red); }
+
+        .footer {
+            text-align: center; padding: 16px;
+            color: #8b949e; font-size: 0.82em;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 16px; }
+            .chart-frame { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>OI Change <span class="badge">DAY-OVER-DAY</span></h1>
+    <div class="subtitle">2026-07-02 &bull; Open Interest change vs previous session &bull; 2026-07-02 12:05 ET</div>
+</div>
+
+<div class="toggle-bar">
+    <button class="toggle-btn active" onclick="switchInstrument('sp500', this)">S&P 500</button>
+            <button class="toggle-btn" onclick="switchInstrument('nasdaq', this)">Nasdaq 100</button>
+            
+</div>
+
+<div id="cards-container" class="cards"></div>
+
+<div class="chart-section">
+    <h3>Open Interest Change by Strike (within &plusmn;5% of spot)</h3>
+    <div class="chart-frame"><canvas id="oi-chart"></canvas></div>
+</div>
+
+<div class="table-section">
+    <h3>Strike Detail</h3>
+    <table id="oi-table">
+        <thead>
+            <tr>
+                <th data-col="strike" onclick="sortTable('strike')">Strike</th>
+                <th data-col="call_oi" onclick="sortTable('call_oi')">Call OI</th>
+                <th data-col="call_prev" onclick="sortTable('call_prev')">Call Prev</th>
+                <th data-col="call_chg" onclick="sortTable('call_chg')">Call Change</th>
+                <th data-col="put_oi" onclick="sortTable('put_oi')">Put OI</th>
+                <th data-col="put_prev" onclick="sortTable('put_prev')">Put Prev</th>
+                <th data-col="put_chg" onclick="sortTable('put_chg')">Put Change</th>
+            </tr>
+        </thead>
+        <tbody id="oi-tbody"></tbody>
+    </table>
+</div>
+
+<div class="footer">
+    Data: chain_cache / Massive API / CBOE delayed quotes &bull;
+    OI Change = Today OI &minus; Yesterday OI (aggregated across all expirations)<br>
+    Snapshots every 5 min during market hours &bull; Latest snapshot per day retained
+</div>
+
+<script>
+var instruments = {'sp500': {
+        label: "S&P 500",
+        spot: 745.15,
+        strikes: [708.0, 709.0, 710.0, 711.0, 712.0, 713.0, 714.0, 715.0, 716.0, 717.0, 718.0, 719.0, 720.0, 721.0, 722.0, 723.0, 724.0, 725.0, 726.0, 727.0, 728.0, 729.0, 730.0, 731.0, 732.0, 733.0, 734.0, 735.0, 736.0, 737.0, 737.5, 738.0, 739.0, 740.0, 741.0, 742.0, 742.5, 743.0, 744.0, 745.0, 746.0, 747.0, 747.5, 748.0, 749.0, 750.0, 751.0, 752.0, 752.5, 753.0, 754.0, 755.0, 756.0, 757.0, 757.5, 758.0, 759.0, 760.0, 761.0, 762.0, 762.5, 763.0, 764.0, 765.0, 766.0, 767.0, 768.0, 769.0, 770.0, 771.0, 772.0, 773.0, 774.0, 775.0, 776.0, 777.0, 778.0, 779.0, 780.0, 781.0, 782.0],
+        callChanges: [-39, -50, -520, -38, -51, -199, -63, -507, -198, -125, -344, -155, -836, -455, -1525, -702, -902, -1263, -626, -1077, -1265, -1445, -2408, -1347, -1813, -2305, -5114, -5475, -3028, -2748, -7, -5405, -1753, -10213, -3314, -2710, -14, -3659, -1468, 4638, 840, -8207, -1, -4760, -4991, 25569, -2051, -4314, 126, 4392, -3952, 2430, -5516, -7123, 93, -4356, -10131, 12861, -643, 21925, 81, -2036, -3065, 5861, -2199, 1938, -2839, -925, 5289, -1525, 15778, 653, 3018, 402, 231, 2032, 1811, 1585, 5897, 820, 1303],
+        putChanges: [7224, 16145, -2896, -4336, -668, 903, -2446, 3402, 3558, -136, -3759, -101, 10140, -233, -3493, -837, -7881, 6228, 1919, -4683, -305, 1705, 4251, -2230, 5057, -289, -2539, 6638, -300, 2276, -93, -2895, -1794, -1639, -2542, 4302, 46, 27732, -2057, 22852, 2073, -3549, 215, 420, 6964, 13960, 1355, 3547, 15, 845, 1897, 2430, 2429, 742, 0, 227, 36, -959, 45, 308, 0, -31, 128, -47, 10, -18, 76, -37, 1290, 263, 141, 121, 580, 577, 379, -8, 12, -43, -2692, 26, 88],
+        tableData: [{"strike": 708.0, "call_oi": 12533, "call_prev": 12572, "call_chg": -39, "put_oi": 106460, "put_prev": 99236, "put_chg": 7224}, {"strike": 709.0, "call_oi": 3881, "call_prev": 3931, "call_chg": -50, "put_oi": 51280, "put_prev": 35135, "put_chg": 16145}, {"strike": 710.0, "call_oi": 93113, "call_prev": 93633, "call_chg": -520, "put_oi": 339102, "put_prev": 341998, "put_chg": -2896}, {"strike": 711.0, "call_oi": 2524, "call_prev": 2562, "call_chg": -38, "put_oi": 34492, "put_prev": 38828, "put_chg": -4336}, {"strike": 712.0, "call_oi": 16161, "call_prev": 16212, "call_chg": -51, "put_oi": 73326, "put_prev": 73994, "put_chg": -668}, {"strike": 713.0, "call_oi": 2003, "call_prev": 2202, "call_chg": -199, "put_oi": 18310, "put_prev": 17407, "put_chg": 903}, {"strike": 714.0, "call_oi": 3331, "call_prev": 3394, "call_chg": -63, "put_oi": 50159, "put_prev": 52605, "put_chg": -2446}, {"strike": 715.0, "call_oi": 66651, "call_prev": 67158, "call_chg": -507, "put_oi": 188578, "put_prev": 185176, "put_chg": 3402}, {"strike": 716.0, "call_oi": 2855, "call_prev": 3053, "call_chg": -198, "put_oi": 44151, "put_prev": 40593, "put_chg": 3558}, {"strike": 717.0, "call_oi": 2177, "call_prev": 2302, "call_chg": -125, "put_oi": 35680, "put_prev": 35816, "put_chg": -136}, {"strike": 718.0, "call_oi": 12509, "call_prev": 12853, "call_chg": -344, "put_oi": 76250, "put_prev": 80009, "put_chg": -3759}, {"strike": 719.0, "call_oi": 3288, "call_prev": 3443, "call_chg": -155, "put_oi": 23047, "put_prev": 23148, "put_chg": -101}, {"strike": 720.0, "call_oi": 156780, "call_prev": 157616, "call_chg": -836, "put_oi": 351136, "put_prev": 340996, "put_chg": 10140}, {"strike": 721.0, "call_oi": 4462, "call_prev": 4917, "call_chg": -455, "put_oi": 28592, "put_prev": 28825, "put_chg": -233}, {"strike": 722.0, "call_oi": 15149, "call_prev": 16674, "call_chg": -1525, "put_oi": 65467, "put_prev": 68960, "put_chg": -3493}, {"strike": 723.0, "call_oi": 2359, "call_prev": 3061, "call_chg": -702, "put_oi": 21663, "put_prev": 22500, "put_chg": -837}, {"strike": 724.0, "call_oi": 3611, "call_prev": 4513, "call_chg": -902, "put_oi": 43000, "put_prev": 50881, "put_chg": -7881}, {"strike": 725.0, "call_oi": 82229, "call_prev": 83492, "call_chg": -1263, "put_oi": 220530, "put_prev": 214302, "put_chg": 6228}, {"strike": 726.0, "call_oi": 7091, "call_prev": 7717, "call_chg": -626, "put_oi": 38152, "put_prev": 36233, "put_chg": 1919}, {"strike": 727.0, "call_oi": 3920, "call_prev": 4997, "call_chg": -1077, "put_oi": 26121, "put_prev": 30804, "put_chg": -4683}, {"strike": 728.0, "call_oi": 18745, "call_prev": 20010, "call_chg": -1265, "put_oi": 71489, "put_prev": 71794, "put_chg": -305}, {"strike": 729.0, "call_oi": 6351, "call_prev": 7796, "call_chg": -1445, "put_oi": 44504, "put_prev": 42799, "put_chg": 1705}, {"strike": 730.0, "call_oi": 196551, "call_prev": 198959, "call_chg": -2408, "put_oi": 321192, "put_prev": 316941, "put_chg": 4251}, {"strike": 731.0, "call_oi": 8382, "call_prev": 9729, "call_chg": -1347, "put_oi": 27600, "put_prev": 29830, "put_chg": -2230}, {"strike": 732.0, "call_oi": 31815, "call_prev": 33628, "call_chg": -1813, "put_oi": 69101, "put_prev": 64044, "put_chg": 5057}, {"strike": 733.0, "call_oi": 10174, "call_prev": 12479, "call_chg": -2305, "put_oi": 24023, "put_prev": 24312, "put_chg": -289}, {"strike": 734.0, "call_oi": 11890, "call_prev": 17004, "call_chg": -5114, "put_oi": 43133, "put_prev": 45672, "put_chg": -2539}, {"strike": 735.0, "call_oi": 124820, "call_prev": 130295, "call_chg": -5475, "put_oi": 267657, "put_prev": 261019, "put_chg": 6638}, {"strike": 736.0, "call_oi": 17796, "call_prev": 20824, "call_chg": -3028, "put_oi": 42383, "put_prev": 42683, "put_chg": -300}, {"strike": 737.0, "call_oi": 12824, "call_prev": 15572, "call_chg": -2748, "put_oi": 29264, "put_prev": 26988, "put_chg": 2276}, {"strike": 737.5, "call_oi": 1019, "call_prev": 1026, "call_chg": -7, "put_oi": 1311, "put_prev": 1404, "put_chg": -93}, {"strike": 738.0, "call_oi": 38789, "call_prev": 44194, "call_chg": -5405, "put_oi": 65801, "put_prev": 68696, "put_chg": -2895}, {"strike": 739.0, "call_oi": 13609, "call_prev": 15362, "call_chg": -1753, "put_oi": 28017, "put_prev": 29811, "put_chg": -1794}, {"strike": 740.0, "call_oi": 207779, "call_prev": 217992, "call_chg": -10213, "put_oi": 322240, "put_prev": 323879, "put_chg": -1639}, {"strike": 741.0, "call_oi": 20773, "call_prev": 24087, "call_chg": -3314, "put_oi": 30976, "put_prev": 33518, "put_chg": -2542}, {"strike": 742.0, "call_oi": 48797, "call_prev": 51507, "call_chg": -2710, "put_oi": 75322, "put_prev": 71020, "put_chg": 4302}, {"strike": 742.5, "call_oi": 926, "call_prev": 940, "call_chg": -14, "put_oi": 652, "put_prev": 606, "put_chg": 46}, {"strike": 743.0, "call_oi": 21328, "call_prev": 24987, "call_chg": -3659, "put_oi": 58880, "put_prev": 31148, "put_chg": 27732}, {"strike": 744.0, "call_oi": 33103, "call_prev": 34571, "call_chg": -1468, "put_oi": 44374, "put_prev": 46431, "put_chg": -2057}, {"strike": 745.0, "call_oi": 244344, "call_prev": 239706, "call_chg": 4638, "put_oi": 228907, "put_prev": 206055, "put_chg": 22852}, {"strike": 746.0, "call_oi": 48326, "call_prev": 47486, "call_chg": 840, "put_oi": 50103, "put_prev": 48030, "put_chg": 2073}, {"strike": 747.0, "call_oi": 45031, "call_prev": 53238, "call_chg": -8207, "put_oi": 31281, "put_prev": 34830, "put_chg": -3549}, {"strike": 747.5, "call_oi": 731, "call_prev": 732, "call_chg": -1, "put_oi": 737, "put_prev": 522, "put_chg": 215}, {"strike": 748.0, "call_oi": 95578, "call_prev": 100338, "call_chg": -4760, "put_oi": 68836, "put_prev": 68416, "put_chg": 420}, {"strike": 749.0, "call_oi": 41676, "call_prev": 46667, "call_chg": -4991, "put_oi": 28663, "put_prev": 21699, "put_chg": 6964}, {"strike": 750.0, "call_oi": 478423, "call_prev": 452854, "call_chg": 25569, "put_oi": 336422, "put_prev": 322462, "put_chg": 13960}, {"strike": 751.0, "call_oi": 32882, "call_prev": 34933, "call_chg": -2051, "put_oi": 11339, "put_prev": 9984, "put_chg": 1355}, {"strike": 752.0, "call_oi": 90140, "call_prev": 94454, "call_chg": -4314, "put_oi": 35190, "put_prev": 31643, "put_chg": 3547}, {"strike": 752.5, "call_oi": 791, "call_prev": 665, "call_chg": 126, "put_oi": 457, "put_prev": 442, "put_chg": 15}, {"strike": 753.0, "call_oi": 52835, "call_prev": 48443, "call_chg": 4392, "put_oi": 16328, "put_prev": 15483, "put_chg": 845}, {"strike": 754.0, "call_oi": 65259, "call_prev": 69211, "call_chg": -3952, "put_oi": 25485, "put_prev": 23588, "put_chg": 1897}, {"strike": 755.0, "call_oi": 256763, "call_prev": 254333, "call_chg": 2430, "put_oi": 106898, "put_prev": 104468, "put_chg": 2430}, {"strike": 756.0, "call_oi": 58455, "call_prev": 63971, "call_chg": -5516, "put_oi": 25671, "put_prev": 23242, "put_chg": 2429}, {"strike": 757.0, "call_oi": 38629, "call_prev": 45752, "call_chg": -7123, "put_oi": 8375, "put_prev": 7633, "put_chg": 742}, {"strike": 757.5, "call_oi": 990, "call_prev": 897, "call_chg": 93, "put_oi": 203, "put_prev": 203, "put_chg": 0}, {"strike": 758.0, "call_oi": 95595, "call_prev": 99951, "call_chg": -4356, "put_oi": 30793, "put_prev": 30566, "put_chg": 227}, {"strike": 759.0, "call_oi": 35782, "call_prev": 45913, "call_chg": -10131, "put_oi": 9892, "put_prev": 9856, "put_chg": 36}, {"strike": 760.0, "call_oi": 401015, "call_prev": 388154, "call_chg": 12861, "put_oi": 186442, "put_prev": 187401, "put_chg": -959}, {"strike": 761.0, "call_oi": 33644, "call_prev": 34287, "call_chg": -643, "put_oi": 6787, "put_prev": 6742, "put_chg": 45}, {"strike": 762.0, "call_oi": 87856, "call_prev": 65931, "call_chg": 21925, "put_oi": 18723, "put_prev": 18415, "put_chg": 308}, {"strike": 762.5, "call_oi": 898, "call_prev": 817, "call_chg": 81, "put_oi": 0, "put_prev": 0, "put_chg": 0}, {"strike": 763.0, "call_oi": 27758, "call_prev": 29794, "call_chg": -2036, "put_oi": 5336, "put_prev": 5367, "put_chg": -31}, {"strike": 764.0, "call_oi": 53437, "call_prev": 56502, "call_chg": -3065, "put_oi": 12480, "put_prev": 12352, "put_chg": 128}, {"strike": 765.0, "call_oi": 157131, "call_prev": 151270, "call_chg": 5861, "put_oi": 32878, "put_prev": 32925, "put_chg": -47}, {"strike": 766.0, "call_oi": 39830, "call_prev": 42029, "call_chg": -2199, "put_oi": 2829, "put_prev": 2819, "put_chg": 10}, {"strike": 767.0, "call_oi": 26255, "call_prev": 24317, "call_chg": 1938, "put_oi": 1701, "put_prev": 1719, "put_chg": -18}, {"strike": 768.0, "call_oi": 52347, "call_prev": 55186, "call_chg": -2839, "put_oi": 6341, "put_prev": 6265, "put_chg": 76}, {"strike": 769.0, "call_oi": 17514, "call_prev": 18439, "call_chg": -925, "put_oi": 2243, "put_prev": 2280, "put_chg": -37}, {"strike": 770.0, "call_oi": 238027, "call_prev": 232738, "call_chg": 5289, "put_oi": 44490, "put_prev": 43200, "put_chg": 1290}, {"strike": 771.0, "call_oi": 17839, "call_prev": 19364, "call_chg": -1525, "put_oi": 1418, "put_prev": 1155, "put_chg": 263}, {"strike": 772.0, "call_oi": 58677, "call_prev": 42899, "call_chg": 15778, "put_oi": 4642, "put_prev": 4501, "put_chg": 141}, {"strike": 773.0, "call_oi": 25339, "call_prev": 24686, "call_chg": 653, "put_oi": 922, "put_prev": 801, "put_chg": 121}, {"strike": 774.0, "call_oi": 24336, "call_prev": 21318, "call_chg": 3018, "put_oi": 1668, "put_prev": 1088, "put_chg": 580}, {"strike": 775.0, "call_oi": 142769, "call_prev": 142367, "call_chg": 402, "put_oi": 15796, "put_prev": 15219, "put_chg": 577}, {"strike": 776.0, "call_oi": 13107, "call_prev": 12876, "call_chg": 231, "put_oi": 1070, "put_prev": 691, "put_chg": 379}, {"strike": 777.0, "call_oi": 19577, "call_prev": 17545, "call_chg": 2032, "put_oi": 411, "put_prev": 419, "put_chg": -8}, {"strike": 778.0, "call_oi": 35534, "call_prev": 33723, "call_chg": 1811, "put_oi": 4466, "put_prev": 4454, "put_chg": 12}, {"strike": 779.0, "call_oi": 11855, "call_prev": 10270, "call_chg": 1585, "put_oi": 226, "put_prev": 269, "put_chg": -43}, {"strike": 780.0, "call_oi": 270065, "call_prev": 264168, "call_chg": 5897, "put_oi": 38822, "put_prev": 41514, "put_chg": -2692}, {"strike": 781.0, "call_oi": 13368, "call_prev": 12548, "call_chg": 820, "put_oi": 126, "put_prev": 100, "put_chg": 26}, {"strike": 782.0, "call_oi": 44650, "call_prev": 43347, "call_chg": 1303, "put_oi": 2762, "put_prev": 2674, "put_chg": 88}],
+        summary: {
+            totalCallChange: 110354,
+            totalPutChange: 205128,
+            maxCallStrike: 750.0,
+            maxCallVal: 25569,
+            maxPutStrike: 743.0,
+            maxPutVal: 27732
+        }
+    },
+        'nasdaq': {
+        label: "Nasdaq 100",
+        spot: 716.87,
+        strikes: [682.0, 683.0, 684.0, 685.0, 686.0, 687.0, 688.0, 689.0, 690.0, 691.0, 692.0, 693.0, 694.0, 695.0, 696.0, 697.0, 698.0, 699.0, 700.0, 701.0, 702.0, 703.0, 704.0, 705.0, 706.0, 707.0, 708.0, 709.0, 710.0, 711.0, 712.0, 713.0, 714.0, 715.0, 716.0, 717.0, 717.5, 718.0, 719.0, 720.0, 721.0, 722.0, 722.5, 723.0, 724.0, 725.0, 726.0, 727.0, 727.5, 728.0, 729.0, 730.0, 731.0, 732.0, 732.5, 733.0, 734.0, 735.0, 736.0, 737.0, 737.5, 738.0, 739.0, 740.0, 741.0, 742.0, 742.5, 743.0, 744.0, 745.0, 746.0, 747.0, 748.0, 749.0, 750.0, 751.0, 752.0],
+        callChanges: [-18, -43, -18, -115, -82, -142, -101, -113, 1478, -147, -212, -381, -182, -423, -271, -226, -612, -1056, -1593, -1258, -954, -1178, -1239, -2130, -1041, -944, -1007, -1164, 10956, -1600, -1281, -1184, -1346, -3516, -1253, -747, 0, -1039, -628, -3989, -430, -393, -2, -13727, 153, -14980, 1809, 5810, 78, 3463, 3016, 10938, 3480, 2364, 65, 2231, -84, 5766, 235, 502, -34, -7809, -1564, -4236, -600, -1801, -24, -2094, -1652, -4672, -2201, -304, -11716, -140, 3456, -429, 229],
+        putChanges: [-231, 202, -210, -550, -356, -439, -334, 98, -2608, 2044, 320, 286, -119, -726, -1948, -306, 455, -11, 5354, -614, 701, 1243, 1873, 5477, -472, -899, -646, -431, 15298, 627, 970, 10110, 872, -5246, -979, -1866, 22, -487, -311, 403, -542, 2552, 28, -2820, 1171, 8775, 2744, 729, 188, 1466, -262, -694, -933, -3036, 32, -2229, -3989, -5174, -3091, -4234, 49, -1894, -977, -3814, -985, -605, 1, -622, -603, -1255, -112, -81, -45, -77, -746, -1, -14],
+        tableData: [{"strike": 682.0, "call_oi": 92, "call_prev": 110, "call_chg": -18, "put_oi": 2263, "put_prev": 2494, "put_chg": -231}, {"strike": 683.0, "call_oi": 50, "call_prev": 93, "call_chg": -43, "put_oi": 3273, "put_prev": 3071, "put_chg": 202}, {"strike": 684.0, "call_oi": 490, "call_prev": 508, "call_chg": -18, "put_oi": 3288, "put_prev": 3498, "put_chg": -210}, {"strike": 685.0, "call_oi": 37157, "call_prev": 37272, "call_chg": -115, "put_oi": 80211, "put_prev": 80761, "put_chg": -550}, {"strike": 686.0, "call_oi": 234, "call_prev": 316, "call_chg": -82, "put_oi": 3926, "put_prev": 4282, "put_chg": -356}, {"strike": 687.0, "call_oi": 216, "call_prev": 358, "call_chg": -142, "put_oi": 3068, "put_prev": 3507, "put_chg": -439}, {"strike": 688.0, "call_oi": 290, "call_prev": 391, "call_chg": -101, "put_oi": 4524, "put_prev": 4858, "put_chg": -334}, {"strike": 689.0, "call_oi": 430, "call_prev": 543, "call_chg": -113, "put_oi": 6416, "put_prev": 6318, "put_chg": 98}, {"strike": 690.0, "call_oi": 57761, "call_prev": 56283, "call_chg": 1478, "put_oi": 117323, "put_prev": 119931, "put_chg": -2608}, {"strike": 691.0, "call_oi": 358, "call_prev": 505, "call_chg": -147, "put_oi": 6894, "put_prev": 4850, "put_chg": 2044}, {"strike": 692.0, "call_oi": 372, "call_prev": 584, "call_chg": -212, "put_oi": 5857, "put_prev": 5537, "put_chg": 320}, {"strike": 693.0, "call_oi": 505, "call_prev": 886, "call_chg": -381, "put_oi": 12954, "put_prev": 12668, "put_chg": 286}, {"strike": 694.0, "call_oi": 465, "call_prev": 647, "call_chg": -182, "put_oi": 11834, "put_prev": 11953, "put_chg": -119}, {"strike": 695.0, "call_oi": 15640, "call_prev": 16063, "call_chg": -423, "put_oi": 88121, "put_prev": 88847, "put_chg": -726}, {"strike": 696.0, "call_oi": 760, "call_prev": 1031, "call_chg": -271, "put_oi": 3918, "put_prev": 5866, "put_chg": -1948}, {"strike": 697.0, "call_oi": 714, "call_prev": 940, "call_chg": -226, "put_oi": 6628, "put_prev": 6934, "put_chg": -306}, {"strike": 698.0, "call_oi": 1190, "call_prev": 1802, "call_chg": -612, "put_oi": 8047, "put_prev": 7592, "put_chg": 455}, {"strike": 699.0, "call_oi": 2020, "call_prev": 3076, "call_chg": -1056, "put_oi": 6243, "put_prev": 6254, "put_chg": -11}, {"strike": 700.0, "call_oi": 85716, "call_prev": 87309, "call_chg": -1593, "put_oi": 259132, "put_prev": 253778, "put_chg": 5354}, {"strike": 701.0, "call_oi": 1309, "call_prev": 2567, "call_chg": -1258, "put_oi": 6784, "put_prev": 7398, "put_chg": -614}, {"strike": 702.0, "call_oi": 1813, "call_prev": 2767, "call_chg": -954, "put_oi": 7625, "put_prev": 6924, "put_chg": 701}, {"strike": 703.0, "call_oi": 1192, "call_prev": 2370, "call_chg": -1178, "put_oi": 5221, "put_prev": 3978, "put_chg": 1243}, {"strike": 704.0, "call_oi": 1773, "call_prev": 3012, "call_chg": -1239, "put_oi": 7354, "put_prev": 5481, "put_chg": 1873}, {"strike": 705.0, "call_oi": 23406, "call_prev": 25536, "call_chg": -2130, "put_oi": 80121, "put_prev": 74644, "put_chg": 5477}, {"strike": 706.0, "call_oi": 2543, "call_prev": 3584, "call_chg": -1041, "put_oi": 5995, "put_prev": 6467, "put_chg": -472}, {"strike": 707.0, "call_oi": 2081, "call_prev": 3025, "call_chg": -944, "put_oi": 9461, "put_prev": 10360, "put_chg": -899}, {"strike": 708.0, "call_oi": 2496, "call_prev": 3503, "call_chg": -1007, "put_oi": 5989, "put_prev": 6635, "put_chg": -646}, {"strike": 709.0, "call_oi": 5006, "call_prev": 6170, "call_chg": -1164, "put_oi": 22206, "put_prev": 22637, "put_chg": -431}, {"strike": 710.0, "call_oi": 82854, "call_prev": 71898, "call_chg": 10956, "put_oi": 99547, "put_prev": 84249, "put_chg": 15298}, {"strike": 711.0, "call_oi": 30116, "call_prev": 31716, "call_chg": -1600, "put_oi": 8855, "put_prev": 8228, "put_chg": 627}, {"strike": 712.0, "call_oi": 3070, "call_prev": 4351, "call_chg": -1281, "put_oi": 10068, "put_prev": 9098, "put_chg": 970}, {"strike": 713.0, "call_oi": 3323, "call_prev": 4507, "call_chg": -1184, "put_oi": 18011, "put_prev": 7901, "put_chg": 10110}, {"strike": 714.0, "call_oi": 4578, "call_prev": 5924, "call_chg": -1346, "put_oi": 11184, "put_prev": 10312, "put_chg": 872}, {"strike": 715.0, "call_oi": 66172, "call_prev": 69688, "call_chg": -3516, "put_oi": 93692, "put_prev": 98938, "put_chg": -5246}, {"strike": 716.0, "call_oi": 4697, "call_prev": 5950, "call_chg": -1253, "put_oi": 9407, "put_prev": 10386, "put_chg": -979}, {"strike": 717.0, "call_oi": 4295, "call_prev": 5042, "call_chg": -747, "put_oi": 9399, "put_prev": 11265, "put_chg": -1866}, {"strike": 717.5, "call_oi": 112, "call_prev": 112, "call_chg": 0, "put_oi": 228, "put_prev": 206, "put_chg": 22}, {"strike": 718.0, "call_oi": 3711, "call_prev": 4750, "call_chg": -1039, "put_oi": 10015, "put_prev": 10502, "put_chg": -487}, {"strike": 719.0, "call_oi": 2772, "call_prev": 3400, "call_chg": -628, "put_oi": 8760, "put_prev": 9071, "put_chg": -311}, {"strike": 720.0, "call_oi": 69201, "call_prev": 73190, "call_chg": -3989, "put_oi": 102731, "put_prev": 102328, "put_chg": 403}, {"strike": 721.0, "call_oi": 4615, "call_prev": 5045, "call_chg": -430, "put_oi": 5525, "put_prev": 6067, "put_chg": -542}, {"strike": 722.0, "call_oi": 4591, "call_prev": 4984, "call_chg": -393, "put_oi": 15281, "put_prev": 12729, "put_chg": 2552}, {"strike": 722.5, "call_oi": 352, "call_prev": 354, "call_chg": -2, "put_oi": 150, "put_prev": 122, "put_chg": 28}, {"strike": 723.0, "call_oi": 5993, "call_prev": 19720, "call_chg": -13727, "put_oi": 7008, "put_prev": 9828, "put_chg": -2820}, {"strike": 724.0, "call_oi": 6277, "call_prev": 6124, "call_chg": 153, "put_oi": 18154, "put_prev": 16983, "put_chg": 1171}, {"strike": 725.0, "call_oi": 56307, "call_prev": 71287, "call_chg": -14980, "put_oi": 78719, "put_prev": 69944, "put_chg": 8775}, {"strike": 726.0, "call_oi": 7036, "call_prev": 5227, "call_chg": 1809, "put_oi": 10380, "put_prev": 7636, "put_chg": 2744}, {"strike": 727.0, "call_oi": 11125, "call_prev": 5315, "call_chg": 5810, "put_oi": 6582, "put_prev": 5853, "put_chg": 729}, {"strike": 727.5, "call_oi": 204, "call_prev": 126, "call_chg": 78, "put_oi": 340, "put_prev": 152, "put_chg": 188}, {"strike": 728.0, "call_oi": 10070, "call_prev": 6607, "call_chg": 3463, "put_oi": 16353, "put_prev": 14887, "put_chg": 1466}, {"strike": 729.0, "call_oi": 12470, "call_prev": 9454, "call_chg": 3016, "put_oi": 6400, "put_prev": 6662, "put_chg": -262}, {"strike": 730.0, "call_oi": 103666, "call_prev": 92728, "call_chg": 10938, "put_oi": 63322, "put_prev": 64016, "put_chg": -694}, {"strike": 731.0, "call_oi": 11502, "call_prev": 8022, "call_chg": 3480, "put_oi": 6291, "put_prev": 7224, "put_chg": -933}, {"strike": 732.0, "call_oi": 10370, "call_prev": 8006, "call_chg": 2364, "put_oi": 4369, "put_prev": 7405, "put_chg": -3036}, {"strike": 732.5, "call_oi": 358, "call_prev": 293, "call_chg": 65, "put_oi": 272, "put_prev": 240, "put_chg": 32}, {"strike": 733.0, "call_oi": 16151, "call_prev": 13920, "call_chg": 2231, "put_oi": 5195, "put_prev": 7424, "put_chg": -2229}, {"strike": 734.0, "call_oi": 7412, "call_prev": 7496, "call_chg": -84, "put_oi": 3862, "put_prev": 7851, "put_chg": -3989}, {"strike": 735.0, "call_oi": 74051, "call_prev": 68285, "call_chg": 5766, "put_oi": 62319, "put_prev": 67493, "put_chg": -5174}, {"strike": 736.0, "call_oi": 9700, "call_prev": 9465, "call_chg": 235, "put_oi": 5340, "put_prev": 8431, "put_chg": -3091}, {"strike": 737.0, "call_oi": 12403, "call_prev": 11901, "call_chg": 502, "put_oi": 6513, "put_prev": 10747, "put_chg": -4234}, {"strike": 737.5, "call_oi": 455, "call_prev": 489, "call_chg": -34, "put_oi": 300, "put_prev": 251, "put_chg": 49}, {"strike": 738.0, "call_oi": 9572, "call_prev": 17381, "call_chg": -7809, "put_oi": 3570, "put_prev": 5464, "put_chg": -1894}, {"strike": 739.0, "call_oi": 7665, "call_prev": 9229, "call_chg": -1564, "put_oi": 2114, "put_prev": 3091, "put_chg": -977}, {"strike": 740.0, "call_oi": 109855, "call_prev": 114091, "call_chg": -4236, "put_oi": 47491, "put_prev": 51305, "put_chg": -3814}, {"strike": 741.0, "call_oi": 8729, "call_prev": 9329, "call_chg": -600, "put_oi": 2758, "put_prev": 3743, "put_chg": -985}, {"strike": 742.0, "call_oi": 13139, "call_prev": 14940, "call_chg": -1801, "put_oi": 2699, "put_prev": 3304, "put_chg": -605}, {"strike": 742.5, "call_oi": 178, "call_prev": 202, "call_chg": -24, "put_oi": 87, "put_prev": 86, "put_chg": 1}, {"strike": 743.0, "call_oi": 8078, "call_prev": 10172, "call_chg": -2094, "put_oi": 1629, "put_prev": 2251, "put_chg": -622}, {"strike": 744.0, "call_oi": 8763, "call_prev": 10415, "call_chg": -1652, "put_oi": 1715, "put_prev": 2318, "put_chg": -603}, {"strike": 745.0, "call_oi": 70246, "call_prev": 74918, "call_chg": -4672, "put_oi": 16638, "put_prev": 17893, "put_chg": -1255}, {"strike": 746.0, "call_oi": 5811, "call_prev": 8012, "call_chg": -2201, "put_oi": 756, "put_prev": 868, "put_chg": -112}, {"strike": 747.0, "call_oi": 9317, "call_prev": 9621, "call_chg": -304, "put_oi": 778, "put_prev": 859, "put_chg": -81}, {"strike": 748.0, "call_oi": 22827, "call_prev": 34543, "call_chg": -11716, "put_oi": 979, "put_prev": 1024, "put_chg": -45}, {"strike": 749.0, "call_oi": 7226, "call_prev": 7366, "call_chg": -140, "put_oi": 241, "put_prev": 318, "put_chg": -77}, {"strike": 750.0, "call_oi": 106261, "call_prev": 102805, "call_chg": 3456, "put_oi": 39700, "put_prev": 40446, "put_chg": -746}, {"strike": 751.0, "call_oi": 4212, "call_prev": 4641, "call_chg": -429, "put_oi": 155, "put_prev": 156, "put_chg": -1}, {"strike": 752.0, "call_oi": 13203, "call_prev": 12974, "call_chg": 229, "put_oi": 545, "put_prev": 559, "put_chg": -14}],
+        summary: {
+            totalCallChange: -87750,
+            totalPutChange: 19596,
+            maxCallStrike: 710.0,
+            maxCallVal: 10956,
+            maxPutStrike: 500.0,
+            maxPutVal: 16957
+        }
+    }};
+var activeInst = 'sp500';
+var oiChart = null;
+var sortCol = 'strike';
+var sortDir = 'asc';
+
+function fmtK(v) {
+    if (Math.abs(v) >= 1e6) return (v / 1e6).toFixed(1) + 'M';
+    if (Math.abs(v) >= 1e3) return (v / 1e3).toFixed(1) + 'K';
+    return v.toLocaleString();
+}
+
+function fmtChg(v) {
+    var s = (v > 0 ? '+' : '') + v.toLocaleString();
+    return s;
+}
+
+function updateCards() {
+    var d = instruments[activeInst];
+    if (!d) return;
+    var s = d.summary;
+    var container = document.getElementById('cards-container');
+    var tcCls = s.totalCallChange >= 0 ? 'val-pos' : 'val-neg';
+    var tpCls = s.totalPutChange >= 0 ? 'val-pos' : 'val-neg';
+    container.innerHTML = '<div class="card"><div class="label">Spot Price</div>'
+        + '<div class="value val-neutral">$' + d.spot.toFixed(2) + '</div></div>'
+        + '<div class="card"><div class="label">Total Call OI Change</div>'
+        + '<div class="value ' + tcCls + '">' + fmtChg(s.totalCallChange) + '</div></div>'
+        + '<div class="card"><div class="label">Total Put OI Change</div>'
+        + '<div class="value ' + tpCls + '">' + fmtChg(s.totalPutChange) + '</div></div>'
+        + '<div class="card"><div class="label">Largest Call Build</div>'
+        + '<div class="value val-pos">$' + s.maxCallStrike.toFixed(0) + ' (+' + fmtK(s.maxCallVal) + ')</div></div>'
+        + '<div class="card"><div class="label">Largest Put Build</div>'
+        + '<div class="value val-neg">$' + s.maxPutStrike.toFixed(0) + ' (+' + fmtK(s.maxPutVal) + ')</div></div>';
+}
+
+function buildChart() {
+    var d = instruments[activeInst];
+    if (!d) return;
+    if (oiChart) oiChart.destroy();
+
+    var labels = d.strikes.map(function(s) { return '$' + s.toFixed(0); });
+
+    oiChart = new Chart(document.getElementById('oi-chart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Call OI Change',
+                    data: d.callChanges,
+                    backgroundColor: d.callChanges.map(function(v) {
+                        return v >= 0 ? 'rgba(63,185,80,0.7)' : 'rgba(63,185,80,0.3)';
+                    }),
+                    borderColor: 'rgba(63,185,80,0.9)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Put OI Change',
+                    data: d.putChanges,
+                    backgroundColor: d.putChanges.map(function(v) {
+                        return v >= 0 ? 'rgba(248,81,73,0.7)' : 'rgba(248,81,73,0.3)';
+                    }),
+                    borderColor: 'rgba(248,81,73,0.9)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8b949e', font: { size: 11 }, boxWidth: 16, padding: 14 }
+                },
+                tooltip: {
+                    backgroundColor: '#161b22', titleColor: '#c9d1d9', bodyColor: '#8b949e',
+                    borderColor: '#30363d', borderWidth: 1,
+                    callbacks: {
+                        label: function(ctx) {
+                            return ctx.dataset.label + ': ' + fmtChg(ctx.parsed.x);
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'OI Change', color: '#8b949e', font: { size: 10, weight: '600' } },
+                    ticks: { color: '#8b949e', font: { size: 10 },
+                              callback: function(v) { return fmtK(v); } },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                },
+                y: {
+                    ticks: { color: '#8b949e', font: { size: 10 }, autoSkip: false },
+                    grid: { color: 'rgba(255,255,255,0.03)' }
+                }
+            }
+        }
+    });
+}
+
+function buildTable() {
+    var d = instruments[activeInst];
+    if (!d) return;
+    var rows = d.tableData.slice();
+
+    rows.sort(function(a, b) {
+        var va = a[sortCol], vb = b[sortCol];
+        if (sortDir === 'asc') return va - vb;
+        return vb - va;
+    });
+
+    var tbody = document.getElementById('oi-tbody');
+    var html = '';
+    for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        var ccCls = r.call_chg > 0 ? 'chg-pos' : (r.call_chg < 0 ? 'chg-neg' : '');
+        var pcCls = r.put_chg > 0 ? 'chg-pos' : (r.put_chg < 0 ? 'chg-neg' : '');
+        html += '<tr>'
+            + '<td>$' + r.strike.toFixed(1) + '</td>'
+            + '<td>' + r.call_oi.toLocaleString() + '</td>'
+            + '<td>' + r.call_prev.toLocaleString() + '</td>'
+            + '<td class="' + ccCls + '">' + fmtChg(r.call_chg) + '</td>'
+            + '<td>' + r.put_oi.toLocaleString() + '</td>'
+            + '<td>' + r.put_prev.toLocaleString() + '</td>'
+            + '<td class="' + pcCls + '">' + fmtChg(r.put_chg) + '</td>'
+            + '</tr>';
+    }
+    tbody.innerHTML = html;
+
+    // Update sort indicators
+    var ths = document.querySelectorAll('#oi-table th');
+    for (var j = 0; j < ths.length; j++) {
+        ths[j].classList.remove('sorted-asc', 'sorted-desc');
+        if (ths[j].getAttribute('data-col') === sortCol) {
+            ths[j].classList.add(sortDir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
+    }
+}
+
+function sortTable(col) {
+    if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+        sortCol = col;
+        sortDir = col === 'strike' ? 'asc' : 'desc';
+    }
+    buildTable();
+}
+
+function switchInstrument(key, btn) {
+    activeInst = key;
+    var btns = document.querySelectorAll('.toggle-btn');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+    btn.classList.add('active');
+    updateCards();
+    buildChart();
+    buildTable();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateCards();
+    buildChart();
+    buildTable();
+});
+</script>
+
+</body>
+</html>

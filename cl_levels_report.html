@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CL Key Levels - 2026-09-01 09:06</title>
+    <title>CL Key Levels - 2026-09-01 10:06</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -581,12 +581,12 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>CL Futures Key Levels</h1>
-    <div class="subtitle">2026-09-01 09:06 &bull; CLV26 &bull; 0DTE + Weekly</div>
+    <div class="subtitle">2026-09-01 10:06 &bull; CLV26 &bull; 0DTE + Weekly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">CL Last</div>
-            <div class="value">86.43</div>
-            <div class="change up">+0.67</div>
+            <div class="value">87.22</div>
+            <div class="change up">+1.46</div>
         </div>
         <div class="price-box">
             <div class="label">CL Prev Close</div>
@@ -731,6 +731,10 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="bias-dot bias-dot-neut"></span>
             <span class="bias-factor-name">Dealer Alignment:</span>
             <span class="bias-factor-reason">Levels diverging (21.7%) — conflicting signals, directional move more likely</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-neut"></span>
+            <span class="bias-factor-name">Gamma Acceleration:</span>
+            <span class="bias-factor-reason">Gamma acceleration 1.9x — balanced gamma across expirations, orderly flow</span>
         </div></div>
     </div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">Expected Move (1-Day) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The market-implied price range for the current session, derived from ATM implied volatility. About 68% of sessions close within this range (1 standard deviation). A breach suggests unusual volatility or a catalyst-driven move.</span></span></div>
@@ -757,13 +761,17 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="a-badge a-badge-red">IV Drop -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">CHEX (Charm Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Charm Exposure — measures how dealer delta changes purely from the passage of time. Positive CHEX: time decay forces dealers to buy (upward pressure into close). Negative CHEX: time decay forces dealers to sell (downward drift into close). Strongest on Thursday/Friday of expiration weeks.</span></span></div>
-            <div class="a-value">-9.42M</div>
+            <div class="a-value">-9.38M</div>
             <span class="a-badge a-badge-red">Time Decay -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">Dealer Cushion <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Distance from the current price to the nearest major options wall (highest call OI above or put OI below). Tight (<0.3%) = price is right at a wall, expect strong reaction. Normal (0.3–1.0%) = standard buffer zone. Wide (>1.0%) = plenty of room before the next dealer-defended level.</span></span></div>
             <div class="a-value">25.21%</div>
             <span class="a-badge a-badge-green">Wide</span>
             <div class="a-detail">Nearest: Put Wall @ 64.14</div>
+        </div><div class="analytics-card">
+            <div class="a-label">Gamma Acceleration <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Ratio of 0DTE ATM gamma to 7DTE ATM gamma. When 0DTE gamma is much larger, dealer rehedging obligations intensify into the close, creating strong pinning or explosive breakouts. Above 5x = Accelerating (high intraday impact). 2–5x = Elevated. Below 2x = Stable.</span></span></div>
+            <div class="a-value">1.9x</div>
+            <span class="a-badge a-badge-green">Stable</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">OI-Weighted DTE <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The average days-to-expiration of all open contracts, weighted by open interest. Short (<10 days) = market is gamma-sensitive, rapid theta decay, sharp intraday moves. Long (>45 days) = vega/vanna-dominated, slower dynamics, more sensitive to IV changes.</span></span></div>
             <div class="a-value">158.6 days</div>
@@ -1104,13 +1112,51 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     </div>
 </div>
 
-<div class="section collapsed">
+<div class="section ">
     <div class="section-header">
         <h2>Recent Dark Pool Prints</h2>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
-        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Aug 28, 2026</p>
+        <table>
+            <thead><tr><th>CL Level</th><th>USO Price</th><th>Time</th><th>Size</th><th>Premium</th><th>Side</th></tr></thead>
+            <tbody><tr>
+                <td>85.77</td>
+                <td>$133.71</td>
+                <td>03:45:30.998 PM EDT</td>
+                <td>18,514</td>
+                <td>2.48M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>85.76</td>
+                <td>$133.70</td>
+                <td>04:00:00.028 PM EDT</td>
+                <td>81,470</td>
+                <td>10.89M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>85.43</td>
+                <td>$133.18</td>
+                <td>02:07:00.869 PM EDT</td>
+                <td>18,800</td>
+                <td>2.50M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>85.20</td>
+                <td>$132.83</td>
+                <td>10:33:29.002 AM EDT</td>
+                <td>19,253</td>
+                <td>2.56M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>84.34</td>
+                <td>$131.49</td>
+                <td>04:01:35.754 AM EDT</td>
+                <td>17,200</td>
+                <td>2.26M</td>
+                <td class="side-bid">Bid</td>
+            </tr></tbody>
+        </table>
     </div>
 </div>
 

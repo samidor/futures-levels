@@ -176,6 +176,10 @@ td.rng.active,tbody tr:hover td.rng.active{background:var(--brass-wash);color:va
 td.lo{color:var(--brick);font-weight:500}
 td.hi{color:var(--jade);font-weight:500}
 td.blank{color:var(--text-faint)}
+td.expiry .skip{
+  display:block;font-family:"Archivo",sans-serif;font-size:10px;letter-spacing:.04em;
+  color:var(--steel);font-weight:500;
+}
 
 /* ---------- notes ---------- */
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:4px}
@@ -263,8 +267,9 @@ td.blank{color:var(--text-faint)}
       <div class="formula">Range = Strike &times; IV/100 &times; &radic;(days / 365)</div>
       <p>One formula, three clocks. <b>DTE</b> uses whole days. <b>Intraday</b> counts from the
       snapshot time to expiry. <b>Realtime</b> counts from now to expiry and re-prices every second.
-      Once an expiry has passed, that instrument rolls forward one day, exactly as the source
-      spreadsheet does. Levels are the strike plus and minus half the selected range.</p>
+      Once an expiry has passed, that instrument rolls forward to the next trading day, so a
+      Friday evening counts toward Monday and a holiday is skipped entirely. Levels are the
+      strike plus and minus half the selected range.</p>
     </div>
     <div class="note-card">
       <span class="eyebrow">Option expiry times</span>
@@ -272,6 +277,14 @@ td.blank{color:var(--text-faint)}
       <p>Treasuries settle at 17:00 ET on Fridays and 15:00 ET on every other day; the rule is
       applied to the date of the expiry being counted toward. Expiries are held in exchange time,
       so they stay correct through both the US and the European daylight-saving switches.</p>
+    </div>
+    <div class="note-card">
+      <span class="eyebrow">Next CME holidays</span>
+      <ul class="exp-list" id="holidaylist"></ul>
+      <p>Full closures and shortened sessions alike carry no daily option expiry, so both are
+      skipped when an expiry rolls. The calendar runs to the end of 2028 and lives as a plain
+      date list at the top of this file &mdash; check it against the CME holiday calendar and
+      edit it there.</p>
     </div>
   </div>
 
@@ -309,6 +322,49 @@ var INSTRUMENTS = [
   { sym: "ZW", name: "Wheat",         group: "agri",   rd: 1, pd: 2, strike: 510,    iv: 26.17 },
   { sym: "NG", name: "Natural Gas",   group: "energy", rd: 4, pd: 4, strike: 3.5,    iv: 75.51 }
 ];
+
+/* CME holiday calendar — every date here is treated as having no option expiry,
+   so an expiry roll skips straight over it. Includes both full closures and
+   shortened sessions (marked "early close"), which carry no daily expiry either.
+   Verify against cmegroup.com/tools-information/holiday-calendar and edit freely. */
+var HOLIDAYS = {
+  "2026-01-01": "New Year's Day",
+  "2026-01-19": "Martin Luther King Jr. Day",
+  "2026-02-16": "Presidents Day",
+  "2026-04-03": "Good Friday",
+  "2026-05-25": "Memorial Day",
+  "2026-06-19": "Juneteenth",
+  "2026-07-03": "Independence Day (observed)",
+  "2026-09-07": "Labor Day",
+  "2026-11-26": "Thanksgiving",
+  "2026-11-27": "Day after Thanksgiving (early close)",
+  "2026-12-24": "Christmas Eve (early close)",
+  "2026-12-25": "Christmas Day",
+
+  "2027-01-01": "New Year's Day",
+  "2027-01-18": "Martin Luther King Jr. Day",
+  "2027-02-15": "Presidents Day",
+  "2027-03-26": "Good Friday",
+  "2027-05-31": "Memorial Day",
+  "2027-06-18": "Juneteenth (observed)",
+  "2027-07-05": "Independence Day (observed)",
+  "2027-09-06": "Labor Day",
+  "2027-11-25": "Thanksgiving",
+  "2027-11-26": "Day after Thanksgiving (early close)",
+  "2027-12-24": "Christmas Day (observed)",
+
+  "2028-01-17": "Martin Luther King Jr. Day",
+  "2028-02-21": "Presidents Day",
+  "2028-04-14": "Good Friday",
+  "2028-05-29": "Memorial Day",
+  "2028-06-19": "Juneteenth",
+  "2028-07-03": "Day before Independence Day (early close)",
+  "2028-07-04": "Independence Day",
+  "2028-09-04": "Labor Day",
+  "2028-11-23": "Thanksgiving",
+  "2028-11-24": "Day after Thanksgiving (early close)",
+  "2028-12-25": "Christmas Day"
+};
 
 var STORE_KEY = "expectedRange.v1";
 var DAY_MS = 86400000;
@@ -370,20 +426,42 @@ function zoneLabel() {
 
 /* ---------- expiry resolution -------------------------------------------- */
 
-/* Next expiry strictly after `ref`, replicating the sheet rule
-   IF(expiry - ref <= 0, roll one day). */
+function dateKeyUTC(d) {
+  return d.getUTCFullYear() + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
+}
+
+/* Next expiry strictly after `ref`. The sheet rolls one calendar day once the
+   expiry has passed; here the roll continues to the next day that actually
+   trades — weekends and CME holidays carry no daily expiry and are skipped. */
 function nextExpiry(groupKey, ref) {
   var g = GROUPS[groupKey];
   var p = partsOf(etParts, ref);
-  for (var add = 0; add < 4; add++) {
+  var skipped = [];
+  for (var add = 0; add < 16; add++) {
     var base = new Date(Date.UTC(p.y, p.m - 1, p.d));
     base.setUTCDate(base.getUTCDate() + add);
     var dow = base.getUTCDay();                       /* 0 Sun .. 5 Fri */
+    if (dow === 0 || dow === 6) continue;             /* no weekend expiry */
+    var holiday = HOLIDAYS[dateKeyUTC(base)];
+    if (holiday) { skipped.push(holiday); continue; }
     var t = (g.friday && dow === 5) ? g.friday : g.et;
     var ts = etWallToInstant(base.getUTCFullYear(), base.getUTCMonth() + 1, base.getUTCDate(), t[0], t[1]);
-    if (ts > ref) return { ts: ts, rolled: add > 0, et: t };
+    if (ts > ref) return { ts: ts, rolled: add > 0, et: t, skipped: skipped };
   }
   return null;
+}
+
+/* holidays still ahead, for the reference list */
+function upcomingHolidays(now, count) {
+  var keys = [], k;
+  for (k in HOLIDAYS) if (HOLIDAYS.hasOwnProperty(k)) keys.push(k);
+  keys.sort();
+  var todayKey = dateKeyUTC(new Date(Date.UTC(partsOf(etParts, now).y, partsOf(etParts, now).m - 1, partsOf(etParts, now).d)));
+  var out = [];
+  for (var i = 0; i < keys.length && out.length < count; i++) {
+    if (keys[i] >= todayKey) out.push({ key: keys[i], label: HOLIDAYS[keys[i]] });
+  }
+  return out;
 }
 
 function daysTo(groupKey, ref) {
@@ -603,9 +681,15 @@ applyTheme();
 
 /* ---------- expiry reference list ---------------------------------------- */
 
+var lastExpiryPaint = "";
+
 function paintExpiryList(now) {
   var ul = document.getElementById("explist");
   var html = "", key;
+  var sig = "";
+  for (key in GROUPS) if (GROUPS.hasOwnProperty(key)) sig += nextExpiry(key, now).ts + ",";
+  if (sig === lastExpiryPaint) return;
+  lastExpiryPaint = sig;
   for (key in GROUPS) {
     if (!GROUPS.hasOwnProperty(key)) continue;
     var g = GROUPS[key];
@@ -615,6 +699,19 @@ function paintExpiryList(now) {
             " <em>" + dayFmt.format(e.ts) + " · " + etTxt + "</em></span></li>";
   }
   ul.innerHTML = html;
+}
+
+var holFmt = new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+
+function paintHolidayList(now) {
+  var list = upcomingHolidays(now, 6), html = "", i;
+  for (i = 0; i < list.length; i++) {
+    var bits = list[i].key.split("-");
+    var when = holFmt.format(new Date(+bits[0], +bits[1] - 1, +bits[2]));
+    html += "<li><span>" + list[i].label + "</span><span class=\"v\">" + when + "</span></li>";
+  }
+  if (!html) html = "<li><span>No dates left in the calendar</span><span class=\"v\">extend the table</span></li>";
+  document.getElementById("holidaylist").innerHTML = html;
 }
 
 /* ---------- render -------------------------------------------------------- */
@@ -644,7 +741,8 @@ function render() {
     var daysLive = leftMs / DAY_MS;
     var daysSnap = daysTo(inst.group, snapRef);
 
-    c.expiry.innerHTML = "<b>" + timeFmt.format(exp.ts) + "</b> " + dayFmt.format(exp.ts);
+    c.expiry.innerHTML = "<b>" + timeFmt.format(exp.ts) + "</b> " + dayFmt.format(exp.ts) +
+      (exp.skipped.length ? " <span class=\"skip\">past " + exp.skipped.join(", ") + "</span>" : "");
     c.left.innerHTML = "<b>" + daysLive.toFixed(2) + "</b> " + hms(leftMs);
 
     var rDte = rangeOf(strike, iv, state.dte);
@@ -674,7 +772,14 @@ function render() {
   }
 
   paintExpiryList(now);
+
+  var etDay = dateKeyUTC(new Date(Date.UTC(partsOf(etParts, now).y, partsOf(etParts, now).m - 1, partsOf(etParts, now).d)));
+  if (etDay !== lastHolidayPaint) {
+    lastHolidayPaint = etDay;
+    paintHolidayList(now);
+  }
 }
+var lastHolidayPaint = "";
 
 document.getElementById("zoneline").textContent = zoneLabel();
 paintStale();

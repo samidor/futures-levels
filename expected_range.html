@@ -143,7 +143,7 @@ h1,h2,h3{margin:0;text-wrap:balance;font-weight:600}
 .panel-head h2{font-size:13px;letter-spacing:.03em}
 .panel-head .note{font-size:11.5px;color:var(--text-faint)}
 .scroll{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:1060px}
+table{border-collapse:collapse;width:100%;min-width:1260px}
 thead th{
   font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-faint);
   font-weight:600;text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);
@@ -175,6 +175,9 @@ td.rng{color:var(--text-dim)}
 td.rng.active,tbody tr:hover td.rng.active{background:var(--brass-wash);color:var(--text);font-weight:600}
 td.lo{color:var(--brick);font-weight:500}
 td.hi{color:var(--jade);font-weight:500}
+td.t1,th.t1{border-left:1px solid var(--line)}
+td.t2,th.t2{border-left:1px solid var(--line)}
+td.t2,td.t2 + td.hi{opacity:.82}
 td.blank{color:var(--text-faint)}
 td.expiry .skip{
   display:block;font-family:"Archivo",sans-serif;font-size:10px;letter-spacing:.04em;
@@ -252,8 +255,10 @@ td.expiry .skip{
             <th>Range <span class="sub">DTE</span></th>
             <th>Range <span class="sub">intraday</span></th>
             <th>Range <span class="sub">realtime</span></th>
-            <th>Lower <span class="sub">strike &minus; &frac12; range</span></th>
+            <th class="t1">Lower <span class="sub">strike &minus; &frac12; range</span></th>
             <th>Upper <span class="sub">strike + &frac12; range</span></th>
+            <th class="t2">Lower <span class="sub">strike &minus; range</span></th>
+            <th>Upper <span class="sub">strike + range</span></th>
           </tr>
         </thead>
         <tbody id="rows"></tbody>
@@ -269,7 +274,7 @@ td.expiry .skip{
       snapshot time to expiry. <b>Realtime</b> counts from now to expiry and re-prices every second.
       Once an expiry has passed, that instrument rolls forward to the next trading day, so a
       Friday evening counts toward Monday and a holiday is skipped entirely. Levels are the
-      strike plus and minus half the selected range.</p>
+      strike plus and minus half the selected range, and the second pair at the full range.</p>
     </div>
     <div class="note-card">
       <span class="eyebrow">Option expiry times</span>
@@ -585,7 +590,8 @@ var cells = {};
       var defs = [
         ["expiry", "expiry"], ["left", "left"],
         ["rDte", "rng"], ["rSnap", "rng"], ["rLive", "rng"],
-        ["lo", "lo"], ["hi", "hi"]
+        ["lo", "lo t1"], ["hi", "hi"],
+        ["lo2", "lo t2"], ["hi2", "hi"]
       ];
       for (var k = 0; k < defs.length; k++) {
         var td = document.createElement("td");
@@ -759,15 +765,23 @@ function render() {
 
     var sel = state.src === "dte" ? rDte : (state.src === "snap" ? rSnap : rLive);
     if (isFinite(sel) && isFinite(strike)) {
-      c.lo.className = "lo";
+      c.lo.className = "lo t1";
       c.hi.className = "hi";
+      c.lo2.className = "lo t2";
+      c.hi2.className = "hi";
       c.lo.textContent = num(strike - sel / 2, inst.pd);
       c.hi.textContent = num(strike + sel / 2, inst.pd);
+      c.lo2.textContent = num(strike - sel, inst.pd);
+      c.hi2.textContent = num(strike + sel, inst.pd);
     } else {
-      c.lo.className = "blank";
+      c.lo.className = "blank t1";
       c.hi.className = "blank";
+      c.lo2.className = "blank t2";
+      c.hi2.className = "blank";
       c.lo.textContent = "–";
       c.hi.textContent = "–";
+      c.lo2.textContent = "–";
+      c.hi2.textContent = "–";
     }
   }
 

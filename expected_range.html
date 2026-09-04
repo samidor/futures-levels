@@ -1,0 +1,683 @@
+<title>Expected Range</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+
+<style>
+:root{
+  --ground:#F1F4F8;
+  --surface:#FFFFFF;
+  --surface-2:#E8EDF3;
+  --line:#D2DAE4;
+  --line-soft:#E3E9F0;
+  --text:#16202E;
+  --text-dim:#5A6878;
+  --text-faint:#8A97A6;
+  --brass:#9A6B12;
+  --brass-bright:#C08A22;
+  --brass-wash:rgba(154,107,18,.07);
+  --jade:#1B7A47;
+  --brick:#B23C26;
+  --steel:#2F6BA8;
+  --btn-text:#FFFFFF;
+  --shadow:0 1px 2px rgba(22,32,46,.06), 0 8px 24px -12px rgba(22,32,46,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A1220;
+    --surface:#111C2E;
+    --surface-2:#16233A;
+    --line:#243449;
+    --line-soft:#1B2839;
+    --text:#DCE4EF;
+    --text-dim:#8CA0BA;
+    --text-faint:#5F718B;
+    --brass:#D89B3C;
+    --brass-bright:#EDB458;
+    --brass-wash:rgba(216,155,60,.10);
+    --jade:#3FA96B;
+    --brick:#D2553F;
+    --steel:#5B8FC7;
+    --btn-text:#0A1220;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A1220;
+  --surface:#111C2E;
+  --surface-2:#16233A;
+  --line:#243449;
+  --line-soft:#1B2839;
+  --text:#DCE4EF;
+  --text-dim:#8CA0BA;
+  --text-faint:#5F718B;
+  --brass:#D89B3C;
+  --brass-bright:#EDB458;
+  --brass-wash:rgba(216,155,60,.10);
+  --jade:#3FA96B;
+  --brick:#D2553F;
+  --steel:#5B8FC7;
+  --btn-text:#0A1220;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--text);
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:600}
+:focus-visible{outline:2px solid var(--brass);outline-offset:1px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+  padding:14px 24px;
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+.wordmark{
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:26px;line-height:1;letter-spacing:.01em;font-weight:400;
+}
+.wordmark em{color:var(--brass);font-style:italic}
+.masthead .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.masthead .spacer{flex:1}
+.clock{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;
+  font-size:19px;font-weight:500;color:var(--text);letter-spacing:.02em;text-align:right;
+}
+.clock .zone{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);font-weight:400;font-family:"Archivo",sans-serif}
+.themebtn{
+  font:inherit;font-size:12px;color:var(--text-dim);background:transparent;
+  border:1px solid var(--line);border-radius:2px;padding:5px 11px;cursor:pointer;
+}
+.themebtn:hover{color:var(--text);border-color:var(--brass)}
+
+.page{max-width:1260px;margin:0 auto;padding:22px 24px 70px;display:flex;flex-direction:column;gap:18px}
+
+/* ---------- controls ---------- */
+.controls{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  box-shadow:var(--shadow);
+  padding:15px 18px;
+  display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;
+}
+.eyebrow{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);font-weight:600}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input[type="number"],.field input[type="time"]{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:14px;
+  background:var(--ground);color:var(--text);
+  border:1px solid var(--line);border-radius:2px;padding:7px 9px;width:120px;
+}
+.inline{display:flex;gap:8px;align-items:center}
+.mini{
+  font:inherit;font-size:11.5px;background:var(--surface-2);color:var(--text-dim);
+  border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;
+}
+.mini:hover{color:var(--brass);border-color:var(--brass)}
+.seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{
+  font:inherit;font-size:12.5px;color:var(--text-dim);background:var(--surface);
+  border:none;border-right:1px solid var(--line);padding:8px 14px;cursor:pointer;
+}
+.seg button:last-child{border-right:none}
+.seg button[aria-pressed="true"]{background:var(--brass);color:var(--btn-text);font-weight:600}
+.controls .spacer{flex:1}
+.stale{
+  font-size:11.5px;color:var(--text-dim);
+  border-left:2px solid var(--brick);padding:2px 0 2px 10px;max-width:280px;line-height:1.45;
+}
+.stale b{color:var(--brick);font-weight:600}
+.stale.fresh{border-left-color:var(--jade)}
+.stale.fresh b{color:var(--jade)}
+
+/* ---------- table ---------- */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{padding:11px 18px;border-bottom:1px solid var(--line-soft);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.panel-head h2{font-size:13px;letter-spacing:.03em}
+.panel-head .note{font-size:11.5px;color:var(--text-faint)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:1060px}
+thead th{
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-faint);
+  font-weight:600;text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);
+  white-space:nowrap;vertical-align:bottom;
+}
+thead th.l{text-align:left}
+thead th .sub{display:block;font-size:9.5px;letter-spacing:.05em;opacity:.8;text-transform:none}
+tbody td{
+  padding:6px 12px;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:13.5px;
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--surface-2)}
+td.sym{text-align:left;font-family:"Archivo",sans-serif;font-weight:600;font-size:14px}
+td.sym small{display:block;font-weight:400;font-size:10.5px;color:var(--text-faint);letter-spacing:.04em}
+td.inp{text-align:left}
+td.inp input{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:13.5px;
+  background:var(--ground);color:var(--text);
+  border:1px solid var(--line);border-radius:2px;padding:5px 8px;width:106px;text-align:right;
+}
+td.inp input:hover{border-color:var(--brass)}
+td.expiry{color:var(--text-dim)}
+td.expiry b{color:var(--text);font-weight:500}
+td.left b{color:var(--text);font-weight:500}
+td.left{color:var(--text-faint)}
+td.rng{color:var(--text-dim)}
+td.rng.active,tbody tr:hover td.rng.active{background:var(--brass-wash);color:var(--text);font-weight:600}
+td.lo{color:var(--brick);font-weight:500}
+td.hi{color:var(--jade);font-weight:500}
+td.blank{color:var(--text-faint)}
+
+/* ---------- notes ---------- */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:4px}
+.note-card{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:8px}
+.note-card p{margin:0;font-size:12.5px;color:var(--text-dim);max-width:62ch}
+.note-card p b{color:var(--text);font-weight:600}
+.formula{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:13px;color:var(--text);
+  background:var(--surface-2);border:1px solid var(--line-soft);border-radius:3px;padding:9px 11px;
+}
+.exp-list{list-style:none;margin:0;padding:0;font-size:12px;color:var(--text-dim)}
+.exp-list li{display:flex;justify-content:space-between;gap:14px;padding:4px 0;border-bottom:1px solid var(--line-soft)}
+.exp-list li:last-child{border-bottom:none}
+.exp-list .v{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;color:var(--text)}
+.exp-list .v em{color:var(--text-faint);font-style:normal}
+@media (max-width:720px){
+  .page{padding:16px 14px 60px}
+  .controls{gap:18px}
+}
+</style>
+
+<div class="masthead">
+  <div class="wordmark">Expected <em>Range</em></div>
+  <div class="tag">Option-implied &middot; realtime</div>
+  <div class="spacer"></div>
+  <div class="clock"><span id="clock">--:--:--</span><span class="zone" id="zoneline">&nbsp;</span></div>
+  <button class="themebtn" id="themebtn" type="button">Theme</button>
+</div>
+
+<div class="page">
+
+  <div class="controls">
+    <div class="field">
+      <label class="eyebrow" for="dte">DTE (whole days)</label>
+      <input type="number" id="dte" min="0" step="1" value="1">
+    </div>
+    <div class="field">
+      <label class="eyebrow" for="snap">Snapshot time</label>
+      <div class="inline">
+        <input type="time" id="snap" step="60">
+        <button class="mini" id="snapnow" type="button">Now</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="eyebrow">Levels driven by</span>
+      <div class="seg" id="srcseg" role="group" aria-label="Range used for levels">
+        <button type="button" data-src="dte">DTE</button>
+        <button type="button" data-src="snap">Intraday</button>
+        <button type="button" data-src="live">Realtime</button>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="stale" id="stale"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Settlement inputs and expected ranges</h2>
+      <span class="note">Expiries anchored to exchange time (America/New_York), shown in your timezone</span>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="l">Symbol</th>
+            <th class="l">Settlement strike</th>
+            <th class="l">IV settlement <span class="sub">percent</span></th>
+            <th>Expiry <span class="sub">your time</span></th>
+            <th>Time left <span class="sub">days &middot; hh:mm:ss</span></th>
+            <th>Range <span class="sub">DTE</span></th>
+            <th>Range <span class="sub">intraday</span></th>
+            <th>Range <span class="sub">realtime</span></th>
+            <th>Lower <span class="sub">strike &minus; &frac12; range</span></th>
+            <th>Upper <span class="sub">strike + &frac12; range</span></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note-card">
+      <span class="eyebrow">The calculation</span>
+      <div class="formula">Range = Strike &times; IV/100 &times; &radic;(days / 365)</div>
+      <p>One formula, three clocks. <b>DTE</b> uses whole days. <b>Intraday</b> counts from the
+      snapshot time to expiry. <b>Realtime</b> counts from now to expiry and re-prices every second.
+      Once an expiry has passed, that instrument rolls forward one day, exactly as the source
+      spreadsheet does. Levels are the strike plus and minus half the selected range.</p>
+    </div>
+    <div class="note-card">
+      <span class="eyebrow">Option expiry times</span>
+      <ul class="exp-list" id="explist"></ul>
+      <p>Treasuries settle at 17:00 ET on Fridays and 15:00 ET on every other day; the rule is
+      applied to the date of the expiry being counted toward. Expiries are held in exchange time,
+      so they stay correct through both the US and the European daylight-saving switches.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+"use strict";
+
+/* ---------- configuration ------------------------------------------------
+   groups: option expiry times in exchange local time (America/New_York).
+   Equivalent to the CET times of the source sheet (ET + 6h in summer), but
+   anchored to the exchange so the two DST regimes cannot drift apart.       */
+
+var EXCHANGE_TZ = "America/New_York";
+
+var GROUPS = {
+  energy: { label: "CL / NG",     et: [14, 30] },
+  agri:   { label: "Agris",       et: [14, 30] },
+  index:  { label: "ES / NQ",     et: [16, 0]  },
+  metals: { label: "GC",          et: [13, 30] },
+  bonds:  { label: "Treasuries",  et: [15, 0], friday: [17, 0] },
+  fx:     { label: "FX",          et: [10, 0]  }
+};
+
+/* rd = decimals for range columns (from the sheet number formats)
+   pd = decimals for the price levels                                        */
+var INSTRUMENTS = [
+  { sym: "CL", name: "Crude Oil",     group: "energy", rd: 2, pd: 2, strike: 92.75,  iv: 50.32 },
+  { sym: "ES", name: "S&P 500",       group: "index",  rd: 0, pd: 2, strike: 6760,   iv: 10.29 },
+  { sym: "NQ", name: "Nasdaq 100",    group: "index",  rd: 0, pd: 2, strike: 25020,  iv: 12.88 },
+  { sym: "ZB", name: "30Y Bond",      group: "bonds",  rd: 2, pd: 3, strike: 117,    iv: 9.88  },
+  { sym: "UB", name: "Ultra Bond",    group: "bonds",  rd: 2, pd: 3, strike: 120.5,  iv: 12.86 },
+  { sym: "GC", name: "Gold",          group: "metals", rd: 1, pd: 1, strike: 3985,   iv: 35.04 },
+  { sym: "6E", name: "Euro FX",       group: "fx",     rd: 4, pd: 4, strike: 1.1775, iv: 7.52  },
+  { sym: "ZW", name: "Wheat",         group: "agri",   rd: 1, pd: 2, strike: 510,    iv: 26.17 },
+  { sym: "NG", name: "Natural Gas",   group: "energy", rd: 4, pd: 4, strike: 3.5,    iv: 75.51 }
+];
+
+var STORE_KEY = "expectedRange.v1";
+var DAY_MS = 86400000;
+
+/* ---------- timezone helpers --------------------------------------------- */
+
+var LOCAL_TZ = (function () {
+  try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "your timezone"; }
+  catch (e) { return "your timezone"; }
+})();
+
+var etParts = new Intl.DateTimeFormat("en-US", {
+  timeZone: EXCHANGE_TZ, hour12: false,
+  year: "numeric", month: "2-digit", day: "2-digit",
+  hour: "2-digit", minute: "2-digit", second: "2-digit"
+});
+
+function partsOf(fmt, ts) {
+  var out = {}, list = fmt.formatToParts(ts), i, p;
+  for (i = 0; i < list.length; i++) {
+    p = list[i];
+    if (p.type !== "literal") out[p.type] = p.value;
+  }
+  if (out.hour === "24") out.hour = "00";
+  return {
+    y: +out.year, m: +out.month, d: +out.day,
+    H: +out.hour, Mi: +out.minute, S: +out.second
+  };
+}
+
+/* offset of the exchange zone (ms) at a given instant */
+function etOffset(ts) {
+  var p = partsOf(etParts, ts);
+  var asUTC = Date.UTC(p.y, p.m - 1, p.d, p.H, p.Mi, p.S);
+  return asUTC - Math.floor(ts / 1000) * 1000;
+}
+
+/* an exchange wall-clock date+time -> absolute instant (ms) */
+function etWallToInstant(y, m, d, H, Mi) {
+  var naive = Date.UTC(y, m - 1, d, H, Mi, 0);
+  var ts = naive - etOffset(naive);
+  ts = naive - etOffset(ts);   /* one refinement handles DST boundaries */
+  return ts;
+}
+
+var timeFmt = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", hour12: false });
+var clockFmt = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+var dayFmt = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+var todayFmt = new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short" });
+
+function zoneLabel() {
+  var s = "";
+  try {
+    var parts = new Intl.DateTimeFormat(undefined, { timeZoneName: "shortOffset" }).formatToParts(new Date());
+    for (var i = 0; i < parts.length; i++) if (parts[i].type === "timeZoneName") s = parts[i].value;
+  } catch (e) { s = ""; }
+  return LOCAL_TZ + (s ? " · " + s : "");
+}
+
+/* ---------- expiry resolution -------------------------------------------- */
+
+/* Next expiry strictly after `ref`, replicating the sheet rule
+   IF(expiry - ref <= 0, roll one day). */
+function nextExpiry(groupKey, ref) {
+  var g = GROUPS[groupKey];
+  var p = partsOf(etParts, ref);
+  for (var add = 0; add < 4; add++) {
+    var base = new Date(Date.UTC(p.y, p.m - 1, p.d));
+    base.setUTCDate(base.getUTCDate() + add);
+    var dow = base.getUTCDay();                       /* 0 Sun .. 5 Fri */
+    var t = (g.friday && dow === 5) ? g.friday : g.et;
+    var ts = etWallToInstant(base.getUTCFullYear(), base.getUTCMonth() + 1, base.getUTCDate(), t[0], t[1]);
+    if (ts > ref) return { ts: ts, rolled: add > 0, et: t };
+  }
+  return null;
+}
+
+function daysTo(groupKey, ref) {
+  var e = nextExpiry(groupKey, ref);
+  return e ? (e.ts - ref) / DAY_MS : 0;
+}
+
+function rangeOf(strike, iv, days) {
+  if (!isFinite(strike) || !isFinite(iv) || !isFinite(days) || days <= 0) return NaN;
+  return strike * iv / 100 * Math.sqrt(days / 365);
+}
+
+/* ---------- formatting ---------------------------------------------------- */
+
+var fmtCache = {};
+function num(v, dec) {
+  if (!isFinite(v)) return "–";
+  var key = dec;
+  if (!fmtCache[key]) {
+    fmtCache[key] = new Intl.NumberFormat(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+  return fmtCache[key].format(v);
+}
+
+function hms(ms) {
+  var s = Math.max(0, Math.floor(ms / 1000));
+  var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m + ":" + (sec < 10 ? "0" : "") + sec;
+}
+
+function localDateKey(d) {
+  return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+}
+
+/* ---------- state --------------------------------------------------------- */
+
+var state = {
+  dte: 1,
+  snap: null,          /* "HH:MM" local */
+  src: "live",
+  savedOn: null,
+  rows: {}             /* sym -> {strike, iv} */
+};
+
+(function loadState() {
+  var i, inst;
+  for (i = 0; i < INSTRUMENTS.length; i++) {
+    inst = INSTRUMENTS[i];
+    state.rows[inst.sym] = { strike: inst.strike, iv: inst.iv };
+  }
+  try {
+    var raw = localStorage.getItem(STORE_KEY);
+    if (raw) {
+      var saved = JSON.parse(raw);
+      if (saved && typeof saved === "object") {
+        if (isFinite(saved.dte)) state.dte = saved.dte;
+        if (typeof saved.snap === "string") state.snap = saved.snap;
+        if (saved.src === "dte" || saved.src === "snap" || saved.src === "live") state.src = saved.src;
+        if (typeof saved.savedOn === "string") state.savedOn = saved.savedOn;
+        if (saved.rows) {
+          for (i = 0; i < INSTRUMENTS.length; i++) {
+            var sym = INSTRUMENTS[i].sym, r = saved.rows[sym];
+            if (r) state.rows[sym] = { strike: +r.strike, iv: +r.iv };
+          }
+        }
+      }
+    }
+  } catch (e) { /* private mode or blocked storage: run with defaults */ }
+})();
+
+function save() {
+  state.savedOn = localDateKey(new Date());
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+  paintStale();
+}
+
+/* ---------- build the table ---------------------------------------------- */
+
+var tbody = document.getElementById("rows");
+var cells = {};
+
+(function buildRows() {
+  for (var i = 0; i < INSTRUMENTS.length; i++) {
+    (function (inst) {
+      var tr = document.createElement("tr");
+
+      var tdSym = document.createElement("td");
+      tdSym.className = "sym";
+      tdSym.innerHTML = inst.sym + "<small>" + inst.name + "</small>";
+      tr.appendChild(tdSym);
+
+      var tdStrike = document.createElement("td");
+      tdStrike.className = "inp";
+      var inStrike = document.createElement("input");
+      inStrike.type = "number";
+      inStrike.step = "any";
+      inStrike.setAttribute("aria-label", inst.sym + " settlement strike price");
+      inStrike.value = state.rows[inst.sym].strike;
+      tdStrike.appendChild(inStrike);
+      tr.appendChild(tdStrike);
+
+      var tdIv = document.createElement("td");
+      tdIv.className = "inp";
+      var inIv = document.createElement("input");
+      inIv.type = "number";
+      inIv.step = "any";
+      inIv.setAttribute("aria-label", inst.sym + " settlement implied volatility");
+      inIv.value = state.rows[inst.sym].iv;
+      tdIv.appendChild(inIv);
+      tr.appendChild(tdIv);
+
+      function onEdit() {
+        state.rows[inst.sym] = { strike: parseFloat(inStrike.value), iv: parseFloat(inIv.value) };
+        save();
+        render();
+      }
+      inStrike.addEventListener("input", onEdit);
+      inIv.addEventListener("input", onEdit);
+
+      var made = {};
+      var defs = [
+        ["expiry", "expiry"], ["left", "left"],
+        ["rDte", "rng"], ["rSnap", "rng"], ["rLive", "rng"],
+        ["lo", "lo"], ["hi", "hi"]
+      ];
+      for (var k = 0; k < defs.length; k++) {
+        var td = document.createElement("td");
+        td.className = defs[k][1];
+        tr.appendChild(td);
+        made[defs[k][0]] = td;
+      }
+
+      cells[inst.sym] = made;
+      tbody.appendChild(tr);
+    })(INSTRUMENTS[i]);
+  }
+})();
+
+/* ---------- controls ------------------------------------------------------ */
+
+var dteEl = document.getElementById("dte");
+var snapEl = document.getElementById("snap");
+var staleEl = document.getElementById("stale");
+var clockEl = document.getElementById("clock");
+
+dteEl.value = state.dte;
+if (!state.snap) {
+  var n = new Date();
+  state.snap = ("0" + n.getHours()).slice(-2) + ":" + ("0" + n.getMinutes()).slice(-2);
+}
+snapEl.value = state.snap;
+
+dteEl.addEventListener("input", function () {
+  var v = parseFloat(dteEl.value);
+  state.dte = isFinite(v) ? v : 0;
+  save(); render();
+});
+snapEl.addEventListener("input", function () {
+  state.snap = snapEl.value;
+  save(); render();
+});
+document.getElementById("snapnow").addEventListener("click", function () {
+  var d = new Date();
+  snapEl.value = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+  state.snap = snapEl.value;
+  save(); render();
+});
+
+var segBtns = document.getElementById("srcseg").querySelectorAll("button");
+function paintSeg() {
+  for (var i = 0; i < segBtns.length; i++) {
+    segBtns[i].setAttribute("aria-pressed", segBtns[i].getAttribute("data-src") === state.src ? "true" : "false");
+  }
+}
+for (var b = 0; b < segBtns.length; b++) {
+  segBtns[b].addEventListener("click", function () {
+    state.src = this.getAttribute("data-src");
+    paintSeg(); save(); render();
+  });
+}
+paintSeg();
+
+function paintStale() {
+  var today = localDateKey(new Date());
+  if (!state.savedOn) {
+    staleEl.className = "stale";
+    staleEl.innerHTML = "<b>Example settlements</b> from the source sheet. Replace with today’s settlement strikes and IVs.";
+  } else if (state.savedOn !== today) {
+    staleEl.className = "stale";
+    staleEl.innerHTML = "<b>Settlements from " + state.savedOn + "</b>. Update the strikes and IVs for today.";
+  } else {
+    staleEl.className = "stale fresh";
+    staleEl.innerHTML = "<b>Settlements updated today</b> (" + todayFmt.format(new Date()) + ").";
+  }
+}
+
+/* theme toggle: system -> light -> dark -> system */
+var themeBtn = document.getElementById("themebtn");
+var themeOrder = ["system", "light", "dark"];
+var themeIdx = 0;
+try {
+  var savedTheme = localStorage.getItem("expectedRange.theme");
+  if (savedTheme) themeIdx = Math.max(0, themeOrder.indexOf(savedTheme));
+} catch (e) { /* ignore */ }
+function applyTheme() {
+  var t = themeOrder[themeIdx];
+  if (t === "system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  themeBtn.textContent = t === "system" ? "Theme: auto" : (t === "light" ? "Theme: light" : "Theme: dark");
+  try { localStorage.setItem("expectedRange.theme", t); } catch (e) { /* ignore */ }
+}
+themeBtn.addEventListener("click", function () {
+  themeIdx = (themeIdx + 1) % themeOrder.length;
+  applyTheme();
+});
+applyTheme();
+
+/* ---------- expiry reference list ---------------------------------------- */
+
+function paintExpiryList(now) {
+  var ul = document.getElementById("explist");
+  var html = "", key;
+  for (key in GROUPS) {
+    if (!GROUPS.hasOwnProperty(key)) continue;
+    var g = GROUPS[key];
+    var e = nextExpiry(key, now);
+    var etTxt = ("0" + e.et[0]).slice(-2) + ":" + ("0" + e.et[1]).slice(-2) + " ET";
+    html += "<li><span>" + g.label + "</span><span class=\"v\">" + timeFmt.format(e.ts) +
+            " <em>" + dayFmt.format(e.ts) + " · " + etTxt + "</em></span></li>";
+  }
+  ul.innerHTML = html;
+}
+
+/* ---------- render -------------------------------------------------------- */
+
+function snapshotRef() {
+  var d = new Date();
+  if (!state.snap) return d.getTime();
+  var bits = state.snap.split(":");
+  d.setHours(parseInt(bits[0], 10) || 0, parseInt(bits[1], 10) || 0, 0, 0);
+  return d.getTime();
+}
+
+function render() {
+  var now = Date.now();
+  var snapRef = snapshotRef();
+
+  clockEl.textContent = clockFmt.format(now);
+
+  for (var i = 0; i < INSTRUMENTS.length; i++) {
+    var inst = INSTRUMENTS[i];
+    var c = cells[inst.sym];
+    var row = state.rows[inst.sym];
+    var strike = row.strike, iv = row.iv;
+
+    var exp = nextExpiry(inst.group, now);
+    var leftMs = exp.ts - now;
+    var daysLive = leftMs / DAY_MS;
+    var daysSnap = daysTo(inst.group, snapRef);
+
+    c.expiry.innerHTML = "<b>" + timeFmt.format(exp.ts) + "</b> " + dayFmt.format(exp.ts);
+    c.left.innerHTML = "<b>" + daysLive.toFixed(2) + "</b> " + hms(leftMs);
+
+    var rDte = rangeOf(strike, iv, state.dte);
+    var rSnap = rangeOf(strike, iv, daysSnap);
+    var rLive = rangeOf(strike, iv, daysLive);
+
+    c.rDte.textContent = num(rDte, inst.rd);
+    c.rSnap.textContent = num(rSnap, inst.rd);
+    c.rLive.textContent = num(rLive, inst.rd);
+
+    c.rDte.className = "rng" + (state.src === "dte" ? " active" : "");
+    c.rSnap.className = "rng" + (state.src === "snap" ? " active" : "");
+    c.rLive.className = "rng" + (state.src === "live" ? " active" : "");
+
+    var sel = state.src === "dte" ? rDte : (state.src === "snap" ? rSnap : rLive);
+    if (isFinite(sel) && isFinite(strike)) {
+      c.lo.className = "lo";
+      c.hi.className = "hi";
+      c.lo.textContent = num(strike - sel / 2, inst.pd);
+      c.hi.textContent = num(strike + sel / 2, inst.pd);
+    } else {
+      c.lo.className = "blank";
+      c.hi.className = "blank";
+      c.lo.textContent = "–";
+      c.hi.textContent = "–";
+    }
+  }
+
+  paintExpiryList(now);
+}
+
+document.getElementById("zoneline").textContent = zoneLabel();
+paintStale();
+render();
+setInterval(render, 1000);
+</script>

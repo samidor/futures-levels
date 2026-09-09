@@ -255,10 +255,10 @@ td.expiry .skip{
             <th>Range <span class="sub">DTE</span></th>
             <th>Range <span class="sub">intraday</span></th>
             <th>Range <span class="sub">realtime</span></th>
-            <th class="t1">Lower <span class="sub">strike &minus; &frac12; range</span></th>
-            <th>Upper <span class="sub">strike + &frac12; range</span></th>
-            <th class="t2">Lower <span class="sub">strike &minus; range</span></th>
+            <th class="t1">Lower <span class="sub">strike &minus; range</span></th>
             <th>Upper <span class="sub">strike + range</span></th>
+            <th class="t2">Lower <span class="sub">strike &minus; 2 &times; range</span></th>
+            <th>Upper <span class="sub">strike + 2 &times; range</span></th>
           </tr>
         </thead>
         <tbody id="rows"></tbody>
@@ -274,7 +274,7 @@ td.expiry .skip{
       snapshot time to expiry. <b>Realtime</b> counts from now to expiry and re-prices every second.
       Once an expiry has passed, that instrument rolls forward to the next trading day, so a
       Friday evening counts toward Monday and a holiday is skipped entirely. Levels are the
-      strike plus and minus half the selected range, and the second pair at the full range.</p>
+      strike plus and minus the selected range, and the second pair at twice that range.</p>
     </div>
     <div class="note-card">
       <span class="eyebrow">Option expiry times</span>
@@ -769,10 +769,10 @@ function render() {
       c.hi.className = "hi";
       c.lo2.className = "lo t2";
       c.hi2.className = "hi";
-      c.lo.textContent = num(strike - sel / 2, inst.pd);
-      c.hi.textContent = num(strike + sel / 2, inst.pd);
-      c.lo2.textContent = num(strike - sel, inst.pd);
-      c.hi2.textContent = num(strike + sel, inst.pd);
+      c.lo.textContent = num(strike - sel, inst.pd);
+      c.hi.textContent = num(strike + sel, inst.pd);
+      c.lo2.textContent = num(strike - 2 * sel, inst.pd);
+      c.hi2.textContent = num(strike + 2 * sel, inst.pd);
     } else {
       c.lo.className = "blank t1";
       c.hi.className = "blank";

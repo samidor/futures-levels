@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
 
 <style>
-.sym .mini{margin-top:4px;font-size:11px;padding:1px 6px;opacity:.75}
-.sym .mini:hover{opacity:1}
 
 :root{
   --ground:#F1F4F8;
@@ -569,8 +567,6 @@ function save() {
 
 var tbody = document.getElementById("rows");
 var cells = {};
-var liveApply = {};
-var liveHost = {};
 
 (function buildRows() {
   for (var i = 0; i < INSTRUMENTS.length; i++) {
@@ -609,18 +605,6 @@ var liveHost = {};
       }
       inStrike.addEventListener("input", onEdit);
       inIv.addEventListener("input", onEdit);
-
-      /* Registered for the "live" buttons added once sc_iv_open.json arrives.
-         Applying goes through onEdit so the value is saved and re-rendered exactly
-         as if it had been typed. */
-      liveApply[inst.sym] = function (strike, iv) {
-        /* Round to the instrument's own price decimals; the solver's forward carries
-           far more precision than the contract quotes in. */
-        if (strike != null) inStrike.value = (+strike).toFixed(inst.pd);
-        if (iv != null) inIv.value = (+iv).toFixed(2);
-        onEdit();
-      };
-      liveHost[inst.sym] = tdSym;
 
       var made = {};
       var defs = [
@@ -870,45 +854,6 @@ setInterval(render, 1000);
     document.getElementById("openmeta").textContent =
       "Trading day " + d.trading_day + " · generated " + d.generated + " ET";
     document.getElementById("openpanel").hidden = false;
-    addLiveButtons(d.live || {});
-  }
-
-  /* One button per row that has a current reading, plus one for all of them. The
-     table's values live in each visitor's own localStorage, so nothing is applied
-     automatically - a visitor who has typed their own numbers keeps them until they
-     ask for the live ones. */
-  function addLiveButtons(live) {
-    var any = false;
-    for (var sym in live) {
-      if (!liveApply[sym] || !liveHost[sym]) continue;
-      var r = live[sym];
-      (function (sym, r) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "mini live";
-        b.textContent = r.stale ? "live?" : "live";
-        b.title = "Apply " + r.forward.toLocaleString(undefined,
-                    { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                + " @ " + r.iv.toFixed(2) + "%  (" + r.timestamp + " ET, "
-                + r.age_min + " min old)"
-                + (r.basis_applied ? "  — shifted to the traded contract" : "")
-                + (r.stale ? "  — STALE, the source may not be running" : "");
-        b.addEventListener("click", function () { liveApply[sym](r.forward, r.iv); });
-        liveHost[sym].appendChild(b);
-      })(sym, live[sym]);
-      any = true;
-    }
-    if (!any) return;
-    var all = document.createElement("button");
-    all.type = "button";
-    all.className = "mini";
-    all.textContent = "Use live values for all";
-    all.addEventListener("click", function () {
-      for (var sym in live) {
-        if (liveApply[sym]) liveApply[sym](live[sym].forward, live[sym].iv);
-      }
-    });
-    document.getElementById("openmeta").parentNode.appendChild(all);
   }
   try {
     fetch("sc_iv_open.json", { cache: "no-store" })

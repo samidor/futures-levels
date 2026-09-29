@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CL Key Levels - 2026-09-29 09:07</title>
+    <title>CL Key Levels - 2026-09-29 10:06</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -581,12 +581,12 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>CL Futures Key Levels</h1>
-    <div class="subtitle">2026-09-29 09:07 &bull; CLX26 &bull; 0DTE + Monthly</div>
+    <div class="subtitle">2026-09-29 10:06 &bull; CLX26 &bull; 0DTE + Monthly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">CL Last</div>
-            <div class="value">93.92</div>
-            <div class="change up">+1.32</div>
+            <div class="value">93.28</div>
+            <div class="change up">+0.68</div>
         </div>
         <div class="price-box">
             <div class="label">CL Prev Close</div>
@@ -726,6 +726,10 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="bias-dot bias-dot-neut"></span>
             <span class="bias-factor-name">Dealer Alignment:</span>
             <span class="bias-factor-reason">Levels diverging (22.2%) — conflicting signals, directional move more likely</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-neut"></span>
+            <span class="bias-factor-name">Gamma Acceleration:</span>
+            <span class="bias-factor-reason">Gamma acceleration 1.9x — balanced gamma across expirations, orderly flow</span>
         </div></div>
     </div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">Expected Move (1-Day) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The market-implied price range for the current session, derived from ATM implied volatility. About 68% of sessions close within this range (1 standard deviation). A breach suggests unusual volatility or a catalyst-driven move.</span></span></div>
@@ -748,17 +752,21 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="a-badge a-badge-red">Diverging</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">VEX (Vanna Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Vanna Exposure — measures how dealer delta shifts when implied volatility moves. Positive VEX: an IV drop forces dealers to buy (supporting rallies). Negative VEX: an IV drop forces dealers to sell (amplifying declines). Dominates around earnings and FOMC events.</span></span></div>
-            <div class="a-value">-810.8K</div>
+            <div class="a-value">-792.0K</div>
             <span class="a-badge a-badge-green">IV Drop -> Dealers Buy</span>
         </div><div class="analytics-card">
             <div class="a-label">CHEX (Charm Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Charm Exposure — measures how dealer delta changes purely from the passage of time. Positive CHEX: time decay forces dealers to buy (upward pressure into close). Negative CHEX: time decay forces dealers to sell (downward drift into close). Strongest on Thursday/Friday of expiration weeks.</span></span></div>
-            <div class="a-value">+77.30M</div>
+            <div class="a-value">+77.49M</div>
             <span class="a-badge a-badge-green">Time Decay -> Dealers Buy</span>
         </div><div class="analytics-card">
             <div class="a-label">Dealer Cushion <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Distance from the current price to the nearest major options wall (highest call OI above or put OI below). Tight (<0.3%) = price is right at a wall, expect strong reaction. Normal (0.3–1.0%) = standard buffer zone. Wide (>1.0%) = plenty of room before the next dealer-defended level.</span></span></div>
             <div class="a-value">33.33%</div>
             <span class="a-badge a-badge-green">Wide</span>
             <div class="a-detail">Nearest: Call Wall @ 123.46</div>
+        </div><div class="analytics-card">
+            <div class="a-label">Gamma Acceleration <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Ratio of 0DTE ATM gamma to 7DTE ATM gamma. When 0DTE gamma is much larger, dealer rehedging obligations intensify into the close, creating strong pinning or explosive breakouts. Above 5x = Accelerating (high intraday impact). 2–5x = Elevated. Below 2x = Stable.</span></span></div>
+            <div class="a-value">1.9x</div>
+            <span class="a-badge a-badge-green">Stable</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">OI-Weighted DTE <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The average days-to-expiration of all open contracts, weighted by open interest. Short (<10 days) = market is gamma-sensitive, rapid theta decay, sharp intraday moves. Long (>45 days) = vega/vanna-dominated, slower dynamics, more sensitive to IV changes.</span></span></div>
             <div class="a-value">158.5 days</div>
@@ -1117,13 +1125,79 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     </div>
 </div>
 
-<div class="section collapsed">
+<div class="section ">
     <div class="section-header">
         <h2>Recent Dark Pool Prints</h2>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
-        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Sep 25, 2026</p>
+        <table>
+            <thead><tr><th>CL Level</th><th>USO Price</th><th>Time</th><th>Size</th><th>Premium</th><th>Side</th></tr></thead>
+            <tbody><tr>
+                <td>94.80</td>
+                <td>$153.58</td>
+                <td>11:48:45.976 AM EDT</td>
+                <td>23,331</td>
+                <td>3.58M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>93.67</td>
+                <td>$151.75</td>
+                <td>12:16:40.688 PM EDT – 12:16:42.157 PM EDT</td>
+                <td>108,612</td>
+                <td>16.47M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>93.34</td>
+                <td>$151.21</td>
+                <td>12:19:47.121 PM EDT</td>
+                <td>49,747</td>
+                <td>7.52M</td>
+                <td class="side-ask">Ask</td>
+            </tr><tr>
+                <td>93.33</td>
+                <td>$151.20</td>
+                <td>12:19:47.881 PM EDT</td>
+                <td>16,109</td>
+                <td>2.44M</td>
+                <td class="side-ask">Ask</td>
+            </tr><tr>
+                <td>92.60</td>
+                <td>$150.01</td>
+                <td>04:00:00.150 PM EDT</td>
+                <td>68,029</td>
+                <td>10.21M</td>
+                <td class="">None</td>
+            </tr><tr>
+                <td>92.35</td>
+                <td>$149.60</td>
+                <td>12:39:57.134 PM EDT</td>
+                <td>19,209</td>
+                <td>2.87M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>91.98</td>
+                <td>$149.00</td>
+                <td>01:40:07.156 PM EDT</td>
+                <td>24,540</td>
+                <td>3.66M</td>
+                <td class="">Mid</td>
+            </tr><tr>
+                <td>91.58</td>
+                <td>$148.35</td>
+                <td>12:27:07.911 PM EDT</td>
+                <td>45,000</td>
+                <td>6.68M</td>
+                <td class="side-bid">Bid</td>
+            </tr><tr>
+                <td>90.92</td>
+                <td>$147.29</td>
+                <td>01:17:15.784 PM EDT</td>
+                <td>18,175</td>
+                <td>2.68M</td>
+                <td class="">Mid</td>
+            </tr></tbody>
+        </table>
     </div>
 </div>
 

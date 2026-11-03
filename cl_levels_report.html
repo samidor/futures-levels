@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CL Key Levels - 2026-11-03 09:06</title>
+    <title>CL Key Levels - 2026-11-03 10:06</title>
     <style>
 :root {
     --bg: #1a1a2e;
@@ -581,12 +581,12 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 <div class="header">
     <h1>CL Futures Key Levels</h1>
-    <div class="subtitle">2026-11-03 09:06 &bull; CLZ26 &bull; 0DTE + Weekly</div>
+    <div class="subtitle">2026-11-03 10:06 &bull; CLZ26 &bull; 0DTE + Weekly</div>
     <div class="prices">
         <div class="price-box">
             <div class="label">CL Last</div>
-            <div class="value">97.80</div>
-            <div class="change up">+1.34</div>
+            <div class="value">98.14</div>
+            <div class="change up">+1.68</div>
         </div>
         <div class="price-box">
             <div class="label">CL Prev Close</div>
@@ -739,6 +739,10 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="bias-dot bias-dot-neut"></span>
             <span class="bias-factor-name">Dealer Alignment:</span>
             <span class="bias-factor-reason">Levels diverging (27.6%) — conflicting signals, directional move more likely</span>
+        </div><div class="bias-factor">
+            <span class="bias-dot bias-dot-neut"></span>
+            <span class="bias-factor-name">Gamma Acceleration:</span>
+            <span class="bias-factor-reason">Gamma acceleration 1.9x — balanced gamma across expirations, orderly flow</span>
         </div></div>
     </div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">Expected Move (1-Day) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The market-implied price range for the current session, derived from ATM implied volatility. About 68% of sessions close within this range (1 standard deviation). A breach suggests unusual volatility or a catalyst-driven move.</span></span></div>
@@ -762,20 +766,24 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
             <span class="a-badge a-badge-red">Diverging</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">VEX (Vanna Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Vanna Exposure — measures how dealer delta shifts when implied volatility moves. Positive VEX: an IV drop forces dealers to buy (supporting rallies). Negative VEX: an IV drop forces dealers to sell (amplifying declines). Dominates around earnings and FOMC events.</span></span></div>
-            <div class="a-value">+1.20M</div>
+            <div class="a-value">+1.19M</div>
             <span class="a-badge a-badge-red">IV Drop -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">CHEX (Charm Exposure) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Aggregate Charm Exposure — measures how dealer delta changes purely from the passage of time. Positive CHEX: time decay forces dealers to buy (upward pressure into close). Negative CHEX: time decay forces dealers to sell (downward drift into close). Strongest on Thursday/Friday of expiration weeks.</span></span></div>
-            <div class="a-value">-4.12M</div>
+            <div class="a-value">-3.30M</div>
             <span class="a-badge a-badge-red">Time Decay -> Dealers Sell</span>
         </div><div class="analytics-card">
             <div class="a-label">Dealer Cushion <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Distance from the current price to the nearest major options wall (highest call OI above or put OI below). Tight (<0.3%) = price is right at a wall, expect strong reaction. Normal (0.3–1.0%) = standard buffer zone. Wide (>1.0%) = plenty of room before the next dealer-defended level.</span></span></div>
             <div class="a-value">27.49%</div>
             <span class="a-badge a-badge-green">Wide</span>
             <div class="a-detail">Nearest: Call Wall @ 122.98</div>
+        </div><div class="analytics-card">
+            <div class="a-label">Gamma Acceleration <span class="a-info"><span class="a-icon">i</span><span class="a-tip">Ratio of 0DTE ATM gamma to 7DTE ATM gamma. When 0DTE gamma is much larger, dealer rehedging obligations intensify into the close, creating strong pinning or explosive breakouts. Above 5x = Accelerating (high intraday impact). 2–5x = Elevated. Below 2x = Stable.</span></span></div>
+            <div class="a-value">1.9x</div>
+            <span class="a-badge a-badge-green">Stable</span>
         </div></div><div class="analytics-grid"><div class="analytics-card">
             <div class="a-label">OI-Weighted DTE <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The average days-to-expiration of all open contracts, weighted by open interest. Short (<10 days) = market is gamma-sensitive, rapid theta decay, sharp intraday moves. Long (>45 days) = vega/vanna-dominated, slower dynamics, more sensitive to IV changes.</span></span></div>
-            <div class="a-value">182.7 days</div>
+            <div class="a-value">182.6 days</div>
             <span class="a-badge a-badge-blue">Vega-Dominated</span>
         </div><div class="analytics-card">
             <div class="a-label">OI Concentration (HHI) <span class="a-info"><span class="a-icon">i</span><span class="a-tip">The Herfindahl-Hirschman Index measures how concentrated open interest is across strikes. Concentrated (>0.05) = OI is clustered in a few dominant strikes, creating strong pin/magnet effects. Moderate (0.01–0.05) = a few meaningful strikes. Dispersed (<0.01) = OI is spread evenly, weak pinning.</span></span></div>
@@ -1095,13 +1103,166 @@ tbody tr:hover { background: rgba(255,255,255,0.03); }
     </div>
 </div>
 
-<div class="section collapsed">
+<div class="section ">
     <div class="section-header">
         <h2>Dark Pool Levels</h2>
         <span class="arrow">&#9660;</span>
     </div>
     <div class="section-body">
-        <p style="color: var(--text2);">Dark Pool data not yet available — last update: Oct 30, 2026</p>
+        <table>
+            <thead><tr><th>CL Level</th><th>USO Price</th><th>Trades</th><th>Volume</th><th>Premium</th></tr></thead>
+            <tbody><tr>
+                <td>103.61</td>
+                <td>$168.50</td>
+                <td>250</td>
+                <td>151,777</td>
+                <td>25.57M</td>
+            </tr><tr>
+                <td>103.24</td>
+                <td>$167.90</td>
+                <td>39</td>
+                <td>81,238</td>
+                <td>13.64M</td>
+            </tr><tr>
+                <td>103.33</td>
+                <td>$168.05</td>
+                <td>187</td>
+                <td>64,342</td>
+                <td>10.81M</td>
+            </tr><tr>
+                <td>103.92</td>
+                <td>$169.00</td>
+                <td>188</td>
+                <td>49,173</td>
+                <td>8.31M</td>
+            </tr><tr>
+                <td>103.30</td>
+                <td>$168.00</td>
+                <td>66</td>
+                <td>44,425</td>
+                <td>7.46M</td>
+            </tr><tr>
+                <td>104.60</td>
+                <td>$170.11</td>
+                <td>97</td>
+                <td>27,812</td>
+                <td>4.73M</td>
+            </tr><tr>
+                <td>104.74</td>
+                <td>$170.34</td>
+                <td>187</td>
+                <td>24,695</td>
+                <td>4.21M</td>
+            </tr><tr>
+                <td>104.75</td>
+                <td>$170.35</td>
+                <td>189</td>
+                <td>21,059</td>
+                <td>3.59M</td>
+            </tr><tr>
+                <td>105.05</td>
+                <td>$170.84</td>
+                <td>137</td>
+                <td>20,320</td>
+                <td>3.47M</td>
+            </tr><tr>
+                <td>104.83</td>
+                <td>$170.49</td>
+                <td>139</td>
+                <td>20,188</td>
+                <td>3.44M</td>
+            </tr><tr>
+                <td>104.59</td>
+                <td>$170.09</td>
+                <td>101</td>
+                <td>19,902</td>
+                <td>3.39M</td>
+            </tr><tr>
+                <td>103.78</td>
+                <td>$168.78</td>
+                <td>112</td>
+                <td>17,343</td>
+                <td>2.93M</td>
+            </tr><tr>
+                <td>104.74</td>
+                <td>$170.33</td>
+                <td>141</td>
+                <td>16,019</td>
+                <td>2.73M</td>
+            </tr><tr>
+                <td>103.80</td>
+                <td>$168.81</td>
+                <td>75</td>
+                <td>16,095</td>
+                <td>2.72M</td>
+            </tr><tr>
+                <td>105.04</td>
+                <td>$170.82</td>
+                <td>144</td>
+                <td>15,370</td>
+                <td>2.63M</td>
+            </tr><tr>
+                <td>105.24</td>
+                <td>$171.15</td>
+                <td>51</td>
+                <td>15,171</td>
+                <td>2.60M</td>
+            </tr><tr>
+                <td>104.63</td>
+                <td>$170.15</td>
+                <td>99</td>
+                <td>15,222</td>
+                <td>2.59M</td>
+            </tr><tr>
+                <td>104.79</td>
+                <td>$170.41</td>
+                <td>152</td>
+                <td>15,158</td>
+                <td>2.58M</td>
+            </tr><tr>
+                <td>104.53</td>
+                <td>$169.99</td>
+                <td>133</td>
+                <td>15,048</td>
+                <td>2.56M</td>
+            </tr><tr>
+                <td>104.76</td>
+                <td>$170.37</td>
+                <td>139</td>
+                <td>14,574</td>
+                <td>2.48M</td>
+            </tr><tr>
+                <td>104.71</td>
+                <td>$170.28</td>
+                <td>103</td>
+                <td>14,562</td>
+                <td>2.48M</td>
+            </tr><tr>
+                <td>104.61</td>
+                <td>$170.13</td>
+                <td>116</td>
+                <td>14,550</td>
+                <td>2.48M</td>
+            </tr><tr>
+                <td>104.95</td>
+                <td>$170.68</td>
+                <td>116</td>
+                <td>13,646</td>
+                <td>2.33M</td>
+            </tr><tr>
+                <td>105.16</td>
+                <td>$171.02</td>
+                <td>118</td>
+                <td>13,616</td>
+                <td>2.33M</td>
+            </tr><tr>
+                <td>104.88</td>
+                <td>$170.57</td>
+                <td>108</td>
+                <td>13,377</td>
+                <td>2.28M</td>
+            </tr></tbody>
+        </table>
     </div>
 </div>
 

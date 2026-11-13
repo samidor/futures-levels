@@ -1,0 +1,865 @@
+<meta charset="utf-8">
+<title>Expected Range</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+
+<style>
+
+:root{
+  --ground:#F1F4F8;
+  --surface:#FFFFFF;
+  --surface-2:#E8EDF3;
+  --line:#D2DAE4;
+  --line-soft:#E3E9F0;
+  --text:#16202E;
+  --text-dim:#5A6878;
+  --text-faint:#8A97A6;
+  --brass:#9A6B12;
+  --brass-bright:#C08A22;
+  --brass-wash:rgba(154,107,18,.07);
+  --jade:#1B7A47;
+  --brick:#B23C26;
+  --steel:#2F6BA8;
+  --btn-text:#FFFFFF;
+  --shadow:0 1px 2px rgba(22,32,46,.06), 0 8px 24px -12px rgba(22,32,46,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A1220;
+    --surface:#111C2E;
+    --surface-2:#16233A;
+    --line:#243449;
+    --line-soft:#1B2839;
+    --text:#DCE4EF;
+    --text-dim:#8CA0BA;
+    --text-faint:#5F718B;
+    --brass:#D89B3C;
+    --brass-bright:#EDB458;
+    --brass-wash:rgba(216,155,60,.10);
+    --jade:#3FA96B;
+    --brick:#D2553F;
+    --steel:#5B8FC7;
+    --btn-text:#0A1220;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A1220;
+  --surface:#111C2E;
+  --surface-2:#16233A;
+  --line:#243449;
+  --line-soft:#1B2839;
+  --text:#DCE4EF;
+  --text-dim:#8CA0BA;
+  --text-faint:#5F718B;
+  --brass:#D89B3C;
+  --brass-bright:#EDB458;
+  --brass-wash:rgba(216,155,60,.10);
+  --jade:#3FA96B;
+  --brick:#D2553F;
+  --steel:#5B8FC7;
+  --btn-text:#0A1220;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--text);
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:600}
+:focus-visible{outline:2px solid var(--brass);outline-offset:1px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+  padding:14px 24px;
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+.wordmark{
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:26px;line-height:1;letter-spacing:.01em;font-weight:400;
+}
+.wordmark em{color:var(--brass);font-style:italic}
+.masthead .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.masthead .spacer{flex:1}
+.clock{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;
+  font-size:19px;font-weight:500;color:var(--text);letter-spacing:.02em;text-align:right;
+}
+.clock .zone{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);font-weight:400;font-family:"Archivo",sans-serif}
+.themebtn{
+  font:inherit;font-size:12px;color:var(--text-dim);background:transparent;
+  border:1px solid var(--line);border-radius:2px;padding:5px 11px;cursor:pointer;
+}
+.themebtn:hover{color:var(--text);border-color:var(--brass)}
+
+.page{max-width:1560px;margin:0 auto;padding:22px 24px 70px;display:flex;flex-direction:column;gap:18px}
+
+/* ---------- controls ---------- */
+.controls{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  box-shadow:var(--shadow);
+  padding:15px 18px;
+  display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;
+}
+.eyebrow{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);font-weight:600}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input[type="number"],.field input[type="time"]{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:14px;
+  background:var(--ground);color:var(--text);
+  border:1px solid var(--line);border-radius:2px;padding:7px 9px;width:120px;
+}
+.inline{display:flex;gap:8px;align-items:center}
+.mini{
+  font:inherit;font-size:11.5px;background:var(--surface-2);color:var(--text-dim);
+  border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;
+}
+.mini:hover{color:var(--brass);border-color:var(--brass)}
+.seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{
+  font:inherit;font-size:12.5px;color:var(--text-dim);background:var(--surface);
+  border:none;border-right:1px solid var(--line);padding:8px 14px;cursor:pointer;
+}
+.seg button:last-child{border-right:none}
+.seg button[aria-pressed="true"]{background:var(--brass);color:var(--btn-text);font-weight:600}
+.controls .spacer{flex:1}
+.stale{
+  font-size:11.5px;color:var(--text-dim);
+  border-left:2px solid var(--brick);padding:2px 0 2px 10px;max-width:280px;line-height:1.45;
+}
+.stale b{color:var(--brick);font-weight:600}
+.stale.fresh{border-left-color:var(--jade)}
+.stale.fresh b{color:var(--jade)}
+
+/* ---------- table ---------- */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{padding:11px 18px;border-bottom:1px solid var(--line-soft);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.panel-head h2{font-size:13px;letter-spacing:.03em}
+.panel-head .note{font-size:11.5px;color:var(--text-faint)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:1180px}
+thead th{
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-faint);
+  font-weight:600;text-align:right;padding:10px 9px;border-bottom:1px solid var(--line);
+  white-space:nowrap;vertical-align:bottom;
+}
+thead th.l{text-align:left}
+thead th .sub{display:block;font-size:9.5px;letter-spacing:.05em;opacity:.8;text-transform:none}
+tbody td{
+  padding:6px 9px;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:13.5px;
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--surface-2)}
+td.sym{text-align:left;font-family:"Archivo",sans-serif;font-weight:600;font-size:14px}
+td.sym small{display:block;font-weight:400;font-size:10.5px;color:var(--text-faint);letter-spacing:.04em}
+td.inp{text-align:left}
+td.inp input{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:13.5px;
+  background:var(--ground);color:var(--text);
+  border:1px solid var(--line);border-radius:2px;padding:5px 7px;width:92px;text-align:right;
+}
+td.inp input:hover{border-color:var(--brass)}
+td.expiry{color:var(--text-dim)}
+td.expiry b{color:var(--text);font-weight:500}
+td.left b{color:var(--text);font-weight:500}
+td.left{color:var(--text-faint)}
+td.rng{color:var(--text-dim)}
+td.rng.active,tbody tr:hover td.rng.active{background:var(--brass-wash);color:var(--text);font-weight:600}
+td.lo{color:var(--brick);font-weight:500}
+td.hi{color:var(--jade);font-weight:500}
+td.t1,th.t1{border-left:1px solid var(--line)}
+td.t2,th.t2{border-left:1px solid var(--line)}
+td.t2,td.t2 + td.hi{opacity:.82}
+td.blank{color:var(--text-faint)}
+td.expiry .skip{
+  display:block;font-family:"Archivo",sans-serif;font-size:10px;letter-spacing:.04em;
+  color:var(--steel);font-weight:500;
+}
+
+/* ---------- notes ---------- */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:4px}
+.note-card{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:8px}
+.note-card p{margin:0;font-size:12.5px;color:var(--text-dim);max-width:62ch}
+.note-card p b{color:var(--text);font-weight:600}
+.formula{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:13px;color:var(--text);
+  background:var(--surface-2);border:1px solid var(--line-soft);border-radius:3px;padding:9px 11px;
+}
+.exp-list{list-style:none;margin:0;padding:0;font-size:12px;color:var(--text-dim)}
+.exp-list li{display:flex;justify-content:space-between;gap:14px;padding:4px 0;border-bottom:1px solid var(--line-soft)}
+.exp-list li:last-child{border-bottom:none}
+.exp-list .v{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;color:var(--text)}
+.exp-list .v em{color:var(--text-faint);font-style:normal}
+@media (max-width:720px){
+  .page{padding:16px 14px 60px}
+  .controls{gap:18px}
+}
+</style>
+
+<div class="masthead">
+  <div class="wordmark">Expected <em>Range</em></div>
+  <div class="tag">Option-implied &middot; realtime</div>
+  <div class="spacer"></div>
+  <div class="clock"><span id="clock">--:--:--</span><span class="zone" id="zoneline">&nbsp;</span></div>
+  <button class="themebtn" id="themebtn" type="button">Theme</button>
+</div>
+
+<div class="page">
+
+  <div class="controls">
+    <div class="field">
+      <label class="eyebrow" for="dte">DTE (whole days)</label>
+      <input type="number" id="dte" min="0" step="1" value="1">
+    </div>
+    <div class="field">
+      <label class="eyebrow" for="snap">Snapshot time</label>
+      <div class="inline">
+        <input type="time" id="snap" step="60">
+        <button class="mini" id="snapnow" type="button">Now</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="eyebrow">Levels driven by</span>
+      <div class="seg" id="srcseg" role="group" aria-label="Range used for levels">
+        <button type="button" data-src="dte">DTE</button>
+        <button type="button" data-src="snap">Intraday</button>
+        <button type="button" data-src="live">Realtime</button>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="stale" id="stale"></div>
+  </div>
+
+  <div class="panel" id="openpanel" hidden>
+    <div class="panel-head">
+      <h2>US open &mdash; first 15 minutes</h2>
+      <span class="note" id="openmeta"></span>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="l">Symbol</th><th>ATM IV at 09:30 ET</th><th>ATM IV at 09:45 ET</th>
+            <th>Change</th><th>Forward</th><th>Expected move (1SD)</th>
+          </tr>
+        </thead>
+        <tbody id="openrows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Settlement inputs and expected ranges</h2>
+      <span class="note">Expiries anchored to exchange time (America/New_York), shown in your timezone</span>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="l">Symbol</th>
+            <th class="l">Settlement strike</th>
+            <th class="l">IV settlement <span class="sub">percent</span></th>
+            <th>Expiry <span class="sub">your time</span></th>
+            <th>Time left <span class="sub">days &middot; hh:mm:ss</span></th>
+            <th>Range <span class="sub">DTE</span></th>
+            <th>Range <span class="sub">intraday</span></th>
+            <th>Range <span class="sub">realtime</span></th>
+            <th class="t1">Lower <span class="sub">strike &minus; range</span></th>
+            <th>Upper <span class="sub">strike + range</span></th>
+            <th class="t2">Lower <span class="sub">strike &minus; 2 &times; range</span></th>
+            <th>Upper <span class="sub">strike + 2 &times; range</span></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note-card">
+      <span class="eyebrow">The calculation</span>
+      <div class="formula">Range = Strike &times; IV/100 &times; &radic;(days / 365)</div>
+      <p>One formula, three clocks. <b>DTE</b> uses whole days. <b>Intraday</b> counts from the
+      snapshot time to expiry. <b>Realtime</b> counts from now to expiry and re-prices every second.
+      Once an expiry has passed, that instrument rolls forward to the next trading day, so a
+      Friday evening counts toward Monday and a holiday is skipped entirely. Levels are the
+      strike plus and minus the selected range, and the second pair at twice that range.</p>
+    </div>
+    <div class="note-card">
+      <span class="eyebrow">Option expiry times</span>
+      <ul class="exp-list" id="explist"></ul>
+      <p>Treasuries settle at 17:00 ET on Fridays and 15:00 ET on every other day; the rule is
+      applied to the date of the expiry being counted toward. Expiries are held in exchange time,
+      so they stay correct through both the US and the European daylight-saving switches.</p>
+    </div>
+    <div class="note-card">
+      <span class="eyebrow">Next CME holidays</span>
+      <ul class="exp-list" id="holidaylist"></ul>
+      <p>Full closures and shortened sessions alike carry no daily option expiry, so both are
+      skipped when an expiry rolls. The calendar runs to the end of 2028 and lives as a plain
+      date list at the top of this file &mdash; check it against the CME holiday calendar and
+      edit it there.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+"use strict";
+
+/* ---------- configuration ------------------------------------------------
+   groups: option expiry times in exchange local time (America/New_York).
+   Equivalent to the CET times of the source sheet (ET + 6h in summer), but
+   anchored to the exchange so the two DST regimes cannot drift apart.       */
+
+var EXCHANGE_TZ = "America/New_York";
+
+var GROUPS = {
+  energy: { label: "CL / NG",     et: [14, 30] },
+  agri:   { label: "Agris",       et: [14, 30] },
+  index:  { label: "ES / NQ",     et: [16, 0]  },
+  metals: { label: "GC",          et: [13, 30] },
+  bonds:  { label: "Treasuries",  et: [15, 0], friday: [17, 0] },
+  fx:     { label: "FX",          et: [10, 0]  }
+};
+
+/* rd = decimals for range columns (from the sheet number formats)
+   pd = decimals for the price levels                                        */
+var INSTRUMENTS = [
+  { sym: "CL", name: "Crude Oil",     group: "energy", rd: 2, pd: 2, strike: 92.75,  iv: 50.32 },
+  { sym: "ES", name: "S&P 500",       group: "index",  rd: 0, pd: 2, strike: 6760,   iv: 10.29 },
+  { sym: "NQ", name: "Nasdaq 100",    group: "index",  rd: 0, pd: 2, strike: 25020,  iv: 12.88 },
+  { sym: "ZB", name: "30Y Bond",      group: "bonds",  rd: 2, pd: 3, strike: 117,    iv: 9.88  },
+  { sym: "UB", name: "Ultra Bond",    group: "bonds",  rd: 2, pd: 3, strike: 120.5,  iv: 12.86 },
+  { sym: "GC", name: "Gold",          group: "metals", rd: 1, pd: 1, strike: 3985,   iv: 35.04 },
+  { sym: "6E", name: "Euro FX",       group: "fx",     rd: 4, pd: 4, strike: 1.1775, iv: 7.52  },
+  { sym: "ZW", name: "Wheat",         group: "agri",   rd: 1, pd: 2, strike: 510,    iv: 26.17 },
+  { sym: "NG", name: "Natural Gas",   group: "energy", rd: 4, pd: 4, strike: 3.5,    iv: 75.51 }
+];
+
+/* CME holiday calendar — every date here is treated as having no option expiry,
+   so an expiry roll skips straight over it. Includes both full closures and
+   shortened sessions (marked "early close"), which carry no daily expiry either.
+   Verify against cmegroup.com/tools-information/holiday-calendar and edit freely. */
+var HOLIDAYS = {
+  "2026-01-01": "New Year's Day",
+  "2026-01-19": "Martin Luther King Jr. Day",
+  "2026-02-16": "Presidents Day",
+  "2026-04-03": "Good Friday",
+  "2026-05-25": "Memorial Day",
+  "2026-06-19": "Juneteenth",
+  "2026-07-03": "Independence Day (observed)",
+  "2026-09-07": "Labor Day",
+  "2026-11-26": "Thanksgiving",
+  "2026-11-27": "Day after Thanksgiving (early close)",
+  "2026-12-24": "Christmas Eve (early close)",
+  "2026-12-25": "Christmas Day",
+
+  "2027-01-01": "New Year's Day",
+  "2027-01-18": "Martin Luther King Jr. Day",
+  "2027-02-15": "Presidents Day",
+  "2027-03-26": "Good Friday",
+  "2027-05-31": "Memorial Day",
+  "2027-06-18": "Juneteenth (observed)",
+  "2027-07-05": "Independence Day (observed)",
+  "2027-09-06": "Labor Day",
+  "2027-11-25": "Thanksgiving",
+  "2027-11-26": "Day after Thanksgiving (early close)",
+  "2027-12-24": "Christmas Day (observed)",
+
+  "2028-01-17": "Martin Luther King Jr. Day",
+  "2028-02-21": "Presidents Day",
+  "2028-04-14": "Good Friday",
+  "2028-05-29": "Memorial Day",
+  "2028-06-19": "Juneteenth",
+  "2028-07-03": "Day before Independence Day (early close)",
+  "2028-07-04": "Independence Day",
+  "2028-09-04": "Labor Day",
+  "2028-11-23": "Thanksgiving",
+  "2028-11-24": "Day after Thanksgiving (early close)",
+  "2028-12-25": "Christmas Day"
+};
+
+var STORE_KEY = "expectedRange.v1";
+var DAY_MS = 86400000;
+
+/* ---------- timezone helpers --------------------------------------------- */
+
+var LOCAL_TZ = (function () {
+  try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "your timezone"; }
+  catch (e) { return "your timezone"; }
+})();
+
+var etParts = new Intl.DateTimeFormat("en-US", {
+  timeZone: EXCHANGE_TZ, hour12: false,
+  year: "numeric", month: "2-digit", day: "2-digit",
+  hour: "2-digit", minute: "2-digit", second: "2-digit"
+});
+
+function partsOf(fmt, ts) {
+  var out = {}, list = fmt.formatToParts(ts), i, p;
+  for (i = 0; i < list.length; i++) {
+    p = list[i];
+    if (p.type !== "literal") out[p.type] = p.value;
+  }
+  if (out.hour === "24") out.hour = "00";
+  return {
+    y: +out.year, m: +out.month, d: +out.day,
+    H: +out.hour, Mi: +out.minute, S: +out.second
+  };
+}
+
+/* offset of the exchange zone (ms) at a given instant */
+function etOffset(ts) {
+  var p = partsOf(etParts, ts);
+  var asUTC = Date.UTC(p.y, p.m - 1, p.d, p.H, p.Mi, p.S);
+  return asUTC - Math.floor(ts / 1000) * 1000;
+}
+
+/* an exchange wall-clock date+time -> absolute instant (ms) */
+function etWallToInstant(y, m, d, H, Mi) {
+  var naive = Date.UTC(y, m - 1, d, H, Mi, 0);
+  var ts = naive - etOffset(naive);
+  ts = naive - etOffset(ts);   /* one refinement handles DST boundaries */
+  return ts;
+}
+
+var timeFmt = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", hour12: false });
+var clockFmt = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+var dayFmt = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+var todayFmt = new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short" });
+
+function zoneLabel() {
+  var s = "";
+  try {
+    var parts = new Intl.DateTimeFormat(undefined, { timeZoneName: "shortOffset" }).formatToParts(new Date());
+    for (var i = 0; i < parts.length; i++) if (parts[i].type === "timeZoneName") s = parts[i].value;
+  } catch (e) { s = ""; }
+  return LOCAL_TZ + (s ? " · " + s : "");
+}
+
+/* ---------- expiry resolution -------------------------------------------- */
+
+function dateKeyUTC(d) {
+  return d.getUTCFullYear() + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
+}
+
+/* Next expiry strictly after `ref`. The sheet rolls one calendar day once the
+   expiry has passed; here the roll continues to the next day that actually
+   trades — weekends and CME holidays carry no daily expiry and are skipped. */
+function nextExpiry(groupKey, ref) {
+  var g = GROUPS[groupKey];
+  var p = partsOf(etParts, ref);
+  var skipped = [];
+  for (var add = 0; add < 16; add++) {
+    var base = new Date(Date.UTC(p.y, p.m - 1, p.d));
+    base.setUTCDate(base.getUTCDate() + add);
+    var dow = base.getUTCDay();                       /* 0 Sun .. 5 Fri */
+    if (dow === 0 || dow === 6) continue;             /* no weekend expiry */
+    var holiday = HOLIDAYS[dateKeyUTC(base)];
+    if (holiday) { skipped.push(holiday); continue; }
+    var t = (g.friday && dow === 5) ? g.friday : g.et;
+    var ts = etWallToInstant(base.getUTCFullYear(), base.getUTCMonth() + 1, base.getUTCDate(), t[0], t[1]);
+    if (ts > ref) return { ts: ts, rolled: add > 0, et: t, skipped: skipped };
+  }
+  return null;
+}
+
+/* holidays still ahead, for the reference list */
+function upcomingHolidays(now, count) {
+  var keys = [], k;
+  for (k in HOLIDAYS) if (HOLIDAYS.hasOwnProperty(k)) keys.push(k);
+  keys.sort();
+  var todayKey = dateKeyUTC(new Date(Date.UTC(partsOf(etParts, now).y, partsOf(etParts, now).m - 1, partsOf(etParts, now).d)));
+  var out = [];
+  for (var i = 0; i < keys.length && out.length < count; i++) {
+    if (keys[i] >= todayKey) out.push({ key: keys[i], label: HOLIDAYS[keys[i]] });
+  }
+  return out;
+}
+
+function daysTo(groupKey, ref) {
+  var e = nextExpiry(groupKey, ref);
+  return e ? (e.ts - ref) / DAY_MS : 0;
+}
+
+function rangeOf(strike, iv, days) {
+  if (!isFinite(strike) || !isFinite(iv) || !isFinite(days) || days <= 0) return NaN;
+  return strike * iv / 100 * Math.sqrt(days / 365);
+}
+
+/* ---------- formatting ---------------------------------------------------- */
+
+var fmtCache = {};
+function num(v, dec) {
+  if (!isFinite(v)) return "–";
+  var key = dec;
+  if (!fmtCache[key]) {
+    fmtCache[key] = new Intl.NumberFormat(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+  return fmtCache[key].format(v);
+}
+
+function hms(ms) {
+  var s = Math.max(0, Math.floor(ms / 1000));
+  var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m + ":" + (sec < 10 ? "0" : "") + sec;
+}
+
+function localDateKey(d) {
+  return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+}
+
+/* ---------- state --------------------------------------------------------- */
+
+var state = {
+  dte: 1,
+  snap: null,          /* "HH:MM" local */
+  src: "live",
+  savedOn: null,
+  rows: {}             /* sym -> {strike, iv} */
+};
+
+(function loadState() {
+  var i, inst;
+  for (i = 0; i < INSTRUMENTS.length; i++) {
+    inst = INSTRUMENTS[i];
+    state.rows[inst.sym] = { strike: inst.strike, iv: inst.iv };
+  }
+  try {
+    var raw = localStorage.getItem(STORE_KEY);
+    if (raw) {
+      var saved = JSON.parse(raw);
+      if (saved && typeof saved === "object") {
+        if (isFinite(saved.dte)) state.dte = saved.dte;
+        if (typeof saved.snap === "string") state.snap = saved.snap;
+        if (saved.src === "dte" || saved.src === "snap" || saved.src === "live") state.src = saved.src;
+        if (typeof saved.savedOn === "string") state.savedOn = saved.savedOn;
+        if (saved.rows) {
+          for (i = 0; i < INSTRUMENTS.length; i++) {
+            var sym = INSTRUMENTS[i].sym, r = saved.rows[sym];
+            if (r) state.rows[sym] = { strike: +r.strike, iv: +r.iv };
+          }
+        }
+      }
+    }
+  } catch (e) { /* private mode or blocked storage: run with defaults */ }
+})();
+
+function save() {
+  state.savedOn = localDateKey(new Date());
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+  paintStale();
+}
+
+/* ---------- build the table ---------------------------------------------- */
+
+var tbody = document.getElementById("rows");
+var cells = {};
+
+(function buildRows() {
+  for (var i = 0; i < INSTRUMENTS.length; i++) {
+    (function (inst) {
+      var tr = document.createElement("tr");
+
+      var tdSym = document.createElement("td");
+      tdSym.className = "sym";
+      tdSym.innerHTML = inst.sym + "<small>" + inst.name + "</small>";
+      tr.appendChild(tdSym);
+
+      var tdStrike = document.createElement("td");
+      tdStrike.className = "inp";
+      var inStrike = document.createElement("input");
+      inStrike.type = "number";
+      inStrike.step = "any";
+      inStrike.setAttribute("aria-label", inst.sym + " settlement strike price");
+      inStrike.value = state.rows[inst.sym].strike;
+      tdStrike.appendChild(inStrike);
+      tr.appendChild(tdStrike);
+
+      var tdIv = document.createElement("td");
+      tdIv.className = "inp";
+      var inIv = document.createElement("input");
+      inIv.type = "number";
+      inIv.step = "any";
+      inIv.setAttribute("aria-label", inst.sym + " settlement implied volatility");
+      inIv.value = state.rows[inst.sym].iv;
+      tdIv.appendChild(inIv);
+      tr.appendChild(tdIv);
+
+      function onEdit() {
+        state.rows[inst.sym] = { strike: parseFloat(inStrike.value), iv: parseFloat(inIv.value) };
+        save();
+        render();
+      }
+      inStrike.addEventListener("input", onEdit);
+      inIv.addEventListener("input", onEdit);
+
+      var made = {};
+      var defs = [
+        ["expiry", "expiry"], ["left", "left"],
+        ["rDte", "rng"], ["rSnap", "rng"], ["rLive", "rng"],
+        ["lo", "lo t1"], ["hi", "hi"],
+        ["lo2", "lo t2"], ["hi2", "hi"]
+      ];
+      for (var k = 0; k < defs.length; k++) {
+        var td = document.createElement("td");
+        td.className = defs[k][1];
+        tr.appendChild(td);
+        made[defs[k][0]] = td;
+      }
+
+      cells[inst.sym] = made;
+      tbody.appendChild(tr);
+    })(INSTRUMENTS[i]);
+  }
+})();
+
+/* ---------- controls ------------------------------------------------------ */
+
+var dteEl = document.getElementById("dte");
+var snapEl = document.getElementById("snap");
+var staleEl = document.getElementById("stale");
+var clockEl = document.getElementById("clock");
+
+dteEl.value = state.dte;
+if (!state.snap) {
+  var n = new Date();
+  state.snap = ("0" + n.getHours()).slice(-2) + ":" + ("0" + n.getMinutes()).slice(-2);
+}
+snapEl.value = state.snap;
+
+dteEl.addEventListener("input", function () {
+  var v = parseFloat(dteEl.value);
+  state.dte = isFinite(v) ? v : 0;
+  save(); render();
+});
+snapEl.addEventListener("input", function () {
+  state.snap = snapEl.value;
+  save(); render();
+});
+document.getElementById("snapnow").addEventListener("click", function () {
+  var d = new Date();
+  snapEl.value = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+  state.snap = snapEl.value;
+  save(); render();
+});
+
+var segBtns = document.getElementById("srcseg").querySelectorAll("button");
+function paintSeg() {
+  for (var i = 0; i < segBtns.length; i++) {
+    segBtns[i].setAttribute("aria-pressed", segBtns[i].getAttribute("data-src") === state.src ? "true" : "false");
+  }
+}
+for (var b = 0; b < segBtns.length; b++) {
+  segBtns[b].addEventListener("click", function () {
+    state.src = this.getAttribute("data-src");
+    paintSeg(); save(); render();
+  });
+}
+paintSeg();
+
+function paintStale() {
+  var today = localDateKey(new Date());
+  if (!state.savedOn) {
+    staleEl.className = "stale";
+    staleEl.innerHTML = "<b>Example settlements</b> from the source sheet. Replace with today’s settlement strikes and IVs.";
+  } else if (state.savedOn !== today) {
+    staleEl.className = "stale";
+    staleEl.innerHTML = "<b>Settlements from " + state.savedOn + "</b>. Update the strikes and IVs for today.";
+  } else {
+    staleEl.className = "stale fresh";
+    staleEl.innerHTML = "<b>Settlements updated today</b> (" + todayFmt.format(new Date()) + ").";
+  }
+}
+
+/* theme toggle: system -> light -> dark -> system */
+var themeBtn = document.getElementById("themebtn");
+var themeOrder = ["system", "light", "dark"];
+var themeIdx = 0;
+try {
+  var savedTheme = localStorage.getItem("expectedRange.theme");
+  if (savedTheme) themeIdx = Math.max(0, themeOrder.indexOf(savedTheme));
+} catch (e) { /* ignore */ }
+function applyTheme() {
+  var t = themeOrder[themeIdx];
+  if (t === "system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  themeBtn.textContent = t === "system" ? "Theme: auto" : (t === "light" ? "Theme: light" : "Theme: dark");
+  try { localStorage.setItem("expectedRange.theme", t); } catch (e) { /* ignore */ }
+}
+themeBtn.addEventListener("click", function () {
+  themeIdx = (themeIdx + 1) % themeOrder.length;
+  applyTheme();
+});
+applyTheme();
+
+/* ---------- expiry reference list ---------------------------------------- */
+
+var lastExpiryPaint = "";
+
+function paintExpiryList(now) {
+  var ul = document.getElementById("explist");
+  var html = "", key;
+  var sig = "";
+  for (key in GROUPS) if (GROUPS.hasOwnProperty(key)) sig += nextExpiry(key, now).ts + ",";
+  if (sig === lastExpiryPaint) return;
+  lastExpiryPaint = sig;
+  for (key in GROUPS) {
+    if (!GROUPS.hasOwnProperty(key)) continue;
+    var g = GROUPS[key];
+    var e = nextExpiry(key, now);
+    var etTxt = ("0" + e.et[0]).slice(-2) + ":" + ("0" + e.et[1]).slice(-2) + " ET";
+    html += "<li><span>" + g.label + "</span><span class=\"v\">" + timeFmt.format(e.ts) +
+            " <em>" + dayFmt.format(e.ts) + " · " + etTxt + "</em></span></li>";
+  }
+  ul.innerHTML = html;
+}
+
+var holFmt = new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+
+function paintHolidayList(now) {
+  var list = upcomingHolidays(now, 6), html = "", i;
+  for (i = 0; i < list.length; i++) {
+    var bits = list[i].key.split("-");
+    var when = holFmt.format(new Date(+bits[0], +bits[1] - 1, +bits[2]));
+    html += "<li><span>" + list[i].label + "</span><span class=\"v\">" + when + "</span></li>";
+  }
+  if (!html) html = "<li><span>No dates left in the calendar</span><span class=\"v\">extend the table</span></li>";
+  document.getElementById("holidaylist").innerHTML = html;
+}
+
+/* ---------- render -------------------------------------------------------- */
+
+function snapshotRef() {
+  var d = new Date();
+  if (!state.snap) return d.getTime();
+  var bits = state.snap.split(":");
+  d.setHours(parseInt(bits[0], 10) || 0, parseInt(bits[1], 10) || 0, 0, 0);
+  return d.getTime();
+}
+
+function render() {
+  var now = Date.now();
+  var snapRef = snapshotRef();
+
+  clockEl.textContent = clockFmt.format(now);
+
+  for (var i = 0; i < INSTRUMENTS.length; i++) {
+    var inst = INSTRUMENTS[i];
+    var c = cells[inst.sym];
+    var row = state.rows[inst.sym];
+    var strike = row.strike, iv = row.iv;
+
+    var exp = nextExpiry(inst.group, now);
+    var leftMs = exp.ts - now;
+    var daysLive = leftMs / DAY_MS;
+    var daysSnap = daysTo(inst.group, snapRef);
+
+    c.expiry.innerHTML = "<b>" + timeFmt.format(exp.ts) + "</b> " + dayFmt.format(exp.ts) +
+      (exp.skipped.length ? " <span class=\"skip\">past " + exp.skipped.join(", ") + "</span>" : "");
+    c.left.innerHTML = "<b>" + daysLive.toFixed(2) + "</b> " + hms(leftMs);
+
+    var rDte = rangeOf(strike, iv, state.dte);
+    var rSnap = rangeOf(strike, iv, daysSnap);
+    var rLive = rangeOf(strike, iv, daysLive);
+
+    c.rDte.textContent = num(rDte, inst.rd);
+    c.rSnap.textContent = num(rSnap, inst.rd);
+    c.rLive.textContent = num(rLive, inst.rd);
+
+    c.rDte.className = "rng" + (state.src === "dte" ? " active" : "");
+    c.rSnap.className = "rng" + (state.src === "snap" ? " active" : "");
+    c.rLive.className = "rng" + (state.src === "live" ? " active" : "");
+
+    var sel = state.src === "dte" ? rDte : (state.src === "snap" ? rSnap : rLive);
+    if (isFinite(sel) && isFinite(strike)) {
+      c.lo.className = "lo t1";
+      c.hi.className = "hi";
+      c.lo2.className = "lo t2";
+      c.hi2.className = "hi";
+      c.lo.textContent = num(strike - sel, inst.pd);
+      c.hi.textContent = num(strike + sel, inst.pd);
+      c.lo2.textContent = num(strike - 2 * sel, inst.pd);
+      c.hi2.textContent = num(strike + 2 * sel, inst.pd);
+    } else {
+      c.lo.className = "blank t1";
+      c.hi.className = "blank";
+      c.lo2.className = "blank t2";
+      c.hi2.className = "blank";
+      c.lo.textContent = "–";
+      c.hi.textContent = "–";
+      c.lo2.textContent = "–";
+      c.hi2.textContent = "–";
+    }
+  }
+
+  paintExpiryList(now);
+
+  var etDay = dateKeyUTC(new Date(Date.UTC(partsOf(etParts, now).y, partsOf(etParts, now).m - 1, partsOf(etParts, now).d)));
+  if (etDay !== lastHolidayPaint) {
+    lastHolidayPaint = etDay;
+    paintHolidayList(now);
+  }
+}
+var lastHolidayPaint = "";
+
+document.getElementById("zoneline").textContent = zoneLabel();
+paintStale();
+render();
+setInterval(render, 1000);
+
+/* ---------- opening-bell IV, fetched from the published snapshot -----------
+   sc_iv_open.json is regenerated every 5 minutes by sc_iv_open.py. The table
+   above this one is a manual calculator whose values live in each visitor's
+   own localStorage, so it can never show anyone else a current number; this
+   panel is the part that does. Fails quiet: no file, no panel.              */
+(function loadOpenIV() {
+  var STATUS = {
+    ok: "", partial: "one reading missing",
+    pending: "still collecting — window ends 09:45 ET",
+    missing: "no data — the source was not running"
+  };
+  function paint(d) {
+    var rows = document.getElementById("openrows");
+    var syms = Object.keys(d.instruments || {});
+    if (!syms.length) return;
+    var html = "";
+    for (var i = 0; i < syms.length; i++) {
+      var sym = syms[i], r = d.instruments[sym];
+      var note = STATUS[r.status] || r.status;
+      var chg = (typeof r.change === "number")
+        ? (r.change > 0 ? "+" : "") + r.change.toFixed(2) + " vp" : "&mdash;";
+      html += "<tr><td class='l'>" + sym + "</td>"
+        + "<td>" + (r.open_iv != null ? r.open_iv.toFixed(2) + "%" : "&mdash;") + "</td>"
+        + "<td>" + (r.plus_iv != null ? r.plus_iv.toFixed(2) + "%" : "&mdash;") + "</td>"
+        + "<td>" + chg + "</td>"
+        + "<td>" + (r.forward != null ? r.forward.toLocaleString(undefined,
+            {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "&mdash;") + "</td>"
+        + "<td>" + (r.sigma_points != null ? "±" + r.sigma_points.toFixed(1) : "&mdash;")
+        + (note ? " <span class='note'>" + note + "</span>" : "") + "</td></tr>";
+    }
+    rows.innerHTML = html;
+    document.getElementById("openmeta").textContent =
+      "Trading day " + d.trading_day + " · generated " + d.generated + " ET";
+    document.getElementById("openpanel").hidden = false;
+  }
+  try {
+    fetch("sc_iv_open.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d) paint(d); })
+      .catch(function () { /* file not published yet - leave the panel hidden */ });
+  } catch (e) { /* no fetch available */ }
+})();
+</script>
